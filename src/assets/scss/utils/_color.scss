@@ -1,0 +1,68 @@
+//Text Color
+.b-color-bot {
+  color: $b-color-bot;
+}
+.b-color-light-blip {
+  color: $b-color-light-blip;
+}
+.b-color-dark-blip {
+  color: $b-color-dark-blip;
+}
+
+.b-color-warning {
+  color: $b-color-warning;
+}
+
+.b-color-delete {
+  color: $b-color-delete;
+}
+.b-color-delete-darken {
+  color: b-darken($b-color-delete);
+}
+
+.b-color-true {
+  color: $b-color-true;
+}
+.b-color-true-darken {
+  color: b-darken($b-color-true);
+}
+
+.b-color-city {
+  color: $b-color-city;
+}
+.b-color-city-darken {
+  color: b-darken($b-color-city);
+}
+.b-color-city-lighten {
+  color: b-lighten($b-color-city);
+}
+
+.b-color-rooftop {
+  color: $b-color-rooftop;
+}
+.b-color-desk {
+  color: $b-color-desk;
+}
+.b-color-cloud {
+  color: $b-color-cloud;
+}
+.b-color-silver {
+  color: $b-color-silver;
+}
+.b-color-time {
+  color: $b-color-time;
+}
+.b-color-breeze {
+  color: $b-color-breeze;
+}
+.b-color-sky {
+  color: $b-color-sky;
+}
+
+.b-color-white {
+  color: $b-color-white;
+}
+
+.b-color-black {
+  color: $b-color-black;
+}

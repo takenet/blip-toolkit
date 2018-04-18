@@ -1,0 +1,96 @@
+.b-button,
+.b-button-inverse {
+  display: inline-block;
+
+  -webkit-appearance: button;
+  -moz-appearance: button;
+
+  cursor: pointer;
+  min-width: 16rem;
+  height: 4.2rem;
+  line-height: 3.8rem;
+
+  margin: 0;
+  padding: 0 2rem;
+
+  border: none;
+  border-radius: 3px;
+
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+
+  > * {
+    vertical-align: middle;
+  }
+
+  font-size: 1.6rem;
+  text-decoration: none;
+  font-weight: 600;
+
+  color: $b-color-white;
+
+  outline: none;
+
+  &:active,
+  &:focus,
+  &:visited,
+  &:hover {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: $b-color-breeze;
+    color: $b-color-white;
+    border: none;
+  }
+}
+
+.b-button {
+  background-color: $b-color-light-blip;
+
+  &:not(:disabled) {
+    &:hover {
+      background-color: b-darken($b-color-light-blip);
+    }
+
+    &.b-bg-true:hover {
+      background-color: b-darken($b-color-true);
+    }
+
+    &.b-bg-delete:hover {
+      background-color: b-darken($b-color-delete);
+    }
+  }
+}
+
+.b-button-inverse {
+  border: 2px solid $b-color-light-blip;
+  background-color: transparent;
+
+  &:not(:disabled) {
+    &:hover {
+      color: b-darken($b-color-white);
+      border-color: b-darken($b-color-light-blip);
+    }
+
+    &.b-color-true:hover {
+      color: b-darken($b-color-true);
+    }
+
+    &.b-border-true:hover {
+      border-color: b-darken($b-color-true);
+    }
+
+    &.b-color-delete:hover {
+      color: b-darken($b-color-delete);
+    }
+
+    &.b-border-delete:hover {
+      border-color: b-darken($b-color-delete);
+    }
+  }
+}

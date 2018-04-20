@@ -24,9 +24,9 @@ html, body {
   text-align: center;
 }
 
-.custom-text-middle {
-  h1, h2, h3, h4, h5, h6, p {
-    width: 45%;
+.custom-text-middle, .custom-text-middle .subsection {
+  > h1, > h2, > h3, > h4, > h5, > h6, > p {
+    width: 50%;
     min-width: 25rem;
   }
 }
@@ -58,7 +58,7 @@ i {
 }
 
 h1 {
-  margin: 10rem auto 5rem;
+  margin: 10rem auto 8rem;
   font-size: 5.6rem;  
 }
 

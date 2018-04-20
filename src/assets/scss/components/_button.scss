@@ -14,7 +14,7 @@
   padding: 0 2rem;
 
   border: none;
-  border-radius: 3px;
+  border-radius: 0.3rem;
 
   overflow: hidden;
   vertical-align: middle;
@@ -68,7 +68,7 @@
 }
 
 .b-button-inverse {
-  border: 2px solid $b-color-light-blip;
+  border: 0.2rem solid $b-color-light-blip;
   background-color: transparent;
 
   &:not(:disabled) {

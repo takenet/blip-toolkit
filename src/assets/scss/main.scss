@@ -1,8 +1,9 @@
+@import "./tachyons/module";
+@import "./variables/module";
 @import "./base/module";
-@import "variables";
+@import "./mixins/module";
 
 @import "./website/module";
-
 
 @import "./components/module";
 @import "./utils/module";

@@ -1,4 +1,4 @@
-.flex-column {
+.custom-flex-column {
   display: flex;
   position: relative;
   flex-flow: column nowrap;
@@ -7,7 +7,7 @@
   align-content: flex-start;
 }
 
-.flex-row {
+.custom-flex-row {
   display: flex;
   position: relative;
   flex-flow: row wrap;

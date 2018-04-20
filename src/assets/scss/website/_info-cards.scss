@@ -18,20 +18,20 @@
 
 .color-info {
   min-width: 12rem;
-  margin: 3rem 1.5rem 0rem;
+  margin: 3rem 1.5rem 0rem;  
+}
 
-  .color-card {
-    display: block;
-    width: 12rem;
-    height: 10rem;
-  
-    i {
-      position: relative;
-      top: 1rem;
-      margin-left: 1rem;
-      font-size: 1.2rem;
-      color: $b-color-black;
-    }
+.color-card {
+  display: block;
+  width: 12rem;
+  height: 10rem;
+
+  i {
+    position: relative;
+    top: 1rem;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    color: $b-color-black;
   }
 }
 

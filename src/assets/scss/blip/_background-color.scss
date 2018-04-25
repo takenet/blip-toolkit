@@ -1,0 +1,77 @@
+//Background Color
+.bp-bg-bot {
+  background-color: $bp-color-bot;
+}
+.bp-bg-light-blip {
+  background-color: $bp-color-light-blip;
+}
+.bp-bg-dark-blip {
+  background-color: $bp-color-dark-blip;
+}
+
+.bp-bg-warning {
+  background-color: $bp-color-warning;
+}
+
+.bp-bg-delete {
+  background-color: $bp-color-delete;
+}
+.bp-bg-delete-darken {
+  background-color: b-darken($bp-color-delete);
+}
+
+.bp-bg-true {
+  background-color: $bp-color-true;
+}
+.bp-bg-true-darken {
+  background-color: b-darken($bp-color-true);
+}
+
+.bp-bg-city {
+  background-color: $bp-color-city;
+}
+.bp-bg-city-darken {
+  background-color: b-darken($bp-color-city);
+}
+.bp-bg-city-lighten {
+  background-color: b-lighten($bp-color-city);
+}
+
+
+.bp-bg-rooftop {
+  background-color: $bp-color-rooftop;
+}
+.bp-bg-desk {
+  background-color: $bp-color-desk;
+}
+.bp-bg-cloud {
+  background-color: $bp-color-cloud;
+}
+.bp-bg-silver {
+  background-color: $bp-color-silver;
+}
+.bp-bg-time {
+  background-color: $bp-color-time;
+}
+.bp-bg-breeze {
+  background-color: $bp-color-breeze;
+}
+.bp-bg-sky {
+  background-color: $bp-color-sky;
+}
+.bp-bg-offwhite {
+  background-color: $bp-color-offwhite;
+}
+
+.bp-bg-white {
+  background-color: $bp-color-white;
+}
+
+.bp-bg-black {
+  background-color: $bp-color-black;
+}
+
+.bp-bg-gradient {
+  background-color: $bp-color-gradient;
+}
+

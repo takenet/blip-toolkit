@@ -8,7 +8,7 @@ const cssPlugin = new ExtractTextPlugin("[name].css");
 module.exports = {
   entry: [
     "webpack/hot/dev-server",
-    "webpack-dev-server/client?http://localhost:8080",
+    "webpack-dev-server/client?http://localhost:8888",
     __dirname + "/src/app.js"
   ],
   output: {

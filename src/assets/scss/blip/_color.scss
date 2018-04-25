@@ -1,0 +1,74 @@
+/*
+  BLiP Toolkit
+
+  Text Color Classes
+
+*/
+
+.bp-color-bot {
+  color: $bp-color-bot;
+}
+.bp-color-light-blip {
+  color: $bp-color-light-blip;
+}
+.bp-color-dark-blip {
+  color: $bp-color-dark-blip;
+}
+
+.bp-color-warning {
+  color: $bp-color-warning;
+}
+
+.bp-color-delete {
+  color: $bp-color-delete;
+}
+.bp-color-delete-darken {
+  color: bp-darken($bp-color-delete);
+}
+
+.bp-color-true {
+  color: $bp-color-true;
+}
+.bp-color-true-darken {
+  color: bp-darken($bp-color-true);
+}
+
+.bp-color-city {
+  color: $bp-color-city;
+}
+.bp-color-city-darken {
+  color: bp-darken($bp-color-city);
+}
+.bp-color-city-lighten {
+  color: bp-lighten($bp-color-city);
+}
+
+.bp-color-rooftop {
+  color: $bp-color-rooftop;
+}
+.bp-color-desk {
+  color: $bp-color-desk;
+}
+.bp-color-cloud {
+  color: $bp-color-cloud;
+}
+.bp-color-silver {
+  color: $bp-color-silver;
+}
+.bp-color-time {
+  color: $bp-color-time;
+}
+.bp-color-breeze {
+  color: $bp-color-breeze;
+}
+.bp-color-sky {
+  color: $bp-color-sky;
+}
+
+.bp-color-white {
+  color: $bp-color-white;
+}
+
+.bp-color-black {
+  color: $bp-color-black;
+}

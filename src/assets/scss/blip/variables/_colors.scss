@@ -1,0 +1,45 @@
+/*
+  BLiP Toolkit
+
+  Color Variables
+
+*/
+
+$lighten-amount: 10%;
+$darken-amount: 10%;
+
+@function bp-lighten($color) {
+  @return lighten($color, $lighten-amount);
+}
+
+@function bp-darken($color) {
+  @return darken($color, $darken-amount);
+}
+
+$bp-color-bot: #2cc3d5;
+$bp-color-light-blip: #0cc8cc;
+$bp-color-dark-blip: #15afb2;
+
+$bp-color-warning: #f76556;
+$bp-color-delete: #fb7a6d;
+
+$bp-color-true: #4dcb7b;
+
+$bp-color-city: #52636c;
+$bp-color-rooftop: #738192;
+$bp-color-desk: #607B99;
+$bp-color-cloud: #8ca0b3;
+$bp-color-silver: #94a3ab;
+$bp-color-time: #a8bfc4;
+$bp-color-breeze: #c9dfe4;
+$bp-color-sky: #daf2f4;
+
+$bp-color-disabled: $bp-color-breeze;
+
+$bp-color-white: #ffffff;
+$bp-color-black: #000000;
+
+$bp-color-gradient: linear-gradient(180deg, #f9fbfc 0%, #ecf1f3 100%);
+
+//3rd parties
+$bp-color-facebook: #3c5a99;

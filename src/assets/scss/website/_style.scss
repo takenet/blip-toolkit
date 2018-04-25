@@ -15,6 +15,10 @@ html, body {
 
   text-align: justify;
 
+  > p, .subsection > p, .indent {
+    text-indent: 4rem;
+  }
+
   .section-title {
     text-align: center;
   }
@@ -36,12 +40,8 @@ h1, h2, h3, h4, h5, h6, p {
   color: $b-color-light-blip;
 }
 
-p, .indent {
-  text-indent: 4rem;
-}
-
 p {
-  margin: 5rem auto 2.5rem auto;
+  margin: 2.5rem auto;
 
   color: $b-color-silver;
   font-size: 1.6rem;

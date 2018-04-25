@@ -1,0 +1,74 @@
+/*
+  BLiP Toolkit
+
+  Border Color Classes
+
+*/
+
+.bp-border-bot {
+  border-color: $bp-color-bot;
+}
+.bp-border-light-blip {
+  border-color: $bp-color-light-blip;
+}
+.bp-border-dark-blip {
+  border-color: $bp-color-dark-blip;
+}
+
+.bp-border-warning {
+  border-color: $bp-color-warning;
+}
+
+.bp-border-delete {
+  border-color: $bp-color-delete;
+}
+.bp-border-delete-darken {
+  border-color: bp-darken($bp-color-delete);
+}
+
+.bp-border-true {
+  border-color: $bp-color-true;
+}
+.bp-border-true-darken {
+  border-color: bp-darken($bp-color-true);
+}
+
+.bp-border-city {
+  border-color: $bp-color-city;
+}
+.bp-border-city-darken {
+  border-color: bp-darken($bp-color-city);
+}
+.bp-border-city-lighten {
+  border-color: bp-lighten($bp-color-city);
+}
+
+.bp-border-rooftop {
+  border-color: $bp-color-rooftop;
+}
+.bp-border-desk {
+  border-color: $bp-color-desk;
+}
+.bp-border-cloud {
+  border-color: $bp-color-cloud;
+}
+.bp-border-silver {
+  border-color: $bp-color-silver;
+}
+.bp-border-time {
+  border-color: $bp-color-time;
+}
+.bp-border-breeze {
+  border-color: $bp-color-breeze;
+}
+.bp-border-sky {
+  border-color: $bp-color-sky;
+}
+
+.bp-border-white {
+  border-color: $bp-color-white;
+}
+
+.bp-border-black {
+  border-color: $bp-color-black;
+}

@@ -3,16 +3,17 @@ const path = require("path");
 const webpack = require("webpack");
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const cssPlugin = new ExtractTextPlugin("[name].css");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: [
-    './src/app.js'
-  ],
+  entry: ["./src/app.js"],
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "blip-toolkit.js"
+    filename: "blip-toolkit.js",
+    library: "BLiPToolkit",
+    libraryTarget: "umd"
   },
+  target: "web",
   module: {
     rules: [
       {
@@ -25,12 +26,22 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        use: cssPlugin.extract({
-          fallback: "style-loader",
-          use: [{ loader: "css-loader" }, { loader: "resolve-url-loader" }]
-        }),
-        exclude: /node_modules/
+        test: /\.(scss|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              minimize: {
+                safe: true
+              }
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {}
+          }
+        ]
       },
       {
         test: /\.(woff|woff2|ttf|otf|eot|svg)(\?]?.*)?$/,
@@ -57,28 +68,6 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
-        use: cssPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                sourceMap: true
-              }
-            },
-            { loader: "resolve-url-loader" },
-            {
-              loader: "sass-loader",
-              options: {
-                sourceMap: false
-              }
-            }
-          ]
-        }),
-        exclude: /node_modules/
-      },
-      {
         test: /\.html$/,
         use: [
           {
@@ -91,13 +80,11 @@ module.exports = {
       }
     ]
   },
-  node: {
-    hot: true,
-    inline: true,
-    progress: true,
-    colors: true
-  },
+  node: false,
   plugins: [
-    cssPlugin
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
   ]
 };

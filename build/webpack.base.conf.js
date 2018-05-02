@@ -1,15 +1,13 @@
+"use strict";
 const path = require("path");
 const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const cssPlugin = new ExtractTextPlugin("[name].css");
 
 module.exports = {
   entry: [
-    "webpack/hot/dev-server",
-    "webpack-dev-server/client?http://localhost:8888",
-    __dirname + "/src/app.js"
+    './src/app.js'
   ],
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -93,10 +91,6 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    watchContentBase: true
-  },
   node: {
     hot: true,
     inline: true,
@@ -104,16 +98,6 @@ module.exports = {
     colors: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      pkg: require("./package.json"),
-      template: "./src/index.html",
-      inject: "body"
-    }),
-    new webpack.LoaderOptionsPlugin({
-      debug: true
-    }),
     cssPlugin
   ]
 };

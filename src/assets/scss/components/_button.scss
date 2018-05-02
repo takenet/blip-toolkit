@@ -1,5 +1,4 @@
-.b-button,
-.b-button-inverse {
+.bp-button {
   display: inline-block;
 
   -webkit-appearance: button;
@@ -28,9 +27,6 @@
   font-size: 1.6rem;
   text-decoration: none;
   font-weight: 600;
-
-  color: $b-color-white;
-
   outline: none;
 
   &:active,
@@ -43,70 +39,37 @@
 
   &:disabled {
     cursor: default;
-    background-color: $b-color-breeze;
-    color: $b-color-white;
+    background-color: $bp-color-breeze;
+    color: $bp-color-white;
     border: none;
   }
 }
 
-.b-button {
-  background-color: $b-color-light-blip;
-
+.bp-button {
   &:not(:disabled) {
-    &:hover {
-      background-color: b-darken($b-color-light-blip);
+
+    &.bp-bg-bot:hover {
+      background-color: bp-darken($bp-color-bot);
     }
 
-    &.b-bg-true:hover {
-      background-color: b-darken($b-color-true);
+    &.bp-bg-light-blip:hover {
+      background-color: bp-darken($bp-color-light-blip);
     }
 
-    &.b-bg-delete:hover {
-      background-color: b-darken($b-color-delete);
-    }
-  }
-}
-
-.b-button-inverse {
-  border: 0.2rem solid $b-color-light-blip;
-  background-color: transparent;
-
-  &:not(:disabled) {
-    &:hover {
-      color: b-darken($b-color-white);
-      border-color: b-darken($b-color-light-blip);
+    &.bp-bg-dark-blip:hover {
+      background-color: bp-darken($bp-color-dark-blip);
     }
 
-    &.b-color-light-blip:hover {
-      color: b-darken($b-color-light-blip);
+    &.bp-bg-true:hover {
+      background-color: bp-darken($bp-color-true);
     }
 
-    &.b-border-light-blip:hover {
-      border-color: b-darken($b-color-light-blip);
+    &.bp-bg-delete:hover {
+      background-color: bp-darken($bp-color-delete);
     }
 
-    &.b-color-dark-blip:hover {
-      color: b-darken($b-color-dark-blip);
-    }
-
-    &.b-border-dark-blip:hover {
-      border-color: b-darken($b-color-dark-blip);
-    }
-
-    &.b-color-true:hover {
-      color: b-darken($b-color-true);
-    }
-
-    &.b-border-true:hover {
-      border-color: b-darken($b-color-true);
-    }
-
-    &.b-color-delete:hover {
-      color: b-darken($b-color-delete);
-    }
-
-    &.b-border-delete:hover {
-      border-color: b-darken($b-color-delete);
+    &.bp-bg-warning:hover {
+      background-color: bp-darken($bp-color-warning);
     }
   }
 }

@@ -4,259 +4,342 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css" />
 </head>
 
-<body class="b-bg-white">
-  <div class="container custom-flex-column">
-    <div class="section b-bg-white">
-      <h1 id="page-title" class="section-title custom-text-middle"> BLiP Guideline </h1>
-    </div>
+<body class="bp-bg-white ph5 pv2 bp-ff-nunito">
+  <h1 class="bp-fs-1 bp-c-bot"> BLiP Guideline</h1>
 
-    <div class="section b-bg-white">
-      <div class="custom-text-middle">
-        <h2 class="section-title mt5"> 1. Introdução </h2>
+  <h2 class="bp-fs-2 bp-c-light-blip"> 1. Introdução </h2>
 
-        <div class="subsection">
-          <h4> A Documentação </h4>
-          <p> Olá,
-            <i>BLiPer!</i> Esta é a documentação para o
-            <i>BLiP Toolkit</i>. Aqui você conhecerá melhor a ferramenta e saberá como utilizar as classes e padrões para criar
-            conteúdo para a plataforma
-            <i>BLiP!</i> 😊 </p>
-          <p> O BLiP Toolkit é um conjunto de configurações SCSS para componentes utilizados no BLiP. Ele foi criado em vista
-            à padronização das especificações CSS dos elementos usados no portal, desde os mais simples, como textos, aos
-            complexos, como cards e dropdowns. </p>
-          <p> É importante ler a documentação e estar a par dos padrões do projeto! Assim, o código do projeto ficará mais organizado
-            e mudanças poderão ser feitas mais facilmente. </p>
-        </div>
+  <div class="ph3">
+    <h4 class="bp-fs-3"> A Documentação </h4>
+    <p> Olá,
+      <i>BLiPer!</i> Esta é a documentação para o
+      <i>BLiP Toolkit</i>. Aqui você conhecerá melhor a ferramenta e saberá como utilizar as classes e padrões para criar conteúdo
+      para a plataforma
+      <i>BLiP!</i> 😊 </p>
+    <p> O BLiP Toolkit é um conjunto de configurações SCSS para componentes utilizados no BLiP. Ele foi criado em vista à padronização
+      das especificações CSS dos elementos usados no portal, desde os mais simples, como textos, aos complexos, como cards
+      e dropdowns. </p>
+    <p> É importante ler a documentação e estar a par dos padrões do projeto! Assim, o código do projeto ficará mais organizado
+      e mudanças poderão ser feitas mais facilmente. </p>
+  </div>
 
-        <div class="subsection">
-          <h4> Princípios de Design </h4>
+  <div class="ph3">
+    <h4> Princípios de Design </h4>
 
-          <p> Nossos
-            <i>princípios de design</i> ajudam a manter a consistência visual refletindo valores e características que nos diferenciam
-            de outros produtos. </p>
+    <p> Nossos
+      <i>princípios de design</i> ajudam a manter a consistência visual refletindo valores e características que nos diferenciam
+      de outros produtos. </p>
 
-          <h6 class="indent"> Confiabilidade através da consistência </h6>
-          <p class="mt0"> Componentes que
-            <i>dialogam entre si</i>, são
-            <i>hierárquicos</i> e fazem parte da
-            <i>mesma família</i> exprimem nosso profissionalismo nos mínimos detalhes.</p>
+    <h4> Confiabilidade através da consistência </h6>
+      <p class="mt0"> Componentes que
+        <i>dialogam entre si</i>, são
+        <i>hierárquicos</i> e fazem parte da
+        <i>mesma família</i> exprimem nosso profissionalismo nos mínimos detalhes.</p>
 
-          <h6 class="indent"> Poder ao usuário pela simplicidade </h6>
-          <p class="mt0">
-            <i>Atenuamos interferências visuais</i>, auxiliando o usuário a focar no que é importante, aprender e evoluir mais
-            rápido.
-          </p>
-
-          <h6 class="indent"> Familiar, elegante e inovador quando vale a pena </h6>
-          <p class="mt0"> Os elementos reproduzem
-            <i>comportamentos físicos que mimetizam o real</i> no espaço: possuem peso, são influenciados pela luz, pelo movimento
-            e por outros fenômenos.</p>
-
-          <h6 class="indent"> Evolução constante - "Level Up" </h6>
-          <p class="mt0"> Aprimoramentos são feitos em
-            <i>conjunto dos usuários</i> reforçando nosso valor comunitário.</p>
-        </div>
-
-        <div class="subsection">
-          <h4> Navegação </h4>
-          <p> Nesta documentação, cada capítulo contém informações das classes e padrões de um tipo de elemento ou parâmetro
-            específico. Dentro de cada uma dessas sessões, você poderá encontrar informações sobre: classes do toolkit, exemplos
-            de uso, e como editar ou adicionar ao código já existente. </p>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="section custom-text-middle b-bg-white">
-      <div class="custom-text-middle">
-        <h2 class="section-title"> 2. Documentação </h2>
-
-
-        <div class="subsection">
-          <h4> Paleta de Cores </h4>
-
-          <p> Nossa paleta de cores é formada por três categorias: Corporativas, Semióticas e Neutras. </p>
-
-          <p>
-            <i>Corporativas</i> são as nuances que acompanham a marca BLiP, e devem ser usadas em pontos que merecem destaque
-            e atenção do usuário.</p>
-
-          <div class="custom-flex-row">
-            <div class="color-info">
-              <div class="color-card b-bg-bot">
-                <i>#2CC3D5</i>
-              </div>
-              <p class="b-color-bot">Bot</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-light-blip">
-                <i>#0CC8CC</i>
-              </div>
-              <p class="b-color-light-blip">Light BLiP</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-dark-blip">
-                <i>#15AFB2</i>
-              </div>
-              <p class="b-color-dark-blip">Dark BLiP</p>
-            </div>
-          </div>
-
-          <p>
-            <i>Semióticas</i> são cores que possuem significados recorrentes para usuários e transmitem mensagens.</p>
-
-          <div class="custom-flex-row">
-            <div class="color-info">
-              <div class="color-card b-bg-warning">
-                <i>#F76556</i>
-              </div>
-              <p class="b-color-warning">Warning</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-delete">
-                <i>#FB7A6D</i>
-              </div>
-              <p class="b-color-delete">Delete</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-true">
-                <i>#4DCB7B</i>
-              </div>
-              <p class="b-color-true">True</p>
-            </div>
-          </div>
-
-          <p>
-            <i>Neutros</i> são tons utilizados na tipografia e em grande parte dos componentes que compõem a plataforma. Eles
-            auxiliam a criar uma experiência mais fluída, sem ruídos visuais. </p>
-
-          <div class="custom-flex-row">
-            <div class="color-info">
-              <div class="color-card b-bg-city">
-                <i>#52636C</i>
-              </div>
-              <p class="b-color-city">City</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-rooftop">
-                <i>#738192</i>
-              </div>
-              <p class="b-color-rooftop">Rooftop</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-desk">
-                <i>#607B99</i>
-              </div>
-              <p class="b-color-desk">Desk</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-cloud">
-                <i>#8CA0B3</i>
-              </div>
-              <p class="b-color-cloud">Cloud</p>
-            </div>
-          </div>
-
-          <div class="custom-flex-row">
-            <div class="color-info">
-              <div class="color-card b-bg-silver">
-                <i>#94A3AB</i>
-              </div>
-              <p class="b-color-silver">Silver</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-time">
-                <i>#A8BFC4</i>
-              </div>
-              <p class="b-color-time">Time</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-breeze">
-                <i>#C9DFE4</i>
-              </div>
-              <p class="b-color-breeze">Breeze</p>
-            </div>
-
-            <div class="color-info">
-              <div class="color-card b-bg-sky">
-                <i>#D4F2F4</i>
-              </div>
-              <p class="b-color-sky">Sky</p>
-            </div>
-          </div>
-
-          <p> Em resumo, nossa paletade cores é uma base para a Plataforma BLiP. Outros tons, apenas quando necessário, podem
-            ser utilizados, desde que fiquem
-            <i>coerentes</i> com a paleta.</p>
-        </div>
-
-        <div class="subsection">
-          <h5> Aplicação no código </h5>
-          <p> Para aplicar tais cores diretamente em textos, fundos e bordas, insira classes contendo o
-            <i>radical da classe</i> seguido do
-            <i>nome da cor</i>. </p>
-
-          <div class="custom-flex-row">
-            <div class="code-info">
-              <p> .b-button-inverse </p>
-              <button class="b-button-inverse"> Botão </button>
-            </div>
-
-            <div class="code-info">
-              <p> .b-color-dark-blip </p>
-              <button class="b-button-inverse b-color-dark-blip"> Botão </button>
-            </div>
-
-            <div class="code-info">
-              <p> .b-border-true </p>
-              <button class="b-button-inverse b-color-dark-blip b-border-true"> Botão </button>
-            </div>
-
-            <div class="code-info">
-              <p> .b-bg-sky </p>
-              <button class="b-button-inverse b-color-dark-blip b-border-true b-bg-sky"> Botão </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section b-bg-sky">
-      <div class="custom-text-middle">
-        <h3> 3. Componentes </h3>
-
-        <h5> Confiabilidade através da consistência </h5>
-        <p> Componentes que
-          <i>dialogam entre si</i>, são
-          <i>hierárquicos</i> e fazem parte da
-          <i>mesma família</i> exprimem nosso profissionalismo nos mínimos detalhes.</p>
-
-        <h5> Poder ao usuário pela simplicidade </h5>
-        <p>
+      <h4> Poder ao usuário pela simplicidade </h6>
+        <p class="mt0">
           <i>Atenuamos interferências visuais</i>, auxiliando o usuário a focar no que é importante, aprender e evoluir mais
           rápido.
         </p>
 
-        <h5> Familiar, elegante e inovador quando vale a pena </h5>
-        <p> Os elementos reproduzem
-          <i>comportamentos físicos que mimetizam o real</i> no espaço: possuem peso, são influenciados pela luz, pelo movimento
-          e por outros fenômenos.</p>
+        <h4> Familiar, elegante e inovador quando vale a pena </h6>
+          <p class="mt0"> Os elementos reproduzem
+            <i>comportamentos físicos que mimetizam o real</i> no espaço: possuem peso, são influenciados pela luz, pelo movimento
+            e por outros fenômenos.</p>
 
-        <h5> Evolução constante - "Level Up" </h5>
-        <p> Aprimoramentos são feitos em
-          <i>conjunto dos usuários</i> reforçando nosso valor comunitário.</p>
-      </div>
-    </div>
+          <h4> Evolução constante - "Level Up" </h6>
+            <p class="mt0"> Aprimoramentos são feitos em
+              <i>conjunto dos usuários</i> reforçando nosso valor comunitário.</p>
   </div>
+
+  <div class="ph3">
+    <h4> Navegação </h4>
+    <p> Nesta documentação, cada capítulo contém informações das classes e padrões de um tipo de elemento ou parâmetro específico.
+      Dentro de cada uma dessas sessões, você poderá encontrar informações sobre: classes do toolkit, exemplos de uso, e
+      como editar ou adicionar ao código já existente. </p>
+  </div>
+
+  <h2 class="bp-fs-2 bp-c-light-blip"> 2. Documentação </h2>
+
+  <div class="ph3">
+    <h4> Paleta de Cores </h4>
+
+    <p> Nossa paleta de cores é formada por três categorias: Corporativas, Semióticas e Neutras. </p>
+
+    <p>
+      <i>Corporativas</i> são as nuances que acompanham a marca BLiP, e devem ser usadas em pontos que merecem destaque e atenção
+      do usuário.</p>
+
+    <table class="w-50" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td class="bp-bg-bot pa4 tc white">Bot</td>
+          <td class="bp-c-bot bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-bot">.bp-c-bot: #2CC3D5;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-light-blip pa4 tc white">Light BLiP</td>
+          <td class="bp-c-light-blip bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-light-blip">.bp-c-light-blip: #0CC8CC;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-dark-blip pa4 tc white">Dark BLiP</td>
+          <td class="bp-c-dark-blip bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-dark-blip">.bp-c-dark-blip: #15AFB2;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <i>Semióticas</i> são cores que possuem significados recorrentes para usuários e transmitem mensagens.</p>
+
+    <table class="w-50" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td class="bp-bg-warning pa4 tc white">Warning</td>
+          <td class="bp-c-warning bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-warning">.bp-c-warning: #F76556;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-delete pa4 tc white">Delete</td>
+          <td class="bp-c-delete bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-delete">.bp-c-delete: #FB7A6D;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-true pa4 tc white">True</td>
+          <td class="bp-c-true bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-true">.bp-c-true: #4DCB7B;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <i>Neutros</i> são tons utilizados na tipografia e em grande parte dos componentes que compõem a plataforma. Eles auxiliam
+      a criar uma experiência mais fluída, sem ruídos visuais. </p>
+
+    <table class="w-50" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td class="bp-bg-city pa4 tc white">City</td>
+          <td class="bp-c-city bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-city">.bp-c-city: #52636C;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-rooftop pa4 tc white">Rooftop</td>
+          <td class="bp-c-rooftop bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-rooftop">.bp-c-rooftop: #738192;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-desk pa4 tc white">Desk</td>
+          <td class="bp-c-desk bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-desk">.bp-c-desk: #607B99;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-cloud pa4 tc white">Cloud</td>
+          <td class="bp-c-cloud bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-cloud">.bp-c-cloud: #8CA0B3;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-silver pa4 tc white">Silver</td>
+          <td class="bp-c-silver bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-silver">.bp-c-silver: #94A3AB;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-time pa4 tc white">Time</td>
+          <td class="bp-c-time bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-time">.bp-c-time: #A8BFC4;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-breeze pa4 tc white">Breeze</td>
+          <td class="bp-c-breeze bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-breeze">.bp-c-breeze: #C9DFE4;</td>
+        </tr>
+
+        <tr>
+          <td class="bp-bg-sky pa4 tc white">Sky</td>
+          <td class="bp-c-sky bp-fs-3 pl3">Aa</td>
+          <td class="bp-c-sky">.bp-c-sky: #D4F2F4;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p> Em resumo, nossa paletade cores é uma base para a Plataforma BLiP. Outros tons, apenas quando necessário, podem ser utilizados,
+      desde que fiquem
+      <i>coerentes</i> com a paleta.</p>
+  </div>
+
+  <div class="ph3">
+    <h4>Aplicação no código </h4>
+    <p> Para aplicar tais cores diretamente em textos, fundos e bordas, insira classes contendo o
+      <i>radical da classe</i> seguido do
+      <i>nome da cor</i>. </p>
+
+    <table class="w-50" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td class="pa2 tc">
+            <button class="bp-button bp-bg-bot bp-c-white">Botão Bot </button>
+          </td>
+          <td class="bp-c-bot">.bp-bg-bot .bp-c-white</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc">
+            <button class="bp-button bp-bg-light-blip bp-c-white">Botão Light BLiP</button>
+          </td>
+          <td class="bp-c-light-blip">.bp-bg-light-blip .bp-c-white</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc">
+            <button class="bp-button bp-bg-dark-blip bp-c-white">Botão Dark BLiP</button>
+          </td>
+          <td class="bp-c-dark-blip">.bp-bg-dark-blip .bp-c-white</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc">
+            <button class="bp-button bp-bg-warning bp-c-white">Botão Warning</button>
+          </td>
+          <td class="bp-c-warning">.bp-bg-warning .bp-c-white</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc">
+            <button class="bp-button bp-bg-delete bp-c-white">Botão Delete</button>
+          </td>
+          <td class="bp-c-delete">.bp-bg-delete .bp-c-white</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc">
+            <button class="bp-button bp-bg-true bp-c-white">Botão True</button>
+          </td>
+          <td class="bp-c-true">.bp-bg-true .bp-c-white</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Lista de classes</h4>
+    <table class="w-50" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td class="pa2 tc">
+            background-color
+          </td>
+          <td>.bp-bg-{color}</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc">
+            color
+          </td>
+          <td>.bp-c-{color}</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc">
+            border-color
+          </td>
+          <td>.bp-bc-{color}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Tipografia</h4>
+
+    <h5>Typefaces</h5>
+    <table class="w-50" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td class="pa2 tc bp-ff-nunito">
+            Nunito
+          </td>
+          <td>.bp-ff-nunito</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Sizes</h5>
+    <table class="w-50" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td class="pa2 tc bp-fs-1">
+            Level 1 Heading
+          </td>
+          <td>.bp-fs-1</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc bp-fs-2">
+            Level 2 Heading
+          </td>
+          <td>.bp-fs-2</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc bp-fs-3">
+            Level 3 Heading
+          </td>
+          <td>.bp-fs-3</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc bp-fs-4">
+            Level 4 Heading
+          </td>
+          <td>.bp-fs-4</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc bp-fs-5">
+            Level 5 Heading
+          </td>
+          <td>.bp-fs-5</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc bp-fs-6">
+            Level 6 Heading
+          </td>
+          <td>.bp-fs-6</td>
+        </tr>
+        <tr>
+          <td class="pa2 tc bp-fs-7">
+            Level 7 Heading
+          </td>
+          <td>.bp-fs-7</td>
+        </tr>
+        <tr>
+            <td class="pa2 tc bp-fs-8">
+              Level 8 Heading
+            </td>
+            <td>.bp-fs-8</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>3. Componentes </h3>
+
+  <h4> Confiabilidade através da consistência </h4>
+  <p> Componentes que
+    <i>dialogam entre si</i>, são
+    <i>hierárquicos</i> e fazem parte da
+    <i>mesma família</i> exprimem nosso profissionalismo nos mínimos detalhes.</p>
+
+  <h4> Poder ao usuário pela simplicidade </h4>
+  <p>
+    <i>Atenuamos interferências visuais</i>, auxiliando o usuário a focar no que é importante, aprender e evoluir mais rápido.
+  </p>
+
+  <h4> Familiar, elegante e inovador quando vale a pena </h4>
+  <p> Os elementos reproduzem
+    <i>comportamentos físicos que mimetizam o real</i> no espaço: possuem peso, são influenciados pela luz, pelo movimento e
+    por outros fenômenos.</p>
+
+  <h4> Evolução constante - "Level Up" </h4>
+  <p> Aprimoramentos são feitos em
+    <i>conjunto dos usuários</i> reforçando nosso valor comunitário.</p>
 </body>

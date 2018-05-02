@@ -14,26 +14,26 @@
 $bp-font-family: 'Nunito', 'Helvetica', sans-serif;
 
 /*
-  
+
   Font sizes have been converted to rem considering a base size of 16px.
   For more information, check the calculator at https://offroadcode.com/rem-calculator/
-  
+
 */
 
 $bp-base-font-size: 16px;
 
 //4 small fonts (for normal text, minor titles and subtitles)
-$bp-font-small-1: 0.625rem; //10px
-$bp-font-small-2: 0.75rem; //12px
-$bp-font-small-3: 0.875rem; //14px
-$bp-font-small-4: 1rem; //16px (base)
+$bp-fs-8: 0.625rem; //10px
+$bp-fs-7: 0.75rem; //12px
+$bp-fs-6: 0.875rem; //14px
+$bp-fs-5: 1rem; //16px (base)
 
 //2 medium fonts (for headline text, major titles and subtitles)
-$bp-font-medium-1: 1.25rem; //20px
-$bp-font-medium-2: 1.5rem; //24px
+$bp-fs-4: 1.25rem; //20px
+$bp-fs-3: 1.5rem; //24px
 
 //2 large fonts (for major numbers or things with really high emphasis)
-$bp-font-large-1: 2rem; //32px
-$bp-font-large-2: 3rem; //48px
+$bp-fs-2: 2rem; //32px
+$bp-fs-1: 3rem; //48px
 
 

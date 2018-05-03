@@ -30,6 +30,10 @@
       box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
       border-color: $bp-color-light-blip;
       transition: box-shadow .5s ease-in;
+
+      label {
+         color: $bp-color-dark-blip;
+      }
    }
 
    &--disabled {

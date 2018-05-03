@@ -10,7 +10,7 @@
     "commit": "./node_modules/.bin/git-cz",
     "start": "./node_modules/.bin/webpack-dev-server --mode development --open --config ./build/webpack.dev.conf.js",
     "build": "webpack --mode production --config ./build/webpack.prod.conf.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "./node_modules/.bin/semantic-release --prepare && npm publish && semantic-release post"
   },
   "dependencies": {},
   "devDependencies": {

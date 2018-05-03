@@ -1,0 +1,55 @@
+.bp-input {
+   width: 19.75rem;
+   min-height: 3rem;
+   border: 0.0625rem solid $bp-color-breeze;
+   border-radius: 0.25rem;
+   padding: 0.3125rem 0.625rem;
+   margin-bottom: 1rem;
+
+   label {
+      font-size: $bp-fs-7;
+      font-weight: 600;
+      color: $bp-color-rooftop;
+   }
+
+   input, textarea {
+      border: none;
+      width: 96%;
+      font-size: $bp-fs-6;
+      resize: none;
+      background: transparent;
+      color: $bp-color-city;
+      @include placeholder($bp-color-cloud);
+
+      &:focus {
+         outline: none;
+      }
+   }
+
+   &--focus {
+      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+      border-color: $bp-color-light-blip;
+      transition: box-shadow .5s ease-in;
+   }
+
+   &--disabled {
+      background-color: $bp-color-offwhite;
+      border-color: $bp-color-breeze;
+   }
+
+   &--invalid {
+      border-color: $bp-color-delete;
+
+      label {
+         color: $bp-color-warning;
+      }
+   }
+
+   &--valid {
+      border-color: $bp-color-true;
+
+      label {
+         color: $bp-color-true;
+      }
+   }
+}

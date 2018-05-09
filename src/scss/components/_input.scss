@@ -1,11 +1,20 @@
-.bp-input {
+.bp-input,
+.bp-input[type="email"],
+.bp-input[type="number"],
+.bp-input[type="search"],
+.bp-input[type="text"],
+.bp-input[type="tel"],
+.bp-input[type="url"],
+.bp-input[type="password"] {
    border: none;
    font-size: $bp-fs-6;
    background: transparent;
-   color: $bp-color-city;
+   width: 90%;
+   height: auto;
    @include placeholder($bp-color-cloud);
 
    &:focus {
+      border: none;
       outline: none;
    }
 }

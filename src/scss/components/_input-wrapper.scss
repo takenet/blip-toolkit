@@ -1,10 +1,10 @@
 .bp-input-wrapper {
-   width: 19.75rem;
-   min-height: 3rem;
-   border: 0.0625rem solid $bp-color-breeze;
-   border-radius: 0.25rem;
-   padding: 0.3125rem 0.625rem;
-   margin-bottom: 1rem;
+   width: 31.6*$m;
+   min-height: 4.8*$m;
+   border: 0.1*$m solid $bp-color-breeze;
+   border-radius: 0.4*$m;
+   padding: 0.5*$m 1.0*$m;
+   margin-bottom: 1.6*$m;
 }
 
 .bp-input-wrapper--disabled {
@@ -13,8 +13,8 @@
 }
 
 .bp-input-wrapper--focus {
-   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-   border-color: $bp-color-light-blip;
+   box-shadow: 0 0.2*$m 1.2*$m 0 rgba(0, 0, 0, 0.1);
+   border-color: $bp-color-blip-light;
    transition: box-shadow .5s ease-in;
 }
 

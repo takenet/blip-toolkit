@@ -8,11 +8,11 @@
 .bp-bc-bot {
   border-color: $bp-color-bot;
 }
-.bp-bc-light-blip {
-  border-color: $bp-color-light-blip;
+.bp-bc-blip-light {
+  border-color: $bp-color-blip-light;
 }
-.bp-bc-dark-blip {
-  border-color: $bp-color-dark-blip;
+.bp-bc-blip-dark {
+  border-color: $bp-color-blip-dark;
 }
 
 .bp-bc-warning {
@@ -22,24 +22,24 @@
 .bp-bc-delete {
   border-color: $bp-color-delete;
 }
-.bp-bc-delete-darken {
+.bp-bc-delete-dark {
   border-color: bp-darken($bp-color-delete);
 }
 
 .bp-bc-true {
   border-color: $bp-color-true;
 }
-.bp-bc-true-darken {
+.bp-bc-true-dark {
   border-color: bp-darken($bp-color-true);
 }
 
 .bp-bc-city {
   border-color: $bp-color-city;
 }
-.bp-bc-city-darken {
+.bp-bc-city-dark {
   border-color: bp-darken($bp-color-city);
 }
-.bp-bc-city-lighten {
+.bp-bc-city-light {
   border-color: bp-lighten($bp-color-city);
 }
 

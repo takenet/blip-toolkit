@@ -11,7 +11,7 @@
 
 */
 
-$bp-font-family: 'Nunito', 'Helvetica', sans-serif;
+$bp-ff: 'Nunito', 'Helvetica', sans-serif;
 
 /*
 
@@ -20,20 +20,20 @@ $bp-font-family: 'Nunito', 'Helvetica', sans-serif;
 
 */
 
-$bp-base-font-size: 16px;
+$bp-fs-base: 16px;
 
 //4 small fonts (for normal text, minor titles and subtitles)
-$bp-fs-8: 0.625rem; //10px
-$bp-fs-7: 0.75rem; //12px
-$bp-fs-6: 0.875rem; //14px
-$bp-fs-5: 1rem; //16px (base)
+$bp-fs-8: 1.0*$m; //10px
+$bp-fs-7: 1.2*$m; //12px
+$bp-fs-6: 1.4*$m; //14px
+$bp-fs-5: 1.6*$m; //16px (base)
 
 //2 medium fonts (for headline text, major titles and subtitles)
-$bp-fs-4: 1.25rem; //20px
-$bp-fs-3: 1.5rem; //24px
+$bp-fs-4: 2*$m; //20px
+$bp-fs-3: 2.4*$m; //24px
 
 //2 large fonts (for major numbers or things with really high emphasis)
-$bp-fs-2: 2rem; //32px
-$bp-fs-1: 3rem; //48px
+$bp-fs-2: 3.2*$m; //32px
+$bp-fs-1: 4.8*$m; //48px
 
 

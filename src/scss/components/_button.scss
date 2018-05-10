@@ -1,19 +1,21 @@
-.bp-button {
+.bp-btn {
   display: inline-block;
 
-  -webkit-appearance: button;
-  -moz-appearance: button;
+  @include bp-btn--regular($bp-color-white, $bp-color-breeze);
+  @include bp-btn--flat($bp-color-black, $bp-color-black);
+
+  @include button();
 
   cursor: pointer;
-  min-width: 16rem;
-  height: 4.2rem;
-  line-height: 3.8rem;
+  min-width: $bp-btn-min-width;
+  height: $bp-btn-height;
+  line-height: $bp-btn-line-height;
 
   margin: 0;
-  padding: 0 2rem;
+  padding: $bp-btn-padding;
 
   border: none;
-  border-radius: 0.3rem;
+  border-radius: $bp-btn-border-radius;
 
   overflow: hidden;
   vertical-align: middle;
@@ -24,9 +26,9 @@
     vertical-align: middle;
   }
 
-  font-size: 1.6rem;
+  font-size: $bp-btn-font-size;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: $bp-btn-font-weight;
   outline: none;
 
   &:active,
@@ -39,37 +41,90 @@
 
   &:disabled {
     cursor: default;
-    background-color: $bp-color-breeze;
-    color: $bp-color-white;
+    background-color: $bp-btn-bg-color;
+    color: $bp-btn-color;
     border: none;
   }
 }
 
-.bp-button {
-  &:not(:disabled) {
+.bp-btn--c-black {
+  @include bp-btn--c($bp-color-black);
+}
 
-    &.bp-bg-bot:hover {
-      background-color: bp-darken($bp-color-bot);
-    }
+.bp-btn--c-white {
+  @include bp-btn--c($bp-color-white);
+}
 
-    &.bp-bg-light-blip:hover {
-      background-color: bp-darken($bp-color-light-blip);
-    }
+.bp-btn--bot {
+  @include bp-btn--regular($bp-color-white, $bp-color-bot);
+}
 
-    &.bp-bg-dark-blip:hover {
-      background-color: bp-darken($bp-color-dark-blip);
-    }
+.bp-btn--blip-light {
+  @include bp-btn--regular($bp-color-white, $bp-color-blip-light);
+}
 
-    &.bp-bg-true:hover {
-      background-color: bp-darken($bp-color-true);
-    }
+.bp-btn--blip-dark {
+  @include bp-btn--regular($bp-color-white, $bp-color-blip-dark);
+}
 
-    &.bp-bg-delete:hover {
-      background-color: bp-darken($bp-color-delete);
-    }
+.bp-btn--true {
+  @include bp-btn--regular($bp-color-white, $bp-color-true);
+}
 
-    &.bp-bg-warning:hover {
-      background-color: bp-darken($bp-color-warning);
-    }
+.bp-btn--delete {
+  @include bp-btn--regular($bp-color-white, $bp-color-delete);
+}
+
+.bp-btn--warning {
+  @include bp-btn--regular($bp-color-white, $bp-color-warning);
+}
+
+.bp-btn--flat {
+  border: $bp-btn-border;
+  background-color: transparent;
+
+  &:disabled {
+    background-color: transparent;
+    border: $bp-btn-border;
   }
+}
+
+.bp-btn--c-black {
+  @include bp-btn--c($bp-color-black);
+  @include bp-btn--flat-c($bp-color-black);
+}
+
+.bp-btn--c-white {
+  @include bp-btn--c($bp-color-white);
+  @include bp-btn--flat-c($bp-color-white);
+}
+
+.bp-btn--bot {
+  @include bp-btn--regular($bp-color-white, $bp-color-bot);
+  @include bp-btn--flat($bp-color-bot, $bp-color-bot);
+}
+
+.bp-btn--blip-light {
+  @include bp-btn--regular($bp-color-white, $bp-color-blip-light);
+  @include bp-btn--flat($bp-color-blip-light, $bp-color-blip-light);
+}
+
+.bp-btn--blip-dark {
+  @include bp-btn--regular($bp-color-white, $bp-color-blip-dark);
+  @include bp-btn--flat($bp-color-blip-dark, $bp-color-blip-dark);
+}
+
+.bp-btn--true {
+  @include bp-btn--regular($bp-color-white, $bp-color-true);
+  @include bp-btn--flat($bp-color-true, $bp-color-true);
+}
+
+.bp-btn--delete {
+  @include bp-btn--regular($bp-color-white, $bp-color-delete);
+  @include bp-btn--flat($bp-color-delete, $bp-color-delete);
+}
+
+.bp-btn--warning {
+  @include bp-btn--regular($bp-color-white, $bp-color-warning);
+  @include bp-btn--flat($bp-color-warning, $bp-color-warning);
 }

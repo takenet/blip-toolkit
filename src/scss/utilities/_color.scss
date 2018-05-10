@@ -8,11 +8,11 @@
 .bp-c-bot {
   color: $bp-color-bot;
 }
-.bp-c-light-blip {
-  color: $bp-color-light-blip;
+.bp-c-blip-light {
+  color: $bp-color-blip-light;
 }
-.bp-c-dark-blip {
-  color: $bp-color-dark-blip;
+.bp-c-blip-dark {
+  color: $bp-color-blip-dark;
 }
 
 .bp-c-warning {
@@ -22,24 +22,24 @@
 .bp-c-delete {
   color: $bp-color-delete;
 }
-.bp-c-delete-darken {
+.bp-c-delete-dark {
   color: bp-darken($bp-color-delete);
 }
 
 .bp-c-true {
   color: $bp-color-true;
 }
-.bp-c-true-darken {
+.bp-c-true-dark {
   color: bp-darken($bp-color-true);
 }
 
 .bp-c-city {
   color: $bp-color-city;
 }
-.bp-c-city-darken {
+.bp-c-city-dark {
   color: bp-darken($bp-color-city);
 }
-.bp-c-city-lighten {
+.bp-c-city-light {
   color: bp-lighten($bp-color-city);
 }
 

@@ -1,3 +1,6 @@
-@import "./blip/module";
-@import "./mixins/module";
-@import "./components/module";
+@import "base/module";
+@import "variables/module";
+@import "mixins/module";
+
+@import "utilities/module";
+@import "components/module";

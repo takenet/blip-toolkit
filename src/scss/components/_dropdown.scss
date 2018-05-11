@@ -2,6 +2,8 @@
   position: absolute;
   display: inline-block;
 
+  z-index: $bp-dropdown-z-index;
+
   min-width: $bp-dropdown-min-width;
   min-height: $bp-dropdown-min-height;
 
@@ -10,6 +12,7 @@
   
   top: $bp-dropdown-top;
 
+  background: $bp-color-white;
   border-radius: $bp-dropdown-border-radius;
 
   transition: $bp-dropdown-transition;
@@ -25,6 +28,7 @@
     top: $bp-dropdown_before-top;
     background: $bp-color-white;
     transform: rotate($bp-dropdown_before-rotation);
+    @include bp-shadow(-3px, -3px, 10px, 0, rgba(0, 60, 128, 0.1));
   }
 
   &.bp-dropdown--right {

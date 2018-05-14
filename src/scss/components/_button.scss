@@ -2,7 +2,7 @@
 
   display: inline-block;
 
-  @include bp-btn--regular($bp-btn-font-color, $bp-btn-bg-color);
+  @include bp-btn--regular($bp-btn-color, $bp-btn-bg-color);
   @include button();
 
   cursor: pointer;
@@ -42,7 +42,7 @@
   &:disabled {
     cursor: default;
     background-color: $bp-btn-bg-color;
-    color: $bp-btn-font-color;
+    color: $bp-btn-color;
     border: none;
   }
 
@@ -56,7 +56,7 @@
       border: $bp-btn-border;
     }
     
-    @include bp-btn--flat($bp-btn-flat-font-color, $bp-btn-flat-border-color);
+    @include bp-btn--flat($bp-btn-flat-color, $bp-btn-flat-border-color);
   }
 
   

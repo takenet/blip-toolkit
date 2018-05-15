@@ -10,11 +10,39 @@ $bp-btn-min-width: 16 * $m;
 $bp-btn-height: 4.2 * $m;
 $bp-btn-line-height: 3.8 * $m;
 $bp-btn-padding: 0 2 * $m;
-$bp-btn-border: solid 0.2 * $m;
-$bp-btn-border-radius: 0.3 * $m;
+$bp-btn-border: solid 2px;
+$bp-btn-border-radius: 3px;
+$bp-btn-font-family: $bp-ff;
 $bp-btn-font-size: $bp-fs-6;
-$bp-btn-font-weight: $bp-fw-extra-bold;
-$bp-btn-color: $bp-color-black;
+$bp-btn-font-weight: $bp-fw-bold;
+$bp-btn-color: $bp-color-white;
 $bp-btn-bg-color: $bp-color-breeze;
+$bp-btn-flat-color: $bp-color-black;
+$bp-btn-flat-border-color: $bp-color-breeze;
+$bp-btn-disabled-color: $bp-color-black;
+$bp-btn-disabled-bg-color: $bp-color-disabled;
+
 
 //Dropdowns
+$bp-dropdown-z-index: 100;
+$bp-dropdown-min-width: 5 * $m;
+$bp-dropdown-min-height: 1.8 * $m;
+$bp-dropdown-margin-top: 0.5 * $m;
+$bp-dropdown-top: 130%;
+$bp-dropdown-padding: 1 * $m 0;
+$bp-dropdown-border-radius: 2px;
+$bp-dropdown-transition: 400ms;
+
+$bp-dropdown_before-width: 1.5*$m;
+$bp-dropdown_before-height: 1.5*$m;
+$bp-dropdown_before-top: -8px;
+$bp-dropdown_before-rotation: 45deg;
+
+$bp-dropdown--right: -10px;
+$bp-dropdown_before--right: 10px;
+
+$bp-dropdown--left: -10px;
+$bp-dropdown_before--left: 10px;
+
+
+

@@ -1,5 +1,5 @@
-@mixin bp-btn--regular ($font-color, $bg-color) {
-  color: $font-color;
+@mixin bp-btn--regular ($color, $bg-color) {
+  color: $color;
   background-color: $bg-color;
 
   &:hover {
@@ -7,28 +7,28 @@
   }
 }
 
-@mixin bp-btn--c ($font-color) {
-  color: $font-color;
+@mixin bp-btn--c ($color) {
+  color: $color;
 }
 
-@mixin bp-btn--flat ($font-color, $border-color) {
+@mixin bp-btn--flat ($color, $border-color) {
   &.bp-btn--flat {
-    color: $font-color;
+    color: $color;
     background-color: transparent;
     border-color: $border-color;
 
     &:hover {
       background-color: transparent;
       border-color: bp-darken($border-color);
-      color: bp-darken($font-color);
+      color: bp-darken($color);
     }
   }
 }
 
-@mixin bp-btn--flat-c ($font-color) {
-  color: $font-color;
+@mixin bp-btn--flat-c ($color) {
+  color: $color;
   &:hover {
-    color: bp-darken($font-color);
+    color: bp-darken($color);
   }
 }
 

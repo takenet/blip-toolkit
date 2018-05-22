@@ -1,5 +1,4 @@
 .bp-btn {
-
   display: inline-block;
 
   @include bp-btn--regular($bp-btn-color, $bp-btn-bg-color);
@@ -47,55 +46,53 @@
   }
 
   &.bp-btn--flat {
-    
     border: $bp-btn-border;
     background-color: transparent;
-  
+
     &:disabled {
       background-color: transparent;
       border: $bp-btn-border;
     }
-    
+
     @include bp-btn--flat($bp-btn-flat-color, $bp-btn-flat-border-color);
   }
 
-  
-  
+  /** Button states **/
   &.bp-btn--c-black {
     @include bp-btn--c($bp-color-black);
     @include bp-btn--flat-c($bp-color-black);
   }
-  
+
   &.bp-btn--c-white {
     @include bp-btn--c($bp-color-white);
     @include bp-btn--flat-c($bp-color-white);
   }
-  
+
   &.bp-btn--bot {
     @include bp-btn--regular($bp-color-white, $bp-color-bot);
     @include bp-btn--flat($bp-color-bot, $bp-color-bot);
   }
-  
+
   &.bp-btn--blip-light {
     @include bp-btn--regular($bp-color-white, $bp-color-blip-light);
     @include bp-btn--flat($bp-color-blip-light, $bp-color-blip-light);
   }
-  
+
   &.bp-btn--blip-dark {
     @include bp-btn--regular($bp-color-white, $bp-color-blip-dark);
     @include bp-btn--flat($bp-color-blip-dark, $bp-color-blip-dark);
   }
-  
+
   &.bp-btn--true {
     @include bp-btn--regular($bp-color-white, $bp-color-true);
     @include bp-btn--flat($bp-color-true, $bp-color-true);
   }
-  
+
   &.bp-btn--delete {
     @include bp-btn--regular($bp-color-white, $bp-color-delete);
     @include bp-btn--flat($bp-color-delete, $bp-color-delete);
   }
-  
+
   &.bp-btn--warning {
     @include bp-btn--regular($bp-color-white, $bp-color-warning);
     @include bp-btn--flat($bp-color-warning, $bp-color-warning);

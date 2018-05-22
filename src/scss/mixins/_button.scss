@@ -25,14 +25,15 @@
   }
 }
 
-@mixin bp-btn--flat-c ($color) {
+@mixin bp-btn--flat-c($color) {
   color: $color;
+
   &:hover {
     color: bp-darken($color);
   }
 }
 
-@mixin button () {
+@mixin button() {
   -webkit-appearance: button;
   -moz-appearance: button;
 }

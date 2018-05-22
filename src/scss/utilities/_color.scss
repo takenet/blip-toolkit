@@ -1,16 +1,16 @@
-/*
-  BLiP Toolkit
-
-  Text Color Classes
-
+/**
+* BLiP Toolkit
+* Text Color Classes
 */
 
 .bp-c-bot {
   color: $bp-color-bot;
 }
+
 .bp-c-blip-light {
   color: $bp-color-blip-light;
 }
+
 .bp-c-blip-dark {
   color: $bp-color-blip-dark;
 }
@@ -22,6 +22,7 @@
 .bp-c-delete {
   color: $bp-color-delete;
 }
+
 .bp-c-delete-dark {
   color: bp-darken($bp-color-delete);
 }
@@ -29,6 +30,7 @@
 .bp-c-true {
   color: $bp-color-true;
 }
+
 .bp-c-true-dark {
   color: bp-darken($bp-color-true);
 }
@@ -36,9 +38,11 @@
 .bp-c-city {
   color: $bp-color-city;
 }
+
 .bp-c-city-dark {
   color: bp-darken($bp-color-city);
 }
+
 .bp-c-city-light {
   color: bp-lighten($bp-color-city);
 }
@@ -46,24 +50,31 @@
 .bp-c-rooftop {
   color: $bp-color-rooftop;
 }
+
 .bp-c-desk {
   color: $bp-color-desk;
 }
+
 .bp-c-cloud {
   color: $bp-color-cloud;
 }
+
 .bp-c-silver {
   color: $bp-color-silver;
 }
+
 .bp-c-time {
   color: $bp-color-time;
 }
+
 .bp-c-breeze {
   color: $bp-color-breeze;
 }
+
 .bp-c-sky {
   color: $bp-color-sky;
 }
+
 .bp-c-offwhite {
   color: $bp-color-offwhite;
 }

@@ -1,21 +1,88 @@
-.bp-input, .bp-input[disabled],
-.bp-input[type="email"], .bp-input[type="email"][disabled], bp-input[type="email"][readonly],
-.bp-input[type="number"], .bp-input[type="number"][disabled], bp-input[type="number"][readonly],
-.bp-input[type="search"], .bp-input[type="search"][disabled], bp-input[type="search"][readonly],
-.bp-input[type="text"], .bp-input[type="text"][disabled], bp-input[type="text"][readonly],
-.bp-input[type="tel"], .bp-input[type="tel"][disabled], bp-input[type="tel"][readonly],
-.bp-input[type="url"], .bp-input[type="url"][disabled], bp-input[type="url"][readonly],
-.bp-input[type="password"], .bp-input[type="password"][disabled], .bp-input[type="password"][readonly] {
-   border: none;
-   font-size: $bp-fs-6;
-   background: transparent;
-   width: 90%;
-   height: auto;
-   padding: 0;
-   @include placeholder($bp-color-cloud);
+/**
+* Base input
+*/
+.bp-input,
+.bp-input[disabled],
+.bp-input[readonly],
+.bp-input[type="email"],
+.bp-input[type="email"][disabled],
+.bp-input[type="email"][readonly],
+.bp-input[type="number"],
+.bp-input[type="number"][disabled],
+.bp-input[type="number"][readonly],
+.bp-input[type="search"],
+.bp-input[type="search"][disabled],
+.bp-input[type="search"][readonly],
+.bp-input[type="text"],
+.bp-input[type="text"][disabled],
+.bp-input[type="text"][readonly],
+.bp-input[type="tel"],
+.bp-input[type="tel"][disabled],
+.bp-input[type="tel"][readonly],
+.bp-input[type="url"],
+.bp-input[type="url"][disabled],
+.bp-input[type="url"][readonly],
+.bp-input[type="password"],
+.bp-input[type="password"][disabled],
+.bp-input[type="password"][readonly] {
+  border: none;
+  font-size: $bp-fs-6;
+  background: transparent;
+  width: 90%;
+  height: auto;
+  padding: 0;
+  @include placeholder($bp-color-cloud);
 
-   &:focus {
-      border: none;
-      outline: none;
-   }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+/**
+* Wrapper
+*/
+.bp-input-wrapper {
+  min-width: 31.6*$m;
+  height: 4.7*$m;
+  border: 0.1*$m solid $bp-color-breeze;
+  border-radius: 0.4*$m;
+  padding: 0.3*$m 0.5*$m;
+}
+
+.bp-input-wrapper--disabled {
+  background-color: $bp-color-offwhite;
+  border-color: $bp-color-breeze;
+}
+
+.bp-input-wrapper--focus {
+  box-shadow: 0 0.2*$m 1.2*$m 0 rgba(0, 0, 0, 0.1);
+  border-color: $bp-color-blip-light;
+  transition: box-shadow .5s ease-in;
+}
+
+.bp-input-wrapper--invalid {
+  border-color: $bp-color-delete;
+}
+
+.bp-input-wrapper--valid {
+  border-color: $bp-color-true;
+}
+
+// ==========
+// States
+// =========
+
+/**
+* Check state
+*/
+.bp-input-check--hidden {
+  visibility: hidden;
+}
+
+.bp-input-check--true {
+  visibility: visible;
+  font-size: 1.9*$m;
+  line-height: 0.5*$m;
+  float: right;
 }

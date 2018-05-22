@@ -1,11 +1,11 @@
 .bp-input, .bp-input[disabled],
-.bp-input[type="email"], .bp-input[type="email"][disabled],
-.bp-input[type="number"], .bp-input[type="number"][disabled],
-.bp-input[type="search"], .bp-input[type="search"][disabled],
-.bp-input[type="text"], .bp-input[type="text"][disabled],
-.bp-input[type="tel"], .bp-input[type="tel"][disabled],
-.bp-input[type="url"], .bp-input[type="url"][disabled],
-.bp-input[type="password"], .bp-input[type="password"][disabled] {
+.bp-input[type="email"], .bp-input[type="email"][disabled], bp-input[type="email"][readonly],
+.bp-input[type="number"], .bp-input[type="number"][disabled], bp-input[type="number"][readonly],
+.bp-input[type="search"], .bp-input[type="search"][disabled], bp-input[type="search"][readonly],
+.bp-input[type="text"], .bp-input[type="text"][disabled], bp-input[type="text"][readonly],
+.bp-input[type="tel"], .bp-input[type="tel"][disabled], bp-input[type="tel"][readonly],
+.bp-input[type="url"], .bp-input[type="url"][disabled], bp-input[type="url"][readonly],
+.bp-input[type="password"], .bp-input[type="password"][disabled], .bp-input[type="password"][readonly] {
    border: none;
    font-size: $bp-fs-6;
    background: transparent;

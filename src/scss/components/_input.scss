@@ -39,6 +39,15 @@
   }
 }
 
+.bp-input[type="number"]::-webkit-outer-spin-button, .bp-input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+ 
+.bp-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 /**
 * Wrapper
 */

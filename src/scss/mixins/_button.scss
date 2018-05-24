@@ -1,3 +1,8 @@
+@mixin button() {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+}
+
 @mixin bp-btn--regular ($color, $bg-color) {
   color: $color;
   background-color: $bg-color;
@@ -7,17 +12,14 @@
   }
 }
 
-@mixin bp-btn--c ($color) {
-  color: $color;
-}
-
 @mixin bp-btn--flat ($color, $border-color) {
   &.bp-btn--flat {
     color: $color;
     background-color: transparent;
     border-color: $border-color;
 
-    &:hover {
+    &:hover,
+    &:disabled {
       background-color: transparent;
       border-color: bp-darken($border-color);
       color: bp-darken($color);
@@ -25,15 +27,20 @@
   }
 }
 
-@mixin bp-btn--flat-c($color) {
+@mixin bp-btn--c ($color) {
   color: $color;
 
-  &:hover {
+  &.bp-btn--flat {
     color: bp-darken($color);
   }
 }
 
-@mixin button() {
-  -webkit-appearance: button;
-  -moz-appearance: button;
+@mixin bp-btn--bg ($bg-color) {
+  background-color: $bg-color;
+
+  &:hover {
+    background-color: bp-darken($bg-color);
+  }
 }
+
+

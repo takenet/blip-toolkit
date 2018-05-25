@@ -8,6 +8,7 @@ const blipSelectClass = 'blip-select'
 const bpInputWrapperLabelClass = 'bp-label'
 const blipSelectInputClass = 'blip-select__input'
 const blipSelectOptionsClass = 'blip-select__options'
+const blipSelectOptionOpenTopClass = 'blip-select__options--open-top'
 const blipSelectOptionClass = 'blip-select__option'
 const blipSelectOptionSeletedClass = 'blip-select__option--selected'
 
@@ -18,10 +19,12 @@ export class BlipSelect {
     this.selectOptions = []
     this.selectOptionsContainer = ''
     this.selectLabel = ''
-    this.isSelectOpen = false
     this._handleSelectFocus = ''
     this._handleSelectBlur = ''
     this._handleOptionClick = ''
+    this.state = {
+      isSelectOpen: false,
+    }
 
     this.configOptions = {
       label: '',
@@ -35,6 +38,14 @@ export class BlipSelect {
     this.el = element
     this._setup()
     this._setupEventHandlers()
+  }
+
+  get isSelectOpen() {
+    return this.state.isSelectOpen
+  }
+
+  set isSelectOpen(value) {
+    this.state.isSelectOpen = value
   }
 
   /**
@@ -169,6 +180,18 @@ export class BlipSelect {
     this.selectOptionsContainer.style.display = 'block'
 
     setTimeout(() => { // Needed for animation
+      const containerOptionsHeight = this.selectOptionsContainer.offsetHeight
+      const containerOptionsTopSpace = this.wrapper.getBoundingClientRect().top
+      const bottomSpace = window.innerHeight - containerOptionsTopSpace
+
+      // Open select where have more space (bottom or top)
+      if (
+        (bottomSpace < containerOptionsHeight && containerOptionsTopSpace > containerOptionsHeight) ||
+        (containerOptionsTopSpace > bottomSpace)
+      ) {
+        this.selectOptionsContainer.classList.add(blipSelectOptionOpenTopClass)
+      }
+
       this.selectOptionsContainer.style.transform = 'scale(1)'
       this.selectOptionsContainer.style.opacity = 1
     })
@@ -183,6 +206,10 @@ export class BlipSelect {
    */
   _centerSelectedOption(ev) {
     const selectedOption = this.selectOptionsContainer.querySelector(`li.${blipSelectOptionSeletedClass}`)
+
+    // console.log(this.selectOptionsContainer.offsetTop + this.selectOptionsContainer.offsetHeight)
+    // console.log(window.innerHeight, this.selectOptionsContainer.getBoundingClientRect().top, this.selectOptionsContainer.offsetHeight)
+
     if (this.selectOptionsContainer.scrollHeight > this.selectOptionsContainer.clientHeight && ev.propertyName === 'transform') {
       if (!selectedOption) {
         return
@@ -206,6 +233,7 @@ export class BlipSelect {
 
     setTimeout(() => { // Needed for animation
       this.selectOptionsContainer.style.display = 'none'
+      this.selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
     }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
 
     this.input.parentNode.classList.remove('bp-input-wrapper--focus')

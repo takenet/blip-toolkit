@@ -31,6 +31,11 @@
   overflow-y: auto;
 }
 
+.blip-select__options--open-top {
+  top: initial;
+  bottom: 100%;
+}
+
 .blip-select__option {
   padding: 0.8*$m 1.7*$m;
   color: $bp-color-city;

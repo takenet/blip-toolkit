@@ -11,6 +11,11 @@ const blipSelectOptionsClass = 'blip-select__options'
 const blipSelectOptionOpenTopClass = 'blip-select__options--open-top'
 const blipSelectOptionClass = 'blip-select__option'
 const blipSelectOptionSeletedClass = 'blip-select__option--selected'
+const bpInputWithBulletClass = 'bp-input--with-bullet'
+const bpCrooftopClass = 'bp-c-rooftop'
+const bpCcloudClass = 'bp-c-cloud'
+const bpCblipLightClass = 'bp-c-blip-light'
+const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
 
 export class BlipSelect {
   /**
@@ -32,6 +37,7 @@ export class BlipSelect {
 
     this.configOptions = {
       label: '',
+      mode: 'select',
       beforeOpenSelect: () => {},
       afterOpenSelect: () => {},
       beforeCloseSelect: () => {},
@@ -58,22 +64,46 @@ export class BlipSelect {
    * Setup custom select
    */
   _setup() {
+    if ((this.el instanceof Element) === false) {
+      throw new Error('Invalid dom element')
+    }
+
+    const elementOptions = this.el.querySelectorAll('option')
+    if (elementOptions.length === 0) {
+      throw new Error('Element has no options')
+    }
+
     // Setup element structure
     const parentNode = this.el.parentNode
     this.customSelectId = `${blipSelectOptionsClass}-${guid()}`
-    this.wrapper = strToEl(`
-      <div class="${bpInputWrapperClass} ${blipSelectClass}">
-        <label class="${bpInputWrapperLabelClass}">${this.configOptions.label}</label>
-        <input class="${blipSelectInputClass} bp-c-cloud" data-target="${this.customSelectId}" readonly>
-        <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
-      </div>
-    `)
+
+    // Component mode
+    switch (this.configOptions.mode) {
+      case 'select':
+        this.wrapper = strToEl(`
+          <div class="${bpInputWrapperClass} ${blipSelectClass} ${bpInputWithBulletClass}">
+            <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
+            <input class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}" readonly>
+            <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
+          </div>
+        `)
+        break
+      case 'autocomplete':
+        this.wrapper = strToEl(`
+          <div class="${bpInputWrapperClass} ${blipSelectClass}">
+            <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
+            <input class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}" readonly>
+            <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
+          </div>
+        `)
+        break
+      default:
+        throw new Error('Unrecognized component mode')
+    }
 
     parentNode.insertBefore(this.wrapper, this.el)
 
-    const elementOptions = this.el.querySelectorAll('option')
     this.selectOptionsContainer = this.wrapper.querySelector(`#${this.customSelectId}`)
-
     this.selectLabel = this.wrapper.querySelector('label')
 
     // Setup element options
@@ -119,10 +149,15 @@ export class BlipSelect {
 
   /**
    * Set value to input
-   * @param {Object} param0 - value/label pair
+   * @param {Object} object - value/label pair
    */
   _setInputValue({ value, label }) {
     this.input.value = label
+
+    if (typeof this.configOptions.onSelectOption !== 'function') {
+      throw new Error('Callback "onSelectOption" is not a function')
+    }
+
     this.configOptions.onSelectOption(EventEmitter({ value, label }))
   }
 
@@ -155,6 +190,14 @@ export class BlipSelect {
    * On select click
    */
   _onSelectFocus() {
+    if (typeof this.configOptions.beforeOpenSelect !== 'function') {
+      throw Error('Callback "beforeOpenSelect" is not a function')
+    }
+
+    if (typeof this.configOptions.afterOpenSelect !== 'function') {
+      throw Error('Callback "afterOpenSelect" is not a function')
+    }
+
     // Callback invoked before select open
     this.configOptions.beforeOpenSelect()
 
@@ -168,6 +211,13 @@ export class BlipSelect {
    * On select blur
    */
   _onSelectBlur() {
+    if (typeof this.configOptions.beforeCloseSelect !== 'function') {
+      throw Error('Callback "beforeCloseSelect" is not a function')
+    }
+
+    if (typeof this.configOptions.afterCloseSelect !== 'function') {
+      throw Error('Callback "afterCloseSelect" is not a function')
+    }
     // Callback invoked before select open
     this.configOptions.beforeCloseSelect()
 
@@ -202,8 +252,9 @@ export class BlipSelect {
       this.selectOptionsContainer.style.opacity = 1
     })
 
-    this.input.parentNode.classList.add('bp-input-wrapper--focus')
-    this.selectLabel.classList.add('bp-c-blip-light')
+    this.input.parentNode.classList.add(bpInputWrapperFocusClass)
+    this.selectLabel.classList.remove(bpCrooftopClass)
+    this.selectLabel.classList.add(bpCblipLightClass)
     this.isSelectOpen = true
   }
 
@@ -212,9 +263,6 @@ export class BlipSelect {
    */
   _centerSelectedOption(ev) {
     const selectedOption = this.selectOptionsContainer.querySelector(`li.${blipSelectOptionSeletedClass}`)
-
-    // console.log(this.selectOptionsContainer.offsetTop + this.selectOptionsContainer.offsetHeight)
-    // console.log(window.innerHeight, this.selectOptionsContainer.getBoundingClientRect().top, this.selectOptionsContainer.offsetHeight)
 
     if (this.selectOptionsContainer.scrollHeight > this.selectOptionsContainer.clientHeight && ev.propertyName === 'transform') {
       if (!selectedOption) {
@@ -242,8 +290,9 @@ export class BlipSelect {
       this.selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
     }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
 
-    this.input.parentNode.classList.remove('bp-input-wrapper--focus')
-    this.selectLabel.classList.remove('bp-c-blip-light')
+    this.input.parentNode.classList.remove(bpInputWrapperFocusClass)
+    this.selectLabel.classList.remove(bpCblipLightClass)
+    this.selectLabel.classList.add(bpCrooftopClass)
     this.isSelectOpen = false
   }
 }

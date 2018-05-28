@@ -1,5 +1,5 @@
-import { strToEl, guid } from '../lib/utils'
-import { EventEmitter } from '../lib/eventEmitter'
+import { strToEl, guid } from '@lib/utils'
+import { EventEmitter } from '@lib/eventEmitter'
 
 const ANIMATION_TIMEOUT = 300
 
@@ -13,6 +13,13 @@ const blipSelectOptionClass = 'blip-select__option'
 const blipSelectOptionSeletedClass = 'blip-select__option--selected'
 
 export class BlipSelect {
+  /**
+   * Component state
+   */
+  $state = {
+    isSelectOpen: false,
+  }
+
   constructor(element, options) {
     this.wrapper = ''
     this.elementLabel = ''
@@ -22,9 +29,6 @@ export class BlipSelect {
     this._handleSelectFocus = ''
     this._handleSelectBlur = ''
     this._handleOptionClick = ''
-    this.state = {
-      isSelectOpen: false,
-    }
 
     this.configOptions = {
       label: '',
@@ -35,17 +39,19 @@ export class BlipSelect {
       onSelectOption: ($event) => {}, // { value: optionValue, label: optionLabel }
       ...options,
     }
+
     this.el = element
     this._setup()
     this._setupEventHandlers()
   }
 
+  // Getters and setters
   get isSelectOpen() {
-    return this.state.isSelectOpen
+    return this.$state.isSelectOpen
   }
 
   set isSelectOpen(value) {
-    this.state.isSelectOpen = value
+    this.$state.isSelectOpen = value
   }
 
   /**

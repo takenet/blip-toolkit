@@ -80,6 +80,11 @@ module.exports = {
     ],
   },
   node: false,
+  resolve: {
+    alias: {
+      '@lib': path.resolve(__dirname, '../src/lib'),
+    },
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'blip-toolkit.css',

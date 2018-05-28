@@ -51,6 +51,20 @@
   position: relative;
 }
 
+.bp-input--with-bullet {
+  &:after {
+    content: "";
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $bp-color-desk;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
 .bp-input-wrapper--disabled {
   background-color: $bp-color-offwhite;
   border-color: $bp-color-breeze;

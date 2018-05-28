@@ -10,13 +10,18 @@
     "commit": "./node_modules/.bin/git-cz",
     "start": "./node_modules/.bin/webpack-dev-server --mode development --open --config ./build/webpack.dev.conf.js",
     "build": "webpack --mode production --config ./build/webpack.prod.conf.js",
-    "semantic-release": "./node_modules/.bin/semantic-release --prepare && npm publish && semantic-release post"
+    "semantic-release": "./node_modules/.bin/semantic-release --prepare && npm publish && semantic-release post",
+    "test": "./node_modules/.bin/karma start"
   },
-  "dependencies": {},
+  "dependencies": {
+    "module-alias": "^2.0.6"
+  },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "commitizen": "^2.9.6",
@@ -31,6 +36,14 @@
     "eslint-plugin-standard": "^3.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jasmine": "^3.1.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.2",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^1.1.2",
+    "karma-safari-launcher": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
@@ -44,6 +57,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "_moduleAliases": {
+    "@lib": "./src/lib"
   },
   "repository": {
     "type": "git",

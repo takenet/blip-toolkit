@@ -42,6 +42,7 @@ export class BlipSelect {
       afterOpenSelect: () => {},
       beforeCloseSelect: () => {},
       afterCloseSelect: () => {},
+      onInputChange: ($event) => {}, // { value: inputValue, event: DOMEvent }
       onSelectOption: ($event) => {}, // { value: optionValue, label: optionLabel }
       ...options,
     }
@@ -92,7 +93,7 @@ export class BlipSelect {
         this.wrapper = strToEl(`
           <div class="${bpInputWrapperClass} ${blipSelectClass}">
             <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
-            <input class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}" readonly>
+            <input class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}">
             <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
           </div>
         `)
@@ -135,9 +136,16 @@ export class BlipSelect {
     this._handleSelectFocus = this._onSelectFocus.bind(this)
     this._handleSelectBlur = this._onSelectBlur.bind(this)
     this._handleCenterOption = this._centerSelectedOption.bind(this)
+    this._handleInputChange = this._onInputChange.bind(this)
 
     this.input.addEventListener('focus', this._handleSelectFocus)
     this.input.addEventListener('blur', this._handleSelectBlur)
+
+    switch (this.configOptions.mode) {
+      case 'autocomplete':
+        this.input.addEventListener('keyup', this._handleInputChange)
+        break
+    }
 
     // Set handler for each menu option
     this.selectOptionsContainer
@@ -145,6 +153,17 @@ export class BlipSelect {
       .forEach(o => o.addEventListener('click', (ev) => this._onOptionClick(ev)))
 
     this.selectOptionsContainer.addEventListener('transitionend', this._handleCenterOption)
+  }
+
+  /**
+   * On input change event
+   */
+  _onInputChange(event) {
+    if (typeof this.configOptions.onInputChange !== 'function') {
+      throw new Error('Callback "onInputChange" is not a function')
+    }
+
+    this.configOptions.onInputChange(EventEmitter({ value: this.input.value, event }))
   }
 
   /**

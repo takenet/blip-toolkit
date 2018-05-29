@@ -58,6 +58,41 @@ You can customize message when no results found. Works only on *autocomplete* be
 
 ---
 
+#### `isDisabled` - boolean
+
+You can set select as `disabled`
+
+```js
+instance.isDisabled = true
+```
+
+---
+
+## Methods
+
+#### `setValue(object)` - function
+
+Set value to select (also fires onSelectOption event). You need to pass a object, with value or label property
+
+```js
+instance.setValue({
+  value: 'optionValue',
+  label: 'My label',
+})
+```
+
+#### `getValue` - function
+
+Returns current instance value
+
+```js
+const { value, label } = instance.getValue()
+```
+
+---
+
+## Callbacks
+
 #### `beforeOpenSelect` - function
 
 Callback executed before select open
@@ -120,6 +155,6 @@ Takes one `$event` argument, that have two properties: `value` and `label`
 
 ```js
 new BlipSelect(element, {
-  onInputChange: ({ $event : { value, label }}) => console.log(value, label)
+  onSelectOption: ({ $event : { value, label }}) => console.log(value, label)
 })
 ```

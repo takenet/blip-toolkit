@@ -16,6 +16,7 @@ const bpCrooftopClass = 'bp-c-rooftop'
 const bpCcloudClass = 'bp-c-cloud'
 const bpCblipLightClass = 'bp-c-blip-light'
 const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
+const bpInputWrapperDisabledClass = 'bp-input-wrapper--disabled'
 
 export class BlipSelect {
   /**
@@ -24,6 +25,7 @@ export class BlipSelect {
   $state = {
     isSelectOpen: false,
     noResultsFound: false,
+    disabled: false,
   }
 
   constructor(element, options) {
@@ -41,6 +43,7 @@ export class BlipSelect {
       label: '',
       mode: 'select',
       noResultsText: 'No results found',
+      initialValue: '',
       beforeOpenSelect: () => {},
       afterOpenSelect: () => {},
       beforeCloseSelect: () => {},
@@ -55,7 +58,9 @@ export class BlipSelect {
     this._setupEventHandlers()
   }
 
-  // Getters and setters
+  /**
+   * Is select open
+   */
   get isSelectOpen() {
     return this.$state.isSelectOpen
   }
@@ -64,6 +69,9 @@ export class BlipSelect {
     this.$state.isSelectOpen = value
   }
 
+  /**
+   * No results found
+   */
   get noResultsFound() {
     return this.$state.noResultsFound
   }
@@ -74,6 +82,27 @@ export class BlipSelect {
     switch (value) {
       case true:
         this.selectOptionsContainer.innerHTML = `<li style="cursor: default" class="${blipSelectOptionClass}">${this.configOptions.noResultsText}</li>`
+        break
+    }
+  }
+
+  /**
+   * Is disabled
+   */
+  get isDisabled() {
+    return this.$state.disabled
+  }
+
+  set isDisabled(value) {
+    this.$state.disabled = value
+    this.input.disabled = value
+
+    switch (value) {
+      case true:
+        this.wrapper.classList.add(bpInputWrapperDisabledClass)
+        break
+      case false:
+        this.wrapper.classList.remove(bpInputWrapperDisabledClass)
         break
     }
   }
@@ -125,8 +154,12 @@ export class BlipSelect {
     this.selectLabel = this.wrapper.querySelector('label')
 
     // Setup element options
-    elementOptions.forEach(({ value, label }) => {
-      this.selectOptions = this.selectOptions.concat({ value, label })
+    elementOptions.forEach(element => {
+      this.selectOptions = this.selectOptions.concat({
+        value: element.value,
+        label: element.label,
+        element,
+      })
     })
 
     // Add options to container
@@ -137,6 +170,9 @@ export class BlipSelect {
 
     // Remove default select display
     this.el.style.display = 'none'
+
+    // Set disabled property
+    this.isDisabled = this.el.disabled
   }
 
   /**
@@ -218,13 +254,59 @@ export class BlipSelect {
    * @param {Object} object - value/label pair
    */
   _setInputValue({ value, label }) {
-    this.input.value = label
+    this.input.value = label || value
 
     if (typeof this.configOptions.onSelectOption !== 'function') {
       throw new Error('Callback "onSelectOption" is not a function')
     }
 
     this.configOptions.onSelectOption(EventEmitter({ value, label }))
+  }
+
+  /**
+   * Programatically sets value to input
+   * @param {Object} param0 - Value/label pair
+   */
+  setValue({ value, label } = { value: '', label: '' }) {
+    if (value) {
+      const match = this.selectOptions.find(o => o.value === value)
+
+      if (match) {
+        match.element.classList.add(blipSelectOptionSeletedClass)
+
+        this._setInputValue({
+          value: match.value,
+          label: match.label,
+        })
+      } else {
+        this._setInputValue({ value })
+      }
+    }
+  }
+
+  /**
+   * Returns current input value
+   */
+  getValue() {
+    if (!this.input.value) {
+      return {
+        value: undefined,
+        label: undefined,
+      }
+    }
+
+    const match = this.selectOptions.find(o => o.label === this.input.value)
+    if (match) {
+      return {
+        value: match.value,
+        label: match.label,
+      }
+    } else {
+      return {
+        value: this.input.value,
+        label: this.input.value,
+      }
+    }
   }
 
   /**
@@ -256,6 +338,10 @@ export class BlipSelect {
    * On select click
    */
   _onSelectFocus() {
+    if (this.isDisabled) {
+      return
+    }
+
     if (typeof this.configOptions.beforeOpenSelect !== 'function') {
       throw Error('Callback "beforeOpenSelect" is not a function')
     }

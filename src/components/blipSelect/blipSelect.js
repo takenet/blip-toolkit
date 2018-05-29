@@ -40,13 +40,13 @@ export class BlipSelect {
     this.configOptions = {
       label: '',
       mode: 'select',
-      noResultsText: 'Nenhum resultado encontrado',
+      noResultsText: 'No results found',
       beforeOpenSelect: () => {},
       afterOpenSelect: () => {},
       beforeCloseSelect: () => {},
       afterCloseSelect: () => {},
-      onInputChange: ($event) => {}, // { value: inputValue, event: DOMEvent }
-      onSelectOption: ($event) => {}, // { value: optionValue, label: optionLabel }
+      onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
+      onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
       ...options,
     }
 
@@ -187,9 +187,6 @@ export class BlipSelect {
         this.input.addEventListener('keyup', this._handleInputChange)
         break
     }
-
-    // Set handler for each menu option
-    this._setupOptionsEventHandlers()
 
     this.selectOptionsContainer.addEventListener('transitionend', this._handleCenterOption)
   }

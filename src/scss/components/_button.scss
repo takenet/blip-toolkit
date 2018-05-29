@@ -32,14 +32,13 @@
 
   @include bp-btn--flat($bp-btn-flat-color, $bp-btn-flat-border-color);
 
-  &.bp-btn--flat {
-    border: $bp-btn-border;
-    &:hover {
-      border: $bp-btn-border;
-    }
+  /** Size **/
+
+  &.bp-btn--small {
+    min-width: 100px;
   }
 
-  /* Custom BLiP Setups */
+  /** Custom BLiP Setups **/
 
   &.bp-btn--bot {
     @include bp-btn--regular($bp-color-white, $bp-color-bot);
@@ -119,36 +118,6 @@
   &.bp-btn--offwhite {
     @include bp-btn--regular($bp-color-white, $bp-color-offwhite);
     @include bp-btn--flat($bp-color-offwhite, $bp-color-offwhite);
-  }
-
-  /** Button states **/
-
-  /* No Border */
-
-  &.bp-btn--no-border {
-    border: none;
-    &:active,
-    &:focus,
-    &:visited,
-    &:hover,
-    &:disabled {
-      border: none;
-    }
-  }
-
-  /* No Background */
-
-  &.bp-btn--no-background {
-    background-color: transparent;
-    &:hover {
-      background-color: transparent;
-    }
-  }
-
-  /* Size */
-
-  &.bp-btn--small {
-    min-width: 100px;
   }
 
   /* Color */

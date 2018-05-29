@@ -3,13 +3,14 @@
   -moz-appearance: button;
 }
 
-@mixin bp-btn--regular ($color, $bg-color) {
+@mixin bp-btn--regular($color, $bg-color) {
   color: $color;
   background-color: $bg-color;
 
   &:hover {
     background-color: bp-darken($bg-color);
   }
+
   &:active,
   &:focus,
   &:visited,
@@ -17,6 +18,9 @@
     outline: none;
     text-decoration: none;
   }
+
+  @include bp-btn--no-background();
+  @include bp-btn--no-border();
 
   &:disabled {
     cursor: default;
@@ -26,10 +30,11 @@
   }
 }
 
-@mixin bp-btn--flat ($color, $border-color) {
+@mixin bp-btn--flat($color, $border-color) {
   &.bp-btn--flat {
     color: $color;
     background-color: transparent;
+    border: $bp-btn-border;
     border-color: $border-color;
 
     &:hover {
@@ -46,16 +51,20 @@
       text-decoration: none;
     }
 
-  &:disabled {
-    cursor: default;
-    background-color: transparent;
-    color: $bp-btn-color;
-    border: none;
-  }
+    @include bp-btn--no-background();
+    @include bp-btn--no-border();
+
+    &:disabled {
+      cursor: default;
+      background-color: transparent;
+      color: $bp-btn-bg-color;
+      border: $bp-btn-bg-color;
+      border: $bp-btn-border;
+    }
   }
 }
 
-@mixin bp-btn--c ($color) {
+@mixin bp-btn--c($color) {
   color: $color;
 
   &.bp-btn--flat {
@@ -63,7 +72,7 @@
   }
 }
 
-@mixin bp-btn--bg ($bg-color) {
+@mixin bp-btn--bg($bg-color) {
   background-color: $bg-color;
 
   &:hover {
@@ -71,4 +80,28 @@
   }
 }
 
+@mixin bp-btn--no-border() {
+  &.bp-btn--no-border {
+    border: none;
+    &:active,
+    &:focus,
+    &:visited,
+    &:hover,
+    &:disabled {
+      border: none;
+    }
+  }
+}
 
+@mixin bp-btn--no-background() {
+  &.bp-btn--no-background {
+    background-color: transparent;
+    &:active,
+    &:focus,
+    &:visited,
+    &:hover,
+    &:disabled {
+      background-color: transparent;
+    }
+  }
+}

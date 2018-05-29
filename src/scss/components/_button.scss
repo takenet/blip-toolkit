@@ -86,6 +86,11 @@
     @include bp-btn--flat($bp-color-true, $bp-color-true);
   }
 
+  &.bp-btn--onix {
+    @include bp-btn--regular($bp-color-white, $bp-color-onix);
+    @include bp-btn--flat($bp-color-onix, $bp-color-onix);
+  }
+
   &.bp-btn--city {
     @include bp-btn--regular($bp-color-white, $bp-color-city);
     @include bp-btn--flat($bp-color-city, $bp-color-city);
@@ -195,6 +200,10 @@
     @include bp-btn--c($bp-color-true);
   }
 
+  &.bp-btn--c-onix {
+    @include bp-btn--c($bp-color-onix);
+  }
+
   &.bp-btn--c-city {
     @include bp-btn--c($bp-color-city);
   }
@@ -263,6 +272,10 @@
 
   &.bp-btn--bg-true {
     @include bp-btn--bg($bp-color-true);
+  }
+
+  &.bp-btn--bg-onix {
+    @include bp-btn--bg($bp-color-onix);
   }
 
   &.bp-btn--bg-city {

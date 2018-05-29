@@ -23,12 +23,14 @@ export class BlipSelect {
    */
   $state = {
     isSelectOpen: false,
+    noResultsFound: false,
   }
 
   constructor(element, options) {
     this.wrapper = ''
     this.elementLabel = ''
     this.selectOptions = []
+    this.searchResults = []
     this.selectOptionsContainer = ''
     this.selectLabel = ''
     this._handleSelectFocus = ''
@@ -38,6 +40,7 @@ export class BlipSelect {
     this.configOptions = {
       label: '',
       mode: 'select',
+      noResultsText: 'Nenhum resultado encontrado',
       beforeOpenSelect: () => {},
       afterOpenSelect: () => {},
       beforeCloseSelect: () => {},
@@ -59,6 +62,20 @@ export class BlipSelect {
 
   set isSelectOpen(value) {
     this.$state.isSelectOpen = value
+  }
+
+  get noResultsFound() {
+    return this.$state.noResultsFound
+  }
+
+  set noResultsFound(value) {
+    this.$state.noResultsFound = value
+
+    switch (value) {
+      case true:
+        this.selectOptionsContainer.innerHTML = `<li style="cursor: default" class="${blipSelectOptionClass}">${this.configOptions.noResultsText}</li>`
+        break
+    }
   }
 
   /**
@@ -113,7 +130,25 @@ export class BlipSelect {
     })
 
     // Add options to container
-    this.selectOptions.forEach(({ value, label }) => {
+    this._arrayToDomOptions(this.selectOptions)
+
+    // Setup element trigger
+    this.input = this.wrapper.querySelector(`input[data-target="${this.customSelectId}"]`)
+
+    // Remove default select display
+    this.el.style.display = 'none'
+  }
+
+  /**
+   * Bind array to dom "li" items into selectOptionsContainer
+   * @param {Array} options - Options array
+   */
+  _arrayToDomOptions(options = [{ value: '', label: '' }]) {
+    // Reset HTML content
+    this.selectOptionsContainer.innerHTML = ''
+
+    // Add options to container
+    options.forEach(({ value, label }) => {
       this.selectOptionsContainer.appendChild(
         strToEl(`
           <li class="${blipSelectOptionClass}" data-value="${value}">${label}</li>
@@ -121,11 +156,17 @@ export class BlipSelect {
       )
     })
 
-    // Setup element trigger
-    this.input = this.wrapper.querySelector(`input[data-target="${this.customSelectId}"]`)
+    this._setupOptionsEventHandlers()
+  }
 
-    // Remove default select display
-    this.el.style.display = 'none'
+  /**
+   * Add event listeners to container options
+   */
+  _setupOptionsEventHandlers() {
+    // Set handler for each menu option
+    this.selectOptionsContainer
+      .querySelectorAll('li')
+      .forEach(o => o.addEventListener('click', (ev) => this._onOptionClick(ev)))
   }
 
   /**
@@ -148,9 +189,7 @@ export class BlipSelect {
     }
 
     // Set handler for each menu option
-    this.selectOptionsContainer
-      .querySelectorAll('li')
-      .forEach(o => o.addEventListener('click', (ev) => this._onOptionClick(ev)))
+    this._setupOptionsEventHandlers()
 
     this.selectOptionsContainer.addEventListener('transitionend', this._handleCenterOption)
   }
@@ -163,7 +202,18 @@ export class BlipSelect {
       throw new Error('Callback "onInputChange" is not a function')
     }
 
-    this.configOptions.onInputChange(EventEmitter({ value: this.input.value, event }))
+    const inputValue = this.input.value
+    const searchResults = this.selectOptions.filter(
+      ({ value, label }) => label.toLowerCase().includes(inputValue.toLowerCase())
+    )
+    this.configOptions.onInputChange(EventEmitter({ value: inputValue, event }))
+
+    if (searchResults.length > 0) {
+      this.noResultsFound = false
+      this._arrayToDomOptions(searchResults)
+    } else {
+      this.noResultsFound = true
+    }
   }
 
   /**

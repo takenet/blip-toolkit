@@ -40,47 +40,47 @@ Youn can also pass options to `BlipSelect` instance
 
 ---
 
-### `label` - string
+#### `label` - string
 
 Select label
 
 ---
 
-### `mode` - string (select | autocomplete)
+#### `mode` - string (select | autocomplete)
 
 `BlipSelect` has two different behaviors: *select* and *autocomplete*. *select* is default behavior. In *autocomplete* mode, you can search for options and select one of them.
 
 ---
 
-### `noResultsText` - string
+#### `noResultsText` - string
 
 You can customize message when no results found. Works only on *autocomplete* behavior.
 
 ---
 
-### `beforeOpenSelect` - function
+#### `beforeOpenSelect` - function
 
 Callback executed before select open
 
 ---
 
-### `afterOpenSelect` - function
+#### `afterOpenSelect` - function
 
 Callback executed after select open
 
 ---
 
-### `beforeCloseSelect` - function
+#### `beforeCloseSelect` - function
 
 Callback executed before select close
 
 ---
 
-### `afterCloseSelect` - function
+#### `afterCloseSelect` - function
 
 Callback executed after select close
 
-### `onInputChange` - function
+#### `onInputChange` - function
 
 Callback executed on every input change. Every `BlipSelect` event that receives any argument, has the follows structure:
 
@@ -114,7 +114,7 @@ We adopt this pattern to avoid make our events more clearly and predictable to u
 
 ---
 
-### `onSelectOption` - function
+#### `onSelectOption` - function
 
 Takes one `$event` argument, that have two properties: `value` and `label`
 

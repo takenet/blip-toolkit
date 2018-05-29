@@ -30,43 +30,15 @@
   font-weight: $bp-btn-font-weight;
   outline: none;
 
-  &:active,
-  &:focus,
-  &:visited,
-  &:hover {
-    outline: none;
-    text-decoration: none;
+  @include bp-btn--flat($bp-btn-flat-color, $bp-btn-flat-border-color);
+
+  /** Size **/
+
+  &.bp-btn--small {
+    min-width: 100px;
   }
 
-  &:disabled {
-    cursor: default;
-    background-color: $bp-btn-bg-color;
-    color: $bp-btn-color;
-    border: none;
-  }
-
-  &.bp-btn--flat {
-    border: $bp-btn-border;
-    background-color: transparent;
-
-    &:disabled {
-      background-color: transparent;
-      border: $bp-btn-border;
-    }
-
-    @include bp-btn--flat($bp-btn-flat-color, $bp-btn-flat-border-color);
-  }
-
-  /** Button states **/
-  &.bp-btn--c-black {
-    @include bp-btn--c($bp-color-black);
-    @include bp-btn--flat-c($bp-color-black);
-  }
-
-  &.bp-btn--c-white {
-    @include bp-btn--c($bp-color-white);
-    @include bp-btn--flat-c($bp-color-white);
-  }
+  /** Custom BLiP Setups **/
 
   &.bp-btn--bot {
     @include bp-btn--regular($bp-color-white, $bp-color-bot);
@@ -83,9 +55,9 @@
     @include bp-btn--flat($bp-color-blip-dark, $bp-color-blip-dark);
   }
 
-  &.bp-btn--true {
-    @include bp-btn--regular($bp-color-white, $bp-color-true);
-    @include bp-btn--flat($bp-color-true, $bp-color-true);
+  &.bp-btn--warning {
+    @include bp-btn--regular($bp-color-white, $bp-color-warning);
+    @include bp-btn--flat($bp-color-warning, $bp-color-warning);
   }
 
   &.bp-btn--delete {
@@ -93,10 +65,202 @@
     @include bp-btn--flat($bp-color-delete, $bp-color-delete);
   }
 
-  &.bp-btn--warning {
-    @include bp-btn--regular($bp-color-white, $bp-color-warning);
-    @include bp-btn--flat($bp-color-warning, $bp-color-warning);
+  &.bp-btn--true {
+    @include bp-btn--regular($bp-color-white, $bp-color-true);
+    @include bp-btn--flat($bp-color-true, $bp-color-true);
+  }
+
+  &.bp-btn--onix {
+    @include bp-btn--regular($bp-color-white, $bp-color-onix);
+    @include bp-btn--flat($bp-color-onix, $bp-color-onix);
+  }
+
+  &.bp-btn--city {
+    @include bp-btn--regular($bp-color-white, $bp-color-city);
+    @include bp-btn--flat($bp-color-city, $bp-color-city);
+  }
+
+  &.bp-btn--rooftop {
+    @include bp-btn--regular($bp-color-white, $bp-color-rooftop);
+    @include bp-btn--flat($bp-color-rooftop, $bp-color-rooftop);
+  }
+
+  &.bp-btn--desk {
+    @include bp-btn--regular($bp-color-white, $bp-color-desk);
+    @include bp-btn--flat($bp-color-desk, $bp-color-desk);
+  }
+
+  &.bp-btn--cloud {
+    @include bp-btn--regular($bp-color-white, $bp-color-cloud);
+    @include bp-btn--flat($bp-color-cloud, $bp-color-cloud);
+  }
+
+  &.bp-btn--silver {
+    @include bp-btn--regular($bp-color-white, $bp-color-silver);
+    @include bp-btn--flat($bp-color-silver, $bp-color-silver);
+  }
+
+  &.bp-btn--time {
+    @include bp-btn--regular($bp-color-white, $bp-color-time);
+    @include bp-btn--flat($bp-color-time, $bp-color-time);
+  }
+
+  &.bp-btn--breeze {
+    @include bp-btn--regular($bp-color-white, $bp-color-breeze);
+    @include bp-btn--flat($bp-color-breeze, $bp-color-breeze);
+  }
+
+  &.bp-btn--sky {
+    @include bp-btn--regular($bp-color-white, $bp-color-sky);
+    @include bp-btn--flat($bp-color-sky, $bp-color-sky);
+  }
+
+  &.bp-btn--offwhite {
+    @include bp-btn--regular($bp-color-white, $bp-color-offwhite);
+    @include bp-btn--flat($bp-color-offwhite, $bp-color-offwhite);
+  }
+
+  /* Color */
+
+  &.bp-btn--c-black {
+    @include bp-btn--c($bp-color-black);
+  }
+
+  &.bp-btn--c-white {
+    @include bp-btn--c($bp-color-white);
+  }
+
+  &.bp-btn--c-bot {
+    @include bp-btn--c($bp-color-bot);
+  }
+
+  &.bp-btn--c-blip-light {
+    @include bp-btn--c($bp-color-blip-light);
+  }
+
+  &.bp-btn--c-blip-dark {
+    @include bp-btn--c($bp-color-blip-dark);
+  }
+
+  &.bp-btn--c-warning {
+    @include bp-btn--c($bp-color-warning);
+  }
+
+  &.bp-btn--c-delete {
+    @include bp-btn--c($bp-color-delete);
+  }
+
+  &.bp-btn--c-true {
+    @include bp-btn--c($bp-color-true);
+  }
+
+  &.bp-btn--c-onix {
+    @include bp-btn--c($bp-color-onix);
+  }
+
+  &.bp-btn--c-city {
+    @include bp-btn--c($bp-color-city);
+  }
+
+  &.bp-btn--c-rooftop {
+    @include bp-btn--c($bp-color-rooftop);
+  }
+
+  &.bp-btn--c-desk {
+    @include bp-btn--c($bp-color-desk);
+  }
+
+  &.bp-btn--c-cloud {
+    @include bp-btn--c($bp-color-cloud);
+  }
+
+  &.bp-btn--c-silver {
+    @include bp-btn--c($bp-color-silver);
+  }
+
+  &.bp-btn--c-time {
+    @include bp-btn--c($bp-color-time);
+  }
+
+  &.bp-btn--c-breeze {
+    @include bp-btn--c($bp-color-breeze);
+  }
+
+  &.bp-btn--c-sky {
+    @include bp-btn--c($bp-color-sky);
+  }
+
+  &.bp-btn--c-offwhite {
+    @include bp-btn--c($bp-color-offwhite);
+  }
+
+  /* Background Color */
+
+  &.bp-btn--bg-black {
+    @include bp-btn--bg($bp-color-black);
+  }
+
+  &.bp-btn--bg-white {
+    @include bp-btn--bg($bp-color-white);
+  }
+
+  &.bp-btn--bg-bot {
+    @include bp-btn--bg($bp-color-bot);
+  }
+
+  &.bp-btn--bg-blip-light {
+    @include bp-btn--bg($bp-color-blip-light);
+  }
+
+  &.bp-btn--bg-blip-dark {
+    @include bp-btn--bg($bp-color-blip-dark);
+  }
+
+  &.bp-btn--bg-warning {
+    @include bp-btn--bg($bp-color-warning);
+  }
+
+  &.bp-btn--bg-delete {
+    @include bp-btn--bg($bp-color-delete);
+  }
+
+  &.bp-btn--bg-true {
+    @include bp-btn--bg($bp-color-true);
+  }
+
+  &.bp-btn--bg-onix {
+    @include bp-btn--bg($bp-color-onix);
+  }
+
+  &.bp-btn--bg-city {
+    @include bp-btn--bg($bp-color-city);
+  }
+
+  &.bp-btn--bg-rooftop {
+    @include bp-btn--bg($bp-color-rooftop);
+  }
+
+  &.bp-btn--bg-desk {
+    @include bp-btn--bg($bp-color-desk);
+  }
+
+  &.bp-btn--bg-cloud {
+    @include bp-btn--bg($bp-color-cloud);
+  }
+
+  &.bp-btn--bg-silver {
+    @include bp-btn--bg($bp-color-silver);
+  }
+
+  &.bp-btn--bg-time {
+    @include bp-btn--bg($bp-color-time);
+  }
+
+  &.bp-btn--bg-breeze {
+    @include bp-btn--bg($bp-color-breeze);
+  }
+
+  &.bp-btn--bg-sky {
+    @include bp-btn--bg($bp-color-sky);
   }
 }
-
-

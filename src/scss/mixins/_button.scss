@@ -10,6 +10,20 @@
   &:hover {
     background-color: bp-darken($bg-color);
   }
+  &:active,
+  &:focus,
+  &:visited,
+  &:hover {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: $bp-btn-bg-color;
+    color: $bp-btn-color;
+    border: none;
+  }
 }
 
 @mixin bp-btn--flat ($color, $border-color) {
@@ -18,12 +32,26 @@
     background-color: transparent;
     border-color: $border-color;
 
-    &:hover,
-    &:disabled {
+    &:hover {
       background-color: transparent;
       border-color: bp-darken($border-color);
       color: bp-darken($color);
     }
+
+    &:active,
+    &:focus,
+    &:visited,
+    &:hover {
+      outline: none;
+      text-decoration: none;
+    }
+
+  &:disabled {
+    cursor: default;
+    background-color: transparent;
+    color: $bp-btn-color;
+    border: none;
+  }
   }
 }
 

@@ -30,21 +30,6 @@
   font-weight: $bp-btn-font-weight;
   outline: none;
 
-  &:active,
-  &:focus,
-  &:visited,
-  &:hover {
-    outline: none;
-    text-decoration: none;
-  }
-
-  &:disabled {
-    cursor: default;
-    background-color: $bp-btn-bg-color;
-    color: $bp-btn-color;
-    border: none;
-  }
-
   @include bp-btn--flat($bp-btn-flat-color, $bp-btn-flat-border-color);
 
   &.bp-btn--flat {

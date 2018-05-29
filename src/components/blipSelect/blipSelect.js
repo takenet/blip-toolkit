@@ -151,7 +151,7 @@ export class BlipSelect {
     options.forEach(({ value, label }) => {
       this.selectOptionsContainer.appendChild(
         strToEl(`
-          <li class="${blipSelectOptionClass}" data-value="${value}">${label}</li>
+          <li tabindex="0" class="${blipSelectOptionClass}" data-value="${value}">${label}</li>
         `)
       )
     })

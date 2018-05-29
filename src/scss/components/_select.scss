@@ -41,8 +41,10 @@
   color: $bp-color-city;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: $bp-color-offwhite;
+    outline: 0;
   }
 }
 

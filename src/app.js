@@ -1,6 +1,11 @@
 import './scss/main.scss'
 import { BlipSelect } from './components/blipSelect/blipSelect'
 
-new BlipSelect(document.getElementById('my-select'), {
+const instance = new BlipSelect(document.getElementById('my-select'), {
   label: 'Custom select',
+  mode: 'autocomplete',
+  onSelectOption: ({ $event: { value, label } }) => console.log(value, label),
 })
+
+const { value, label } = instance.getValue()
+window.test = () => console.log(value, label) //eslint-disable-line

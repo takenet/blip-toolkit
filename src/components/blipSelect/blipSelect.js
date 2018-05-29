@@ -11,6 +11,12 @@ const blipSelectOptionsClass = 'blip-select__options'
 const blipSelectOptionOpenTopClass = 'blip-select__options--open-top'
 const blipSelectOptionClass = 'blip-select__option'
 const blipSelectOptionSeletedClass = 'blip-select__option--selected'
+const bpInputWithBulletClass = 'bp-input--with-bullet'
+const bpCrooftopClass = 'bp-c-rooftop'
+const bpCcloudClass = 'bp-c-cloud'
+const bpCblipLightClass = 'bp-c-blip-light'
+const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
+const bpInputWrapperDisabledClass = 'bp-input-wrapper--disabled'
 
 export class BlipSelect {
   /**
@@ -18,12 +24,15 @@ export class BlipSelect {
    */
   $state = {
     isSelectOpen: false,
+    noResultsFound: false,
+    disabled: false,
   }
 
   constructor(element, options) {
     this.wrapper = ''
     this.elementLabel = ''
     this.selectOptions = []
+    this.searchResults = []
     this.selectOptionsContainer = ''
     this.selectLabel = ''
     this._handleSelectFocus = ''
@@ -32,11 +41,15 @@ export class BlipSelect {
 
     this.configOptions = {
       label: '',
+      mode: 'select',
+      noResultsText: 'No results found',
+      initialValue: '',
       beforeOpenSelect: () => {},
       afterOpenSelect: () => {},
       beforeCloseSelect: () => {},
       afterCloseSelect: () => {},
-      onSelectOption: ($event) => {}, // { value: optionValue, label: optionLabel }
+      onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
+      onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
       ...options,
     }
 
@@ -45,7 +58,9 @@ export class BlipSelect {
     this._setupEventHandlers()
   }
 
-  // Getters and setters
+  /**
+   * Is select open
+   */
   get isSelectOpen() {
     return this.$state.isSelectOpen
   }
@@ -55,46 +70,139 @@ export class BlipSelect {
   }
 
   /**
+   * No results found
+   */
+  get noResultsFound() {
+    return this.$state.noResultsFound
+  }
+
+  set noResultsFound(value) {
+    this.$state.noResultsFound = value
+
+    switch (value) {
+      case true:
+        this.selectOptionsContainer.innerHTML = `<li style="cursor: default" class="${blipSelectOptionClass}">${this.configOptions.noResultsText}</li>`
+        break
+    }
+  }
+
+  /**
+   * Is disabled
+   */
+  get isDisabled() {
+    return this.$state.disabled
+  }
+
+  set isDisabled(value) {
+    this.$state.disabled = value
+    this.input.disabled = value
+
+    switch (value) {
+      case true:
+        this.wrapper.classList.add(bpInputWrapperDisabledClass)
+        break
+      case false:
+        this.wrapper.classList.remove(bpInputWrapperDisabledClass)
+        break
+    }
+  }
+
+  /**
    * Setup custom select
    */
   _setup() {
+    if ((this.el instanceof Element) === false) {
+      throw new Error('Invalid dom element')
+    }
+
+    const elementOptions = this.el.querySelectorAll('option')
+    if (elementOptions.length === 0) {
+      throw new Error('Element has no options')
+    }
+
     // Setup element structure
     const parentNode = this.el.parentNode
     this.customSelectId = `${blipSelectOptionsClass}-${guid()}`
-    this.wrapper = strToEl(`
-      <div class="${bpInputWrapperClass} ${blipSelectClass}">
-        <label class="${bpInputWrapperLabelClass}">${this.configOptions.label}</label>
-        <input class="${blipSelectInputClass} bp-c-cloud" data-target="${this.customSelectId}" readonly>
-        <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
-      </div>
-    `)
+
+    // Component mode
+    switch (this.configOptions.mode) {
+      case 'select':
+        this.wrapper = strToEl(`
+          <div class="${bpInputWrapperClass} ${blipSelectClass} ${bpInputWithBulletClass}">
+            <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
+            <input class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}" readonly>
+            <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
+          </div>
+        `)
+        break
+      case 'autocomplete':
+        this.wrapper = strToEl(`
+          <div class="${bpInputWrapperClass} ${blipSelectClass}">
+            <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
+            <input class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}">
+            <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
+          </div>
+        `)
+        break
+      default:
+        throw new Error('Unrecognized component mode')
+    }
 
     parentNode.insertBefore(this.wrapper, this.el)
 
-    const elementOptions = this.el.querySelectorAll('option')
     this.selectOptionsContainer = this.wrapper.querySelector(`#${this.customSelectId}`)
-
     this.selectLabel = this.wrapper.querySelector('label')
 
     // Setup element options
-    elementOptions.forEach(({ value, label }) => {
-      this.selectOptions = this.selectOptions.concat({ value, label })
+    elementOptions.forEach(element => {
+      this.selectOptions = this.selectOptions.concat({
+        value: element.value,
+        label: element.label,
+        element,
+      })
     })
 
     // Add options to container
-    this.selectOptions.forEach(({ value, label }) => {
-      this.selectOptionsContainer.appendChild(
-        strToEl(`
-          <li class="${blipSelectOptionClass}" data-value="${value}">${label}</li>
-        `)
-      )
-    })
+    this._arrayToDomOptions(this.selectOptions)
 
     // Setup element trigger
     this.input = this.wrapper.querySelector(`input[data-target="${this.customSelectId}"]`)
 
     // Remove default select display
     this.el.style.display = 'none'
+
+    // Set disabled property
+    this.isDisabled = this.el.disabled
+  }
+
+  /**
+   * Bind array to dom "li" items into selectOptionsContainer
+   * @param {Array} options - Options array
+   */
+  _arrayToDomOptions(options = [{ value: '', label: '' }]) {
+    // Reset HTML content
+    this.selectOptionsContainer.innerHTML = ''
+
+    // Add options to container
+    options.forEach(({ value, label }) => {
+      this.selectOptionsContainer.appendChild(
+        strToEl(`
+          <li tabindex="0" class="${blipSelectOptionClass}" data-value="${value}">${label}</li>
+        `)
+      )
+    })
+
+    this._setupOptionsEventHandlers()
+  }
+
+  /**
+   * Add event listeners to container options
+   */
+  _setupOptionsEventHandlers() {
+    // Set handler for each menu option
+    this.selectOptionsContainer
+      .querySelectorAll('li')
+      .forEach(o => o.addEventListener('click', (ev) => this._onOptionClick(ev)))
   }
 
   /**
@@ -105,25 +213,100 @@ export class BlipSelect {
     this._handleSelectFocus = this._onSelectFocus.bind(this)
     this._handleSelectBlur = this._onSelectBlur.bind(this)
     this._handleCenterOption = this._centerSelectedOption.bind(this)
+    this._handleInputChange = this._onInputChange.bind(this)
 
     this.input.addEventListener('focus', this._handleSelectFocus)
     this.input.addEventListener('blur', this._handleSelectBlur)
 
-    // Set handler for each menu option
-    this.selectOptionsContainer
-      .querySelectorAll('li')
-      .forEach(o => o.addEventListener('click', (ev) => this._onOptionClick(ev)))
+    switch (this.configOptions.mode) {
+      case 'autocomplete':
+        this.input.addEventListener('keyup', this._handleInputChange)
+        break
+    }
 
     this.selectOptionsContainer.addEventListener('transitionend', this._handleCenterOption)
   }
 
   /**
+   * On input change event
+   */
+  _onInputChange(event) {
+    if (typeof this.configOptions.onInputChange !== 'function') {
+      throw new Error('Callback "onInputChange" is not a function')
+    }
+
+    const inputValue = this.input.value
+    const searchResults = this.selectOptions.filter(
+      ({ value, label }) => label.toLowerCase().includes(inputValue.toLowerCase())
+    )
+    this.configOptions.onInputChange(EventEmitter({ value: inputValue, event }))
+
+    if (searchResults.length > 0) {
+      this.noResultsFound = false
+      this._arrayToDomOptions(searchResults)
+    } else {
+      this.noResultsFound = true
+    }
+  }
+
+  /**
    * Set value to input
-   * @param {Object} param0 - value/label pair
+   * @param {Object} object - value/label pair
    */
   _setInputValue({ value, label }) {
-    this.input.value = label
+    this.input.value = label || value
+
+    if (typeof this.configOptions.onSelectOption !== 'function') {
+      throw new Error('Callback "onSelectOption" is not a function')
+    }
+
     this.configOptions.onSelectOption(EventEmitter({ value, label }))
+  }
+
+  /**
+   * Programatically sets value to input
+   * @param {Object} param0 - Value/label pair
+   */
+  setValue({ value, label } = { value: '', label: '' }) {
+    if (value) {
+      const match = this.selectOptions.find(o => o.value === value)
+
+      if (match) {
+        match.element.classList.add(blipSelectOptionSeletedClass)
+
+        this._setInputValue({
+          value: match.value,
+          label: match.label,
+        })
+      } else {
+        this._setInputValue({ value })
+      }
+    }
+  }
+
+  /**
+   * Returns current input value
+   */
+  getValue() {
+    if (!this.input.value) {
+      return {
+        value: undefined,
+        label: undefined,
+      }
+    }
+
+    const match = this.selectOptions.find(o => o.label === this.input.value)
+    if (match) {
+      return {
+        value: match.value,
+        label: match.label,
+      }
+    } else {
+      return {
+        value: this.input.value,
+        label: this.input.value,
+      }
+    }
   }
 
   /**
@@ -155,6 +338,18 @@ export class BlipSelect {
    * On select click
    */
   _onSelectFocus() {
+    if (this.isDisabled) {
+      return
+    }
+
+    if (typeof this.configOptions.beforeOpenSelect !== 'function') {
+      throw Error('Callback "beforeOpenSelect" is not a function')
+    }
+
+    if (typeof this.configOptions.afterOpenSelect !== 'function') {
+      throw Error('Callback "afterOpenSelect" is not a function')
+    }
+
     // Callback invoked before select open
     this.configOptions.beforeOpenSelect()
 
@@ -168,6 +363,13 @@ export class BlipSelect {
    * On select blur
    */
   _onSelectBlur() {
+    if (typeof this.configOptions.beforeCloseSelect !== 'function') {
+      throw Error('Callback "beforeCloseSelect" is not a function')
+    }
+
+    if (typeof this.configOptions.afterCloseSelect !== 'function') {
+      throw Error('Callback "afterCloseSelect" is not a function')
+    }
     // Callback invoked before select open
     this.configOptions.beforeCloseSelect()
 
@@ -202,8 +404,9 @@ export class BlipSelect {
       this.selectOptionsContainer.style.opacity = 1
     })
 
-    this.input.parentNode.classList.add('bp-input-wrapper--focus')
-    this.selectLabel.classList.add('bp-c-blip-light')
+    this.input.parentNode.classList.add(bpInputWrapperFocusClass)
+    this.selectLabel.classList.remove(bpCrooftopClass)
+    this.selectLabel.classList.add(bpCblipLightClass)
     this.isSelectOpen = true
   }
 
@@ -212,9 +415,6 @@ export class BlipSelect {
    */
   _centerSelectedOption(ev) {
     const selectedOption = this.selectOptionsContainer.querySelector(`li.${blipSelectOptionSeletedClass}`)
-
-    // console.log(this.selectOptionsContainer.offsetTop + this.selectOptionsContainer.offsetHeight)
-    // console.log(window.innerHeight, this.selectOptionsContainer.getBoundingClientRect().top, this.selectOptionsContainer.offsetHeight)
 
     if (this.selectOptionsContainer.scrollHeight > this.selectOptionsContainer.clientHeight && ev.propertyName === 'transform') {
       if (!selectedOption) {
@@ -242,8 +442,9 @@ export class BlipSelect {
       this.selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
     }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
 
-    this.input.parentNode.classList.remove('bp-input-wrapper--focus')
-    this.selectLabel.classList.remove('bp-c-blip-light')
+    this.input.parentNode.classList.remove(bpInputWrapperFocusClass)
+    this.selectLabel.classList.remove(bpCblipLightClass)
+    this.selectLabel.classList.add(bpCrooftopClass)
     this.isSelectOpen = false
   }
 }

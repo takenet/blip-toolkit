@@ -11,9 +11,14 @@
     "start": "./node_modules/.bin/webpack-dev-server --mode development --open --config ./build/webpack.dev.conf.js",
     "build": "webpack --mode production --config ./build/webpack.prod.conf.js",
     "semantic-release": "./node_modules/.bin/semantic-release --prepare && npm publish && semantic-release post",
-    "test": "./node_modules/.bin/karma start"
+    "test": "./node_modules/.bin/babel-node ./spec/run.js",
+    "test:show-coverage": "./node_modules/.bin/babel-node ./node_modules/babel-istanbul/lib/cli cover --report text ./spec/run.js",
+    "test:check-coverage": "./node_modules/.bin/istanbul check-coverage",
+    "test:upload-coverage": "cat ./coverage/lcov.info | codecov"
   },
   "dependencies": {
+    "babel-istanbul": "^0.12.2",
+    "istanbul": "^0.4.5",
     "module-alias": "^2.0.6"
   },
   "devDependencies": {
@@ -38,12 +43,8 @@
     "html-webpack-plugin": "^3.2.0",
     "jasmine": "^3.1.0",
     "jasmine-core": "^3.1.0",
-    "karma": "^2.0.2",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-firefox-launcher": "^1.1.0",
-    "karma-ie-launcher": "^1.0.0",
-    "karma-jasmine": "^1.1.2",
-    "karma-safari-launcher": "^1.0.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "jsdom": "^11.11.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",

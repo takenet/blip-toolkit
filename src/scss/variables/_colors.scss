@@ -38,7 +38,9 @@ $bp-color-disabled: $bp-color-offwhite;
 $bp-color-white: #ffffff;
 $bp-color-black: #000000;
 
-$bp-color-gradient: linear-gradient(180deg, #f9fbfc 0%, #ecf1f3 100%);
+$bp-gradient-shine: linear-gradient(180deg, #f9fbfc 0%, #ecf1f3 100%);
+$bp-gradient-blip: linear-gradient(90deg, #51DBE3 0%, #28B4C3 100%);
+$bp-gradient-suit: linear-gradient(90deg,#3d4554,#2f3747);
 
 //3rd parties
 $bp-color-facebook: #3c5a99;

@@ -71,7 +71,15 @@
   background-color: $bp-color-black;
 }
 
-.bp-bg-gradient {
-  background-color: $bp-color-gradient;
+.bp-bg-shine {
+  background-image: $bp-gradient-shine;
+}
+
+.bp-bg-blip {
+  background-image: $bp-gradient-blip;
+}
+
+.bp-bg-suit {
+  background-image: $bp-gradient-suit;
 }
 

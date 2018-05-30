@@ -10,6 +10,7 @@
     "commit": "./node_modules/.bin/git-cz",
     "start": "./node_modules/.bin/webpack-dev-server --mode development --open --config ./build/webpack.dev.conf.js",
     "build": "webpack --mode production --config ./build/webpack.prod.conf.js",
+    "lint": "./node_modules/.bin/eslint .",
     "semantic-release": "./node_modules/.bin/semantic-release --prepare && npm publish && semantic-release post",
     "test": "./node_modules/.bin/babel-node ./spec/run.js",
     "test:show-coverage": "./node_modules/.bin/babel-node ./node_modules/babel-istanbul/lib/cli cover --report text ./spec/run.js",
@@ -57,10 +58,10 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "npm run lint && npm run test && npm run test:check-coverage"
     }
-  },
-  "_moduleAliases": {
-    "@lib": "./src/lib"
   },
   "repository": {
     "type": "git",

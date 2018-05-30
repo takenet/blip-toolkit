@@ -5,7 +5,6 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/blip-toolkit@1.2.4/build/dist/blip-toolkit.css">
   <title>BLiP Guideline</title>
 </head>
 
@@ -226,6 +225,12 @@
     <table class="w-50" cellspacing="0" cellpadding="0">
       <tbody>
         <tr>
+          <td class="bp-fs-5 bp-bg-onix pa4 tc bp-c-white">Onix</td>
+          <td class="bp-fs-5 bp-c-onix bp-fs-3 pl3">Aa</td>
+          <td class="bp-fs-5 bp-c-onix">.bp-c-onix: #242b36;</td>
+        </tr>
+
+        <tr>
           <td class="bp-fs-5 bp-bg-city pa4 tc bp-c-white">City</td>
           <td class="bp-fs-5 bp-c-city bp-fs-3 pl3">Aa</td>
           <td class="bp-fs-5 bp-c-city">.bp-c-city: #52636C;</td>
@@ -289,128 +294,233 @@
   <div class="ph3">
     <h4 class="bp-fs-4">Botões</h4>
 
-    <p class="bp-fs-6"> Botões possuem um formato bem definido, como mostrado abaixo. Além da classe base .bp-btn, ele depende de
-      <b>variantes</b> para ter certas funcionalidades. </p>
+    <p class="bp-fs-6"> Botões devem possuir a classe-base
+      <b>.bp-btn</b>. Seus modificadores estão listados a seguir. </p>
 
-    <table class="w-50" cellspacing="0" cellpadding="0">
-      <tbody>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn">Botão Base</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn</td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--c-black">Botão Texto Preto</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn .bp-btn--c-black</td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--bot">Botão Bot </button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn
-            <span class="bp-c-bot">.bp-btn--bot</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--blip-light">Botão BLiP Light</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn
-            <span class="bp-c-blip-light">.bp-btn--blip-light</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--blip-dark">Botão BLiP Dark</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn
-            <span class="bp-c-blip-dark">.bp-btn--blip-dark</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--warning">Botão Warning</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn
-            <span class="bp-c-warning">.bp-btn--warning</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--delete">Botão Delete</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn
-            <span class="bp-c-delete">.bp-btn--delete</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--true">Botão True</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn
-            <span class="bp-c-true">.bp-btn--true</span>
-          </td>
-        </tr>
+    <h5 class="bp-fs-5 mb1">Variações Base e Flat</h5>
 
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--flat">Botão Base Flat</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn .bp-btn--flat</td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--flat bp-btn--bot">Botão Flat Bot</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn .bp-btn--flat
-            <span class="bp-c-bot">.bp-btn--bot</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--flat bp-btn--blip-light">Botão Flat BLiP Light</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn .bp-btn--flat
-            <span class="bp-c-blip-light">.bp-btn--bot</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--flat bp-btn--blip-dark">Botão Flat BLiP Dark</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn .bp-btn--flat
-            <span class="bp-c-blip-dark">.bp-btn--blip-dark</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--flat bp-btn--warning">Botão Flat Warning</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn .bp-btn--flat
-            <span class="bp-c-warning">.bp-btn--warning</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--flat bp-btn--delete">Botão Flat Delete</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn .bp-btn--flat
-            <span class="bp-c-delete">.bp-btn--delete</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="bp-fs-5 pa2 tc">
-            <button class="bp-btn bp-btn--flat bp-btn--true">Botão Flat True</button>
-          </td>
-          <td class="bp-fs-5 pa2 tl">.bp-btn .bp-btn--flat
-            <span class="bp-c-true">.bp-btn--true</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="w-100 flex flex-row justify-between items-center flex-wrap">
+      <table class="w-100 w-50-l" cellspacing="0" cellpadding="0">
+        <tbody class="w-100">
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn">Base</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn</td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--bot">Bot </button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-bot">.bp-btn--bot</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--blip-light">BLiP Light</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl">.bp-btn
+              <span class="bp-c-blip-light">.bp-btn--blip-light</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--blip-dark">BLiP Dark</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-blip-dark">.bp-btn--blip-dark</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--warning">Warning</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-warning">.bp-btn--warning</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--delete">Delete</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-delete">.bp-btn--delete</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--true">True</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-true w-50">.bp-btn--true</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="w-100 w-50-l" cellspacing="0" cellpadding="0">
+        <tbody class="w-100">
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--flat">Flat Base</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--flat</td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--flat bp-btn--bot">Flat Bot</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--flat
+              <span class="bp-c-bot">.bp-btn--bot</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat BLiP Light</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--flat
+              <span class="bp-c-blip-light">.bp-btn--bot</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--flat bp-btn--blip-dark">Flat BLiP Dark</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--flat
+              <span class="bp-c-blip-dark">.bp-btn--blip-dark</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--flat bp-btn--warning">Flat Warning</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--flat
+              <span class="bp-c-warning">.bp-btn--warning</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--flat bp-btn--delete">Flat Delete</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--flat
+              <span class="bp-c-delete">.bp-btn--delete</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--flat bp-btn--true">Flat True</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--flat
+              <span class="bp-c-true">.bp-btn--true</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h5 class="bp-fs-5 mb1">Cor de texto e fundo</h5>
+
+    <div class="w-100 flex flex-row justify-between items-center flex-wrap">
+      <table class="w-100 w-50-l" cellspacing="0" cellpadding="0">
+        <tbody class="w-100">
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--c-black">Texto Black</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-black">.bp-btn--c-black</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--c-true">Texto True</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-true">.bp-btn--c-true</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--c-city">Texto City</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-city">.bp-btn--c-city</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="w-100 w-50-l" cellspacing="0" cellpadding="0">
+        <tbody class="w-100">
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--c-white bp-btn--bg-onix">Fundo Ônix</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-onix">.bp-btn--bg-onix</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--bg-true">Fundo True</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-true">.bp-btn--bg-true</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--bg-city">Fundo City</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-city">.bp-btn--bg-city</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h5 class="bp-fs-5 mb1">Outras variações</h5>
+
+    <div class="w-100 flex flex-row justify-between items-center flex-wrap">
+      <table class="w-100 w-50-l" cellspacing="0" cellpadding="0">
+        <tbody class="w-100">
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--flat bp-btn--no-border bp-btn--delete">Flat s/ Borda</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
+              <span class="bp-c-black">.bp-btn--no-border</span>
+            </td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--no-background bp-btn--c-black">Base s/ Fundo</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--no-background</td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button disabled class="bp-btn">Base Disabled</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn disabled</td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button disabled class="bp-btn bp-btn--flat">Flat Disabled</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn disabled</td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--bot bp-btn--small">Small</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--small</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="ph3">
@@ -433,39 +543,39 @@
 
   <div class="ph3">
     <h3>Input</h3>
-      <div class="flex flex-column">
+    <div class="flex flex-column">
 
-        <div class="bp-input-wrapper flex flex-column justify-around mv2">
-          <label class="bp-label bp-c-rooftop">Label</label>
-          <div class="bp-c-cloud bp-fs-6">Placeholder</div>
-        </div>
-
-        <div class="bp-input-wrapper flex flex-column justify-around mv2">
-          <label class="bp-label bp-c-rooftop">Label</label>
-          <div class="bp-fs-6">Text Here</div>
-        </div>
-
-        <div class="bp-input-wrapper bp-input-wrapper--focus flex flex-column justify-around mv2">
-          <label class="bp-label bp-c-blip-dark">Label</label>
-          <div class="bp-fs-6">Text Here</div>
-        </div>
-
-        <div class="bp-input-wrapper bp-input-wrapper--disabled flex flex-column justify-around mv2">
-          <label class="bp-label bp-c-rooftop">Label</label>
-          <div class="bp-c-cloud bp-fs-6">Text Here</div>
-        </div>
-
-        <div class="bp-input-wrapper bp-input-wrapper--focus bp-input-wrapper--invalid flex flex-column justify-around mv2">
-          <label class="bp-label bp-c-warning">Label</label>
-          <div class="bp-fs-6">Text Here</div>
-        </div>
-
-        <div class="bp-input-wrapper bp-input-wrapper--focus bp-input-wrapper--valid flex flex-column justify-around mv2">
-          <label class="bp-label bp-c-true">Label</label>
-          <div class="bp-fs-6">Text Here</div>
-        </div>
-
+      <div class="bp-input-wrapper flex flex-column justify-around mv2">
+        <label class="bp-label bp-c-rooftop">Label</label>
+        <div class="bp-c-cloud bp-fs-6">Placeholder</div>
       </div>
+
+      <div class="bp-input-wrapper flex flex-column justify-around mv2">
+        <label class="bp-label bp-c-rooftop">Label</label>
+        <div class="bp-fs-6">Text Here</div>
+      </div>
+
+      <div class="bp-input-wrapper bp-input-wrapper--focus flex flex-column justify-around mv2">
+        <label class="bp-label bp-c-blip-dark">Label</label>
+        <div class="bp-fs-6">Text Here</div>
+      </div>
+
+      <div class="bp-input-wrapper bp-input-wrapper--disabled flex flex-column justify-around mv2">
+        <label class="bp-label bp-c-rooftop">Label</label>
+        <div class="bp-c-cloud bp-fs-6">Text Here</div>
+      </div>
+
+      <div class="bp-input-wrapper bp-input-wrapper--focus bp-input-wrapper--invalid flex flex-column justify-around mv2">
+        <label class="bp-label bp-c-warning">Label</label>
+        <div class="bp-fs-6">Text Here</div>
+      </div>
+
+      <div class="bp-input-wrapper bp-input-wrapper--focus bp-input-wrapper--valid flex flex-column justify-around mv2">
+        <label class="bp-label bp-c-true">Label</label>
+        <div class="bp-fs-6">Text Here</div>
+      </div>
+
+    </div>
   </div>
 
 </body>

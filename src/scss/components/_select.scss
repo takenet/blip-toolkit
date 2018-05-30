@@ -1,3 +1,8 @@
+.blip-select {
+  @include flex-box;
+  flex-wrap: wrap;
+}
+
 .blip-select__input {
   cursor: pointer;
   display: block;
@@ -8,6 +13,7 @@
   height: 2.88*$m;
   font-family: $bp-ff;
   font-size: $bp-fs-6;
+  align-self: center;
 
   &:focus { outline: none; }
 }

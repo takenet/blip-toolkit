@@ -26,6 +26,17 @@ export class BlipSelect {
     isSelectOpen: false,
     noResultsFound: false,
     disabled: false,
+    label: '',
+    placeholder: '',
+    mode: 'select',
+    noResultsText: 'No results found',
+    initialValue: '',
+    beforeOpenSelect: () => {},
+    afterOpenSelect: () => {},
+    beforeCloseSelect: () => {},
+    afterCloseSelect: () => {},
+    onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
+    onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
   }
 
   constructor(element, options) {
@@ -40,16 +51,7 @@ export class BlipSelect {
     this._handleOptionClick = ''
 
     this.configOptions = {
-      label: '',
-      mode: 'select',
-      noResultsText: 'No results found',
-      initialValue: '',
-      beforeOpenSelect: () => {},
-      afterOpenSelect: () => {},
-      beforeCloseSelect: () => {},
-      afterCloseSelect: () => {},
-      onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
-      onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
+      ...this.$state,
       ...options,
     }
 
@@ -130,7 +132,7 @@ export class BlipSelect {
         this.wrapper = strToEl(`
           <div class="${bpInputWrapperClass} ${blipSelectClass} ${bpInputWithBulletClass}">
             <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
-            <input class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}" readonly>
+            <input placeholder="${this.configOptions.placeholder}" class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}" readonly>
             <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
           </div>
         `)
@@ -139,7 +141,7 @@ export class BlipSelect {
         this.wrapper = strToEl(`
           <div class="${bpInputWrapperClass} ${blipSelectClass}">
             <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
-            <input class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}">
+            <input placeholder="${this.configOptions.placeholder}" class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}">
             <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
           </div>
         `)

@@ -1,9 +1,9 @@
 check:
   global:
-    statements: 90
-    lines: 90
-    branches: 85
-    functions: 90
+    statements: 50
+    lines: 50
+    branches: 30
+    functions: 40
     excludes: \*spec.*\
 instrumentation:
   excludes: ['**/spec/**', '**/build/**', 'src/lib/**']

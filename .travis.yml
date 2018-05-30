@@ -1,5 +1,7 @@
 sudo: required
 language: node_js
+install:
+  - npm install -g codecov
 cache:
   directories:
     - node_modules
@@ -13,6 +15,9 @@ before_install:
 before_script:
   - npm prune
 script:
+  - npm run test:check-coverage
+  - npm run test:upload-coverage
+  - codecov
   - npm run build
 after_success:
   - npm run semantic-release

@@ -3,7 +3,7 @@ import { BlipSelect } from './components/blipSelect/blipSelect'
 
 const instance = new BlipSelect(document.getElementById('my-select'), {
   label: 'Custom select',
-  mode: 'autocomplete',
+  placeholder: 'My placeholder',
   onSelectOption: ({ $event: { value, label } }) => console.log(value, label),
 })
 

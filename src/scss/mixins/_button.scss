@@ -68,7 +68,9 @@
   color: $color;
 
   &.bp-btn--flat {
-    color: bp-darken($color);
+    &:hover {
+      color: bp-darken($color);
+    }
   }
 }
 

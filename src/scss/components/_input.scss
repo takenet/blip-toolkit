@@ -69,6 +69,7 @@
 .bp-input--radio, {
   display: inline-block;
   border: 0.1*$m solid $bp-color-time;
+  font-size: $bp-fs-7;
   transition: all 500ms;
 
   &:hover {
@@ -83,10 +84,10 @@
 }
 
 .bp-input--radio {
-  width: 1.2*$m;
-  height: 1.2*$m;
+  width: 2.2*$m;
+  height: 2.2*$m;
   border-radius: 2*$m;
-  padding: 0.5*$m;
+  padding: 0.4*$m;
   background-clip: content-box;
 }
 
@@ -94,15 +95,12 @@
 .bp-input[type="radio"]:checked + .bp-input--radio {
   background-color: $bp-color-blip-light;
   border-color: $bp-color-blip-light;
+  animation: checkbox .6s ease;
 
   &:hover {
     background-color: bp-darken($bp-color-blip-light);
     border-color: bp-darken($bp-color-blip-light);
   }
-}
-
-.bp-input[type="checkbox"]:checked + .bp-input--checkbox {
-  animation: checkbox .6s ease;
 }
 
 @include keyframes(checkbox) {

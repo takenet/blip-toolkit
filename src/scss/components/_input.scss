@@ -42,7 +42,8 @@
 /**
 * Eliminating arrows from number input
 */
-.bp-input[type="number"]::-webkit-outer-spin-button, .bp-input[type="number"]::-webkit-inner-spin-button {
+.bp-input[type="number"]::-webkit-outer-spin-button,
+.bp-input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -59,15 +60,15 @@
   padding-bottom: 0.5*$m;
 }
 
-.bp-input[type="checkbox"], .bp-input[type="radio"] {
+.bp-input[type="checkbox"],
+.bp-input[type="radio"] {
   display: none;
 }
 
-.bp-input--checkbox, .bp-input--radio {
+.bp-input--checkbox,
+.bp-input--radio, {
   display: inline-block;
-  background-color: $bp-color-white;
   border: 0.1*$m solid $bp-color-time;
-  text-align: center;
   transition: all 500ms;
 
   &:hover {
@@ -77,11 +78,8 @@
 
 .bp-input--checkbox {
   border-radius: 0.2*$m;
-  font-size: $bp-fs-6;
-  font-weight: $bp-fw-bold;
-  color: $bp-color-white;
-  width: 2.4*$m;
-  height: 2.4*$m;
+  width: 2.1*$m;
+  height: 2.1*$m;
 }
 
 .bp-input--radio {
@@ -92,11 +90,43 @@
   background-clip: content-box;
 }
 
-.bp-input[type="checkbox"]:checked + .bp-input--checkbox, .bp-input[type="radio"]:checked + .bp-input--radio {
+.bp-input[type="checkbox"]:checked + .bp-input--checkbox,
+.bp-input[type="radio"]:checked + .bp-input--radio {
   background-color: $bp-color-blip-light;
   border-color: $bp-color-blip-light;
+
+  &:hover {
+    background-color: bp-darken($bp-color-blip-light);
+    border-color: bp-darken($bp-color-blip-light);
+  }
 }
 
+.bp-input[type="checkbox"]:checked + .bp-input--checkbox {
+  animation: checkbox .6s ease;
+}
+
+@include keyframes(checkbox) {
+  0% { transform: scale(1, 1); }
+  30% { transform: scale(1.25, 0.75); }
+  40% { transform: scale(0.75, 1.25); }
+  50% { transform: scale(1.15, 0.85); }
+  65% { transform: scale(0.95, 1.05); }
+  75% { transform: scale(1.05, 0.95); }
+  100% { transform: scale(1, 1); }
+}
+
+.bp-input--checkbox--disabled,
+.bp-input--radio--disabled,
+.bp-input[type="checkbox"]:checked + .bp-input--checkbox--disabled,
+.bp-input[type="radio"]:checked + .bp-input--radio--disabled {
+  background-color: $bp-color-offwhite;
+  border-color: $bp-color-breeze;
+
+  &:hover {
+    background-color: $bp-color-offwhite;
+    border-color: $bp-color-breeze;
+  }
+}
 
 /**
 * Wrapper

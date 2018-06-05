@@ -158,3 +158,20 @@ new BlipSelect(element, {
   onSelectOption: ({ $event : { value, label }}) => console.log(value, label)
 })
 ```
+
+---
+
+#### `customSearch` - function
+
+You can pass a custom search to instance
+
+```js
+// This search returns items that ends with query search
+new BlipSelect(element, {
+  mode: 'autocomplete',
+  customSearch: ({ $event }) => {
+    const { query, items } = $event
+    return items.filter(i => i.endsWith(query))
+  }
+})
+```

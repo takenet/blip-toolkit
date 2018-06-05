@@ -2,7 +2,7 @@ check:
   global:
     statements: 50
     lines: 50
-    branches: 30
+    branches: 10
     functions: 40
     excludes: \*spec.*\
 instrumentation:

@@ -1,7 +1,5 @@
 sudo: required
 language: node_js
-install:
-  - npm install -g codecov babel-cli jasmine
 cache:
   directories:
     - node_modules
@@ -10,7 +8,7 @@ notifications:
 node_js:
   - '8'
 before_install:
-  - npm i -g npm@^5.0.0
+  - npm i -g npm@^5.0.0 && npm install -g codecov
 
 before_script:
   - npm prune

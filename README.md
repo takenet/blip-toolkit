@@ -1,3 +1,4 @@
+# BLiP Toolkit
 
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 [![Build Status](https://travis-ci.org/takenet/blip-toolkit.png)](https://travis-ci.org/takenet/blip-toolkit)

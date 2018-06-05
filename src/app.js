@@ -1,1 +1,2 @@
-import "./scss/main.scss";
+import './scss/main.scss'
+export { BlipSelect } from './components/blipSelect'

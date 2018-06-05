@@ -9,19 +9,45 @@
   "scripts": {
     "commit": "./node_modules/.bin/git-cz",
     "start": "./node_modules/.bin/webpack-dev-server --mode development --open --config ./build/webpack.dev.conf.js",
-    "build": "webpack --mode production --config ./build/webpack.prod.conf.js",
-    "semantic-release": "./node_modules/.bin/semantic-release --prepare && npm publish && semantic-release post"
+    "build": "npm run test && webpack --mode production --config ./build/webpack.prod.conf.js",
+    "lint": "./node_modules/.bin/eslint .",
+    "semantic-release": "./node_modules/.bin/semantic-release --prepare && npm publish && semantic-release post",
+    "test": "./node_modules/.bin/babel-node ./spec/run.js",
+    "test:show-coverage": "./node_modules/.bin/babel-node ./node_modules/babel-istanbul/lib/cli cover --report text ./spec/run.js",
+    "test:check-coverage": "./node_modules/.bin/istanbul check-coverage",
+    "test:upload-coverage": "cat ./coverage/lcov.info | codecov"
   },
-  "dependencies": {},
+  "dependencies": {
+    "babel-istanbul": "^0.12.2",
+    "istanbul": "^0.4.5",
+    "module-alias": "^2.0.6"
+  },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "commitizen": "^2.9.6",
     "css-loader": "^0.28.11",
     "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "ghooks": "^2.0.4",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jasmine": "^3.1.0",
+    "jasmine-core": "^3.1.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "jsdom": "^11.11.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
@@ -34,7 +60,14 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm run test && npm run test:check-coverage"
     }
+  },
+  "_moduleAliases": {
+    "@lib": "./src/lib"
   },
   "repository": {
     "type": "git",

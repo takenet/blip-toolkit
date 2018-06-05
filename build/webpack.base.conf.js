@@ -1,89 +1,94 @@
-"use strict";
-const path = require("path");
-const webpack = require("webpack");
-
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+'use strict'
+const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: ["./src/app.js"],
+  entry: ['./src/app.js'],
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "blip-toolkit.js",
-    library: "BLiPToolkit",
-    libraryTarget: "umd"
+    path: path.resolve(__dirname, '../dist'),
+    filename: 'blip-toolkit.js',
+    library: 'BLiPToolkit',
+    libraryTarget: 'umd',
   },
-  target: "web",
+  target: 'web',
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: [
-          {
-            loader: "babel-loader"
-          }
-        ],
-        exclude: /node_modules/
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.(scss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               minimize: {
-                safe: true
-              }
-            }
+                safe: true,
+              },
+            },
           },
           {
-            loader: "sass-loader",
-            options: {}
-          }
-        ]
+            loader: 'sass-loader',
+            options: {},
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|ttf|otf|eot|svg)(\?]?.*)?$/,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             options: {
               limit: 1024,
-              name: "fonts/[name].[ext]?[hash]"
-            }
-          }
-        ]
+              name: 'fonts/[name].[ext]?[hash]',
+            },
+          },
+        ],
       },
       {
         test: /\.ico$/i,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "/[name].[ext]"
-            }
-          }
+              name: '/[name].[ext]',
+            },
+          },
         ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
+            loader: 'html-loader',
             options: {
-              query: { minimize: true }
-            }
-          }
-        ]
-      }
-    ]
+              query: { minimize: true },
+            },
+          },
+        ],
+      },
+    ],
   },
   node: false,
+  resolve: {
+    alias: {
+      '@lib': path.resolve(__dirname, '../src/lib'),
+    },
+  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "blip-toolkit.css",
-      chunkFilename: "[id].css"
-    })
-  ]
-};
+      filename: 'blip-toolkit.css',
+      chunkFilename: '[id].css',
+    }),
+  ],
+}

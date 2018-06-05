@@ -1,4 +1,4 @@
-import { BlipSelect } from '../../src/components/blipSelect/blipSelect'
+import { BlipSelect } from '../../src/components/blipSelect'
 
 describe('BlipSelect', () => {
   let selectElement
@@ -68,6 +68,26 @@ describe('BlipSelect', () => {
 
       const { value } = component.getValue()
       expect(value).toEqual('val1')
+    })
+
+    it('should modify default search', () => {
+      const component = new BlipSelect(selectElement, {
+        mode: 'autocomplete',
+        customSearch: ({ $event }) => {
+          const { query, items } = $event
+          return items.filter(i => i.label.endsWith(query))
+        },
+      })
+
+      component.selectOptions = [{
+        value: 'val1',
+        label: 'label 1',
+      }]
+
+      component.setValue({ value: '1' })
+      component._onInputChange(new Event('change'))
+
+      expect(component.selectOptionsContainer.querySelectorAll('li')[0].innerHTML).toEqual('label 1')
     })
   })
 })

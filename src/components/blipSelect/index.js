@@ -30,13 +30,13 @@ export class BlipSelect {
     placeholder: '',
     mode: 'select',
     noResultsText: 'No results found',
-    initialValue: '',
     beforeOpenSelect: () => {},
     afterOpenSelect: () => {},
     beforeCloseSelect: () => {},
     afterCloseSelect: () => {},
     onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
     onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
+    customSearch: undefined, // Function that should return a list of { value, label } pair
   }
 
   constructor(element, options) {
@@ -238,9 +238,15 @@ export class BlipSelect {
     }
 
     const inputValue = this.input.value
-    const searchResults = this.selectOptions.filter(
-      ({ value, label }) => label.toLowerCase().includes(inputValue.toLowerCase())
-    )
+    const searchResults = this.configOptions.customSearch
+      ? this.configOptions.customSearch.call(this, EventEmitter({
+        query: inputValue,
+        items: this.selectOptions,
+      }))
+      : this.selectOptions.filter(
+        ({ value, label }) => label.toLowerCase().includes(inputValue.toLowerCase())
+      )
+
     this.configOptions.onInputChange(EventEmitter({ value: inputValue, event }))
 
     if (searchResults.length > 0) {
@@ -262,7 +268,7 @@ export class BlipSelect {
       throw new Error('Callback "onSelectOption" is not a function')
     }
 
-    this.configOptions.onSelectOption(EventEmitter({ value, label }))
+    this.configOptions.onSelectOption.call(this, EventEmitter({ value, label }))
   }
 
   /**

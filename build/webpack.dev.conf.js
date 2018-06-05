@@ -11,7 +11,7 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       pkg: require('../package.json'),
-      template: './src/index.html',
+      template: './docs/index.html',
       inject: 'body',
     }),
     new FriendlyErrorsWebpackPlugin({

@@ -23,6 +23,7 @@ $bp-color-delete: #fb7a6d;
 
 $bp-color-true: #4dcb7b;
 
+$bp-color-onix: #242B36;
 $bp-color-city: #52636c;
 $bp-color-rooftop: #738192;
 $bp-color-desk: #607B99;
@@ -38,7 +39,9 @@ $bp-color-disabled: $bp-color-offwhite;
 $bp-color-white: #ffffff;
 $bp-color-black: #000000;
 
-$bp-color-gradient: linear-gradient(180deg, #f9fbfc 0%, #ecf1f3 100%);
+$bp-gradient-shine: linear-gradient(180deg, #f9fbfc 0%, #ecf1f3 100%);
+$bp-gradient-blip: linear-gradient(90deg, #51DBE3 0%, #28B4C3 100%);
+$bp-gradient-suit: linear-gradient(90deg,#3d4554,#2f3747);
 
 //3rd parties
 $bp-color-facebook: #3c5a99;

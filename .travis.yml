@@ -1,7 +1,7 @@
 sudo: required
 language: node_js
 install:
-  - npm install -g codecov
+  - npm install -g codecov babel-cli
 cache:
   directories:
     - node_modules

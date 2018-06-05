@@ -1,11 +1,9 @@
+
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 [![Build Status](https://travis-ci.org/takenet/blip-toolkit.png)](https://travis-ci.org/takenet/blip-toolkit)
 [![npm](https://img.shields.io/npm/dt/blip-toolkit.svg)](https://www.npmjs.com/package/blip-toolkit)
 [![npm](https://img.shields.io/npm/v/blip-toolkit.svg)](https://www.npmjs.com/package/blip-toolkit)
 [![codecov](https://codecov.io/gh/takenet/blip-toolkit/branch/master/graph/badge.svg)](https://codecov.io/gh/takenet/blip-toolkit)
-
----
-
-![codecov.io](https://codecov.io/github/takenet/blip-toolkit/branch.svg?branch=develop)
 
 ---
 

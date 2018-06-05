@@ -13,6 +13,7 @@ before_install:
 before_script:
   - npm prune && npm install -g codecov
 script:
+  - npm run test:show-coverage
   - npm run test:upload-coverage
   - codecov
   - npm run build

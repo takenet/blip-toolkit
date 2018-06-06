@@ -49,6 +49,7 @@ export class BlipSelect {
     this._handleSelectFocus = ''
     this._handleSelectBlur = ''
     this._handleOptionClick = ''
+    this.parentNode = ''
 
     this.configOptions = {
       ...this.$state,
@@ -123,7 +124,7 @@ export class BlipSelect {
     }
 
     // Setup element structure
-    const parentNode = this.el.parentNode
+    this.parentNode = this.el.parentNode
     this.customSelectId = `${blipSelectOptionsClass}-${guid()}`
 
     // Component mode
@@ -150,7 +151,7 @@ export class BlipSelect {
         throw new Error('Unrecognized component mode')
     }
 
-    parentNode.insertBefore(this.wrapper, this.el)
+    this.parentNode.insertBefore(this.wrapper, this.el)
 
     this.selectOptionsContainer = this.wrapper.querySelector(`#${this.customSelectId}`)
     this.selectLabel = this.wrapper.querySelector('label')
@@ -269,6 +270,13 @@ export class BlipSelect {
     }
 
     this.configOptions.onSelectOption.call(this, EventEmitter({ value, label }))
+  }
+
+  /**
+   * Clear input value
+   */
+  clearInput() {
+    this._setInputValue({ value: '', label: '' })
   }
 
   /**
@@ -454,5 +462,30 @@ export class BlipSelect {
     this.selectLabel.classList.remove(bpCblipLightClass)
     this.selectLabel.classList.add(bpCrooftopClass)
     this.isSelectOpen = false
+  }
+
+  /**
+   * Remove elements from DOM
+   */
+  _removeElements() {
+    this.wrapper.parentNode.removeChild(this.wrapper)
+  }
+
+  /**
+   * Remove element listeners
+   */
+  _removeEventHandlers() {
+    this.input.removeEventListener('focus', this._handleSelectFocus)
+    this.input.removeEventListener('blur', this._handleSelectBlur)
+    this.input.removeEventListener('keyup', this._handleInputChange)
+  }
+
+  /**
+   * Destroy BlipSelect instance and remove dom elements
+   */
+  destroy() {
+    this._removeEventHandlers()
+    this._removeElements()
+    this.el.style.display = 'inline-block'
   }
 }

@@ -89,6 +89,15 @@ Returns current instance value
 const { value, label } = instance.getValue()
 ```
 
+#### `destroy` - function
+
+Destroy element instance
+
+
+#### `clearInput` - function
+
+Clear input value
+
 ---
 
 ## Callbacks

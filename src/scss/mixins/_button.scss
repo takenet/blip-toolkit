@@ -3,6 +3,16 @@
   -moz-appearance: button;
 }
 
+@mixin bp-btn--custom ($primary-color, $secondary-color) {
+  @include bp-btn--regular ($primary-color, $secondary-color);
+  @include bp-btn--flat ($primary-color, $secondary-color);
+}
+
+@mixin bp-btn--arrow ($color) {
+  @include bp-btn--regular-arrow ($color);
+  @include bp-btn--flat-arrow ($color);
+}
+
 @mixin bp-btn--regular($color, $bg-color) {
   color: $color;
   background-color: $bg-color;
@@ -19,6 +29,7 @@
     text-decoration: none;
   }
 
+  @include bp-btn--arrow($bg-color);
   @include bp-btn--no-background();
   @include bp-btn--no-border();
 
@@ -51,6 +62,7 @@
       text-decoration: none;
     }
 
+    @include bp-btn--arrow($border-color);
     @include bp-btn--no-background();
     @include bp-btn--no-border();
 
@@ -60,6 +72,67 @@
       color: $bp-btn-bg-color;
       border: $bp-btn-bg-color;
       border: $bp-btn-border;
+    }
+  }
+}
+
+@mixin bp-btn--regular-arrow($color) {
+  &.bp-btn--arrow {
+    overflow: visible;
+    position: relative;
+    &:after {
+      content: ' ';
+      width: 28px;
+      height: 28px;
+      background-color: $color;
+      position: absolute;
+      right: -14px;
+      top: 7px;
+      transform: rotate(45deg);
+    }
+
+    &:hover {
+      &:after {
+        border-color: bp-darken($color);
+        background-color: bp-darken($color);
+      }
+    }
+
+    &:disabled {
+      &:after {
+        cursor: default;
+        background-color: $bp-btn-bg-color;
+        color: $bp-btn-color;
+        border: none;
+      }
+    }
+  }
+}
+
+@mixin bp-btn--flat-arrow($color) {
+  &.bp-btn--arrow {
+    &.bp-btn--flat {
+      &:after {
+        border: none;
+        background-color: transparent;
+        border-color: $color;
+      }
+
+      &:hover {
+        &:after {
+          background-color: transparent;
+          border-color: bp-darken($color);
+        }
+      }
+
+      &:disabled {
+        &:after {
+          background-color: transparent;
+          color: $bp-btn-bg-color;
+          border: $bp-btn-bg-color;
+          border: $bp-btn-border;
+        }
+      }
     }
   }
 }

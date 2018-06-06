@@ -489,17 +489,32 @@
         <tbody class="w-100">
           <tr class="w-100">
             <td class="bp-fs-5 pa2 tc w-50">
-              <button class="bp-btn bp-btn--flat bp-btn--no-border bp-btn--delete">Flat s/ Borda</button>
+              <button class="bp-btn bp-btn--delete bp-btn--arrow">Flat s/ Borda</button>
             </td>
-            <td class="bp-fs-5 pa2 tl w-50">.bp-btn
-              <span class="bp-c-black">.bp-btn--no-border</span>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--c-delete .bp-btn--arrow</td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--delete bp-btn--flat bp-btn--arrow">Flat s/ Borda</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--c-delete .bp-btn--arrow</td>
+          </tr>
+          <tr class="w-100">
+            <td class="bp-fs-5 pa2 tc w-50">
+              <button class="bp-btn bp-btn--flat bp-btn--no-border bp-btn--c-delete">Flat s/ Borda</button>
+            </td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--flat .bp-btn--c-delete .bp-btn--no-border
+              <p class="bp-fs-8">*Texto escurece on-hover</p>
             </td>
           </tr>
           <tr class="w-100">
             <td class="bp-fs-5 pa2 tc w-50">
-              <button class="bp-btn bp-btn--no-background bp-btn--c-black">Base s/ Fundo</button>
+              <button class="bp-btn bp-btn--no-background bp-btn--c-delete">Base s/ Fundo</button>
             </td>
-            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--no-background</td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--c-delete.bp-btn--no-background
+              <p class="bp-fs-8">*Texto
+                <b>não</b> escurece on-hover</p>
+            </td>
           </tr>
           <tr class="w-100">
             <td class="bp-fs-5 pa2 tc w-50">
@@ -511,13 +526,13 @@
             <td class="bp-fs-5 pa2 tc w-50">
               <button disabled class="bp-btn bp-btn--flat">Flat Disabled</button>
             </td>
-            <td class="bp-fs-5 pa2 tl w-50">.bp-btn disabled</td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--flat disabled</td>
           </tr>
           <tr class="w-100">
             <td class="bp-fs-5 pa2 tc w-50">
               <button class="bp-btn bp-btn--bot bp-btn--small">Small</button>
             </td>
-            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--small</td>
+            <td class="bp-fs-5 pa2 tl w-50">.bp-btn .bp-btn--bot .bp-btn--small</td>
           </tr>
         </tbody>
       </table>
@@ -532,9 +547,22 @@
 
     <div class="relative mb6">
       <h4>Exemplos de Dropdown</h4>
-      <div class="bp-dropdown bp-dropdown--show bp-dropdown--left">
-        <div class="mh2 tc">
-          Esse é o conteúdo de um dropdown
+      <div class="relative db w-100 w-30-l pt2">
+        <p class="bp-fs-8">*.bp-dropdown--hide esconde o dropdown</p>
+      </div>
+      <div class="relative db w-100 w-30-l pb3 mb5">
+        <div class="bp-dropdown bp-dropdown--show bp-dropdown--left">
+          <div class="mh2 tc">
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--left
+          </div>
+        </div>
+      </div>
+
+      <div class="relative db w-100 w-30-l pb3 mb6">
+        <div class="bp-dropdown bp-dropdown--show bp-dropdown--right">
+          <div class="mh2 tc">
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--right
+          </div>
         </div>
       </div>
     </div>

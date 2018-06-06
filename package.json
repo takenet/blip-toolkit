@@ -3,7 +3,7 @@
   "description": "'BLiP's Toolkit'",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "dist/blip-toolkit.css",
+  "main": "dist/blip-toolkit.js",
   "files": [
     "dist/blip-toolkit.css",
     "dist/blip-toolkit.js"

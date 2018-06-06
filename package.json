@@ -3,7 +3,11 @@
   "description": "'BLiP's Toolkit'",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "build/dist/blip-toolkit.css",
+  "main": "dist/blip-toolkit.css",
+  "files": [
+    "dist/blip-toolkit.css",
+    "dist/blip-toolkit.js"
+  ],
   "author": "Breno Queiroz <brenoqueiroz@gmail.com>",
   "private": false,
   "scripts": {

@@ -7,6 +7,14 @@
 
 ---
 
+## Usage
+
+Install package running `npm i -S blip-toolkit`.
+
+Use `import 'blip-toolkit/dist/blip-toolkit.css` to load styles.
+
+___
+
 **A Documentação**
 
 Olá, BLiPer! Esta é a documentação para o BLiP Toolkit. Aqui você conhecerá melhor a ferramenta e saberá como utilizar as classes e padrões para criar conteúdo para a plataforma BLiP! 😊

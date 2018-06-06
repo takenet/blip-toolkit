@@ -3,6 +3,7 @@
 Blip select is a JavaScript library for customize your select. You can use just as custom select or autocomplete behavior.
 
 ## Usage
+
 ```html
 <select id="amazing-select">
   <option value="Option 1">Option 1</option>
@@ -11,6 +12,7 @@ Blip select is a JavaScript library for customize your select. You can use just 
 </select>
 
 <script type="text/javascript">
+  import { BlipSelect } from 'blip-toolkit'
   const amazingSelect = document.getElementById('amazing-select')
   const blipSelect = new BlipSelect(amazingSelect)
 </script>
@@ -26,6 +28,7 @@ Youn can also pass options to `BlipSelect` instance
 </select>
 
 <script type="text/javascript">
+  import { BlipSelect } from 'blip-toolkit'
   const amazingSelect = document.getElementById('amazing-select')
   const blipSelect = new BlipSelect(amazingSelect, {
     label: 'Custom Select',

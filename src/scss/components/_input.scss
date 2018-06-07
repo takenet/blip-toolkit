@@ -28,7 +28,7 @@
   border: none;
   font-size: $bp-fs-6;
   background: transparent;
-  width: 90%;
+  width: 89%;
   height: auto;
   padding: 0;
   @include placeholder($bp-color-cloud);
@@ -47,7 +47,7 @@
   -webkit-appearance: none;
   margin: 0;
 }
- 
+
 .bp-input[type="number"] {
   -moz-appearance: textfield;
 }

@@ -5,12 +5,29 @@
 
 @mixin bp-btn--custom ($primary-color, $secondary-color) {
   @include bp-btn--regular ($primary-color, $secondary-color);
-  @include bp-btn--flat ($primary-color, $secondary-color);
+  @include bp-btn--flat ($secondary-color, $secondary-color);
+  @include bp-btn--regular-arrow($secondary-color);
+  @include bp-btn--flat-arrow($secondary-color);
 }
 
-@mixin bp-btn--arrow ($color) {
-  @include bp-btn--regular-arrow ($color);
-  @include bp-btn--flat-arrow ($color);
+@mixin bp-btn--arrow () {
+  overflow: visible;
+  position: relative;
+  &:after {
+    content: ' ';
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    right: -14px;
+    top: 7px;
+    transform: rotate(45deg);
+  }
+
+  &:disabled {
+    &:after {
+      cursor: default;
+    }
+  }
 }
 
 @mixin bp-btn--regular($color, $bg-color) {
@@ -21,20 +38,7 @@
     background-color: bp-darken($bg-color);
   }
 
-  &:active,
-  &:focus,
-  &:visited,
-  &:hover {
-    outline: none;
-    text-decoration: none;
-  }
-
-  @include bp-btn--arrow($bg-color);
-  @include bp-btn--no-background();
-  @include bp-btn--no-border();
-
   &:disabled {
-    cursor: default;
     background-color: $bp-btn-bg-color;
     color: $bp-btn-color;
     border: none;
@@ -54,23 +58,10 @@
       color: bp-darken($color);
     }
 
-    &:active,
-    &:focus,
-    &:visited,
-    &:hover {
-      outline: none;
-      text-decoration: none;
-    }
-
-    @include bp-btn--arrow($border-color);
-    @include bp-btn--no-background();
-    @include bp-btn--no-border();
-
     &:disabled {
-      cursor: default;
       background-color: transparent;
       color: $bp-btn-bg-color;
-      border: $bp-btn-bg-color;
+      border-color: $bp-btn-bg-color;
       border: $bp-btn-border;
     }
   }
@@ -78,17 +69,8 @@
 
 @mixin bp-btn--regular-arrow($color) {
   &.bp-btn--arrow {
-    overflow: visible;
-    position: relative;
     &:after {
-      content: ' ';
-      width: 28px;
-      height: 28px;
       background-color: $color;
-      position: absolute;
-      right: -14px;
-      top: 7px;
-      transform: rotate(45deg);
     }
 
     &:hover {
@@ -100,7 +82,6 @@
 
     &:disabled {
       &:after {
-        cursor: default;
         background-color: $bp-btn-bg-color;
         color: $bp-btn-color;
         border: none;
@@ -112,8 +93,15 @@
 @mixin bp-btn--flat-arrow($color) {
   &.bp-btn--arrow {
     &.bp-btn--flat {
+      border-right: none;
       &:after {
-        border: none;
+        width: 27px;
+        height: 27px;
+        right: -14px;
+        top: 5px;
+        border: $bp-btn-border;
+        border-left: none;
+        border-bottom: none;
         background-color: transparent;
         border-color: $color;
       }
@@ -126,11 +114,14 @@
       }
 
       &:disabled {
+        border-right: none;
         &:after {
           background-color: transparent;
           color: $bp-btn-bg-color;
-          border: $bp-btn-bg-color;
+          border-color: $bp-btn-bg-color;
           border: $bp-btn-border;
+          border-left: none;
+          border-bottom: none;
         }
       }
     }
@@ -153,6 +144,8 @@
   &:hover {
     background-color: bp-darken($bg-color);
   }
+
+  @include bp-btn--regular-arrow($bg-color);
 }
 
 @mixin bp-btn--no-border() {

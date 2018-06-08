@@ -1,7 +1,6 @@
 .bp-btn {
   display: inline-block;
 
-  @include bp-btn--regular($bp-btn-color, $bp-btn-bg-color);
   @include button();
 
   cursor: pointer;
@@ -26,11 +25,26 @@
 
   font-family: $bp-btn-font-family;
   font-size: $bp-btn-font-size;
-  text-decoration: none;
   font-weight: $bp-btn-font-weight;
-  outline: none;
 
-  @include bp-btn--flat($bp-btn-flat-color, $bp-btn-flat-border-color);
+  outline: none;
+  text-decoration: none;
+
+  &:active,
+  &:focus,
+  &:visited,
+  &:hover,
+  &:disabled {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  @include bp-btn--arrow();
+  @include bp-btn--custom($bp-btn-color, $bp-btn-bg-color);
 
   /** Size **/
 
@@ -41,83 +55,67 @@
   /** Custom BLiP Setups **/
 
   &.bp-btn--bot {
-    @include bp-btn--regular($bp-color-white, $bp-color-bot);
-    @include bp-btn--flat($bp-color-bot, $bp-color-bot);
+    @include bp-btn--custom($bp-color-white, $bp-color-bot);
   }
 
   &.bp-btn--blip-light {
-    @include bp-btn--regular($bp-color-white, $bp-color-blip-light);
-    @include bp-btn--flat($bp-color-blip-light, $bp-color-blip-light);
+    @include bp-btn--custom($bp-color-white, $bp-color-blip-light);
   }
 
   &.bp-btn--blip-dark {
-    @include bp-btn--regular($bp-color-white, $bp-color-blip-dark);
-    @include bp-btn--flat($bp-color-blip-dark, $bp-color-blip-dark);
+    @include bp-btn--custom($bp-color-white, $bp-color-blip-dark);
   }
 
   &.bp-btn--warning {
-    @include bp-btn--regular($bp-color-white, $bp-color-warning);
-    @include bp-btn--flat($bp-color-warning, $bp-color-warning);
+    @include bp-btn--custom($bp-color-white, $bp-color-warning);
   }
 
   &.bp-btn--delete {
-    @include bp-btn--regular($bp-color-white, $bp-color-delete);
-    @include bp-btn--flat($bp-color-delete, $bp-color-delete);
+    @include bp-btn--custom($bp-color-white, $bp-color-delete);
   }
 
   &.bp-btn--true {
-    @include bp-btn--regular($bp-color-white, $bp-color-true);
-    @include bp-btn--flat($bp-color-true, $bp-color-true);
+    @include bp-btn--custom($bp-color-white, $bp-color-true);
   }
 
   &.bp-btn--onix {
-    @include bp-btn--regular($bp-color-white, $bp-color-onix);
-    @include bp-btn--flat($bp-color-onix, $bp-color-onix);
+    @include bp-btn--custom($bp-color-white, $bp-color-onix);
   }
 
   &.bp-btn--city {
-    @include bp-btn--regular($bp-color-white, $bp-color-city);
-    @include bp-btn--flat($bp-color-city, $bp-color-city);
+    @include bp-btn--custom($bp-color-white, $bp-color-city);
   }
 
   &.bp-btn--rooftop {
-    @include bp-btn--regular($bp-color-white, $bp-color-rooftop);
-    @include bp-btn--flat($bp-color-rooftop, $bp-color-rooftop);
+    @include bp-btn--custom($bp-color-white, $bp-color-rooftop);
   }
 
   &.bp-btn--desk {
-    @include bp-btn--regular($bp-color-white, $bp-color-desk);
-    @include bp-btn--flat($bp-color-desk, $bp-color-desk);
+    @include bp-btn--custom($bp-color-white, $bp-color-desk);
   }
 
   &.bp-btn--cloud {
-    @include bp-btn--regular($bp-color-white, $bp-color-cloud);
-    @include bp-btn--flat($bp-color-cloud, $bp-color-cloud);
+    @include bp-btn--custom($bp-color-white, $bp-color-cloud);
   }
 
   &.bp-btn--silver {
-    @include bp-btn--regular($bp-color-white, $bp-color-silver);
-    @include bp-btn--flat($bp-color-silver, $bp-color-silver);
+    @include bp-btn--custom($bp-color-white, $bp-color-silver);
   }
 
   &.bp-btn--time {
-    @include bp-btn--regular($bp-color-white, $bp-color-time);
-    @include bp-btn--flat($bp-color-time, $bp-color-time);
+    @include bp-btn--custom($bp-color-white, $bp-color-time);
   }
 
   &.bp-btn--breeze {
-    @include bp-btn--regular($bp-color-white, $bp-color-breeze);
-    @include bp-btn--flat($bp-color-breeze, $bp-color-breeze);
+    @include bp-btn--custom($bp-color-white, $bp-color-breeze);
   }
 
   &.bp-btn--sky {
-    @include bp-btn--regular($bp-color-white, $bp-color-sky);
-    @include bp-btn--flat($bp-color-sky, $bp-color-sky);
+    @include bp-btn--custom($bp-color-white, $bp-color-sky);
   }
 
   &.bp-btn--offwhite {
-    @include bp-btn--regular($bp-color-white, $bp-color-offwhite);
-    @include bp-btn--flat($bp-color-offwhite, $bp-color-offwhite);
+    @include bp-btn--custom($bp-color-white, $bp-color-offwhite);
   }
 
   /* Color */
@@ -263,4 +261,7 @@
   &.bp-btn--bg-sky {
     @include bp-btn--bg($bp-color-sky);
   }
+
+  @include bp-btn--no-background();
+  @include bp-btn--no-border();
 }

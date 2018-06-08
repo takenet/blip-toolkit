@@ -2,5 +2,6 @@
 @import "variables/module";
 @import "mixins/module";
 
-@import "utilities/module";
+//Utilities NEED to come after
 @import "components/module";
+@import "utilities/module";

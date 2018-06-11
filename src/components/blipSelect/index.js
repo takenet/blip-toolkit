@@ -45,6 +45,7 @@ export class BlipSelect {
     this.selectOptions = []
     this.searchResults = []
     this.selectOptionsContainer = ''
+    this.selectOptionsContainerOpenPosition = ''
     this.selectLabel = ''
     this._handleSelectFocus = ''
     this._handleSelectBlur = ''
@@ -205,7 +206,7 @@ export class BlipSelect {
     // Set handler for each menu option
     this.selectOptionsContainer
       .querySelectorAll('li')
-      .forEach(o => o.addEventListener('click', (ev) => this._onOptionClick(ev)))
+      .forEach(o => o.addEventListener('click', this._onOptionClick.bind(this)))
   }
 
   /**
@@ -334,6 +335,8 @@ export class BlipSelect {
       this._setInputValue(this.selectOptions.find(o => o.value === event.target.getAttribute('data-value')))
       this._resetSelectedOptions()
       event.target.classList.add(blipSelectOptionSeletedClass)
+
+      this._closeSelect()
     }
   }
 
@@ -378,23 +381,15 @@ export class BlipSelect {
   /**
    * On select blur
    */
-  _onSelectBlur() {
-    if (typeof this.configOptions.beforeCloseSelect !== 'function') {
-      throw Error('Callback "beforeCloseSelect" is not a function')
+  _onSelectBlur(e) {
+    // Prevents close container before user can select any option
+    if (e.relatedTarget && e.relatedTarget.classList.contains(blipSelectOptionClass)) {
+      return
     }
-
-    if (typeof this.configOptions.afterCloseSelect !== 'function') {
-      throw Error('Callback "afterCloseSelect" is not a function')
-    }
-    // Callback invoked before select open
-    this.configOptions.beforeCloseSelect()
 
     setTimeout(() => { // Needed for get option value on "li" click
       this._closeSelect()
     }, ANIMATION_TIMEOUT - 200)
-
-    // Callback invoked after select open
-    this.configOptions.afterCloseSelect()
   }
 
   /**
@@ -414,6 +409,9 @@ export class BlipSelect {
         (containerOptionsTopSpace > bottomSpace)
       ) {
         this.selectOptionsContainer.classList.add(blipSelectOptionOpenTopClass)
+        this.selectOptionsContainerOpenPosition = 'top'
+      } else {
+        this.selectOptionsContainerOpenPosition = 'bottom'
       }
 
       this.selectOptionsContainer.style.transform = 'scale(1)'
@@ -450,6 +448,17 @@ export class BlipSelect {
    * Close select setting up styles
    */
   _closeSelect() {
+    if (typeof this.configOptions.beforeCloseSelect !== 'function') {
+      throw Error('Callback "beforeCloseSelect" is not a function')
+    }
+
+    if (typeof this.configOptions.afterCloseSelect !== 'function') {
+      throw Error('Callback "afterCloseSelect" is not a function')
+    }
+
+    // Callback invoked before select open
+    this.configOptions.beforeCloseSelect()
+
     this.selectOptionsContainer.style.transform = 'scale(0)'
     this.selectOptionsContainer.style.opacity = 0
 
@@ -462,6 +471,9 @@ export class BlipSelect {
     this.selectLabel.classList.remove(bpCblipLightClass)
     this.selectLabel.classList.add(bpCrooftopClass)
     this.isSelectOpen = false
+
+    // Callback invoked after select open
+    this.configOptions.afterCloseSelect()
   }
 
   /**

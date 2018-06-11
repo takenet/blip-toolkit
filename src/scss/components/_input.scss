@@ -175,13 +175,9 @@
 // =========
 
 /**
-* Check state
+* Check
 */
-.bp-input-check--hidden {
-  visibility: hidden;
-}
-
-.bp-input-check--true {
+.bp-input-check {
   visibility: visible;
   font-size: 1.9*$m;
   line-height: 0.5*$m;

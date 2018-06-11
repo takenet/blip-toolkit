@@ -4,7 +4,7 @@
       "env",
       {
         "targets": {
-          "browsers": ["> 5% in BR"]
+          "browsers": ["> 1%", "last 2 versions", "ie >= 11"]
         }
       }
     ]

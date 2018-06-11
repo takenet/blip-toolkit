@@ -158,7 +158,7 @@ export class BlipSelect {
     this.selectLabel = this.wrapper.querySelector('label')
 
     // Setup element options
-    elementOptions.forEach(element => {
+    Array.prototype.forEach.call(elementOptions, element => {
       this.selectOptions = this.selectOptions.concat({
         value: element.value,
         label: element.label,
@@ -204,9 +204,9 @@ export class BlipSelect {
    */
   _setupOptionsEventHandlers() {
     // Set handler for each menu option
-    this.selectOptionsContainer
-      .querySelectorAll('li')
-      .forEach(o => o.addEventListener('click', this._onOptionClick.bind(this)))
+    Array.prototype.forEach.call(
+      this.selectOptionsContainer.querySelectorAll('li'),
+      o => o.addEventListener('click', this._onOptionClick.bind(this)))
   }
 
   /**
@@ -344,13 +344,13 @@ export class BlipSelect {
    * Remove all selected class from options
    */
   _resetSelectedOptions() {
-    this.selectOptionsContainer
-      .querySelectorAll('li')
-      .forEach(o =>
+    Array.prototype.forEach.call(
+      this.selectOptionsContainer.querySelectorAll('li'),
+      o =>
         o.classList.contains(blipSelectOptionSeletedClass)
           ? o.classList.remove(blipSelectOptionSeletedClass)
           : ''
-      )
+    )
   }
 
   /**

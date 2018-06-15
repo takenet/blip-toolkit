@@ -7,6 +7,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   bail: true,
+  entry: ['./sandbox/main.js'],
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',

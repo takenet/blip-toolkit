@@ -31,6 +31,7 @@ export class BlipTag {
     color: '#fff',
     id: `${blipTagClass}-${guid()}`,
     onRemove: () => {},
+    onSelectColor: () => {},
   }
 
   constructor(options) {
@@ -134,6 +135,7 @@ export class BlipTag {
    */
   _selectColor(color) {
     this.tagBackground = color
+    this.tagOptions.onSelectColor.call(this, EventEmitter({ color }))
     this._hideColorOptions()
   }
 

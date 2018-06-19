@@ -397,15 +397,12 @@ export class BlipSelect {
    */
   _openSelect() {
     this.selectOptionsContainer.style.display = 'block'
-
     setTimeout(() => { // Needed for animation
       const containerOptionsHeight = this.selectOptionsContainer.offsetHeight
       const containerOptionsTopSpace = this.wrapper.getBoundingClientRect().top
       const bottomSpace = window.innerHeight - containerOptionsTopSpace
-
-      // Open select where have more space (bottom or top)
       if (
-        (bottomSpace < containerOptionsHeight && containerOptionsTopSpace > containerOptionsHeight) ||
+        (bottomSpace < containerOptionsHeight && containerOptionsTopSpace > containerOptionsHeight) &&
         (containerOptionsTopSpace > bottomSpace)
       ) {
         this.selectOptionsContainer.classList.add(blipSelectOptionOpenTopClass)

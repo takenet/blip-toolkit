@@ -1,0 +1,59 @@
+.blip-tag-container {
+  position: relative;
+}
+
+.blip-tag-select-color {
+  background: #fff;
+  box-shadow: 0 1px 12px 0 rgba(173, 182, 185, 0.29);
+  padding: 10px;
+  width: 125px;
+  position: absolute;
+  top: 120%;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 20px;
+    top: -16px;
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 16px solid #fff;
+  }
+}
+
+.blip-tag {
+  display: inline-block;
+  padding: 4px 15px;
+  border-radius: 20px;
+}
+
+.blip-tag__remove {
+  display: inline-block;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.blip-tag-select-color {
+  list-style: none;
+  padding: 10px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: row;
+  transform-origin: 0 0;
+  transition: 300ms;
+  @include flex-box;
+}
+
+.blip-tag-color-option {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}

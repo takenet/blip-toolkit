@@ -1,6 +1,6 @@
 # Blip Select
 
-Blip select is a JavaScript library for customize your select. You can use just as custom select or autocomplete behavior.
+Blip select is a JavaScript plugin to customize your select. You can use just as custom select or autocomplete behavior.
 
 ## Usage
 

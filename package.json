@@ -18,6 +18,7 @@
     "semantic-release": "./node_modules/.bin/semantic-release --prepare && npm publish && semantic-release post",
     "test": "./node_modules/.bin/babel-node ./spec/run.js",
     "test:show-coverage": "./node_modules/.bin/babel-node ./node_modules/babel-istanbul/lib/cli cover --report text ./spec/run.js",
+    "test:report-html": "./node_modules/.bin/babel-node ./node_modules/babel-istanbul/lib/cli cover --report html ./spec/run.js",
     "test:check-coverage": "./node_modules/.bin/istanbul check-coverage",
     "test:upload-coverage": "cat ./coverage/lcov.info | codecov"
   },

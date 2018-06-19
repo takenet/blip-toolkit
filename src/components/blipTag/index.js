@@ -42,7 +42,14 @@ export class BlipTag {
       ...options,
     }
 
-    return this._setup()
+    this._setup()
+  }
+
+  /**
+   * Returns tag element
+   */
+  get element() {
+    return this.tagContainer
   }
 
   /**
@@ -72,8 +79,6 @@ export class BlipTag {
     })
 
     this._setupEventHandlers()
-
-    return this.tagContainer
   }
 
   /**
@@ -160,5 +165,6 @@ export class BlipTag {
     this.tagOptions.onRemove.call(this, EventEmitter({ tag: this.tagContainer }))
 
     this.tagContainer.parentNode.removeChild(this.tagContainer)
+    this.tagContainer = undefined
   }
 }

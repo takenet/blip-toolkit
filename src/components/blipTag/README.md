@@ -17,7 +17,7 @@ const tag = new BlipTag({
 })
 
 // Append tag element to your list
-document.getElementById('my-tag-list').appendChild(tag)
+document.getElementById('my-tag-list').appendChild(tag.element)
 </script>
 ```
 

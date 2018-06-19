@@ -397,7 +397,6 @@ export class BlipSelect {
    */
   _openSelect() {
     this.selectOptionsContainer.style.display = 'block'
-
     setTimeout(() => { // Needed for animation
       const containerOptionsHeight = this.selectOptionsContainer.offsetHeight
       const containerOptionsTopSpace = this.wrapper.getBoundingClientRect().top

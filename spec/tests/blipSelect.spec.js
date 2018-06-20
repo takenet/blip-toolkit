@@ -89,5 +89,21 @@ describe('BlipSelect', () => {
 
       expect(component.selectOptionsContainer.querySelectorAll('li')[0].innerHTML).toEqual('label 1')
     })
+
+    it('should focus', () => {
+      const component = new BlipSelect(selectElement, {
+        mode: 'autocomplete',
+        onFocus: () => 'focused',
+      })
+
+      component.selectOptions = {
+        value: 'val1',
+        label: 'label 1',
+      }
+
+      spyOn(component.configOptions, 'onFocus')
+      component._onSelectFocus()
+      expect(component.configOptions.onFocus).toHaveBeenCalled()
+    })
   })
 })

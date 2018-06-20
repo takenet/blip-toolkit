@@ -34,6 +34,8 @@ export class BlipSelect {
     afterOpenSelect: () => {},
     beforeCloseSelect: () => {},
     afterCloseSelect: () => {},
+    onFocus: () => {}, // Focus callback
+    onBlur: () => {}, // Blur callback
     onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
     onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
     customSearch: undefined, // Function that should return a list of { value, label } pair
@@ -369,9 +371,14 @@ export class BlipSelect {
       throw Error('Callback "afterOpenSelect" is not a function')
     }
 
+    if (typeof this.configOptions.onFocus !== 'function') {
+      throw Error('Callback "onFocus" is not a function')
+    }
+
+    this.configOptions.onFocus()
+
     // Callback invoked before select open
     this.configOptions.beforeOpenSelect()
-
     this._openSelect()
 
     // Callback invoked after select open
@@ -386,6 +393,12 @@ export class BlipSelect {
     if (e.relatedTarget && e.relatedTarget.classList.contains(blipSelectOptionClass)) {
       return
     }
+
+    if (typeof this.configOptions.onBlur !== 'function') {
+      throw Error('Callback "onBlur" is not a function')
+    }
+
+    this.configOptions.onBlur()
 
     setTimeout(() => { // Needed for get option value on "li" click
       this._closeSelect()
@@ -455,7 +468,6 @@ export class BlipSelect {
 
     // Callback invoked before select open
     this.configOptions.beforeCloseSelect()
-
     this.selectOptionsContainer.style.transform = 'scale(0)'
     this.selectOptionsContainer.style.opacity = 0
 

@@ -375,9 +375,7 @@ export class BlipSelect {
       throw Error('Callback "onFocus" is not a function')
     }
 
-    if (this.configOptions.mode === 'autocomplete') {
-      this.configOptions.onFocus()
-    }
+    this.configOptions.onFocus()
 
     // Callback invoked before select open
     this.configOptions.beforeOpenSelect()
@@ -400,9 +398,7 @@ export class BlipSelect {
       throw Error('Callback "onBlur" is not a function')
     }
 
-    if (this.configOptions.mode === 'autocomplete') {
-      this.configOptions.onBlur()
-    }
+    this.configOptions.onBlur()
 
     setTimeout(() => { // Needed for get option value on "li" click
       this._closeSelect()

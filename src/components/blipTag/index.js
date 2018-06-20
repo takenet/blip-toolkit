@@ -141,13 +141,13 @@ export class BlipTag {
   _selectColor(color) {
     this.tagBackground = color
     this.tagOptions.onSelectColor.call(this, EventEmitter({ color }))
-    this._hideColorOptions()
+    this.hideColorOptions()
   }
 
   /**
    * Hide color options container
    */
-  _hideColorOptions() {
+  hideColorOptions() {
     const colorOptionsContainer = this.tagContainer.querySelector(`.${blipTagSelectColorClass}`)
 
     colorOptionsContainer.style.transform = 'scale(0)'
@@ -162,7 +162,13 @@ export class BlipTag {
    * Function invoked when remove tag
    */
   _removeTag() {
-    this.tagOptions.onRemove.call(this, EventEmitter({ tag: this.tagContainer }))
+    this.tagOptions.onRemove.call(this, EventEmitter({
+      tag: {
+        element: this.tagContainer,
+        id: this.tagOptions.id,
+        label: this.tagOptions.label,
+      },
+    }))
 
     this.tagContainer.parentNode.removeChild(this.tagContainer)
     this.tagContainer = undefined

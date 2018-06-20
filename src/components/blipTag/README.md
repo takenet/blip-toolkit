@@ -42,3 +42,9 @@ Callback executed after remove tag from DOM.
 
 Callback executed after select color.
 `params`: `{ $event: { color } }`
+
+## Methods
+
+### `hideColorOptions`
+
+Hide color options container

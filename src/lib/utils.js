@@ -45,3 +45,8 @@ export const guid = (() => {
     )
   }
 })()
+
+/**
+ * Last array element
+ */
+export const last = array => array[array.length - 1]

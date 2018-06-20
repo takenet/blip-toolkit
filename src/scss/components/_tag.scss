@@ -1,5 +1,6 @@
 .blip-tag-container {
   position: relative;
+  display: inline-block;
 }
 
 .blip-tag-select-color {
@@ -41,19 +42,16 @@
 
 .blip-tag-select-color {
   list-style: none;
-  padding: 10px;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  flex-direction: row;
+  padding: 16px;
   transform-origin: 0 0;
   transition: 300ms;
-  @include flex-box;
+  line-height: 1;
+  border-radius: 3px;
 }
 
 .blip-tag-color-option {
-  width: 24px;
-  height: 24px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  width: 24px; height: 24px;
+  margin: 2px;
   cursor: pointer;
+  display: inline-block;
 }

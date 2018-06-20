@@ -129,7 +129,7 @@ Callback executed after select close
 
 #### `onInputChange` - function
 
-Callback executed on every input change. Every `BlipSelect` event that receives any argument, has the follows structure:
+**autocomplete mode only**. Callback executed on every input change. Every `BlipSelect` event that receives any argument, has the follows structure:
 
 ```js
 {
@@ -171,6 +171,15 @@ new BlipSelect(element, {
 })
 ```
 
+### `onAddNewOption` - function
+
+Takes one `$event` argument, that have three properties: `value`, `label` and `element`
+
+```js
+new BlipSelect(element, {
+  onAddNewOption: ({ $event : { value, label, element }}) => console.log(value, label, element)
+})
+```
 ---
 
 #### `customSearch` - function

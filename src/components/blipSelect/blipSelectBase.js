@@ -134,7 +134,7 @@ export class BlipSelectBase {
     switch (this.configOptions.mode) {
       case 'select':
         this.wrapper = strToEl(`
-          <div tabindex="0" class="${bpInputWrapperClass} ${blipSelectClass} ${bpInputWithBulletClass}">
+          <div class="${bpInputWrapperClass} ${blipSelectClass} ${bpInputWithBulletClass}">
             <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
             <input placeholder="${this.configOptions.placeholder}" class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}" readonly>
             <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
@@ -143,7 +143,7 @@ export class BlipSelectBase {
         break
       case 'autocomplete':
         this.wrapper = strToEl(`
-          <div tabindex="0" class="${bpInputWrapperClass} ${blipSelectClass}">
+          <div class="${bpInputWrapperClass} ${blipSelectClass}">
             <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
             <input placeholder="${this.configOptions.placeholder}" class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}">
             <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
@@ -355,7 +355,7 @@ export class BlipSelectBase {
    * On select click
    */
   _onSelectFocus() {
-    if (this.isDisabled || this.selectOptions.length === 0) {
+    if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.selectOptions.length === 0)) {
       return
     }
 

@@ -48,6 +48,10 @@ export class BlipSelectAdd extends BlipSelectBase {
    * Add new option to list
    */
   addNewOption({ label, value, element }) {
+    if (typeof this.configAddOptions.onAddNewOption !== 'function') {
+      throw Error('Callback "onAddNewOption" is not a function')
+    }
+
     const option = {
       label,
       value,
@@ -74,6 +78,14 @@ export class BlipSelectAdd extends BlipSelectBase {
    * Add new listener to input
    */
   _onAddInputChange() {
+    if (this.input.value !== '' && !this.isSelectOpen) {
+      this._openSelect()
+    }
+
+    if (this.input.value === '') {
+      this._closeSelect()
+    }
+
     if (
       this.configAddOptions.canAddOption &&
       this.input &&
@@ -90,6 +102,7 @@ export class BlipSelectAdd extends BlipSelectBase {
         value,
         element,
       }
+
       newOptionButton.addEventListener('click', this.addNewOption.bind(this, newOption))
     }
   }

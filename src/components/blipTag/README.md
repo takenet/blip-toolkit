@@ -35,8 +35,10 @@ Tag label
 
 ### `onRemove` - function
 
-Callback executed after remove tag from DOM
+Callback executed after remove tag from DOM.
+`params`: `{ $event: { tag: { element, id, label } } }`
 
 ### `onSelectColor` - function
 
-Callback executed after select color
+Callback executed after select color.
+`params`: `{ $event: { color } }`

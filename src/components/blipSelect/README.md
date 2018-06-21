@@ -173,10 +173,14 @@ new BlipSelect(element, {
 
 ### `onAddNewOption` - function
 
-Takes one `$event` argument, that have three properties: `value`, `label` and `element`
+**autocomplete and canAddOption properties required**. Takes one `$event` argument, that have three properties: `value`, `label` and `element`
 
 ```js
 new BlipSelect(element, {
+  mode: 'autocomplete',
+  canAddOption: {
+    text: 'Add option',
+  },
   onAddNewOption: ({ $event : { value, label, element }}) => console.log(value, label, element)
 })
 ```

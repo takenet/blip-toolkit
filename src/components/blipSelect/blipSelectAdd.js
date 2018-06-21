@@ -30,6 +30,15 @@ export class BlipSelectAdd extends BlipSelectBase {
   _setupAdd() {
     this._handleAddInputChange = this._onAddInputChange.bind(this)
     this.input.addEventListener('keyup', this._handleAddInputChange)
+    this.input.addEventListener('keydown', event => {
+      switch (event.keyCode) {
+        case 13: // enter
+          if (this._canAddOption()) {
+            this.addNewOption(this._currentOptionState())
+          }
+          break
+      }
+    })
   }
 
   /**
@@ -37,7 +46,7 @@ export class BlipSelectAdd extends BlipSelectBase {
    */
   _renderOptionButton(option) {
     return strToEl(`
-      <div class="${blipSelectOptionClass} ${blipSelectAddOptionClass}">
+      <div tabindex="0" class="${blipSelectOptionClass} ${blipSelectAddOptionClass}">
         <small>${this.configOptions.canAddOption.text}</small>
         <div class="${bpNewOptionTextClass}">${option}</div>
       </div>
@@ -75,6 +84,30 @@ export class BlipSelectAdd extends BlipSelectBase {
   }
 
   /**
+   * Check if current state allows to add new option
+   */
+  _canAddOption() {
+    return this.configAddOptions.canAddOption &&
+      this.input &&
+      this.input.value &&
+      !this._valueMatchesAnyOption(this.input.value)
+  }
+
+  /**
+   * Get current option state
+   */
+  _currentOptionState() {
+    const value = this.input.value
+    const element = strToEl(`<li tabindex="0" class="${blipSelectOptionClass}" data-value="${value}">${value}</li>`)
+
+    return {
+      label: value,
+      value,
+      element,
+    }
+  }
+
+  /**
    * Add new listener to input
    */
   _onAddInputChange() {
@@ -86,24 +119,25 @@ export class BlipSelectAdd extends BlipSelectBase {
       this._closeSelect()
     }
 
-    if (
-      this.configAddOptions.canAddOption &&
-      this.input &&
-      this.input.value &&
-      !this._valueMatchesAnyOption(this.input.value)
-    ) {
+    if (this._canAddOption()) {
       const newOptionButton = this._renderOptionButton(this.input.value)
-      const value = newOptionButton.querySelector(`.${bpNewOptionTextClass}`).innerHTML
-      const element = strToEl(`<li tabindex="0" class="${blipSelectOptionClass}" data-value="${value}">${value}</li>`)
       this.selectOptionsContainer.appendChild(newOptionButton)
 
-      const newOption = {
-        label: value,
-        value,
-        element,
-      }
+      const newOption = this._currentOptionState()
 
       newOptionButton.addEventListener('click', this.addNewOption.bind(this, newOption))
+      newOptionButton.addEventListener('keydown', (event) => {
+        switch (event.keyCode) {
+          case 13: // enter
+            this.addNewOption(newOption)
+            break
+          case 38: // arrow up
+            if (newOptionButton.previousSibling) {
+              newOptionButton.previousSibling.focus()
+            }
+            break
+        }
+      })
     }
   }
 }

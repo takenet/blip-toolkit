@@ -208,7 +208,18 @@ export class BlipSelectBase {
     // Set handler for each menu option
     Array.prototype.forEach.call(
       this.selectOptionsContainer.querySelectorAll('li[data-value]'),
-      o => o.addEventListener('click', this._onOptionClick.bind(this)))
+      o => {
+        o.addEventListener('click', this._onOptionClick.bind(this))
+        o.addEventListener('keydown', (event) => {
+          switch (event.keyCode) {
+            case 13: // enter
+              this._onOptionClick(event)
+              break
+          }
+        })
+      })
+
+    this._attachOptionsKeyboardListeners()
   }
 
   /**
@@ -231,6 +242,59 @@ export class BlipSelectBase {
     }
 
     this.selectOptionsContainer.addEventListener('transitionend', this._handleCenterOption)
+    this._attachKeyboardListeners()
+  }
+
+  /**
+   * Attach keyboard listeners
+   */
+  _attachKeyboardListeners() {
+    this._attachInputKeyboardListener()
+    this._attachOptionsKeyboardListeners()
+  }
+
+  /**
+   * Attach keyboard listeners when some option is focused
+   */
+  _attachOptionsKeyboardListeners() {
+    const elementOptions = this.selectOptionsContainer.querySelectorAll(`.${blipSelectOptionClass}`)
+
+    Array.prototype.forEach.call(elementOptions, (element) => {
+      element.addEventListener('keydown', event => {
+        switch (event.keyCode) {
+          case 40: // arrow down
+            if (element.nextSibling) {
+              element.nextSibling.focus()
+            }
+            break
+          case 38: // arrow up
+            if (element.previousSibling) {
+              element.previousSibling.focus()
+            }
+            break
+        }
+      })
+    })
+  }
+
+  /**
+   * Attach keyboard listeners when input is focused
+   */
+  _attachInputKeyboardListener() {
+    this.input.addEventListener('keydown', event => {
+      switch (event.keyCode) {
+        case 40:
+          const currentElement = document.activeElement
+
+          if (currentElement === this.input) {
+            const firstElement = this.selectOptionsContainer.firstChild
+            if (firstElement) {
+              firstElement.focus()
+            }
+          }
+          break
+      }
+    })
   }
 
   /**
@@ -268,7 +332,9 @@ export class BlipSelectBase {
       throw new Error('Callback "onSelectOption" is not a function')
     }
 
-    this.configOptions.onSelectOption.call(this, EventEmitter({ value, label }))
+    if (value || label) {
+      this.configOptions.onSelectOption.call(this, EventEmitter({ value, label }))
+    }
   }
 
   /**

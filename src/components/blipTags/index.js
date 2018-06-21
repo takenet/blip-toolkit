@@ -8,6 +8,10 @@ import {
   insertAfter,
 } from '@lib/utils'
 
+const blipSelectPrefixClass = 'blip-select'
+const blipTagsClass = 'blip-tags'
+const blipTagOnListClass = 'blip-tag--on-list'
+
 export class BlipTags {
   $state = {
     addTagText: 'Add tag',
@@ -19,7 +23,7 @@ export class BlipTags {
     this.element = element
     this.selectElement = ''
     this.tags = []
-    this.blipSelectId = `blip-select-${guid()}`
+    this.blipSelectId = `${blipSelectPrefixClass}-${guid()}`
     this.inputBuffer = ''
 
     this.tagsOptions = {
@@ -35,7 +39,7 @@ export class BlipTags {
    */
   _setup() {
     this.tagsContainer = strToEl(`
-      <div class="blip-tags">
+      <div class="${blipTagsClass}">
         <select id="${this.blipSelectId}"></select>
       </div>
     `)
@@ -97,11 +101,12 @@ export class BlipTags {
   _addTag(label) {
     const tag = new BlipTag({
       label,
+      canChangeBackground: true,
       onRemove: this._removeTag.bind(this),
-      classes: 'blip-tag--on-list',
+      classes: `${blipTagOnListClass}`,
     })
 
-    if (this.tags.length > 0) {
+    if (this.tags.length > 0 && tag.canChangeBackground) {
       const lastTag = last(this.tags)
       lastTag.hideColorOptions()
     }
@@ -117,6 +122,8 @@ export class BlipTags {
     this.blipSelectInstance.input.focus()
 
     this.tagsOptions.onTagAdded.call(this, EventEmitter({ tag }))
+
+    return tag
   }
 
   /**

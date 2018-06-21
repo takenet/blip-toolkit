@@ -61,6 +61,10 @@ export class BlipSelectAdd extends BlipSelectBase {
       throw Error('Callback "onAddNewOption" is not a function')
     }
 
+    if (label.trim() === '') {
+      return
+    }
+
     const option = {
       label,
       value,
@@ -90,6 +94,7 @@ export class BlipSelectAdd extends BlipSelectBase {
     return this.configAddOptions.canAddOption &&
       this.input &&
       this.input.value &&
+      this.input.value.trim() !== '' &&
       !this._valueMatchesAnyOption(this.input.value)
   }
 

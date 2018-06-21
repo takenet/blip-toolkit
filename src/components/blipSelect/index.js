@@ -3,10 +3,15 @@ import { BlipSelectBase } from './blipSelectBase'
 
 export class BlipSelect {
   constructor(element, options) {
-    if (options.mode === 'autocomplete' && options.canAddOption) {
-      return new BlipSelectAdd(element, options)
+    const componentOptions = {
+      mode: 'select',
+      ...options,
+    }
+
+    if (componentOptions.mode === 'autocomplete' && componentOptions.canAddOption) {
+      return new BlipSelectAdd(element, componentOptions)
     } else {
-      return new BlipSelectBase(element, options)
+      return new BlipSelectBase(element, componentOptions)
     }
   }
 }

@@ -30,6 +30,7 @@ export class BlipTag {
     background: '#2cc3d5',
     color: '#fff',
     id: `${blipTagClass}-${guid()}`,
+    classes: '',
     onRemove: () => {},
     onSelectColor: () => {},
   }
@@ -111,7 +112,7 @@ export class BlipTag {
     color,
   }) {
     return strToEl(`
-      <div class="${blipTagContainerClass}" id="${id}">
+      <div class="${blipTagContainerClass} ${this.tagOptions.classes}" id="${id}">
         <div class="${blipTagClass}" style="background: ${background}; color: ${color}">
           <span class="${blipTagLabelClass}">${label}</span>
           <button class="${blipTagRemoveClass}" style="color: ${color}">x</button>

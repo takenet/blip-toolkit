@@ -1,17 +1,23 @@
 import { BlipTag } from '../blipTag'
 import { BlipSelect } from '../blipSelect'
 import { EventEmitter } from '@lib/eventEmitter'
-import { strToEl, last, guid } from '@lib/utils'
+import {
+  strToEl,
+  last,
+  guid,
+  insertAfter,
+} from '@lib/utils'
 
 export class BlipTags {
   $state = {
+    addTagText: 'Add tag',
     onTagAdded: () => {},
     onTagRemoved: () => {},
   }
 
   constructor(element, options) {
     this.element = element
-    this.tagsList = ''
+    this.selectElement = ''
     this.tags = []
     this.blipSelectId = `blip-select-${guid()}`
 
@@ -21,7 +27,6 @@ export class BlipTags {
     }
 
     this._setup()
-    this._setupEventHandlers()
   }
 
   /**
@@ -30,39 +35,32 @@ export class BlipTags {
   _setup() {
     this.tagsContainer = strToEl(`
       <div class="blip-tags">
-        <div class="blip-tags-list"></div>
         <select id="${this.blipSelectId}"></select>
-        <button data-add-tag type="button">+</button>
       </div>
     `)
 
-    const selectElement = this.tagsContainer.querySelector(`#${this.blipSelectId}`)
+    this.selectElement = this.tagsContainer.querySelector(`#${this.blipSelectId}`)
     this._handleAddNewOption = this._onAddNewOption.bind(this)
     this.blipSelectInstance = new BlipSelect(
-      selectElement,
+      this.selectElement,
       {
         mode: 'autocomplete',
         canAddOption: {
-          text: 'Criar tag',
+          text: this.tagsOptions.addTagText,
         },
         onAddNewOption: this._handleAddNewOption,
+        onSelectOption: (emitter) => {
+          this.blipSelectInstance.clearInput()
+          this._onAddNewOption(emitter)
+        },
       })
 
-    this.tagsList = this.tagsContainer.querySelector('.blip-tags-list')
     this.element.appendChild(this.tagsContainer)
   }
 
   /**
-   * Setup event handlers
-   */
-  _setupEventHandlers() {
-    const addButton = this.tagsContainer.querySelector('button[data-add-tag]')
-    this._handleAddButtonClick = this._addTag.bind(this, 'Tag')
-    addButton.addEventListener('click', this._handleAddButtonClick)
-  }
-
-  /**
    * On add option callback from BlipSelect
+   * @param {EventEmitter} obj - object that contais option object of BlipSelect component
    */
   _onAddNewOption({ $event }) {
     const { label } = $event
@@ -78,6 +76,7 @@ export class BlipTags {
     const tag = new BlipTag({
       label,
       onRemove: this._removeTag.bind(this),
+      classes: 'blip-tag--on-list',
     })
 
     if (this.tags.length > 0) {
@@ -85,8 +84,14 @@ export class BlipTags {
       lastTag.hideColorOptions()
     }
 
+    if (this.tags.length === 0) {
+      this.tagsContainer.prepend(tag.element)
+    } else {
+      const lastElement = last(this.tags).element
+      insertAfter(tag.element, lastElement)
+    }
+
     this.tags = this.tags.concat(tag)
-    this.tagsList.appendChild(tag.element)
 
     this.tagsOptions.onTagAdded.call(this, EventEmitter({ tag }))
   }

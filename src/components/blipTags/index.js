@@ -20,6 +20,7 @@ export class BlipTags {
     this.selectElement = ''
     this.tags = []
     this.blipSelectId = `blip-select-${guid()}`
+    this.inputBuffer = ''
 
     this.tagsOptions = {
       ...this.$state,
@@ -41,6 +42,7 @@ export class BlipTags {
 
     this.selectElement = this.tagsContainer.querySelector(`#${this.blipSelectId}`)
     this._handleAddNewOption = this._onAddNewOption.bind(this)
+    this._handleInputChange = this._onInputChange.bind(this)
     this.blipSelectInstance = new BlipSelect(
       this.selectElement,
       {
@@ -53,6 +55,7 @@ export class BlipTags {
           this.blipSelectInstance.clearInput()
           this._onAddNewOption(emitter)
         },
+        onInputChange: this._handleInputChange,
       })
 
     this.element.appendChild(this.tagsContainer)
@@ -66,6 +69,25 @@ export class BlipTags {
     const { label } = $event
 
     this._addTag(label)
+  }
+
+  /**
+   * Handle BlipSelect input change
+   */
+  _onInputChange({ $event }) {
+    const { event, value } = $event
+    const currentInputBuffer = this.inputBuffer
+    this.inputBuffer = value
+
+    switch (event.keyCode) {
+      case 8: // backspace
+        if (currentInputBuffer === '') {
+          if (this.tags.length > 0) {
+            last(this.tags).element.focus()
+          }
+        }
+        break
+    }
   }
 
   /**
@@ -92,6 +114,7 @@ export class BlipTags {
     }
 
     this.tags = this.tags.concat(tag)
+    this.blipSelectInstance.input.focus()
 
     this.tagsOptions.onTagAdded.call(this, EventEmitter({ tag }))
   }
@@ -101,9 +124,14 @@ export class BlipTags {
    * @param {EventEmitter} obj - object that contais tag object of BlipTag component
    */
   _removeTag({ $event }) {
-    const { tag } = $event
-
+    const { tag, backspace } = $event
     this.tags = this.tags.filter(t => t.tagOptions.id !== tag.id)
     this.tagsOptions.onTagRemoved.call(this, EventEmitter({ tag }))
+
+    if (backspace && this.tags.length > 0) {
+      last(this.tags).element.focus()
+    } else {
+      this.blipSelectInstance.input.focus()
+    }
   }
 }

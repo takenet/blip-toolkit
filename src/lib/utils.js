@@ -50,3 +50,10 @@ export const guid = (() => {
  * Last array element
  */
 export const last = array => array[array.length - 1]
+
+/**
+ * Insert element after another
+ */
+export const insertAfter = (newElement, referenceElement) => {
+  referenceElement.parentNode.insertBefore(newElement, referenceElement.nextSibling)
+}

@@ -1,4 +1,5 @@
 import { BlipSelect } from '../../src/components/blipSelect'
+import { BlipSelectBase } from '../../src/components/blipSelect/blipSelectBase'
 
 describe('BlipSelect', () => {
   let selectElement
@@ -12,9 +13,9 @@ describe('BlipSelect', () => {
   })
 
   describe('Instance', () => {
-    it('should return a BlipSelect instance', () => {
+    it('should return a BlipSelectBase instance', () => {
       const component = new BlipSelect(selectElement)
-      expect(component instanceof BlipSelect).toBeTruthy()
+      expect(component instanceof BlipSelectBase).toBeTruthy()
     })
 
     it('should has a list of options', () => {

@@ -31,6 +31,7 @@ export class BlipTag {
     color: '#fff',
     id: `${blipTagClass}-${guid()}`,
     classes: '',
+    canChangeBackground: false,
     onRemove: () => {},
     onSelectColor: () => {},
   }
@@ -44,6 +45,20 @@ export class BlipTag {
     }
 
     this._setup()
+  }
+
+  /**
+   * Returns canChangeBackground property
+   */
+  get canChangeBackground() {
+    return this.tagOptions.canChangeBackground
+  }
+
+  /**
+   * Returns tag label
+   */
+  get label() {
+    return this.tagOptions.label
   }
 
   /**
@@ -72,12 +87,36 @@ export class BlipTag {
    * Setup BLiP Tag
    */
   _setup() {
+    if (!this.tagOptions.label || this.tagOptions.label === '') {
+      throw Error('Tag must have a label')
+    }
+
     this.tagContainer = this.renderTemplate({
       label: this.tagOptions.label,
       background: this.tagOptions.background,
       color: this.tagOptions.color,
       id: this.tagOptions.id,
     })
+
+    if (this.tagOptions.canChangeBackground) {
+      const colorOptions = strToEl(`
+        <ul class="${blipTagSelectColorClass}">
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption1}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption2}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption3}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption4}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption5}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption6}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption7}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption8}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption9}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption10}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption11}"></li>
+          <li class="${blipTagColorOptionClass}" data-color="${colorOption12}"></li>
+        </ul>
+      `)
+      this.tagContainer.appendChild(colorOptions)
+    }
 
     this._setupEventHandlers()
   }
@@ -95,13 +134,15 @@ export class BlipTag {
 
     this.tagContainer.addEventListener('keydown', this._handleTagKeydown)
 
-    Array.prototype.forEach.call(this.tagContainer.querySelectorAll(`.${blipTagColorOptionClass}`),
-      element => {
-        const color = element.getAttribute('data-color')
-        element.style.background = color
+    if (this.tagOptions.canChangeBackground) {
+      Array.prototype.forEach.call(this.tagContainer.querySelectorAll(`.${blipTagColorOptionClass}`),
+        element => {
+          const color = element.getAttribute('data-color')
+          element.style.background = color
 
-        element.addEventListener('click', this._selectColor.bind(this, color))
-      })
+          element.addEventListener('click', this._selectColor.bind(this, color))
+        })
+    }
   }
 
   /**
@@ -120,20 +161,6 @@ export class BlipTag {
           <span class="${blipTagLabelClass}">${label}</span>
           <button class="${blipTagRemoveClass}" style="color: ${color}">x</button>
         </div>
-        <ul class="${blipTagSelectColorClass}">
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption1}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption2}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption3}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption4}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption5}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption6}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption7}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption8}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption9}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption10}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption11}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption12}"></li>
-        </ul>
       </div>
     `)
   }

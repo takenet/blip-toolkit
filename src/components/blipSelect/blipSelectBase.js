@@ -270,6 +270,8 @@ export class BlipSelectBase {
           case 38: // arrow up
             if (element.previousSibling) {
               element.previousSibling.focus()
+            } else {
+              this.input.focus()
             }
             break
         }

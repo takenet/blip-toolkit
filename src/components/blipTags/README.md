@@ -1,0 +1,48 @@
+# BlipTags
+
+BlipTags is a JavaScript plugin that concatenate multiple `BlipTag` instances.
+
+## Usage
+
+```html
+<div id="tag-list"></div>
+
+<script type="text/javascript">
+import { BlipTags } from 'blip-toolkit'
+
+const tags = new BlipTags(document.getElementById('tag-list'), {
+  onTagAdded: ({ $event }) => console.log('tagAdded', $event),
+  onTagRemoved: ({ $event }) => console.log('tagRemoved', $event),
+  addTagText: 'Add tag',
+})
+</script>
+```
+
+## Options
+
+#### `addTagText` - string
+
+Label text to add new tags
+
+## Callbacks
+
+#### `onTagAdded`
+
+Callback invoked when new tag is added
+
+```javascript
+const tags = new BlipTags(element, {
+  onTagAdded: ({ $event: { value, label } }) => console.log('tagAdded', value, label),
+})
+```
+
+#### `onTagRemoved`
+
+Callback invoked when tag is removed
+
+```javascript
+const tags = new BlipTags(element, {
+  onTagRemoved: ({ $event: { element, id, label } }) => console.log('tagRemoved', element, id, label),
+})
+```
+

@@ -27,9 +27,25 @@ document.getElementById('my-tag-list').appendChild(tag.element)
 
 ---
 
-#### `label` - string
+#### `label` - string (required)
 
 Tag label
+
+#### `background` - string (optional)
+
+Tag background (hexadecimal)
+
+#### `color` - string (optional)
+
+Tag text color (hexadecimal)
+
+#### `id` - string (optional)
+
+Tag custom id
+
+#### `classes` - string (optional)
+
+Tag classes
 
 ## Callbacks
 

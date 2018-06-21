@@ -9,7 +9,7 @@
   padding: 10px;
   width: 125px;
   position: absolute;
-  top: 120%;
+  top: 90%;
 
   &:before {
     content: " ";
@@ -27,6 +27,10 @@
   display: inline-block;
   padding: 4px 15px;
   border-radius: 20px;
+}
+
+.blip-tag--on-list {
+  margin-top: 6px;
 }
 
 .blip-tag__remove {

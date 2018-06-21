@@ -29,5 +29,21 @@ describe('BlipSelect', () => {
       const component = new BlipSelect(selectElement)
       expect(component instanceof BlipSelectBase).toBeTruthy()
     })
+
+    it('should focus', () => {
+      const component = new BlipSelect(selectElement, {
+        mode: 'autocomplete',
+        onFocus: () => 'focused',
+      })
+
+      component.selectOptions = {
+        value: 'val1',
+        label: 'label 1',
+      }
+
+      spyOn(component.configOptions, 'onFocus')
+      component._onSelectFocus()
+      expect(component.configOptions.onFocus).toHaveBeenCalled()
+    })
   })
 })

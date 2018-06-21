@@ -36,6 +36,8 @@ export class BlipSelectBase {
     afterCloseSelect: () => {},
     onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
     onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
+    onFocus: () => {},
+    onBlur: () => {},
     customSearch: undefined, // Function that should return a list of { value, label } pair
   }
 
@@ -438,6 +440,8 @@ export class BlipSelectBase {
     // Callback invoked before select open
     this.configOptions.beforeOpenSelect()
 
+    this.configOptions.onFocus()
+
     this._openSelect()
 
     // Callback invoked after select open
@@ -470,6 +474,8 @@ export class BlipSelectBase {
     if (this._isPartOfComponent(e)) {
       return
     }
+
+    this.configOptions.onBlur()
 
     setTimeout(() => { // Needed for get option value on "li" click
       this._closeSelect()

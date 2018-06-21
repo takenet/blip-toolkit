@@ -127,6 +127,18 @@ Callback executed before select close
 
 Callback executed after select close
 
+---
+
+#### `onFocus` - function
+
+Callback executed when select is focused
+
+---
+
+#### `onBlur` - function
+
+Callback executed when select is blured
+
 #### `onInputChange` - function
 
 **autocomplete mode only**. Callback executed on every input change. Every `BlipSelect` event that receives any argument, has the follows structure:

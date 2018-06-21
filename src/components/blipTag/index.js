@@ -87,10 +87,13 @@ export class BlipTag {
    */
   _setupEventHandlers() {
     this._handleRemoveTag = this._removeTag.bind(this)
+    this._handleTagKeydown = this._onTagKeydown.bind(this)
 
     // Handle click on remove button
     this.tagContainer.querySelector(`.${blipTagRemoveClass}`)
       .addEventListener('click', this._handleRemoveTag)
+
+    this.tagContainer.addEventListener('keydown', this._handleTagKeydown)
 
     Array.prototype.forEach.call(this.tagContainer.querySelectorAll(`.${blipTagColorOptionClass}`),
       element => {
@@ -112,7 +115,7 @@ export class BlipTag {
     color,
   }) {
     return strToEl(`
-      <div class="${blipTagContainerClass} ${this.tagOptions.classes}" id="${id}">
+      <div tabindex="0" class="${blipTagContainerClass} ${this.tagOptions.classes}" id="${id}">
         <div class="${blipTagClass}" style="background: ${background}; color: ${color}">
           <span class="${blipTagLabelClass}">${label}</span>
           <button class="${blipTagRemoveClass}" style="color: ${color}">x</button>
@@ -162,16 +165,28 @@ export class BlipTag {
   /**
    * Function invoked when remove tag
    */
-  _removeTag() {
+  _removeTag(backspace) {
     this.tagOptions.onRemove.call(this, EventEmitter({
       tag: {
         element: this.tagContainer,
         id: this.tagOptions.id,
         label: this.tagOptions.label,
       },
+      backspace,
     }))
 
     this.tagContainer.parentNode.removeChild(this.tagContainer)
     this.tagContainer = undefined
+  }
+
+  /**
+   * Handle tag keydown when its is focused
+   */
+  _onTagKeydown(event) {
+    switch (event.keyCode) {
+      case 8: // backspace
+        this._removeTag(true)
+        break
+    }
   }
 }

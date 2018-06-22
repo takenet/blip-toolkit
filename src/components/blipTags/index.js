@@ -1,4 +1,4 @@
-import { BlipTag } from '../blipTag'
+import { BlipTag, blipTagSelectColorClass } from '../blipTag'
 import { BlipSelect } from '../blipSelect'
 import { EventEmitter } from '@lib/eventEmitter'
 import {
@@ -35,6 +35,13 @@ export class BlipTags {
   }
 
   /**
+   * Get last tag
+   */
+  get lastTag() {
+    return last(this.tags)
+  }
+
+  /**
    * Setup tags element
    */
   _setup() {
@@ -47,6 +54,9 @@ export class BlipTags {
     this.selectElement = this.tagsContainer.querySelector(`#${this.blipSelectId}`)
     this._handleAddNewOption = this._onAddNewOption.bind(this)
     this._handleInputChange = this._onInputChange.bind(this)
+    this._handleSelectOption = this._onSelectOption.bind(this)
+    this._handleBlipSelectBlur = this._onSelectBlur.bind(this)
+
     this.blipSelectInstance = new BlipSelect(
       this.selectElement,
       {
@@ -55,14 +65,32 @@ export class BlipTags {
           text: this.tagsOptions.addTagText,
         },
         onAddNewOption: this._handleAddNewOption,
-        onSelectOption: (emitter) => {
-          this.blipSelectInstance.clearInput()
-          this._onAddNewOption(emitter)
-        },
+        onSelectOption: this._handleSelectOption,
         onInputChange: this._handleInputChange,
+        onBlur: this._handleBlipSelectBlur,
       })
 
     this.element.appendChild(this.tagsContainer)
+  }
+
+  /**
+   * Handle BlipSelect blur
+   */
+  _onSelectBlur(event) {
+    if (event.relatedTarget && event.relatedTarget.classList.contains(blipTagSelectColorClass)) {
+      return
+    }
+
+    this._hideLastTagOptions()
+  }
+
+  /**
+   * Handle select option
+   * @param {EventEmitter} emitter - EventEmitter object
+   */
+  _onSelectOption(emitter) {
+    this.blipSelectInstance.clearInput()
+    this._onAddNewOption(emitter)
   }
 
   /**
@@ -87,10 +115,21 @@ export class BlipTags {
       case 8: // backspace
         if (currentInputBuffer === '') {
           if (this.tags.length > 0) {
-            last(this.tags).element.focus()
+            last(this.tags).tagElement.focus()
           }
         }
         break
+    }
+  }
+
+  /**
+   * Hide last tag color options
+   */
+  _hideLastTagOptions() {
+    if (this.tags.length > 0) {
+      if (this.lastTag.canChangeBackground) {
+        this.lastTag.hideColorOptions()
+      }
     }
   }
 
@@ -106,10 +145,8 @@ export class BlipTags {
       classes: `${blipTagOnListClass}`,
     })
 
-    if (this.tags.length > 0 && tag.canChangeBackground) {
-      const lastTag = last(this.tags)
-      lastTag.hideColorOptions()
-    }
+    // Hide last tag color options if I can
+    this._hideLastTagOptions()
 
     if (this.tags.length === 0) {
       this.tagsContainer.prepend(tag.element)
@@ -136,7 +173,7 @@ export class BlipTags {
     this.tagsOptions.onTagRemoved.call(this, EventEmitter({ tag }))
 
     if (backspace && this.tags.length > 0) {
-      last(this.tags).element.focus()
+      last(this.tags).tagElement.focus()
     } else {
       this.blipSelectInstance.input.focus()
     }

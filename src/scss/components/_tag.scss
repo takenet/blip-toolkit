@@ -2,12 +2,6 @@
   position: relative;
   display: inline-block;
   outline: 0;
-
-  &:focus {
-    .blip-tag {
-      background: red !important;
-    }
-  }
 }
 
 .blip-tag-select-color {
@@ -33,7 +27,13 @@
 .blip-tag {
   display: inline-block;
   padding: 4px 15px;
-  border-radius: 20px
+  border-radius: 20px;
+  background: $bp-color-bot;
+
+  &:focus {
+    background: $bp-color-rooftop !important; // Tags background is set inline, so !important is necessary
+    outline: 0;
+  }
 }
 
 .blip-tag--on-list {
@@ -58,6 +58,10 @@
   transition: 300ms;
   line-height: 1;
   border-radius: 3px;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 .blip-tag-color-option {

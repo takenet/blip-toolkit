@@ -7,8 +7,8 @@ const blipTagContainerClass = 'blip-tag-container'
 const blipTagClass = 'blip-tag'
 const blipTagLabelClass = 'blip-tag__label'
 const blipTagRemoveClass = 'blip-tag__remove'
-const blipTagSelectColorClass = 'blip-tag-select-color'
 const blipTagColorOptionClass = 'blip-tag-color-option'
+export const blipTagSelectColorClass = 'blip-tag-select-color'
 
 // Color options
 const colorOption1 = '#0CC7CB'
@@ -27,7 +27,7 @@ const colorOption12 = '#FF1E90'
 export class BlipTag {
   $state = {
     label: '',
-    background: '#2cc3d5',
+    background: '',
     color: '#fff',
     id: `${blipTagClass}-${guid()}`,
     classes: '',
@@ -62,10 +62,17 @@ export class BlipTag {
   }
 
   /**
-   * Returns tag element
+   * Returns tag container
    */
   get element() {
     return this.tagContainer
+  }
+
+  /**
+   * Returns single tag element
+   */
+  get tagElement() {
+    return this.tagContainer.querySelector(`.${blipTagClass}`)
   }
 
   /**
@@ -100,7 +107,7 @@ export class BlipTag {
 
     if (this.tagOptions.canChangeBackground) {
       const colorOptions = strToEl(`
-        <ul class="${blipTagSelectColorClass}">
+        <ul class="${blipTagSelectColorClass}" tabindex="0">
           <li class="${blipTagColorOptionClass}" data-color="${colorOption1}"></li>
           <li class="${blipTagColorOptionClass}" data-color="${colorOption2}"></li>
           <li class="${blipTagColorOptionClass}" data-color="${colorOption3}"></li>
@@ -132,7 +139,7 @@ export class BlipTag {
     this.tagContainer.querySelector(`.${blipTagRemoveClass}`)
       .addEventListener('click', this._handleRemoveTag)
 
-    this.tagContainer.addEventListener('keydown', this._handleTagKeydown)
+    this.tagElement.addEventListener('keydown', this._handleTagKeydown)
 
     if (this.tagOptions.canChangeBackground) {
       Array.prototype.forEach.call(this.tagContainer.querySelectorAll(`.${blipTagColorOptionClass}`),
@@ -156,8 +163,8 @@ export class BlipTag {
     color,
   }) {
     return strToEl(`
-      <div tabindex="0" class="${blipTagContainerClass} ${this.tagOptions.classes}" id="${id}">
-        <div class="${blipTagClass}" style="background: ${background}; color: ${color}">
+      <div class="${blipTagContainerClass} ${this.tagOptions.classes}" id="${id}">
+        <div tabindex="0" class="${blipTagClass}" style="background: ${background}; color: ${color}">
           <span class="${blipTagLabelClass}">${label}</span>
           <button class="${blipTagRemoveClass}" style="color: ${color}">x</button>
         </div>

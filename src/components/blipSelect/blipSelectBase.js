@@ -475,7 +475,7 @@ export class BlipSelectBase {
       return
     }
 
-    this.configOptions.onBlur()
+    this.configOptions.onBlur(e)
 
     setTimeout(() => { // Needed for get option value on "li" click
       this._closeSelect()

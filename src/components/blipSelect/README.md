@@ -141,7 +141,7 @@ Callback executed when select is blured
 
 #### `onInputChange` - function
 
-Callback executed on every input change. Every `BlipSelect` event that receives any argument, has the follows structure:
+**autocomplete mode only**. Callback executed on every input change. Every `BlipSelect` event that receives any argument, has the follows structure:
 
 ```js
 {
@@ -183,6 +183,19 @@ new BlipSelect(element, {
 })
 ```
 
+### `onAddNewOption` - function
+
+**autocomplete and canAddOption properties required**. Takes one `$event` argument, that have three properties: `value`, `label` and `element`
+
+```js
+new BlipSelect(element, {
+  mode: 'autocomplete',
+  canAddOption: {
+    text: 'Add option',
+  },
+  onAddNewOption: ({ $event : { value, label, element }}) => console.log(value, label, element)
+})
+```
 ---
 
 #### `customSearch` - function

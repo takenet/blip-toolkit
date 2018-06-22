@@ -21,6 +21,7 @@ describe('BlipTag', () => {
     it('should set a tag background', () => {
       const component = new BlipTag({
         label: 'my-tag',
+        canChangeBackground: true,
       })
 
       component._selectColor('#FF4A1E')

@@ -27,16 +27,40 @@ document.getElementById('my-tag-list').appendChild(tag.element)
 
 ---
 
-#### `label` - string
+#### `label` - string (required)
 
 Tag label
+
+#### `background` - string (optional)
+
+Tag background (hexadecimal)
+
+#### `color` - string (optional)
+
+Tag text color (hexadecimal)
+
+#### `id` - string (optional)
+
+Tag custom id
+
+#### `classes` - string (optional)
+
+Tag classes
 
 ## Callbacks
 
 ### `onRemove` - function
 
-Callback executed after remove tag from DOM
+Callback executed after remove tag from DOM.
+`params`: `{ $event: { tag: { element, id, label } } }`
 
 ### `onSelectColor` - function
 
-Callback executed after select color
+Callback executed after select color.
+`params`: `{ $event: { color } }`
+
+## Methods
+
+### `hideColorOptions`
+
+Hide color options container

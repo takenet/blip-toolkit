@@ -22,7 +22,7 @@ describe('BlipTags', () => {
       describe('Add', () => {
         it('should add a tag', () => {
           const tagsInstance = new BlipTags(tagList)
-          tagsInstance._addTag('Tag')
+          tagsInstance.addTag('Tag')
 
           expect(tagsInstance.tags.filter(t => t.label === 'Tag').length > 0).toBeTruthy()
         })
@@ -31,7 +31,7 @@ describe('BlipTags', () => {
       describe('Remove', () => {
         it('should remove a tag', () => {
           const tagsInstance = new BlipTags(tagList)
-          const newTag = tagsInstance._addTag('Tag')
+          const newTag = tagsInstance.addTag('Tag')
 
           tagsInstance._removeTag({
             $event: {

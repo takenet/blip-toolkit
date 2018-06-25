@@ -1,4 +1,5 @@
 import { BlipTags } from '../../src/components/blipTags'
+import { BlipTag } from '../../src/components/blipTag'
 
 describe('BlipTags', () => {
   let tagList
@@ -22,7 +23,8 @@ describe('BlipTags', () => {
       describe('Add', () => {
         it('should add a tag', () => {
           const tagsInstance = new BlipTags(tagList)
-          tagsInstance.addTag({ label: 'Tag', background: 'red' })
+          const tag = new BlipTag({ label: 'Tag', background: 'red' })
+          tagsInstance.addTag(tag)
 
           expect(tagsInstance.tags.filter(t => t.label === 'Tag').length > 0).toBeTruthy()
         })
@@ -31,7 +33,8 @@ describe('BlipTags', () => {
       describe('Remove', () => {
         it('should remove a tag', () => {
           const tagsInstance = new BlipTags(tagList)
-          const newTag = tagsInstance.addTag({ label: 'Tag', background: 'red' })
+          const tag = new BlipTag({ label: 'Tag', background: 'red' })
+          const newTag = tagsInstance.addTag(tag)
 
           tagsInstance._removeTag({
             $event: {

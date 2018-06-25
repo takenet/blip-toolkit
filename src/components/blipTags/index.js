@@ -15,8 +15,10 @@ const blipTagOnListClass = 'blip-tag--on-list'
 export class BlipTags {
   $state = {
     addTagText: 'Add tag',
+    tags: [],
     onTagAdded: () => {},
     onTagRemoved: () => {},
+    onSelectTagColor: () => {},
   }
 
   constructor(element, options) {
@@ -71,6 +73,19 @@ export class BlipTags {
       })
 
     this.element.appendChild(this.tagsContainer)
+    this.bindTagsIfExists()
+  }
+
+  /**
+   * Bind pre-defined tags if exists
+   */
+  bindTagsIfExists() {
+    if (this.tagsOptions.tags.length > 0) {
+      this.tagsOptions.tags.map(options => {
+        const tag = new BlipTag({ ...options })
+        this.addTag(tag, false)
+      })
+    }
   }
 
   /**
@@ -100,7 +115,8 @@ export class BlipTags {
   _onAddNewOption({ $event }) {
     const { label } = $event
 
-    this._addTag(label)
+    const tag = new BlipTag({ label })
+    this.addTag(tag)
   }
 
   /**
@@ -135,13 +151,21 @@ export class BlipTags {
 
   /**
    * Add tag on DOM and tags array
-   * @param {String} label - tag label
+   * @param {BlipTag} tag - tag instance
    */
-  _addTag(label) {
+  addTag(tagInstance, focusOnInput) {
+    const {
+      label,
+      canChangeBackground,
+      tagOptions: { background },
+    } = tagInstance
+
     const tag = new BlipTag({
       label,
-      canChangeBackground: true,
+      canChangeBackground,
+      background,
       onRemove: this._removeTag.bind(this),
+      onSelectColor: this.tagsOptions.onSelectTagColor,
       classes: `${blipTagOnListClass}`,
     })
 
@@ -156,7 +180,9 @@ export class BlipTags {
     }
 
     this.tags = this.tags.concat(tag)
-    this.blipSelectInstance.input.focus()
+    if (focusOnInput) {
+      this.blipSelectInstance.input.focus()
+    }
 
     this.tagsOptions.onTagAdded.call(this, EventEmitter({ tag }))
 

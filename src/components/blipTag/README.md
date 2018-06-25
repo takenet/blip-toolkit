@@ -8,12 +8,12 @@ Component is a pure JavaScript plugin that returns a tag element.
 <div id="my-tag-list"></div>
 
 <script type="text/javascript">
-import { BlipTag } from '../src/components/blipTag'
+import { BlipTag } from 'blip-toolkit'
 
 const tag = new BlipTag({
   label: 'My tag',
   onRemove: ({$event: { tag }}) => console.log('removed', tag),
-  onSelectColor: ({$event: { color }}) => console.log(color),
+  onSelectColor: ({$event: { color, tag }}) => console.log(color, tag),
 })
 
 // Append tag element to your list

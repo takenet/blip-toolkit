@@ -81,10 +81,7 @@ export class BlipTags {
    */
   bindTagsIfExists() {
     if (this.tagsOptions.tags.length > 0) {
-      this.tagsOptions.tags.map(options => {
-        const tag = new BlipTag({ ...options })
-        this.addTag(tag, false)
-      })
+      this.bulkInsertTags(this.tagsOptions.tags)
     }
   }
 
@@ -115,7 +112,7 @@ export class BlipTags {
   _onAddNewOption({ $event }) {
     const { label } = $event
 
-    const tag = new BlipTag({ label })
+    const tag = new BlipTag({ label, canChangeBackground: true })
     this.addTag(tag)
   }
 
@@ -150,6 +147,40 @@ export class BlipTags {
   }
 
   /**
+   * Insert tag into DOM
+   */
+  insertTagIntoDom(tag) {
+    if (this.tags.length === 0) {
+      this.tagsContainer.prepend(tag.element)
+    } else {
+      const lastElement = last(this.tags).element
+      insertAfter(tag.element, lastElement)
+    }
+
+    this.tags = this.tags.concat(tag)
+  }
+
+  /**
+   * Insert multiple tags from array
+   * @param {Array} tags - { label: string, background: string }
+   */
+  bulkInsertTags(tags) {
+    tags.map(({ label, background }) => {
+      const tag = new BlipTag({
+        label,
+        background,
+        canChangeBackground: false,
+        onRemove: this._removeTag.bind(this),
+        onSelectColor: this.tagsOptions.onSelectTagColor,
+        classes: `${blipTagOnListClass}`,
+      })
+
+      // Insert tag element into DOM
+      this.insertTagIntoDom(tag)
+    })
+  }
+
+  /**
    * Add tag on DOM and tags array
    * @param {BlipTag} tag - tag instance
    */
@@ -172,14 +203,9 @@ export class BlipTags {
     // Hide last tag color options if I can
     this._hideLastTagOptions()
 
-    if (this.tags.length === 0) {
-      this.tagsContainer.prepend(tag.element)
-    } else {
-      const lastElement = last(this.tags).element
-      insertAfter(tag.element, lastElement)
-    }
+    // Insert tag element into DOM
+    this.insertTagIntoDom(tag)
 
-    this.tags = this.tags.concat(tag)
     if (focusOnInput) {
       this.blipSelectInstance.input.focus()
     }

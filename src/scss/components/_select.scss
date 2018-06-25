@@ -47,6 +47,7 @@
   color: $bp-color-city;
   margin-bottom: 0;
   cursor: pointer;
+  word-break: break-word;
 
   &:hover,
   &:focus {

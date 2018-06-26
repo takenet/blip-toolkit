@@ -9,6 +9,7 @@ const blipTagLabelClass = 'blip-tag__label'
 const blipTagRemoveClass = 'blip-tag__remove'
 const blipTagColorOptionClass = 'blip-tag-color-option'
 export const blipTagSelectColorClass = 'blip-tag-select-color'
+export const blipTagCompactClass = 'blip-tag--compact'
 
 // Color options
 const colorOption1 = '#0CC7CB'
@@ -32,7 +33,7 @@ export class BlipTag {
     id: `${blipTagClass}-${guid()}`,
     classes: '',
     canChangeBackground: false,
-    onRemove: () => {},
+    onRemove: undefined,
     onSelectColor: () => {},
   }
 
@@ -137,8 +138,12 @@ export class BlipTag {
     this._handleTagKeydown = this._onTagKeydown.bind(this)
 
     // Handle click on remove button
-    this.tagContainer.querySelector(`.${blipTagRemoveClass}`)
-      .addEventListener('click', this._handleRemoveTag)
+    const removeButton = this.tagContainer.querySelector(`.${blipTagRemoveClass}`)
+
+    if (removeButton) {
+      removeButton
+        .addEventListener('click', this._handleRemoveTag)
+    }
 
     this.tagElement.addEventListener('keydown', this._handleTagKeydown)
 
@@ -163,11 +168,16 @@ export class BlipTag {
     background,
     color,
   }) {
+    const renderRemoveButton = () =>
+      this.tagOptions.onRemove
+        ? `<button class="${blipTagRemoveClass}" style="color: ${color}">x</button>`
+        : ''
+
     return strToEl(`
       <div class="${blipTagContainerClass} ${this.tagOptions.classes}" id="${id}">
         <div tabindex="0" class="${blipTagClass}" style="background: ${background}; color: ${color}">
           <span class="${blipTagLabelClass}">${label}</span>
-          <button class="${blipTagRemoveClass}" style="color: ${color}">x</button>
+          ${renderRemoveButton()}
         </div>
       </div>
     `)
@@ -201,6 +211,10 @@ export class BlipTag {
    * Function invoked when remove tag
    */
   _removeTag(backspace) {
+    if (!this.tagOptions.onRemove) {
+      return
+    }
+
     this.tagOptions.onRemove.call(this, EventEmitter({
       tag: {
         element: this.tagContainer,

@@ -38,6 +38,8 @@ export class BlipTag {
     canChangeBackground: false,
     canRemoveTag: true,
     onRemove: undefined,
+    toggleCollapse: false,
+    onTagClick: () => {},
     onSelectColor: () => {},
   }
 
@@ -162,9 +164,7 @@ export class BlipTag {
         })
     }
 
-    if (this.tagOptions.mode === 'compact') {
-      this.tagElement.addEventListener('click', this._handleTagClick)
-    }
+    this.tagElement.addEventListener('click', this._handleTagClick)
   }
 
   /**
@@ -267,6 +267,17 @@ export class BlipTag {
    * @param {Event} event - Click event
    */
   _onTagClick(event) {
+    this.tagOptions.onTagClick.call(this, EventEmitter({ tag: this }))
+
+    if (this.tagOptions.toggleCollapse) {
+      this.toggleCollapse()
+    }
+  }
+
+  /**
+   * Toggle tag mode (collapse or full)
+   */
+  toggleCollapse() {
     if (this.tagElement.classList.contains(blipTagCompactClass)) {
       this.tagElement.classList.remove(blipTagCompactClass)
     } else {

@@ -47,6 +47,10 @@ Can be `full` or `compact`. In full mode, text and remove button is showed. On c
 
 Allow (or not) tags to change background when it is added
 
+#### `toggleTagsMode` - boolean
+
+Allow (or not) toggle all tags mode (`compact`or `full`)
+
 ## Callbacks
 
 #### `onTagAdded`

@@ -59,20 +59,34 @@ Option to remove (or not) tag elemen from DOM
 
 Can be `full` or `compact`
 
+#### `toggleCollapse` - boolean
+
+Allow collpase tag or not (works only on `compact` mode )
+
 ## Callbacks
 
-### `onRemove` - function
+#### `onRemove` - function
 
-Callback executed after remove tag from DOM.
+Callback invoked after remove tag from DOM.
 `params`: `{ $event: { tag: { element, id, label } } }`
 
-### `onSelectColor` - function
+#### `onSelectColor` - function
 
-Callback executed after select color.
+Callback invoked after select color.
 `params`: `{ $event: { color } }`
+
+#### `onTagClick` - function
+
+Callback invoked on tag click
+
+`params`: `{ $event: { tag } }`
 
 ## Methods
 
-### `hideColorOptions`
+#### `hideColorOptions`
 
 Hide color options container
+
+#### `toggleCollapse`
+
+Toggle tag mode (`compact` or `full`)

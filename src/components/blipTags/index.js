@@ -20,6 +20,7 @@ export class BlipTags {
     addTagText: 'Add tag',
     mode: 'full', // can be 'full' or 'compact'
     canChangeBackground: true,
+    toggleTagsMode: false,
     tags: [],
     onTagAdded: () => {},
     onTagRemoved: () => {},
@@ -206,6 +207,8 @@ export class BlipTags {
         background,
         canChangeBackground: false,
         canRemoveTag: false,
+        toggleCollapse: false,
+        onTagClick: this.onTagClick.bind(this),
         mode: 'compact',
         classes: `${blipTagOnListClass} `,
       })
@@ -217,13 +220,14 @@ export class BlipTags {
 
   /**
    * Insert multiple tags from array
-   * @param {Array} tags - { label: string, background: string }
+   * @param {Array} tags - { label: string, background: string, id: string }
    */
   bulkInsertTags(tags) {
-    tags.map(({ label, background }) => {
+    tags.map(({ label, background, id }) => {
       const tag = new BlipTag({
         label,
         background,
+        id,
         canChangeBackground: false,
         onRemove: this._removeTag.bind(this),
         onSelectColor: this.tagsOptions.onSelectTagColor,
@@ -287,6 +291,15 @@ export class BlipTags {
       last(this.tags).tagElement.focus()
     } else {
       this.blipSelectInstance.input.focus()
+    }
+  }
+
+  /**
+   * Handle tag click
+   */
+  onTagClick({ $event }) {
+    if (this.tagsOptions.toggleTagsMode) {
+      this.tags.forEach(t => t.toggleCollapse())
     }
   }
 }

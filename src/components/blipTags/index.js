@@ -206,6 +206,7 @@ export class BlipTags {
         label,
         background,
         canChangeBackground: false,
+        canRemoveTag: false,
         classes: `${blipTagOnListClass} ${blipTagCompactClass}`,
       })
 

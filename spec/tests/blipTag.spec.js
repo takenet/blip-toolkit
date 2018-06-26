@@ -31,6 +31,7 @@ describe('BlipTag', () => {
     it('should remove a tag', () => {
       const component = new BlipTag({
         label: 'my-tag',
+        canRemoveTag: true,
       })
 
       tagList.appendChild(component.element)

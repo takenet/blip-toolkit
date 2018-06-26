@@ -35,6 +35,7 @@
   opacity: 0;
   transition: 200ms;
   overflow-y: auto;
+  z-index: 1;
 }
 
 .blip-select__options--open-top {

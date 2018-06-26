@@ -1,4 +1,8 @@
-import { BlipTag, blipTagSelectColorClass } from '../blipTag'
+import {
+  BlipTag,
+  blipTagSelectColorClass,
+  blipTagCompactClass,
+} from '../blipTag'
 import { BlipSelect } from '../blipSelect'
 import { EventEmitter } from '@lib/eventEmitter'
 import {
@@ -15,6 +19,8 @@ const blipTagOnListClass = 'blip-tag--on-list'
 export class BlipTags {
   $state = {
     addTagText: 'Add tag',
+    mode: 'full', // can be 'full' or 'compact'
+    canChangeBackground: true,
     tags: [],
     onTagAdded: () => {},
     onTagRemoved: () => {},
@@ -47,6 +53,23 @@ export class BlipTags {
    * Setup tags element
    */
   _setup() {
+    switch (this.tagsOptions.mode) {
+      case 'full':
+        this._setupFullMode()
+        break
+      case 'compact':
+        this._setupCompactMode()
+        break
+    }
+
+    this.element.appendChild(this.tagsContainer)
+    this.bindTagsIfExists()
+  }
+
+  /**
+   * Setup BlipTags in full mode
+   */
+  _setupFullMode() {
     this.tagsContainer = strToEl(`
       <div class="${blipTagsClass}">
         <select id="${this.blipSelectId}"></select>
@@ -71,9 +94,15 @@ export class BlipTags {
         onInputChange: this._handleInputChange,
         onBlur: this._handleBlipSelectBlur,
       })
+  }
 
-    this.element.appendChild(this.tagsContainer)
-    this.bindTagsIfExists()
+  /**
+   * Setup BlipTags in compact mode
+   */
+  _setupCompactMode() {
+    this.tagsContainer = strToEl(`
+      <div class="${blipTagsClass}"></div>
+    `)
   }
 
   /**
@@ -81,7 +110,14 @@ export class BlipTags {
    */
   bindTagsIfExists() {
     if (this.tagsOptions.tags.length > 0) {
-      this.bulkInsertTags(this.tagsOptions.tags)
+      switch (this.tagsOptions.mode) {
+        case 'full':
+          this.bulkInsertTags(this.tagsOptions.tags)
+          break
+        case 'compact':
+          this.bulkInsertCompactTags(this.tagsOptions.tags)
+          break
+      }
     }
   }
 
@@ -112,7 +148,7 @@ export class BlipTags {
   _onAddNewOption({ $event }) {
     const { label } = $event
 
-    const tag = new BlipTag({ label, canChangeBackground: true })
+    const tag = new BlipTag({ label, canChangeBackground: this.tagsOptions.canChangeBackground })
     this.addTag(tag)
   }
 
@@ -161,6 +197,24 @@ export class BlipTags {
   }
 
   /**
+   * Insert multiple tags from array (in compact mode)
+   * @param {Array} tags - { label: string, background: string }
+   */
+  bulkInsertCompactTags(tags) {
+    tags.map(({ label, background }) => {
+      const tag = new BlipTag({
+        label,
+        background,
+        canChangeBackground: false,
+        classes: `${blipTagOnListClass} ${blipTagCompactClass}`,
+      })
+
+      // Insert tag element into DOM
+      this.insertTagIntoDom(tag)
+    })
+  }
+
+  /**
    * Insert multiple tags from array
    * @param {Array} tags - { label: string, background: string }
    */
@@ -177,6 +231,10 @@ export class BlipTags {
 
       // Insert tag element into DOM
       this.insertTagIntoDom(tag)
+      this.blipSelectInstance.addNewOption({
+        label: tag.label,
+        value: tag.label,
+      }, false)
     })
   }
 

@@ -39,6 +39,14 @@ const tags = new BlipTags(element, {
 })
 ```
 
+#### `mode` - string
+
+Can be `full` or `compact`. In full mode, text and remove button is showed. On compact mode, only tag color is showed initially.
+
+#### `canChangeBackground` - boolean
+
+Allow (or not) tags to change background when it is added
+
 ## Callbacks
 
 #### `onTagAdded`

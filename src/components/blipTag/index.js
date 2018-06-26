@@ -33,6 +33,7 @@ export class BlipTag {
     id: `${blipTagClass}-${guid()}`,
     classes: '',
     canChangeBackground: false,
+    canRemoveTag: true,
     onRemove: undefined,
     onSelectColor: () => {},
   }
@@ -169,7 +170,7 @@ export class BlipTag {
     color,
   }) {
     const renderRemoveButton = () =>
-      this.tagOptions.onRemove
+      this.tagOptions.onRemove || this.tagOptions.canRemoveTag
         ? `<button class="${blipTagRemoveClass}" style="color: ${color}">x</button>`
         : ''
 
@@ -211,21 +212,21 @@ export class BlipTag {
    * Function invoked when remove tag
    */
   _removeTag(backspace) {
-    if (!this.tagOptions.onRemove) {
-      return
+    if (this.tagOptions.onRemove) {
+      this.tagOptions.onRemove.call(this, EventEmitter({
+        tag: {
+          element: this.tagContainer,
+          id: this.tagOptions.id,
+          label: this.tagOptions.label,
+        },
+        backspace,
+      }))
     }
 
-    this.tagOptions.onRemove.call(this, EventEmitter({
-      tag: {
-        element: this.tagContainer,
-        id: this.tagOptions.id,
-        label: this.tagOptions.label,
-      },
-      backspace,
-    }))
-
-    this.tagContainer.parentNode.removeChild(this.tagContainer)
-    this.tagContainer = undefined
+    if (this.tagOptions.canRemoveTag) {
+      this.tagContainer.parentNode.removeChild(this.tagContainer)
+      this.tagContainer = undefined
+    }
   }
 
   /**

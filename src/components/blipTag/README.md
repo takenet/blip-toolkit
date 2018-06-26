@@ -47,6 +47,14 @@ Tag custom id
 
 Tag classes
 
+#### `canChangeBackground` - boolean
+
+Select a set of colors to change tag background
+
+#### `canRemoveTag` - boolean
+
+Option to remove (or not) tag elemen from DOM
+
 ## Callbacks
 
 ### `onRemove` - function

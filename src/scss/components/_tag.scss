@@ -41,16 +41,36 @@
   padding: 4px 15px;
   border-radius: 20px;
   background: $bp-color-bot;
+  max-width: 300px;
+  max-height: 300px;
+  transition: max-width 600ms, max-height 600ms;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  overflow: hidden;
 
-  &:focus {
-    background: $bp-color-rooftop !important; // Tags background is set inline, so !important is necessary
-    outline: 0;
+  &:focus { outline: 0; }
+
+  &.blip-tag--can-remove {
+    &:focus {
+      background: $bp-color-rooftop !important; // Tags background is set inline, so !important is necessary
+    }
+  }
+}
+
+.blip-tag--compact {
+  max-width: 30px;
+  max-height: 6px;
+
+  .blip-tag__label {
+    opacity: 0;
   }
 }
 
 .blip-tag__label {
   word-break: break-word;
   line-height: 1;
+  opacity: 1;
+  transition: 100ms;
 }
 
 .blip-tag--on-list {

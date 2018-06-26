@@ -1,7 +1,6 @@
 import {
   BlipTag,
   blipTagSelectColorClass,
-  blipTagCompactClass,
 } from '../blipTag'
 import { BlipSelect } from '../blipSelect'
 import { EventEmitter } from '@lib/eventEmitter'
@@ -207,7 +206,8 @@ export class BlipTags {
         background,
         canChangeBackground: false,
         canRemoveTag: false,
-        classes: `${blipTagOnListClass} ${blipTagCompactClass}`,
+        mode: 'compact',
+        classes: `${blipTagOnListClass} `,
       })
 
       // Insert tag element into DOM

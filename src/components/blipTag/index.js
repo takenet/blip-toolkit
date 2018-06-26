@@ -8,6 +8,7 @@ const blipTagClass = 'blip-tag'
 const blipTagLabelClass = 'blip-tag__label'
 const blipTagRemoveClass = 'blip-tag__remove'
 const blipTagColorOptionClass = 'blip-tag-color-option'
+const blipTagCanRemoveClass = 'blip-tag--can-remove'
 export const blipTagSelectColorClass = 'blip-tag-select-color'
 export const blipTagCompactClass = 'blip-tag--compact'
 
@@ -31,7 +32,9 @@ export class BlipTag {
     background: '#2cc3d5',
     color: '#fff',
     id: `${blipTagClass}-${guid()}`,
+    mode: 'full', // can be full or compact
     classes: '',
+    tagClasses: '',
     canChangeBackground: false,
     canRemoveTag: true,
     onRemove: undefined,
@@ -137,6 +140,7 @@ export class BlipTag {
   _setupEventHandlers() {
     this._handleRemoveTag = this._removeTag.bind(this)
     this._handleTagKeydown = this._onTagKeydown.bind(this)
+    this._handleTagClick = this._onTagClick.bind(this)
 
     // Handle click on remove button
     const removeButton = this.tagContainer.querySelector(`.${blipTagRemoveClass}`)
@@ -157,6 +161,10 @@ export class BlipTag {
           element.addEventListener('click', this._selectColor.bind(this, color))
         })
     }
+
+    if (this.tagOptions.mode === 'compact') {
+      this.tagElement.addEventListener('click', this._handleTagClick)
+    }
   }
 
   /**
@@ -174,9 +182,23 @@ export class BlipTag {
         ? `<button class="${blipTagRemoveClass}" style="color: ${color}">x</button>`
         : ''
 
+    const renderTagClasses = () => {
+      let tagClasses = `${blipTagClass} ${this.tagOptions.tagClasses}`
+
+      if (this.tagOptions.mode === 'compact') {
+        tagClasses += ` ${blipTagCompactClass}`
+      }
+
+      if (this.tagOptions.canRemoveTag || this.tagOptions.onRemove) {
+        tagClasses += ` ${blipTagCanRemoveClass}`
+      }
+
+      return tagClasses
+    }
+
     return strToEl(`
       <div class="${blipTagContainerClass} ${this.tagOptions.classes}" id="${id}">
-        <div tabindex="0" class="${blipTagClass}" style="background: ${background}; color: ${color}">
+        <div tabindex="0" class="${renderTagClasses()}" style="background: ${background}; color: ${color}">
           <span class="${blipTagLabelClass}">${label}</span>
           ${renderRemoveButton()}
         </div>
@@ -237,6 +259,18 @@ export class BlipTag {
       case 8: // backspace
         this._removeTag(true)
         break
+    }
+  }
+
+  /**
+   * Handle tag click
+   * @param {Event} event - Click event
+   */
+  _onTagClick(event) {
+    if (this.tagElement.classList.contains(blipTagCompactClass)) {
+      this.tagElement.classList.remove(blipTagCompactClass)
+    } else {
+      this.tagElement.classList.add(blipTagCompactClass)
     }
   }
 }

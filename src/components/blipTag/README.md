@@ -55,6 +55,10 @@ Select a set of colors to change tag background
 
 Option to remove (or not) tag elemen from DOM
 
+#### `mode` - string
+
+Can be `full` or `compact`
+
 ## Callbacks
 
 ### `onRemove` - function

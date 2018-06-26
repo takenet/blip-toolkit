@@ -364,7 +364,7 @@ export class BlipSelectBase {
           label: match.label,
         })
       } else {
-        this._setInputValue({ value })
+        this._setInputValue({ value, label })
       }
     }
   }

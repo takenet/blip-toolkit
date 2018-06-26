@@ -56,26 +56,27 @@ export class BlipSelectAdd extends BlipSelectBase {
   /**
    * Add new option to list
    */
-  addNewOption({ label, value, element }) {
+  addNewOption(option = {}, shouldDispatch = true) {
     if (typeof this.configAddOptions.onAddNewOption !== 'function') {
       throw Error('Callback "onAddNewOption" is not a function')
     }
 
-    if (label.trim() === '') {
+    const newOption = {
+      ...this._currentOptionState(),
+      ...option,
+    }
+
+    if (newOption.label.trim() === '') {
       return
     }
 
-    const option = {
-      label,
-      value,
-      element,
-    }
-
-    this.selectOptions = this.selectOptions.concat(option)
+    this.selectOptions = this.selectOptions.concat(newOption)
     this.clearInput()
     this._arrayToDomOptions(this.selectOptions)
 
-    this.configAddOptions.onAddNewOption.call(this, EventEmitter(option))
+    if (shouldDispatch) {
+      this.configAddOptions.onAddNewOption.call(this, EventEmitter(newOption))
+    }
     this._closeSelect()
   }
 

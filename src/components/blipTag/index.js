@@ -27,7 +27,7 @@ const colorOption12 = '#FF1E90'
 export class BlipTag {
   $state = {
     label: '',
-    background: '',
+    background: '#2cc3d5',
     color: '#fff',
     id: `${blipTagClass}-${guid()}`,
     classes: '',
@@ -79,6 +79,7 @@ export class BlipTag {
    * Tag background
    */
   set tagBackground(value) {
+    this.tagOptions.background = value
     this.tagContainer.querySelector(`.${blipTagClass}`)
       .style.background = value
   }
@@ -174,11 +175,11 @@ export class BlipTag {
 
   /**
    * Function invoked when select color option
-   * @param {Event} e - Click event
+   * @param {String} color - Hexadecimal color selected
    */
   _selectColor(color) {
     this.tagBackground = color
-    this.tagOptions.onSelectColor.call(this, EventEmitter({ color }))
+    this.tagOptions.onSelectColor.call(this, EventEmitter({ color, tag: this }))
     this.hideColorOptions()
   }
 

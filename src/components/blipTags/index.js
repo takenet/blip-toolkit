@@ -15,8 +15,10 @@ const blipTagOnListClass = 'blip-tag--on-list'
 export class BlipTags {
   $state = {
     addTagText: 'Add tag',
+    tags: [],
     onTagAdded: () => {},
     onTagRemoved: () => {},
+    onSelectTagColor: () => {},
   }
 
   constructor(element, options) {
@@ -71,6 +73,16 @@ export class BlipTags {
       })
 
     this.element.appendChild(this.tagsContainer)
+    this.bindTagsIfExists()
+  }
+
+  /**
+   * Bind pre-defined tags if exists
+   */
+  bindTagsIfExists() {
+    if (this.tagsOptions.tags.length > 0) {
+      this.bulkInsertTags(this.tagsOptions.tags)
+    }
   }
 
   /**
@@ -100,7 +112,8 @@ export class BlipTags {
   _onAddNewOption({ $event }) {
     const { label } = $event
 
-    this._addTag(label)
+    const tag = new BlipTag({ label, canChangeBackground: true })
+    this.addTag(tag)
   }
 
   /**
@@ -134,20 +147,9 @@ export class BlipTags {
   }
 
   /**
-   * Add tag on DOM and tags array
-   * @param {String} label - tag label
+   * Insert tag into DOM
    */
-  _addTag(label) {
-    const tag = new BlipTag({
-      label,
-      canChangeBackground: true,
-      onRemove: this._removeTag.bind(this),
-      classes: `${blipTagOnListClass}`,
-    })
-
-    // Hide last tag color options if I can
-    this._hideLastTagOptions()
-
+  insertTagIntoDom(tag) {
     if (this.tags.length === 0) {
       this.tagsContainer.prepend(tag.element)
     } else {
@@ -156,7 +158,57 @@ export class BlipTags {
     }
 
     this.tags = this.tags.concat(tag)
-    this.blipSelectInstance.input.focus()
+  }
+
+  /**
+   * Insert multiple tags from array
+   * @param {Array} tags - { label: string, background: string }
+   */
+  bulkInsertTags(tags) {
+    tags.map(({ label, background }) => {
+      const tag = new BlipTag({
+        label,
+        background,
+        canChangeBackground: false,
+        onRemove: this._removeTag.bind(this),
+        onSelectColor: this.tagsOptions.onSelectTagColor,
+        classes: `${blipTagOnListClass}`,
+      })
+
+      // Insert tag element into DOM
+      this.insertTagIntoDom(tag)
+    })
+  }
+
+  /**
+   * Add tag on DOM and tags array
+   * @param {BlipTag} tag - tag instance
+   */
+  addTag(tagInstance, focusOnInput) {
+    const {
+      label,
+      canChangeBackground,
+      tagOptions: { background },
+    } = tagInstance
+
+    const tag = new BlipTag({
+      label,
+      canChangeBackground,
+      background,
+      onRemove: this._removeTag.bind(this),
+      onSelectColor: this.tagsOptions.onSelectTagColor,
+      classes: `${blipTagOnListClass}`,
+    })
+
+    // Hide last tag color options if I can
+    this._hideLastTagOptions()
+
+    // Insert tag element into DOM
+    this.insertTagIntoDom(tag)
+
+    if (focusOnInput) {
+      this.blipSelectInstance.input.focus()
+    }
 
     this.tagsOptions.onTagAdded.call(this, EventEmitter({ tag }))
 

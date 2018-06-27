@@ -83,6 +83,13 @@ export class BlipTag {
   }
 
   /**
+   * Returns tag background
+   */
+  get tagBackground() {
+    return this.tagOptions.background
+  }
+
+  /**
    * Tag background
    */
   set tagBackground(value) {

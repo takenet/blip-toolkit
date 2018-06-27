@@ -308,7 +308,6 @@ export class BlipSelectBase {
     if (typeof this.configOptions.onInputChange !== 'function') {
       throw new Error('Callback "onInputChange" is not a function')
     }
-
     const inputValue = this.input.value
     const searchResults = this.configOptions.customSearch
       ? this.configOptions.customSearch.call(this, EventEmitter({
@@ -331,13 +330,31 @@ export class BlipSelectBase {
    */
   _setInputValue({ value, label }) {
     this.input.value = label || value
-
     if (typeof this.configOptions.onSelectOption !== 'function') {
       throw new Error('Callback "onSelectOption" is not a function')
     }
 
     if (value || label) {
       this.configOptions.onSelectOption.call(this, EventEmitter({ value, label }))
+    }
+  }
+
+  /**
+   * Check if the select options have change
+  */
+
+  _checkOptions() {
+    const options = this.el.querySelectorAll('option')
+    if (this.selectOptions.length !== options.length) {
+      this.selectOptions = []
+      Array.prototype.forEach.call(options, (element) => {
+        this.selectOptions = this.selectOptions.concat({
+          value: element.value,
+          label: element.label,
+          element,
+        })
+      })
+      this._arrayToDomOptions(this.selectOptions)
     }
   }
 
@@ -429,7 +446,7 @@ export class BlipSelectBase {
     if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.selectOptions.length === 0)) {
       return
     }
-
+    this._checkOptions()
     if (typeof this.configOptions.beforeOpenSelect !== 'function') {
       throw Error('Callback "beforeOpenSelect" is not a function')
     }
@@ -475,7 +492,6 @@ export class BlipSelectBase {
     if (this._isPartOfComponent(e)) {
       return
     }
-
     this.configOptions.onBlur(e)
 
     setTimeout(() => { // Needed for get option value on "li" click

@@ -21,6 +21,7 @@ module.exports = merge(baseWebpackConfig, {
       },
     }),
   ],
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     compress: true,
     overlay: true,

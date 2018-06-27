@@ -80,6 +80,36 @@ export class BlipSelectAdd extends BlipSelectBase {
   }
 
   /**
+   * Set value to input
+   * @param {Object} object - value/label pair
+   */
+  _setInputValue({ value, label }) {
+    this.input.value = label || value
+    if (typeof this.configOptions.onSelectOption !== 'function') {
+      throw new Error('Callback "onSelectOption" is not a function')
+    }
+    if (this.configAddOptions.canAddOption) {
+      this._removeAddOptionNode()
+    }
+
+    if (value || label) {
+      this.configOptions.onSelectOption.call(this, EventEmitter({ value, label }))
+    }
+  }
+
+  /**
+   * Search for value in options list
+   * @param {String} value - search value
+   */
+  _removeAddOptionNode() {
+    const addOption = this.selectOptionsContainer.querySelector('.blip-select__add-option')
+    if (addOption) {
+      this.selectOptionsContainer.removeChild(addOption)
+    }
+    this._arrayToDomOptions(this.selectOptions)
+  }
+
+  /**
    * Search for value in options list
    * @param {String} value - search value
    */

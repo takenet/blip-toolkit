@@ -334,21 +334,9 @@ export class BlipSelectBase {
       throw new Error('Callback "onSelectOption" is not a function')
     }
 
-    if (this.configOptions.mode === 'autocomplete') {
-      this._removeAddOptionNode()
-    }
-
     if (value || label) {
       this.configOptions.onSelectOption.call(this, EventEmitter({ value, label }))
     }
-  }
-
-  _removeAddOptionNode() {
-    const addOption = this.selectOptionsContainer.querySelector('.blip-select__add-option')
-    if (addOption) {
-      this.selectOptionsContainer.removeChild(addOption)
-    }
-    this._arrayToDomOptions(this.selectOptions)
   }
 
   /**

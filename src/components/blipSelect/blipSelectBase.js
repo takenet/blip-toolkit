@@ -187,15 +187,15 @@ export class BlipSelectBase {
    * Bind array to dom "li" items into selectOptionsContainer
    * @param {Array} options - Options array
    */
-  _arrayToDomOptions(options = [{ value: '', label: '' }]) {
+  _arrayToDomOptions(options = [{ value: '', label: '', id: '' }]) {
     // Reset HTML content
     this.selectOptionsContainer.innerHTML = ''
 
     // Add options to container
-    options.forEach(({ value, label }) => {
+    options.forEach(({ value, label, id }) => {
       this.selectOptionsContainer.appendChild(
         strToEl(`
-          <li tabindex="0" class="${blipSelectOptionClass}" data-value="${value}">${label}</li>
+          <li tabindex="0" class="${blipSelectOptionClass}" id="${id}" data-label="${label}" data-value="${value}">${label}</li>
         `)
       )
     })
@@ -400,7 +400,8 @@ export class BlipSelectBase {
    */
   _onOptionClick(event) {
     if (this.isSelectOpen) {
-      this._setInputValue(this.selectOptions.find(o => o.value === event.target.getAttribute('data-value')))
+      const selectedOption = this.selectOptions.find(o => o.label === event.target.getAttribute('data-label'))
+      this._setInputValue(selectedOption)
       this._resetSelectedOptions()
       event.target.classList.add(blipSelectOptionSeletedClass)
 

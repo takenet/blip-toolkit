@@ -1,4 +1,4 @@
-import { strToEl } from '@lib/utils'
+import { strToEl, guid } from '@lib/utils'
 import { BlipSelectBase } from './blipSelectBase'
 import { EventEmitter } from '@lib/eventEmitter'
 
@@ -64,6 +64,7 @@ export class BlipSelectAdd extends BlipSelectBase {
     const newOption = {
       ...this._currentOptionState(),
       ...option,
+      id: `${blipSelectOptionClass}-${guid()}`,
     }
 
     if (newOption.label.trim() === '') {

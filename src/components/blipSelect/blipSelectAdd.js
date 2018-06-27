@@ -76,7 +76,7 @@ export class BlipSelectAdd extends BlipSelectBase {
     this._arrayToDomOptions(this.selectOptions)
 
     if (shouldDispatch) {
-      this.configAddOptions.onAddNewOption.call(this, EventEmitter(newOption))
+      this.configAddOptions.onAddNewOption.call(this, EventEmitter({ ...newOption, context: this }))
     }
     this._closeSelect()
   }
@@ -104,12 +104,16 @@ export class BlipSelectAdd extends BlipSelectBase {
    * Get current option state
    */
   _currentOptionState() {
-    const value = this.input.value
-    const element = strToEl(`<li tabindex="0" class="${blipSelectOptionClass}" data-value="${value}">${value}</li>`)
+    if (this.configAddOptions.newOption) {
+      return this.configAddOptions.newOption.call(this, EventEmitter({ context: this }))
+    }
+
+    const label = this.input.value
+    const element = strToEl(`<li tabindex="0" class="${blipSelectOptionClass}" data-label="${label}" data-value="${label}">${label}</li>`)
 
     return {
-      label: value,
-      value,
+      value: label,
+      label,
       element,
     }
   }

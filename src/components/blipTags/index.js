@@ -10,10 +10,12 @@ import {
   guid,
   insertAfter,
 } from '@lib/utils'
+import { blipSelectOptionClass } from '../blipSelect/blipSelectBase'
 
 const blipSelectPrefixClass = 'blip-select'
 const blipTagsClass = 'blip-tags'
 const blipTagOnListClass = 'blip-tag--on-list'
+const blipTagLabelOptionClass = 'blip-tag__label-option'
 
 export class BlipTags {
   $state = {
@@ -81,6 +83,8 @@ export class BlipTags {
     this._handleInputChange = this._onInputChange.bind(this)
     this._handleSelectOption = this._onSelectOption.bind(this)
     this._handleBlipSelectBlur = this._onSelectBlur.bind(this)
+    this._handleSanitizeNewOption = this._sanitizeNewOption.bind(this)
+    this._handleCustomSearch = this._customOptionsSearch.bind(this)
 
     this.blipSelectInstance = new BlipSelect(
       this.selectElement,
@@ -93,7 +97,36 @@ export class BlipTags {
         onSelectOption: this._handleSelectOption,
         onInputChange: this._handleInputChange,
         onBlur: this._handleBlipSelectBlur,
+        newOption: this._handleSanitizeNewOption,
+        customSearch: this._handleCustomSearch,
       })
+
+    if (this.tagsOptions.canChangeBackground) {
+      this.blipSelectInstance._arrayToDomOptions = this._overrideSelectDomOptions.bind(this.blipSelectInstance)
+    }
+  }
+
+  /**
+   * Sanitize new option
+   */
+  _sanitizeNewOption({ $event }) {
+    const { context } = $event
+    const label = context.input.value
+
+    return {
+      value: '#2cc3d5',
+      label,
+    }
+  }
+
+  /**
+   * Custom options search
+   */
+  _customOptionsSearch({ $event }) {
+    const { query } = $event
+    const searchResults = this.tags.filter(t => t.label.toLowerCase().includes(query.toLowerCase()))
+
+    return searchResults.map(({ label, tagBackground: value }) => ({ label, value }))
   }
 
   /**
@@ -146,7 +179,7 @@ export class BlipTags {
 
   /**
    * On add option callback from BlipSelect
-   * @param {EventEmitter} obj - object that contais option object of BlipSelect component
+   * @param {EventEmitter} obj - Object that contains option object of BlipSelect component
    */
   _onAddNewOption({ $event }) {
     const { label, id } = $event
@@ -230,7 +263,7 @@ export class BlipTags {
       const tag = new BlipTag({
         label,
         [background ? 'background' : '']: background,
-        id,
+        [id ? 'id' : '']: id,
         canChangeBackground: false,
         onRemove: this._removeTag.bind(this),
         onSelectColor: this._onSelectTagColor.bind(this),
@@ -264,7 +297,7 @@ export class BlipTags {
       canChangeBackground,
       background,
       onRemove: this._removeTag.bind(this),
-      onSelectColor: this._onSelectTagColor,
+      onSelectColor: this._onSelectTagColor.bind(this),
       classes: `${blipTagOnListClass}`,
     })
 
@@ -314,5 +347,29 @@ export class BlipTags {
     if (this.tagsOptions.toggleTagsMode) {
       this.tags.forEach(t => t.toggleCollapse())
     }
+  }
+
+  /**
+   * Override BlipSelect '_arrayToDomOptions' method due to customize generated options
+   * Scope: the blip select instance
+   * @override
+   * @param {Array} options - Options array
+   */
+  _overrideSelectDomOptions(options = [{ value: '', label: '', id: '' }]) {
+    // Reset HTML content
+    this.selectOptionsContainer.innerHTML = ''
+
+    // Add options to container
+    options.forEach(({ value, label, id }) => {
+      this.selectOptionsContainer.appendChild(
+        strToEl(`
+          <li tabindex="0" class="${blipSelectOptionClass}" id="${id}" data-label="${label}" data-value="${value}">
+            <span class="${blipTagLabelOptionClass}" style="background: ${value}">${label}</span>
+          </li>
+        `)
+      )
+    })
+
+    this._setupOptionsEventHandlers()
   }
 }

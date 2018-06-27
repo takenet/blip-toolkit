@@ -136,9 +136,12 @@ export class BlipTags {
    * Handle select option
    * @param {EventEmitter} emitter - EventEmitter object
    */
-  _onSelectOption(emitter) {
+  _onSelectOption({ $event }) {
     this.blipSelectInstance.clearInput()
-    this._onAddNewOption(emitter)
+
+    const { label, value } = $event
+    const tag = new BlipTag({ label, background: value, canChangeBackground: false })
+    this.addTag(tag)
   }
 
   /**
@@ -146,9 +149,9 @@ export class BlipTags {
    * @param {EventEmitter} obj - object that contais option object of BlipSelect component
    */
   _onAddNewOption({ $event }) {
-    const { label } = $event
+    const { label, id } = $event
 
-    const tag = new BlipTag({ label, canChangeBackground: this.tagsOptions.canChangeBackground })
+    const tag = new BlipTag({ label, id, canChangeBackground: this.tagsOptions.canChangeBackground })
     this.addTag(tag)
   }
 
@@ -226,11 +229,11 @@ export class BlipTags {
     tags.map(({ label, background, id }) => {
       const tag = new BlipTag({
         label,
-        background,
+        [background ? 'background' : '']: background,
         id,
         canChangeBackground: false,
         onRemove: this._removeTag.bind(this),
-        onSelectColor: this.tagsOptions.onSelectTagColor,
+        onSelectColor: this._onSelectTagColor.bind(this),
         classes: `${blipTagOnListClass}`,
       })
 
@@ -238,7 +241,7 @@ export class BlipTags {
       this.insertTagIntoDom(tag)
       this.blipSelectInstance.addNewOption({
         label: tag.label,
-        value: tag.label,
+        value: tag.tagOptions.background,
       }, false)
     })
   }
@@ -249,17 +252,19 @@ export class BlipTags {
    */
   addTag(tagInstance, focusOnInput) {
     const {
+      id,
       label,
       canChangeBackground,
       tagOptions: { background },
     } = tagInstance
 
     const tag = new BlipTag({
+      id,
       label,
       canChangeBackground,
       background,
       onRemove: this._removeTag.bind(this),
-      onSelectColor: this.tagsOptions.onSelectTagColor,
+      onSelectColor: this._onSelectTagColor,
       classes: `${blipTagOnListClass}`,
     })
 
@@ -292,6 +297,14 @@ export class BlipTags {
     } else {
       this.blipSelectInstance.input.focus()
     }
+  }
+
+  /**
+   * Handle select color callback
+   * @param {EventEmitter} emitter - emitter obj
+   */
+  _onSelectTagColor(emitter) {
+    this.tagsOptions.onSelectTagColor.call(this, emitter)
   }
 
   /**

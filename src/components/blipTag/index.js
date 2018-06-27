@@ -92,6 +92,13 @@ export class BlipTag {
   }
 
   /**
+   * Returns tag Id
+   */
+  get id() {
+    return this.tagOptions.id
+  }
+
+  /**
    * Returns label value
    */
   getValue() {

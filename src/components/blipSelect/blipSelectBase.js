@@ -319,8 +319,6 @@ export class BlipSelectBase {
    * On input change event
    */
   _onInputChange(event) {
-    console.log('event')
-
     if (typeof this.configOptions.onInputChange !== 'function') {
       throw new Error('Callback "onInputChange" is not a function')
     }

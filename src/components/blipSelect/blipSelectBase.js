@@ -408,8 +408,7 @@ export class BlipSelectBase {
    */
   _onOptionClick(event) {
     if (this.isSelectOpen) {
-      // const selectedOption = this.selectOptions.find(o => o.label === event.target.getAttribute('data-label'))
-      const target = event.target
+      const target = event.currentTarget
       const selectedOption = {
         label: target.getAttribute('data-label'),
         value: target.getAttribute('data-value'),
@@ -420,6 +419,8 @@ export class BlipSelectBase {
 
       this._closeSelect()
     }
+
+    event.stopPropagation()
   }
 
   /**

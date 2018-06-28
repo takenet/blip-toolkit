@@ -400,7 +400,12 @@ export class BlipSelectBase {
    */
   _onOptionClick(event) {
     if (this.isSelectOpen) {
-      const selectedOption = this.selectOptions.find(o => o.label === event.target.getAttribute('data-label'))
+      // const selectedOption = this.selectOptions.find(o => o.label === event.target.getAttribute('data-label'))
+      const target = event.target
+      const selectedOption = {
+        label: target.getAttribute('data-label'),
+        value: target.getAttribute('data-value'),
+      }
       this._setInputValue(selectedOption)
       this._resetSelectedOptions()
       event.target.classList.add(blipSelectOptionSeletedClass)

@@ -302,21 +302,30 @@ export class BlipSelectBase {
   }
 
   /**
+   * Get search results
+   */
+  _getSearchResults(query) {
+    return this.configOptions.customSearch
+      ? this.configOptions.customSearch.call(this, EventEmitter({
+        query,
+        items: this.selectOptions,
+      }))
+      : this.selectOptions.filter(
+        ({ value, label }) => label.toLowerCase().includes(query.toLowerCase())
+      )
+  }
+
+  /**
    * On input change event
    */
   _onInputChange(event) {
+    console.log('event')
+
     if (typeof this.configOptions.onInputChange !== 'function') {
       throw new Error('Callback "onInputChange" is not a function')
     }
     const inputValue = this.input.value
-    const searchResults = this.configOptions.customSearch
-      ? this.configOptions.customSearch.call(this, EventEmitter({
-        query: inputValue,
-        items: this.selectOptions,
-      }))
-      : this.selectOptions.filter(
-        ({ value, label }) => label.toLowerCase().includes(inputValue.toLowerCase())
-      )
+    const searchResults = this._getSearchResults(inputValue)
 
     this.configOptions.onInputChange(EventEmitter({ value: inputValue, event }))
 
@@ -336,25 +345,6 @@ export class BlipSelectBase {
 
     if (value || label) {
       this.configOptions.onSelectOption.call(this, EventEmitter({ value, label }))
-    }
-  }
-
-  /**
-   * Check if the select options have change
-  */
-
-  _checkOptions() {
-    const options = this.el.querySelectorAll('option')
-    if (this.selectOptions.length !== options.length) {
-      this.selectOptions = []
-      Array.prototype.forEach.call(options, (element) => {
-        this.selectOptions = this.selectOptions.concat({
-          value: element.value,
-          label: element.label,
-          element,
-        })
-      })
-      this._arrayToDomOptions(this.selectOptions)
     }
   }
 
@@ -383,6 +373,9 @@ export class BlipSelectBase {
       } else {
         this._setInputValue({ value, label })
       }
+
+      const event = new CustomEvent('keyup', { detail: { shouldOpenSelect: false } })
+      this.input.dispatchEvent(event)
     }
   }
 
@@ -451,7 +444,6 @@ export class BlipSelectBase {
     if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.selectOptions.length === 0)) {
       return
     }
-    this._checkOptions()
     if (typeof this.configOptions.beforeOpenSelect !== 'function') {
       throw Error('Callback "beforeOpenSelect" is not a function')
     }

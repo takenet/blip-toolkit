@@ -151,8 +151,8 @@ export class BlipSelectAdd extends BlipSelectBase {
   /**
    * Add new listener to input
    */
-  _onAddInputChange() {
-    if (this.input.value !== '' && !this.isSelectOpen) {
+  _onAddInputChange(event) {
+    if (this.input.value !== '' && !this.isSelectOpen && event.detail.shouldOpenSelect === undefined) {
       this._openSelect()
     }
 

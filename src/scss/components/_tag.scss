@@ -47,6 +47,7 @@
   text-overflow: ellipsis;
   cursor: pointer;
   overflow: hidden;
+  color: #fff;
 
   &:focus { outline: 0; }
 
@@ -87,6 +88,7 @@
   min-width: auto;
   padding: 0;
   line-height: 1;
+  color: #fff;
 
   &:focus {
     outline: none;

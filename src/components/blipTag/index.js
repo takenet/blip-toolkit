@@ -1,5 +1,7 @@
-import { strToEl, guid } from '@lib/utils'
+import { guid } from '@lib/utils'
 import { EventEmitter } from '@lib/eventEmitter'
+import Nanocomponent from 'nanocomponent'
+import html from 'nanohtml'
 
 const ANIMATION_TIMEOUT = 300
 
@@ -13,24 +15,10 @@ export const blipTagSelectColorClass = 'blip-tag-select-color'
 export const blipTagCompactClass = 'blip-tag--compact'
 
 // Color options
-const colorOption1 = '#0CC7CB'
-const colorOption2 = '#FF4A1E'
-const colorOption3 = '#FF6F1E'
-const colorOption4 = '#FF961E'
-const colorOption5 = '#1EDEFF'
-const colorOption6 = '#1EA1FF'
-const colorOption7 = '#61D36F'
-const colorOption8 = '#37C5AB'
-const colorOption9 = '#7762E3'
-const colorOption10 = '#EA4D9C'
-const colorOption11 = '#FC91AE'
-const colorOption12 = '#FF1E90'
+const colors = ['#0CC7CB', '#FF4A1E', '#FF6F1E', '#FF961E', '#1EDEFF', '#1EA1FF', '#61D36F', '#37C5AB', '#7762E3', '#EA4D9C', '#FC91AE', '#FF1E90']
 
-export class BlipTag {
+export class BlipTag extends Nanocomponent {
   $state = {
-    label: '',
-    background: '#2cc3d5',
-    color: '#fff',
     id: `${blipTagClass}-${guid()}`,
     mode: 'full', // can be full or compact
     classes: '',
@@ -44,6 +32,7 @@ export class BlipTag {
   }
 
   constructor(options) {
+    super()
     this.tagContainer = ''
 
     this.tagOptions = {
@@ -51,7 +40,65 @@ export class BlipTag {
       ...options,
     }
 
-    this._setup()
+    this._handleRemoveTag = this._removeTag.bind(this)
+    this._handleTagKeydown = this._onTagKeydown.bind(this)
+    this._handleTagClick = this._onTagClick.bind(this)
+
+    this.props = {
+      id: this.$state.id,
+      background: undefined,
+      label: undefined,
+    }
+  }
+
+  /**
+   * Render tag template with options
+   * @param {Object} props - Tag template properties
+   */
+  createElement(props) {
+    this.props = props
+
+    const renderRemoveButton = () =>
+      this.tagOptions.onRemove || this.tagOptions.canRemoveTag
+        ? html`<button onclick="${this._handleRemoveTag}" class="${blipTagRemoveClass}">x</button>`
+        : ''
+
+    const renderTagClasses = () => {
+      let tagClasses = `${blipTagClass} ${this.tagOptions.tagClasses}`
+
+      if (this.tagOptions.mode === 'compact') {
+        tagClasses += ` ${blipTagCompactClass}`
+      }
+
+      if (this.tagOptions.canRemoveTag || this.tagOptions.onRemove) {
+        tagClasses += ` ${blipTagCanRemoveClass}`
+      }
+
+      return tagClasses
+    }
+
+    return html`
+      <div class="${blipTagContainerClass} ${this.tagOptions.classes}">
+        <div id="${props.id || this.tagOptions.id}">
+          <div tabindex="0"
+            onclick="${this._handleTagClick}"
+            onkeydown="${this._handleTagKeydown}"
+            class="${renderTagClasses()}"
+            style="background: ${props.background};">
+            <span class="${blipTagLabelClass}">${props.label}</span>
+            ${renderRemoveButton()}
+          </div>
+        </div>
+        ${this.tagOptions.canChangeBackground ? html`
+        <ul class="${blipTagSelectColorClass}" tabindex="0">
+          ${colors.map(c => html`<li onclick="${this._selectColor.bind(this)}" class="${blipTagColorOptionClass}" style="background: ${c}" data-color="${c}"></li>`)}
+        </ul>` : ''}
+      </div>
+    `
+  }
+
+  update() {
+    return true
   }
 
   /**
@@ -65,7 +112,7 @@ export class BlipTag {
    * Returns tag label
    */
   get label() {
-    return this.tagOptions.label
+    return this.props.label
   }
 
   /**
@@ -109,124 +156,20 @@ export class BlipTag {
    * Returns label value
    */
   getValue() {
-    return this.tagOptions.label
-  }
-
-  /**
-   * Setup BLiP Tag
-   */
-  _setup() {
-    if (!this.tagOptions.label || this.tagOptions.label === '') {
-      throw Error('Tag must have a label')
-    }
-
-    this.tagContainer = this.renderTemplate({
-      label: this.tagOptions.label,
-      background: this.tagOptions.background,
-      color: this.tagOptions.color,
-      id: this.tagOptions.id,
-    })
-
-    if (this.tagOptions.canChangeBackground) {
-      const colorOptions = strToEl(`
-        <ul class="${blipTagSelectColorClass}" tabindex="0">
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption1}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption2}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption3}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption4}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption5}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption6}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption7}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption8}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption9}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption10}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption11}"></li>
-          <li class="${blipTagColorOptionClass}" data-color="${colorOption12}"></li>
-        </ul>
-      `)
-      this.tagContainer.appendChild(colorOptions)
-    }
-
-    this._setupEventHandlers()
-  }
-
-  /**
-   * Setup event handlers for tag
-   */
-  _setupEventHandlers() {
-    this._handleRemoveTag = this._removeTag.bind(this)
-    this._handleTagKeydown = this._onTagKeydown.bind(this)
-    this._handleTagClick = this._onTagClick.bind(this)
-
-    // Handle click on remove button
-    const removeButton = this.tagContainer.querySelector(`.${blipTagRemoveClass}`)
-
-    if (removeButton) {
-      removeButton
-        .addEventListener('click', this._handleRemoveTag)
-    }
-
-    this.tagElement.addEventListener('keydown', this._handleTagKeydown)
-
-    if (this.tagOptions.canChangeBackground) {
-      Array.prototype.forEach.call(this.tagContainer.querySelectorAll(`.${blipTagColorOptionClass}`),
-        element => {
-          const color = element.getAttribute('data-color')
-          element.style.background = color
-
-          element.addEventListener('click', this._selectColor.bind(this, color))
-        })
-    }
-
-    this.tagElement.addEventListener('click', this._handleTagClick)
-  }
-
-  /**
-   * Render tag template with options
-   * @param {options} object - Tag template options
-   */
-  renderTemplate({
-    label,
-    id,
-    background,
-    color,
-  }) {
-    const renderRemoveButton = () =>
-      this.tagOptions.onRemove || this.tagOptions.canRemoveTag
-        ? `<button class="${blipTagRemoveClass}" style="color: ${color}">x</button>`
-        : ''
-
-    const renderTagClasses = () => {
-      let tagClasses = `${blipTagClass} ${this.tagOptions.tagClasses}`
-
-      if (this.tagOptions.mode === 'compact') {
-        tagClasses += ` ${blipTagCompactClass}`
-      }
-
-      if (this.tagOptions.canRemoveTag || this.tagOptions.onRemove) {
-        tagClasses += ` ${blipTagCanRemoveClass}`
-      }
-
-      return tagClasses
-    }
-
-    return strToEl(`
-      <div class="${blipTagContainerClass} ${this.tagOptions.classes}" id="${id}">
-        <div tabindex="0" class="${renderTagClasses()}" style="background: ${background}; color: ${color}">
-          <span class="${blipTagLabelClass}">${label}</span>
-          ${renderRemoveButton()}
-        </div>
-      </div>
-    `)
+    return this.props.label
   }
 
   /**
    * Function invoked when select color option
    * @param {String} color - Hexadecimal color selected
    */
-  _selectColor(color) {
-    this.tagBackground = color
-    this.tagOptions.onSelectColor.call(this, EventEmitter({ color, tag: this }))
+  _selectColor(event) {
+    const background = event.target.getAttribute('data-color')
+    this.render({
+      ...this.props,
+      background,
+    })
+    this.tagOptions.onSelectColor.call(this, EventEmitter({ color: background, tag: this }))
     this.hideColorOptions()
   }
 
@@ -234,7 +177,7 @@ export class BlipTag {
    * Hide color options container
    */
   hideColorOptions() {
-    const colorOptionsContainer = this.tagContainer.querySelector(`.${blipTagSelectColorClass}`)
+    const colorOptionsContainer = this.element.querySelector(`.${blipTagSelectColorClass}`)
 
     colorOptionsContainer.style.transform = 'scale(0)'
     colorOptionsContainer.style.opacity = 0
@@ -251,17 +194,16 @@ export class BlipTag {
     if (this.tagOptions.onRemove) {
       this.tagOptions.onRemove.call(this, EventEmitter({
         tag: {
-          element: this.tagContainer,
+          element: this.element,
           id: this.tagOptions.id,
-          label: this.tagOptions.label,
+          label: this.props.label,
         },
         backspace,
       }))
     }
 
     if (this.tagOptions.canRemoveTag) {
-      this.tagContainer.parentNode.removeChild(this.tagContainer)
-      this.tagContainer = undefined
+      this.element.parentNode.removeChild(this.element)
     }
   }
 

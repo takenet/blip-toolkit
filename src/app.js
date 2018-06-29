@@ -1,3 +1,7 @@
+// Polyfills
+import './lib/prependPolyfill'
+
+//
 import './scss/main.scss'
 export { BlipSelect } from './components/blipSelect'
 export { BlipTags } from './components/blipTags'

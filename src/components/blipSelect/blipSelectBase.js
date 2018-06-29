@@ -1,24 +1,22 @@
 import { strToEl, guid } from '@lib/utils'
 import { EventEmitter } from '@lib/eventEmitter'
 
+import Nanocomponent from 'nanocomponent'
+import html from 'nanohtml'
+
 const ANIMATION_TIMEOUT = 300
 
-const bpInputWrapperClass = 'bp-input-wrapper'
-const blipSelectClass = 'blip-select'
-const bpInputWrapperLabelClass = 'bp-label'
-const blipSelectInputClass = 'blip-select__input'
 const blipSelectOptionsClass = 'blip-select__options'
 const blipSelectOptionOpenTopClass = 'blip-select__options--open-top'
 export const blipSelectOptionClass = 'blip-select__option'
 const blipSelectOptionSeletedClass = 'blip-select__option--selected'
 const bpInputWithBulletClass = 'bp-input--with-bullet'
 const bpCrooftopClass = 'bp-c-rooftop'
-const bpCcloudClass = 'bp-c-cloud'
 const bpCblipLightClass = 'bp-c-blip-light'
 const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
 const bpInputWrapperDisabledClass = 'bp-input-wrapper--disabled'
 
-export class BlipSelectBase {
+export class BlipSelectBase extends Nanocomponent {
   /**
    * Component state
    */
@@ -41,7 +39,9 @@ export class BlipSelectBase {
     customSearch: undefined, // Function that should return a list of { value, label } pair
   }
 
-  constructor(element, options) {
+  constructor(options) {
+    super()
+
     this.wrapper = ''
     this.elementLabel = ''
     this.selectOptions = []
@@ -59,9 +59,38 @@ export class BlipSelectBase {
       ...options,
     }
 
-    this.el = element
+    this.customSelectId = `${blipSelectOptionsClass}-${guid()}`
+    this._handleSelectFocus = this._onSelectFocus.bind(this)
+    this._handleSelectBlur = this._onSelectBlur.bind(this)
+    this._handleCenterOption = this._centerSelectedOption.bind(this)
+    this._handleInputChange = this._onInputChange.bind(this)
+    this.props = {}
+
     this._setup()
     this._setupEventHandlers()
+  }
+
+  createElement(props) {
+    this.props = props
+
+    const isReadOnly = () => this.configOptions.mode === 'select' ? 'readonly' : ''
+    const hasBulletClass = () => this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
+    const renderOption = ({ id, label, value }) =>
+      html`<li tabindex="0" class="${blipSelectOptionClass}" id="${id}" data-label="${label}" data-value="${value}">${label}</li>`
+
+    return html`
+      <div class="bp-input-wrapper blip-select ${hasBulletClass()}">
+        <label class="bp-label bp-c-rooftop">${props.label}</label>
+        <input placeholder="${props.placeholder}"
+          class="blip-select__input bp-c-cloud"
+          onfocus="${this._handleSelectFocus}"
+          data-target="${this.customSelectId}"
+          ${isReadOnly}>
+        <ul class="blip-select__options" id="${this.customSelectId}">
+          ${props.options.map(renderOption)}
+        </ul>
+      </div>
+    `
   }
 
   /**
@@ -119,46 +148,18 @@ export class BlipSelectBase {
    * Setup custom select
    */
   _setup() {
-    if ((this.el instanceof Element) === false) {
+    if ((this.element instanceof Element) === false) {
       throw new Error('Invalid dom element')
     }
 
-    const elementOptions = this.el.querySelectorAll('option')
+    const elementOptions = this.element.querySelectorAll('option')
     if (elementOptions.length === 0 && !this.configOptions.canAddOption) {
       throw new Error('Element has no options')
     }
 
     // Setup element structure
-    this.parentNode = this.el.parentNode
-    this.customSelectId = `${blipSelectOptionsClass}-${guid()}`
-    // Component mode
-    switch (this.configOptions.mode) {
-      case 'select':
-        this.wrapper = strToEl(`
-          <div class="${bpInputWrapperClass} ${blipSelectClass} ${bpInputWithBulletClass}">
-            <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
-            <input placeholder="${this.configOptions.placeholder}" class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}" readonly>
-            <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
-          </div>
-        `)
-        break
-      case 'autocomplete':
-        this.wrapper = strToEl(`
-          <div class="${bpInputWrapperClass} ${blipSelectClass}">
-            <label class="${bpInputWrapperLabelClass} ${bpCrooftopClass}">${this.configOptions.label}</label>
-            <input placeholder="${this.configOptions.placeholder}" class="${blipSelectInputClass} ${bpCcloudClass}" data-target="${this.customSelectId}">
-            <ul class="${blipSelectOptionsClass}" id="${this.customSelectId}"></ul>
-          </div>
-        `)
-        break
-      default:
-        throw new Error('Unrecognized component mode')
-    }
-
-    this.parentNode.insertBefore(this.wrapper, this.el)
-
     this.selectOptionsContainer = this.wrapper.querySelector(`#${this.customSelectId}`)
-    this.selectLabel = this.wrapper.querySelector('label')
+    this.selectLabel = this.element.querySelector('label')
 
     // Setup element options
     Array.prototype.forEach.call(elementOptions, element => {
@@ -174,9 +175,6 @@ export class BlipSelectBase {
 
     // Setup element trigger
     this.input = this.wrapper.querySelector(`input[data-target="${this.customSelectId}"]`)
-
-    // Remove default select display
-    this.el.style.display = 'none'
 
     // Set disabled property
     this.isDisabled = this.configOptions.isDisabled
@@ -471,7 +469,7 @@ export class BlipSelectBase {
 
       if (
         classList.contains(blipSelectOptionClass) ||
-        classList.contains(blipSelectClass)
+        classList.contains('blip-select')
       ) {
         return true
       }
@@ -601,6 +599,6 @@ export class BlipSelectBase {
   destroy() {
     this._removeEventHandlers()
     this._removeElements()
-    this.el.style.display = 'inline-block'
+    this.element.style.display = 'inline-block'
   }
 }

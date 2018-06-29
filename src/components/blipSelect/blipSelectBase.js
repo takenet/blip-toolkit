@@ -131,7 +131,6 @@ export class BlipSelectBase {
     // Setup element structure
     this.parentNode = this.el.parentNode
     this.customSelectId = `${blipSelectOptionsClass}-${guid()}`
-
     // Component mode
     switch (this.configOptions.mode) {
       case 'select':
@@ -180,7 +179,7 @@ export class BlipSelectBase {
     this.el.style.display = 'none'
 
     // Set disabled property
-    this.isDisabled = this.el.disabled
+    this.isDisabled = this.configOptions.isDisabled
   }
 
   /**
@@ -442,6 +441,7 @@ export class BlipSelectBase {
     if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.selectOptions.length === 0)) {
       return
     }
+    // this._checkOptions()
     if (typeof this.configOptions.beforeOpenSelect !== 'function') {
       throw Error('Callback "beforeOpenSelect" is not a function')
     }

@@ -96,7 +96,7 @@ export class BlipTags {
         onAddNewOption: this._handleAddNewOption,
         onSelectOption: this._handleSelectOption,
         onInputChange: this._handleInputChange,
-        onBlur: this._handleBlipSelectBlur,
+        onBlur: this._clearInputOnBlur,
         newOption: this._handleSanitizeNewOption,
         customSearch: this._handleCustomSearch,
       })
@@ -104,6 +104,14 @@ export class BlipTags {
     if (this.tagsOptions.canChangeBackground) {
       this.blipSelectInstance._arrayToDomOptions = this._overrideSelectDomOptions.bind(this.blipSelectInstance)
     }
+  }
+
+  /**
+   *Clear input and calls the blur callback
+   */
+  _clearInputOnBlur = event => {
+    event.target.value = ''
+    this._handleBlipSelectBlur(event)
   }
 
   /**

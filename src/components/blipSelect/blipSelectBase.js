@@ -346,6 +346,26 @@ export class BlipSelectBase {
   }
 
   /**
+   * Check if the select options have change
+  */
+
+  _checkOptions() {
+    const listOptions = this.selectOptionsContainer.querySelectorAll('li')
+    if (this.selectOptions.length !== listOptions.length) {
+      const options = this.el.querySelectorAll('option')
+      this.selectOptions = []
+      Array.prototype.forEach.call(options, (element) => {
+        this.selectOptions = this.selectOptions.concat({
+          value: element.value,
+          label: element.label,
+          element,
+        })
+      })
+      this._arrayToDomOptions(this.selectOptions)
+    }
+  }
+
+  /**
    * Clear input value
    */
   clearInput() {
@@ -442,7 +462,7 @@ export class BlipSelectBase {
     if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.selectOptions.length === 0)) {
       return
     }
-    // this._checkOptions()
+    this._checkOptions()
     if (typeof this.configOptions.beforeOpenSelect !== 'function') {
       throw Error('Callback "beforeOpenSelect" is not a function')
     }
@@ -502,20 +522,7 @@ export class BlipSelectBase {
     this.selectOptionsContainer.style.display = 'block'
 
     setTimeout(() => { // Needed for animation
-      const containerOptionsHeight = this.selectOptionsContainer.offsetHeight
-      const containerOptionsTopSpace = this.wrapper.getBoundingClientRect().top
-      const bottomSpace = window.innerHeight - containerOptionsTopSpace
-
-      // Open select where have more space (bottom or top)
-      if (
-        (bottomSpace < containerOptionsHeight && containerOptionsTopSpace > containerOptionsHeight) ||
-        (containerOptionsTopSpace > bottomSpace)
-      ) {
-        this.selectOptionsContainer.classList.add(blipSelectOptionOpenTopClass)
-        this.selectOptionsContainerOpenPosition = 'top'
-      } else {
-        this.selectOptionsContainerOpenPosition = 'bottom'
-      }
+      this.selectOptionsContainerOpenPosition = 'bottom'
 
       this.selectOptionsContainer.style.transform = 'scale(1)'
       this.selectOptionsContainer.style.opacity = 1

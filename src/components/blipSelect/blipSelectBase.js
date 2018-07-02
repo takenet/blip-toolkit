@@ -346,6 +346,26 @@ export class BlipSelectBase {
   }
 
   /**
+   * Check if the select options have change
+  */
+
+  _checkOptions() {
+    const listOptions = this.selectOptionsContainer.querySelectorAll('li')
+    if (this.selectOptions.length !== listOptions.length) {
+      const options = this.el.querySelectorAll('option')
+      this.selectOptions = []
+      Array.prototype.forEach.call(options, (element) => {
+        this.selectOptions = this.selectOptions.concat({
+          value: element.value,
+          label: element.label,
+          element,
+        })
+      })
+      this._arrayToDomOptions(this.selectOptions)
+    }
+  }
+
+  /**
    * Clear input value
    */
   clearInput() {
@@ -442,7 +462,7 @@ export class BlipSelectBase {
     if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.selectOptions.length === 0)) {
       return
     }
-    // this._checkOptions()
+    this._checkOptions()
     if (typeof this.configOptions.beforeOpenSelect !== 'function') {
       throw Error('Callback "beforeOpenSelect" is not a function')
     }

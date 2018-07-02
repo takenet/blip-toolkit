@@ -1,17 +1,17 @@
-import { BlipSelectAdd } from './blipSelectAdd'
-import { BlipSelectBase } from './blipSelectBase'
+import { BlipSelectAdd } from './BlipSelectAdd'
+import { BlipSelectBase } from './BlipSelectBase'
 
 export class BlipSelect {
-  constructor(element, options) {
+  constructor(options) {
     const componentOptions = {
       mode: 'select',
       ...options,
     }
 
     if (componentOptions.mode === 'autocomplete' && componentOptions.canAddOption) {
-      return new BlipSelectAdd(element, componentOptions)
+      return new BlipSelectAdd(componentOptions)
     } else {
-      return new BlipSelectBase(element, componentOptions)
+      return new BlipSelectBase(componentOptions)
     }
   }
 }

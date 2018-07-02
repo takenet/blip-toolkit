@@ -10,7 +10,7 @@ import {
   guid,
   insertAfter,
 } from '@lib/utils'
-import { blipSelectOptionClass } from '../blipSelect/blipSelectBase'
+import { blipSelectOptionClass } from '../blipSelect/BlipSelectBase'
 
 const blipSelectPrefixClass = 'blip-select'
 const blipTagsClass = 'blip-tags'

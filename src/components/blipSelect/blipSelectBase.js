@@ -1,4 +1,5 @@
-import { strToEl, guid } from '@lib/utils'
+import { guid } from '@lib/utils'
+import { OptionsList } from './OptionsList'
 import { EventEmitter } from '@lib/eventEmitter'
 
 import Nanocomponent from 'nanocomponent'
@@ -20,7 +21,7 @@ export class BlipSelectBase extends Nanocomponent {
   /**
    * Component state
    */
-  $state = {
+  $defaults = {
     isSelectOpen: false,
     noResultsFound: false,
     disabled: false,
@@ -42,20 +43,8 @@ export class BlipSelectBase extends Nanocomponent {
   constructor(options) {
     super()
 
-    this.wrapper = ''
-    this.elementLabel = ''
-    this.selectOptions = []
-    this.searchResults = []
-    this.selectOptionsContainer = ''
-    this.selectOptionsContainerOpenPosition = ''
-    this.selectLabel = ''
-    this._handleSelectFocus = ''
-    this._handleSelectBlur = ''
-    this._handleOptionClick = ''
-    this.parentNode = ''
-
     this.configOptions = {
-      ...this.$state,
+      ...this.$defaults,
       ...options,
     }
 
@@ -64,238 +53,132 @@ export class BlipSelectBase extends Nanocomponent {
     this._handleSelectBlur = this._onSelectBlur.bind(this)
     this._handleCenterOption = this._centerSelectedOption.bind(this)
     this._handleInputChange = this._onInputChange.bind(this)
-    this.props = {}
+    this._handleInputKeydown = this._attachInputKeyboardListener.bind(this)
 
-    this._setup()
-    this._setupEventHandlers()
+    // Nested components
+    this.optionsList = new OptionsList({
+      onOptionClick: this._onOptionClick.bind(this),
+      onTryAccessInput: () => this.input.focus(),
+      noResultsFound: this.configOptions.noResultsFound,
+    })
+
+    // Component props
+    this.props = {
+      placeholder: '',
+      inputValue: '',
+      options: [],
+    }
   }
 
-  createElement(props) {
-    this.props = props
+  /**
+   * Select input
+   */
+  get input() {
+    return this.element.querySelector('input')
+  }
 
-    const isReadOnly = () => this.configOptions.mode === 'select' ? 'readonly' : ''
-    const hasBulletClass = () => this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
-    const renderOption = ({ id, label, value }) =>
-      html`<li tabindex="0" class="${blipSelectOptionClass}" id="${id}" data-label="${label}" data-value="${value}">${label}</li>`
-
-    return html`
-      <div class="bp-input-wrapper blip-select ${hasBulletClass()}">
-        <label class="bp-label bp-c-rooftop">${props.label}</label>
-        <input placeholder="${props.placeholder}"
-          class="blip-select__input bp-c-cloud"
-          onfocus="${this._handleSelectFocus}"
-          data-target="${this.customSelectId}"
-          ${isReadOnly}>
-        <ul class="blip-select__options" id="${this.customSelectId}">
-          ${props.options.map(renderOption)}
-        </ul>
-      </div>
-    `
+  /**
+   * Select label
+   */
+  get selectLabel() {
+    return this.element.querySelector('label')
   }
 
   /**
    * Is select open
    */
   get isSelectOpen() {
-    return this.$state.isSelectOpen
+    return this.$defaults.isSelectOpen
   }
 
   set isSelectOpen(value) {
-    this.$state.isSelectOpen = value
-  }
-
-  /**
-   * No results found
-   */
-  get noResultsFound() {
-    return this.$state.noResultsFound
-  }
-
-  set noResultsFound(value) {
-    this.$state.noResultsFound = value
-
-    switch (value) {
-      case true:
-        if (!this.configOptions.canAddOption) {
-          this.selectOptionsContainer.innerHTML = `<li style="cursor: default" class="${blipSelectOptionClass}">${this.configOptions.noResultsText}</li>`
-        }
-        break
-    }
+    this.$defaults.isSelectOpen = value
   }
 
   /**
    * Is disabled
    */
   get isDisabled() {
-    return this.$state.disabled
+    return this.configOptions.disabled
   }
 
   set isDisabled(value) {
-    this.$state.disabled = value
+    this.configOptions.disabled = value
     this.input.disabled = value
 
     switch (value) {
       case true:
-        this.wrapper.classList.add(bpInputWrapperDisabledClass)
+        this.element.classList.add(bpInputWrapperDisabledClass)
         break
       case false:
-        this.wrapper.classList.remove(bpInputWrapperDisabledClass)
+        this.element.classList.remove(bpInputWrapperDisabledClass)
         break
     }
   }
 
   /**
-   * Setup custom select
+   * Setup custom select view
    */
-  _setup() {
-    if ((this.element instanceof Element) === false) {
-      throw new Error('Invalid dom element')
+  createElement(props) {
+    this.props = {
+      ...this.props,
+      ...props,
     }
 
-    const elementOptions = this.element.querySelectorAll('option')
-    if (elementOptions.length === 0 && !this.configOptions.canAddOption) {
-      throw new Error('Element has no options')
+    const isReadOnly = () => this.configOptions.mode === 'select'
+    const hasBulletClass = () => this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
+
+    return html`
+      <div class="bp-input-wrapper blip-select ${hasBulletClass()}">
+        <label class="bp-label bp-c-rooftop">${this.props.label}</label>
+        <input placeholder="${this.props.placeholder}"
+          class="blip-select__input bp-c-cloud"
+          value="${this.props.inputValue}"
+          onfocus="${this._handleSelectFocus}"
+          onblur="${this._handleSelectBlur}"
+          onkeydown="${this._handleInputKeydown}"
+          onkeyup="${this._handleInputChange}"
+          data-target="${this.customSelectId}"
+          readonly="${isReadOnly()}">
+
+        <div class="blip-select__options" id="${this.customSelectId}">
+          ${this.optionsList.render({ options: this.props.options })}
+        </div>
+      </div>
+    `
+  }
+
+  /**
+   * Component update
+   */
+  update(props) {
+    if (props.options) {
+      this.optionsList.render({
+        options: props.options,
+      })
+
+      return false
     }
 
-    // Setup element structure
-    this.selectOptionsContainer = this.wrapper.querySelector(`#${this.customSelectId}`)
-    this.selectLabel = this.element.querySelector('label')
-
-    // Setup element options
-    Array.prototype.forEach.call(elementOptions, element => {
-      this.selectOptions = this.selectOptions.concat({
-        value: element.value,
-        label: element.label,
-        element,
-      })
-    })
-
-    // Add options to container
-    this._arrayToDomOptions(this.selectOptions)
-
-    // Setup element trigger
-    this.input = this.wrapper.querySelector(`input[data-target="${this.customSelectId}"]`)
-
-    // Set disabled property
-    this.isDisabled = this.configOptions.isDisabled
-  }
-
-  /**
-   * Bind array to dom "li" items into selectOptionsContainer
-   * @param {Array} options - Options array
-   */
-  _arrayToDomOptions(options = [{ value: '', label: '', id: '' }]) {
-    // Reset HTML content
-    this.selectOptionsContainer.innerHTML = ''
-
-    // Add options to container
-    options.forEach(({ value, label, id }) => {
-      this.selectOptionsContainer.appendChild(
-        strToEl(`
-          <li tabindex="0" class="${blipSelectOptionClass}" id="${id}" data-label="${label}" data-value="${value}">${label}</li>
-        `)
-      )
-    })
-
-    this._setupOptionsEventHandlers()
-  }
-
-  /**
-   * Add event listeners to container options
-   */
-  _setupOptionsEventHandlers() {
-    // Set handler for each menu option
-    Array.prototype.forEach.call(
-      this.selectOptionsContainer.querySelectorAll('li[data-value]'),
-      o => {
-        o.addEventListener('click', this._onOptionClick.bind(this))
-        o.addEventListener('keydown', (event) => {
-          switch (event.keyCode) {
-            case 13: // enter
-              this._onOptionClick(event)
-              break
-          }
-        })
-      })
-
-    this._attachOptionsKeyboardListeners()
-  }
-
-  /**
-   * Setup select event handlers
-   */
-  _setupEventHandlers() {
-    // Assign binded methods to class properties help remove this event handlers in the future
-    this._handleSelectFocus = this._onSelectFocus.bind(this)
-    this._handleSelectBlur = this._onSelectBlur.bind(this)
-    this._handleCenterOption = this._centerSelectedOption.bind(this)
-    this._handleInputChange = this._onInputChange.bind(this)
-
-    this.input.addEventListener('focus', this._handleSelectFocus)
-    this.input.addEventListener('blur', this._handleSelectBlur)
-
-    switch (this.configOptions.mode) {
-      case 'autocomplete':
-        this.input.addEventListener('keyup', this._handleInputChange)
-        break
-    }
-
-    this.selectOptionsContainer.addEventListener('transitionend', this._handleCenterOption)
-    this._attachKeyboardListeners()
-  }
-
-  /**
-   * Attach keyboard listeners
-   */
-  _attachKeyboardListeners() {
-    this._attachInputKeyboardListener()
-    this._attachOptionsKeyboardListeners()
-  }
-
-  /**
-   * Attach keyboard listeners when some option is focused
-   */
-  _attachOptionsKeyboardListeners() {
-    const elementOptions = this.selectOptionsContainer.querySelectorAll(`.${blipSelectOptionClass}`)
-
-    Array.prototype.forEach.call(elementOptions, (element) => {
-      element.addEventListener('keydown', event => {
-        switch (event.keyCode) {
-          case 40: // arrow down
-            if (element.nextSibling) {
-              element.nextSibling.focus()
-            }
-            break
-          case 38: // arrow up
-            if (element.previousSibling) {
-              element.previousSibling.focus()
-            } else {
-              this.input.focus()
-            }
-            break
-        }
-      })
-    })
+    return true
   }
 
   /**
    * Attach keyboard listeners when input is focused
    */
-  _attachInputKeyboardListener() {
-    this.input.addEventListener('keydown', event => {
-      switch (event.keyCode) {
-        case 40:
-          const currentElement = document.activeElement
+  _attachInputKeyboardListener(event) {
+    switch (event.keyCode) {
+      case 40:
+        const currentElement = document.activeElement
 
-          if (currentElement === this.input) {
-            const firstElement = this.selectOptionsContainer.firstChild
-            if (firstElement) {
-              firstElement.focus()
-            }
+        if (currentElement === event.target) {
+          const firstElement = this.optionsList.element.firstChild
+          if (firstElement) {
+            firstElement.focus()
           }
-          break
-      }
-    })
+        }
+        break
+    }
   }
 
   /**
@@ -305,9 +188,9 @@ export class BlipSelectBase extends Nanocomponent {
     return this.configOptions.customSearch
       ? this.configOptions.customSearch.call(this, EventEmitter({
         query,
-        items: this.selectOptions,
+        items: this.props.options,
       }))
-      : this.selectOptions.filter(
+      : this.props.options.filter(
         ({ value, label }) => label.toLowerCase().includes(query.toLowerCase())
       )
   }
@@ -325,7 +208,9 @@ export class BlipSelectBase extends Nanocomponent {
     this.configOptions.onInputChange(EventEmitter({ value: inputValue, event }))
 
     this.noResultsFound = searchResults.length < 0
-    this._arrayToDomOptions(searchResults)
+    this.render({
+      options: searchResults,
+    })
   }
 
   /**
@@ -385,17 +270,17 @@ export class BlipSelectBase extends Nanocomponent {
       }
     }
 
-    const match = this.selectOptions.find(o => o.label === this.input.value)
+    const match = this.props.options.find(o => o.label === this.input.value)
     if (match) {
       return {
         value: match.value,
         label: match.label,
       }
-    } else {
-      return {
-        value: this.input.value,
-        label: this.input.value,
-      }
+    }
+
+    return {
+      value: this.input.value,
+      label: this.input.value,
     }
   }
 
@@ -403,7 +288,9 @@ export class BlipSelectBase extends Nanocomponent {
    * On select option item
    * @param {DOMEvent} event
    */
-  _onOptionClick(event) {
+  _onOptionClick({ $event }) {
+    const { event } = $event
+
     if (this.isSelectOpen) {
       const target = event.currentTarget
       const selectedOption = {
@@ -424,8 +311,8 @@ export class BlipSelectBase extends Nanocomponent {
    * Remove all selected class from options
    */
   _resetSelectedOptions() {
-    Array.prototype.forEach.call(
-      this.selectOptionsContainer.querySelectorAll('li'),
+    const elementOptions = [...this.element.querySelector(`#${this.customSelectId}`).querySelectorAll('li')]
+    elementOptions.forEach(
       o =>
         o.classList.contains(blipSelectOptionSeletedClass)
           ? o.classList.remove(blipSelectOptionSeletedClass)
@@ -440,7 +327,7 @@ export class BlipSelectBase extends Nanocomponent {
     if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.selectOptions.length === 0)) {
       return
     }
-    // this._checkOptions()
+
     if (typeof this.configOptions.beforeOpenSelect !== 'function') {
       throw Error('Callback "beforeOpenSelect" is not a function')
     }
@@ -497,26 +384,12 @@ export class BlipSelectBase extends Nanocomponent {
    * Open select setting up styles
    */
   _openSelect() {
-    this.selectOptionsContainer.style.display = 'block'
+    const selectOptionsContainer = this.element.querySelector(`.blip-select__options`)
+    selectOptionsContainer.style.display = 'block'
 
     setTimeout(() => { // Needed for animation
-      const containerOptionsHeight = this.selectOptionsContainer.offsetHeight
-      const containerOptionsTopSpace = this.wrapper.getBoundingClientRect().top
-      const bottomSpace = window.innerHeight - containerOptionsTopSpace
-
-      // Open select where have more space (bottom or top)
-      if (
-        (bottomSpace < containerOptionsHeight && containerOptionsTopSpace > containerOptionsHeight) ||
-        (containerOptionsTopSpace > bottomSpace)
-      ) {
-        this.selectOptionsContainer.classList.add(blipSelectOptionOpenTopClass)
-        this.selectOptionsContainerOpenPosition = 'top'
-      } else {
-        this.selectOptionsContainerOpenPosition = 'bottom'
-      }
-
-      this.selectOptionsContainer.style.transform = 'scale(1)'
-      this.selectOptionsContainer.style.opacity = 1
+      selectOptionsContainer.style.transform = 'scale(1)'
+      selectOptionsContainer.style.opacity = 1
     })
 
     this.input.parentNode.classList.add(bpInputWrapperFocusClass)
@@ -529,19 +402,19 @@ export class BlipSelectBase extends Nanocomponent {
    * If has a selected option, center scroll to element
    */
   _centerSelectedOption(ev) {
-    const selectedOption = this.selectOptionsContainer.querySelector(`li.${blipSelectOptionSeletedClass}`)
+    const selectedOption = this.optionsList.element.querySelector(`li.${blipSelectOptionSeletedClass}`)
 
-    if (this.selectOptionsContainer.scrollHeight > this.selectOptionsContainer.clientHeight && ev.propertyName === 'transform') {
+    if (this.optionsList.element.scrollHeight > this.optionsList.element.clientHeight && ev.propertyName === 'transform') {
       if (!selectedOption) {
         return
       }
 
       let scrollOffset =
             selectedOption.getBoundingClientRect().top -
-            this.selectOptionsContainer.getBoundingClientRect().top // scroll to selected option
-      scrollOffset -= this.selectOptionsContainer.clientHeight / 2 // center in dropdown
+            this.optionsList.element.getBoundingClientRect().top // scroll to selected option
+      scrollOffset -= this.optionsList.element.clientHeight / 2 // center in dropdown
 
-      this.selectOptionsContainer.scrollTop = scrollOffset
+      this.optionsList.element.scrollTop = scrollOffset
     }
   }
 
@@ -549,6 +422,8 @@ export class BlipSelectBase extends Nanocomponent {
    * Close select setting up styles
    */
   _closeSelect() {
+    const selectOptionsContainer = this.element.querySelector(`.blip-select__options`)
+
     if (typeof this.configOptions.beforeCloseSelect !== 'function') {
       throw Error('Callback "beforeCloseSelect" is not a function')
     }
@@ -560,12 +435,12 @@ export class BlipSelectBase extends Nanocomponent {
     // Callback invoked before select open
     this.configOptions.beforeCloseSelect()
 
-    this.selectOptionsContainer.style.transform = 'scale(0)'
-    this.selectOptionsContainer.style.opacity = 0
+    selectOptionsContainer.style.transform = 'scale(0)'
+    selectOptionsContainer.style.opacity = 0
 
     setTimeout(() => { // Needed for animation
-      this.selectOptionsContainer.style.display = 'none'
-      this.selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
+      selectOptionsContainer.style.display = 'none'
+      selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
     }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
 
     this.input.parentNode.classList.remove(bpInputWrapperFocusClass)
@@ -581,7 +456,7 @@ export class BlipSelectBase extends Nanocomponent {
    * Remove elements from DOM
    */
   _removeElements() {
-    this.wrapper.parentNode.removeChild(this.wrapper)
+    this.element.parentNode.removeChild(this.element)
   }
 
   /**
@@ -599,6 +474,5 @@ export class BlipSelectBase extends Nanocomponent {
   destroy() {
     this._removeEventHandlers()
     this._removeElements()
-    this.element.style.display = 'inline-block'
   }
 }

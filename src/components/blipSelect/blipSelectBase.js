@@ -4,6 +4,8 @@ import { EventEmitter } from '@lib/eventEmitter'
 
 import Nanocomponent from 'nanocomponent'
 import html from 'nanohtml'
+import { CreatebleOptionsList } from './CreatableOptionsList'
+import { OptionItem } from './OptionItem'
 
 const ANIMATION_TIMEOUT = 300
 
@@ -37,7 +39,9 @@ export class BlipSelectBase extends Nanocomponent {
     onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
     onFocus: () => {},
     onBlur: () => {},
+    onAddOption: () => {},
     customSearch: undefined, // Function that should return a list of { value, label } pair
+    canAddOption: false,
   }
 
   constructor(options) {
@@ -56,11 +60,7 @@ export class BlipSelectBase extends Nanocomponent {
     this._handleInputKeydown = this._attachInputKeyboardListener.bind(this)
 
     // Nested components
-    this.optionsList = new OptionsList({
-      onOptionClick: this._onOptionClick.bind(this),
-      onTryAccessInput: () => this.input.focus(),
-      noResultsFound: this.configOptions.noResultsFound,
-    })
+    this.optionsList = this._chooseOptionListInstance()
 
     // Component props
     this.props = {
@@ -140,9 +140,8 @@ export class BlipSelectBase extends Nanocomponent {
           onkeyup="${this._handleInputChange}"
           data-target="${this.customSelectId}"
           readonly="${isReadOnly()}">
-
         <div class="blip-select__options" id="${this.customSelectId}">
-          ${this.optionsList.render({ options: this.props.options })}
+          ${this.optionsList.render(this._optionsListConfig())}
         </div>
       </div>
     `
@@ -154,7 +153,7 @@ export class BlipSelectBase extends Nanocomponent {
   update(props) {
     if (props.options) {
       this.optionsList.render({
-        options: props.options,
+        ...props,
       })
 
       return false
@@ -164,18 +163,85 @@ export class BlipSelectBase extends Nanocomponent {
   }
 
   /**
+   * Returns a object based on config options
+   */
+  _optionsListConfig() {
+    return this.configOptions.canAddOption
+      ? {
+        options: this.props.options,
+        canAddOption: this.configOptions.canAddOption,
+        newOption: this.props.newOption,
+        OptionCreator: OptionItem,
+      }
+      : {
+        options: this.props.options,
+        OptionCreator: OptionItem,
+      }
+  }
+
+  /**
+   * Return instance based on config options
+   */
+  _chooseOptionListInstance() {
+    return this.configOptions.canAddOption
+      ? this._createCreatableOptionListInstance()
+      : this._createOptionsListInstance()
+  }
+
+  /**
+   * Creates a CreatableOptionList instance with bindings
+   */
+  _createCreatableOptionListInstance() {
+    return new CreatebleOptionsList({
+      onOptionClick: this._onOptionClick.bind(this),
+      onTryAccessInput: () => this.input.focus(),
+      onAddOption: (emitter) => {
+        const { $event: { newOption } } = emitter
+        this.clearInput()
+        this.input.focus()
+
+        const newOptions = this.props.options.concat(newOption)
+        this.props.options = newOptions
+
+        this.render({
+          options: newOptions,
+        })
+
+        this.configOptions.onAddOption.call(this, emitter)
+      },
+      addOptionText: this.configOptions.canAddOption.text,
+    })
+  }
+
+  /**
+   * Creates a OptionList instance with bindings
+   */
+  _createOptionsListInstance() {
+    return new OptionsList({
+      onOptionClick: this._onOptionClick.bind(this),
+      onTryAccessInput: () => this.input.focus(),
+      noResultsFound: this.configOptions.noResultsFound,
+    })
+  }
+
+  /**
    * Attach keyboard listeners when input is focused
    */
   _attachInputKeyboardListener(event) {
     switch (event.keyCode) {
-      case 40:
+      case 40: // arrow down
         const currentElement = document.activeElement
 
         if (currentElement === event.target) {
-          const firstElement = this.optionsList.element.firstChild
+          const firstElement = this.optionsList.element.firstElementChild
           if (firstElement) {
             firstElement.focus()
           }
+        }
+        break
+      case 13: // enter
+        if (this.configOptions.canAddOption) {
+          this.optionsList.addOption(this.input.value)
         }
         break
     }
@@ -210,6 +276,7 @@ export class BlipSelectBase extends Nanocomponent {
     this.noResultsFound = searchResults.length < 0
     this.render({
       options: searchResults,
+      newOption: inputValue,
     })
   }
 
@@ -233,6 +300,9 @@ export class BlipSelectBase extends Nanocomponent {
    */
   clearInput() {
     this._setInputValue({ value: '', label: '' })
+
+    const event = new CustomEvent('keyup', { detail: { shouldOpenSelect: false } })
+    this.input.dispatchEvent(event)
   }
 
   /**
@@ -241,7 +311,7 @@ export class BlipSelectBase extends Nanocomponent {
    */
   setValue({ value, label } = { value: '', label: '' }) {
     if (value) {
-      const match = this.selectOptions.find(o => o.value === value)
+      const match = this.props.options.find(o => o.value === value)
 
       if (match) {
         match.element.classList.add(blipSelectOptionSeletedClass)
@@ -324,7 +394,7 @@ export class BlipSelectBase extends Nanocomponent {
    * On select click
    */
   _onSelectFocus() {
-    if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.selectOptions.length === 0)) {
+    if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.props.options.length === 0)) {
       return
     }
 

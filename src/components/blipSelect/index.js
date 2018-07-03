@@ -1,4 +1,4 @@
-import { BlipSelectAdd } from './BlipSelectAdd'
+// import { BlipSelectAdd } from './BlipSelectAdd'
 import { BlipSelectBase } from './BlipSelectBase'
 
 export class BlipSelect {
@@ -8,10 +8,12 @@ export class BlipSelect {
       ...options,
     }
 
-    if (componentOptions.mode === 'autocomplete' && componentOptions.canAddOption) {
-      return new BlipSelectAdd(componentOptions)
-    } else {
-      return new BlipSelectBase(componentOptions)
-    }
+    return new BlipSelectBase(componentOptions)
+
+    // if (componentOptions.mode === 'autocomplete' && componentOptions.canAddOption) {
+    //   return new BlipSelectAdd(componentOptions)
+    // } else {
+    //   return new BlipSelectBase(componentOptions)
+    // }
   }
 }

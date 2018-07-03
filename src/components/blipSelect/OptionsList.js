@@ -1,6 +1,7 @@
 import Nanocomponent from 'nanocomponent'
 import html from 'nanohtml'
 import { OptionItem } from './OptionItem'
+import { renderEmptyOption } from '../shared'
 
 export class OptionsList extends Nanocomponent {
   $defaults = {
@@ -18,6 +19,7 @@ export class OptionsList extends Nanocomponent {
 
     this.props = {
       options: [],
+      canAddOption: false,
     }
   }
 
@@ -36,9 +38,6 @@ export class OptionsList extends Nanocomponent {
         onTryAccessInput: this.options.onTryAccessInput,
       }).render(option)
 
-    const renderEmptyOption = () =>
-      html`<li class="blip-select__option blip-select__empty-option">${this.options.noResultsText}</li>`
-
     return html`
       <ul>
         ${this.props.options.length > 0 ? this.props.options.map(renderOption) : renderEmptyOption()}
@@ -47,7 +46,7 @@ export class OptionsList extends Nanocomponent {
   }
 
   /**
-   * Update element callbacl
+   * Update element callback
    */
   update() {
     return true

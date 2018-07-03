@@ -17,7 +17,11 @@ export class OptionItem extends Nanocomponent {
       ...options,
     }
 
-    this.props = {}
+    this.props = {
+      value: undefined,
+      label: undefined,
+      id: undefined,
+    }
   }
 
   /**
@@ -65,8 +69,8 @@ export class OptionItem extends Nanocomponent {
         }
         break
       case 38: // arrow up
-        if (element.previousSibling) {
-          element.previousSibling.focus()
+        if (element.previousElementSibling) {
+          element.previousElementSibling.focus()
         } else if (this.options.onTryAccessInput) {
           this.options.onTryAccessInput()
         }

@@ -1,0 +1,28 @@
+name:
+- "Toolkit"
+
+theme:
+  logo: "./docs/assets/icons/logo-blip.png"
+
+  sidebar:
+    background: '#242b36'
+    textColor: '#fff'
+
+examples:
+  css:
+    - "./dist/blip-toolkit.css"
+    - "./node_modules/tachyons/css/tachyons.min.css"
+
+  js:
+    - "./dist/blip-toolkit.js"
+#     js: (optional) List of any JS files to include in the <head> of each rendered example
+#     doctypeTag: (optional) HTML doctype to use for each rendered example; defaults to "<!doctype html>"
+#     htmlTag: (optional) <html> tag to use for each rendered example; defaults to "<html>"
+#     bodyTag: (optional) <body> tag to use for each rendered example; defaults to "<body>"
+#     headHtml: (optional) HTML to insert before the closing </head> tag for each rendered example
+#     bodyHtml: (optional) HTML template of the example; the example's HTML content will be inserted in place of "{html}"
+
+#webpackAppPath: 'BLiPToolkit'
+# For Webpack apps (esp. React, Angular, etc.), this is the `output.library` value in your webpack config
+
+# order: (optional) See Ordering section

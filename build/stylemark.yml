@@ -2,7 +2,7 @@ name:
 - "Toolkit"
 
 theme:
-  logo: "./docs/assets/icons/logo-blip.png"
+  logo: "./docs/src/assets/icons/logo-blip.png"
 
   sidebar:
     background: '#242b36'

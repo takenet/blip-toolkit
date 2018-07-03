@@ -2,9 +2,11 @@
 .bp-bg-bot {
   background-color: $bp-color-bot;
 }
+
 .bp-bg-blip-light {
   background-color: $bp-color-blip-light;
 }
+
 .bp-bg-blip-dark {
   background-color: $bp-color-blip-dark;
 }
@@ -13,9 +15,18 @@
   background-color: $bp-color-warning;
 }
 
+.bp-bg-warning-light {
+  background-color: $bp-color-warning-light;
+}
+
+.bp-bg-warning-yellow {
+  background-color: $bp-color-warning-yellow;
+}
+
 .bp-bg-delete {
   background-color: $bp-color-delete;
 }
+
 .bp-bg-delete-darken {
   background-color: b-darken($bp-color-delete);
 }

@@ -116,13 +116,6 @@ export class BlipTag extends Nanocomponent {
   }
 
   /**
-   * Returns tag container
-   */
-  get element() {
-    return this.tagContainer
-  }
-
-  /**
    * Returns single tag element
    */
   get tagElement() {

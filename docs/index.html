@@ -31,7 +31,7 @@
 				<div id="category-components" class="theme-content-category">
 						<div id="button" class="i-library theme-content-element">
 	<h1 class="display-4 theme-content-element-title">Button</h1>
-	<div class="theme-content-element-description"><p>Buttons are implemented through the base class <em>.bp-btn</em>. They have an opaque background that darkens on hover and no border.</p>
+	<div class="theme-content-element-description"><p>Buttons are implemented through the base class <strong>bp-btn</strong>. They have a min-width of 160px, an opaque background that darkens on hover and no border.</p>
 <div class="i-example">
                     <h5 class="i-example__heading">
                         <a
@@ -95,11 +95,12 @@
   &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
 	</div>
-</div><h2>Variations</h2>
+</div><h1>Variations</h1>
 
 <p>Buttons can accept variations alongside their base class. Variations are modifiers that can affect properties such as background-color, border and max-width.</p>
-<p><h4>Flat</h4>
-The variation <em>.bp-btn--flat</em> has a transparent background and an opaque border. Usually, its text and border have the same color and they darken on hover.</p>
+<h3>Flat</h3>
+
+<p>The variation <strong>bp-btn--flat</strong> has a transparent background and an opaque border. Usually, its text and border have the same color and they darken on hover.</p>
 <div class="i-example">
                     <h5 class="i-example__heading">
                         <a
@@ -134,15 +135,15 @@ The variation <em>.bp-btn--flat</em> has a transparent background and an opaque 
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
-        &lt;button class=&quot;bp-btn bp-btn--flat&quot;&gt;Flat Default&lt;/button&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot;&gt;Flat Default&lt;/button&gt;
       &lt;/td&gt;
-      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat&lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-btn--blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt; .bp-btn--flat&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
-        &lt;button class=&quot;bp-btn bp-btn--flat&quot; disabled&gt;Flat Default&lt;/button&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot; disabled&gt;Flat Default&lt;/button&gt;
       &lt;/td&gt;
-      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat [disabled]&lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-btn--blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt; .bp-btn--flat [disabled]&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;">Copy</button>
@@ -150,26 +151,26 @@ The variation <em>.bp-btn--flat</em> has a transparent background and an opaque 
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
-        &lt;button class=&quot;bp-btn bp-btn--flat&quot;&gt;Flat Default&lt;/button&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot;&gt;Flat Default&lt;/button&gt;
       &lt;/td&gt;
-      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat&lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-btn--blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt; .bp-btn--flat&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
-        &lt;button class=&quot;bp-btn bp-btn--flat&quot; disabled&gt;Flat Default&lt;/button&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot; disabled&gt;Flat Default&lt;/button&gt;
       &lt;/td&gt;
-      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat [disabled]&lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-btn--blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt; .bp-btn--flat [disabled]&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
 	</div>
-</div><p><h4>Ready-made colors</h4>
-Buttons have ready-made color variations for all colors in BLiP&#39;s palette. They can be applied using the variation <em>.bp-btn--colorName</em>.</p>
-<p>On the base class, the variation <em>bp-btn--colorName</em> sets the button&#39;s background color to the palette color and its text color to either black or white.</p>
+</div><h3>Small</h3>
+
+<p>The variation <strong>bp-btn--small</strong> modifies the button&#39;s min-width to 100px.</p>
 <div class="i-example">
                     <h5 class="i-example__heading">
                         <a
-                            href="button-colorbase.html"
+                            href="button-small.html"
                             target="_blank"
                             class="plain-link"
                             data-toggle="tooltip"
@@ -184,7 +185,164 @@ Buttons have ready-made color variations for all colors in BLiP&#39;s palette. T
                         <div
                             class="i-example__iframe"
                             lazyframe
-                            data-src="button-colorbase.html"
+                            data-src="button-small.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark bp-btn--small&quot;&gt;Base Small&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt; .bp-btn--small&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--city bp-btn--flat bp-btn--small&quot;&gt;Flat Small&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-city&quot;&gt;.bp-btn--city&lt;/span&gt; .bp-btn--flat .bp-btn--small&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark bp-btn--small&quot;&gt;Base Small&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt; .bp-btn--small&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--city bp-btn--flat bp-btn--small&quot;&gt;Flat Small&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-city&quot;&gt;.bp-btn--city&lt;/span&gt; .bp-btn--flat .bp-btn--small&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Arrow</h3>
+
+<p>The variation <strong>bp-btn--arrow</strong> adds a pointy fashion to the button. It works for both base and flat buttons.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-arrow.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-arrow.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot bp-btn--arrow&quot;&gt;Base Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt; .bp-btn--arrow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot bp-btn--arrow&quot; disabled&gt;Base Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt; .bp-btn--arrow [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow&quot;&gt;Flat Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-onix&quot;&gt;.bp-btn--onix&lt;/span&gt; .bp-btn--flat .bp-btn--arrow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow&quot; disabled&gt;Flat Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-onix&quot;&gt;.bp-btn--onix&lt;/span&gt; .bp-btn--flat .bp-btn--arrow [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot bp-btn--arrow&quot;&gt;Base Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt; .bp-btn--arrow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot bp-btn--arrow&quot; disabled&gt;Base Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt; .bp-btn--arrow [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow&quot;&gt;Flat Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-onix&quot;&gt;.bp-btn--onix&lt;/span&gt; .bp-btn--flat .bp-btn--arrow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow&quot; disabled&gt;Flat Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-onix&quot;&gt;.bp-btn--onix&lt;/span&gt; .bp-btn--flat .bp-btn--arrow [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Ready-made colors: Base Button</h3>
+
+<p>Buttons have ready-made color variations for all colors in BLiP&#39;s palette. They can be applied using the variation <strong>bp-btn--colorName</strong>.</p>
+<p>On the base class, the variation <strong>bp-btn--colorName</strong> sets the button&#39;s background color to the palette color and its text color to either black or white.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-color-base.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-color-base.html"
                             data-initinview="true"
                             data-title="Loading…"
 
@@ -301,11 +459,13 @@ Buttons have ready-made color variations for all colors in BLiP&#39;s palette. T
   &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
 	</div>
-</div><p>On the flat variation, the variation <em>bp-btn--colorName</em> sets the button&#39;s border and text color to the palette color.</p>
+</div><h3>Ready-made colors: Flat Button</h3>
+
+<p>On the flat variation, <strong>bp-btn--colorName</strong> sets the button&#39;s border and text color to the palette color.</p>
 <div class="i-example">
                     <h5 class="i-example__heading">
                         <a
-                            href="button-colorflat.html"
+                            href="button-color-flat.html"
                             target="_blank"
                             class="plain-link"
                             data-toggle="tooltip"
@@ -320,7 +480,7 @@ Buttons have ready-made color variations for all colors in BLiP&#39;s palette. T
                         <div
                             class="i-example__iframe"
                             lazyframe
-                            data-src="button-colorflat.html"
+                            data-src="button-color-flat.html"
                             data-initinview="true"
                             data-title="Loading…"
 
@@ -433,6 +593,270 @@ Buttons have ready-made color variations for all colors in BLiP&#39;s palette. T
       &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
         &lt;span class=&quot;bp-c-true&quot;&gt;.bp-btn--true&lt;/span&gt;
       &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Text color</h3>
+
+<p>The variation <strong>bp-btn--c-colorName</strong> modifies the button&#39;s text color.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-text-color.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-text-color.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-delete&quot;&gt;Text Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--c-delete&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-black&quot;&gt;Text Black&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--c-black&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-white&quot;&gt;Text White&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--c-white&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-delete&quot;&gt;Text Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--c-delete&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-black&quot;&gt;Text Black&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--c-black&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-white&quot;&gt;Text White&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--c-white&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Background color</h3>
+
+<p>The variation <strong>bp-btn--bg-colorName</strong> modifies the button&#39;s background color.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-background-color.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-background-color.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-delete&quot;&gt;Background Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--bg-delete&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-black&quot;&gt;Background Black&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--bg-black&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-white bp-btn--c-black&quot;&gt;Background White&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--bg-white .bp-btn--c-black&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-delete&quot;&gt;Background Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--bg-delete&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-black&quot;&gt;Background Black&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--bg-black&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-white bp-btn--c-black&quot;&gt;Background White&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--bg-white .bp-btn--c-black&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>No background</h3>
+
+<p>The variation <strong>bp-btn--no-background</strong> makes the <strong>base</strong> button&#39;s background color transparent. It should not affect a flat button.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-no-background.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-no-background.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-rooftop bp-btn--no-background&quot;&gt;No Background&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-rooftop&quot;&gt;.bp-btn--c-rooftop&lt;/span&gt; .bp-btn--no-background&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-rooftop bp-btn--no-background&quot;&gt;No Background&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-rooftop&quot;&gt;.bp-btn--c-rooftop&lt;/span&gt; .bp-btn--no-background&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>No border</h3>
+
+<p>The variation <strong>bp-btn--no-border</strong> makes the <strong>flat</strong> button&#39;s border color transparent. It should not affect a base button.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-no-border.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-no-border.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--desk bp-btn--no-border&quot;&gt;No Border&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat &lt;span class=&quot;bp-c-desk&quot;&gt;.bp-btn--desk&lt;/span&gt; .bp-btn--no-border&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--desk bp-btn--no-border&quot;&gt;No Border&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat &lt;span class=&quot;bp-c-desk&quot;&gt;.bp-btn--desk&lt;/span&gt; .bp-btn--no-border&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>

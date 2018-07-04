@@ -59,9 +59,21 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--c-true">Text True</button>
+        <button class="bp-btn bp-btn--bg-delete">Background Delete</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-true</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-delete">.bp-btn--bg-delete</span></td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--bg-black">Background Black</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--bg-black</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--bg-white bp-btn--c-black">Background White</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--bg-white .bp-btn--c-black</td>
     </tr>
   </tbody>
 </table>
@@ -69,9 +81,21 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--c-true">Text True</button>
+        <button class="bp-btn bp-btn--bg-delete">Background Delete</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-true</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-delete">.bp-btn--bg-delete</span></td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--bg-black">Background Black</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--bg-black</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--bg-white bp-btn--c-black">Background White</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--bg-white .bp-btn--c-black</td>
     </tr>
   </tbody>
 </table></script>
@@ -107,10 +131,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-textcolor', []);
+						module = angular.module('stylemark-button-background-color', []);
 					}
 
-					module.controller('stylemark-button-textcolor-' + index, function($scope) {
+					module.controller('stylemark-button-background-color-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

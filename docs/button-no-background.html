@@ -59,15 +59,9 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
+        <button class="bp-btn bp-btn--c-rooftop bp-btn--no-background">No Background</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-rooftop">.bp-btn--c-rooftop</span> .bp-btn--no-background</td>
     </tr>
   </tbody>
 </table>
@@ -75,15 +69,9 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
+        <button class="bp-btn bp-btn--c-rooftop bp-btn--no-background">No Background</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-rooftop">.bp-btn--c-rooftop</span> .bp-btn--no-background</td>
     </tr>
   </tbody>
 </table></script>
@@ -119,10 +107,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-flat', []);
+						module = angular.module('stylemark-button-no-background', []);
 					}
 
-					module.controller('stylemark-button-flat-' + index, function($scope) {
+					module.controller('stylemark-button-no-background-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

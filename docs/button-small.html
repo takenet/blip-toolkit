@@ -59,15 +59,15 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
+        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Base Small</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
+        <button class="bp-btn bp-btn--city bp-btn--flat bp-btn--small">Flat Small</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-city">.bp-btn--city</span> .bp-btn--flat .bp-btn--small</td>
     </tr>
   </tbody>
 </table>
@@ -75,15 +75,15 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
+        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Base Small</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
+        <button class="bp-btn bp-btn--city bp-btn--flat bp-btn--small">Flat Small</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-city">.bp-btn--city</span> .bp-btn--flat .bp-btn--small</td>
     </tr>
   </tbody>
 </table></script>
@@ -119,10 +119,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-flat', []);
+						module = angular.module('stylemark-button-small', []);
 					}
 
-					module.controller('stylemark-button-flat-' + index, function($scope) {
+					module.controller('stylemark-button-small-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

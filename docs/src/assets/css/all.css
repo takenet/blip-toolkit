@@ -1,7 +1,3 @@
 table tbody td {
-  padding: 8px;
-}
-
-em {
-  font-weight: 700;
+  padding: 8px 24px 8px 4px;
 }

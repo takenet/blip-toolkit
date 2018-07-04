@@ -1,6 +1,6 @@
 import Nanocomponent from 'nanocomponent'
 import html from 'nanohtml'
-import { OptionItem } from './OptionItem'
+import { SelectOption } from './SelectOption'
 import { renderEmptyOption } from '../shared'
 
 export class OptionsList extends Nanocomponent {
@@ -33,7 +33,7 @@ export class OptionsList extends Nanocomponent {
     }
 
     const renderOption = (option) =>
-      new OptionItem({
+      new SelectOption({
         onOptionClick: this.options.onOptionClick,
         onTryAccessInput: this.options.onTryAccessInput,
       }).render(option)

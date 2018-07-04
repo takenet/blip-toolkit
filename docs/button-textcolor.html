@@ -51,15 +51,30 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
-	<body>					<div class="pa2">
-  <button class="bp-btn">Default</button>
-</div>
-			<script type="text/x-stylemark" data-language="html"><div class="pa2">
-  <button class="bp-btn">Default</button>
-</div></script>
+	<body>					<table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--c-true">Text True</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-true</td>
+    </tr>
+  </tbody>
+</table>
+			<script type="text/x-stylemark" data-language="html"><table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--c-true">Text True</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-true</td>
+    </tr>
+  </tbody>
+</table></script>
 
 		<!--
 			Vanilla JS
@@ -92,10 +107,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-buttons-types', []);
+						module = angular.module('stylemark-button-textcolor', []);
 					}
 
-					module.controller('stylemark-buttons-types-' + index, function($scope) {
+					module.controller('stylemark-button-textcolor-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

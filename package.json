@@ -12,6 +12,7 @@
   "private": false,
   "scripts": {
     "docs": "webpack --mode production --config ./build/webpack.prod.conf.js && node ./docs/src/index.js",
+    "stylemark": "node ./docs/src/index.js",
     "commit": "./node_modules/.bin/git-cz",
     "start": "./node_modules/.bin/webpack-dev-server --mode development --open --config ./build/webpack.dev.conf.js",
     "build": "webpack --mode production --config ./build/webpack.prod.conf.js",

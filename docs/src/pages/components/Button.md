@@ -26,8 +26,6 @@ Buttons are implemented through the base class **bp-btn**. They have a min-width
 
 <h1>Variations</h1>
 
-Buttons can accept variations alongside their base class. Variations are modifiers that can affect properties such as background-color, border and max-width.
-
 <h3>Flat</h3>
 
 The variation **bp-btn--flat** has a transparent background and an opaque border. Usually, its text and border have the same color and they darken on hover.

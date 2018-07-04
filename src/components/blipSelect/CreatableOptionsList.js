@@ -78,12 +78,12 @@ export class CreatebleOptionsList extends Nanocomponent {
   addOption(newOption) {
     const { OptionCreator } = this.props
     const newOptionProps = {
+      ...new OptionCreator().props,
       label: newOption,
-      ...OptionCreator.props,
     }
 
     if (this.options.onAddOption) {
-      this.options.onAddOption.call(this, EventEmitter({ newOption: { ...newOptionProps } }))
+      this.options.onAddOption.call(this, EventEmitter({ newOption: newOptionProps }))
     }
   }
 }

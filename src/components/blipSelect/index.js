@@ -5,7 +5,7 @@ import { EventEmitter } from '@lib/eventEmitter'
 import Nanocomponent from 'nanocomponent'
 import html from 'nanohtml'
 import { CreatebleOptionsList } from './CreatableOptionsList'
-import { OptionItem } from './OptionItem'
+import { SelectOption } from './SelectOption'
 
 const ANIMATION_TIMEOUT = 300
 
@@ -42,6 +42,7 @@ export class BlipSelect extends Nanocomponent {
     onAddOption: () => {},
     customSearch: undefined, // Function that should return a list of { value, label } pair
     canAddOption: false,
+    optionCreator: SelectOption,
   }
 
   constructor(options) {
@@ -55,8 +56,9 @@ export class BlipSelect extends Nanocomponent {
     this.customSelectId = `${blipSelectOptionsClass}-${guid()}`
     this._handleSelectFocus = this._onSelectFocus.bind(this)
     this._handleSelectBlur = this._onSelectBlur.bind(this)
-    this._handleCenterOption = this._centerSelectedOption.bind(this)
     this._handleInputChange = this._onInputChange.bind(this)
+    this._handleInputClick = this._onInputClick.bind(this)
+    this._handleCenterOption = this._centerSelectedOption.bind(this)
     this._handleInputKeydown = this._attachInputKeyboardListener.bind(this)
 
     // Nested components
@@ -64,7 +66,6 @@ export class BlipSelect extends Nanocomponent {
 
     // Component props
     this.props = {
-      placeholder: '',
       inputValue: '',
       options: [],
     }
@@ -131,13 +132,14 @@ export class BlipSelect extends Nanocomponent {
     return html`
       <div class="bp-input-wrapper blip-select ${hasBulletClass()}">
         <label class="bp-label bp-c-rooftop">${this.props.label}</label>
-        <input placeholder="${this.props.placeholder}"
+        <input placeholder="${this.configOptions.placeholder}"
           class="blip-select__input bp-c-cloud"
           value="${this.props.inputValue}"
           onfocus="${this._handleSelectFocus}"
           onblur="${this._handleSelectBlur}"
           onkeydown="${this._handleInputKeydown}"
           onkeyup="${this._handleInputChange}"
+          onclick="${this._handleInputClick}"
           data-target="${this.customSelectId}"
           readonly="${isReadOnly()}">
         <div class="blip-select__options" id="${this.customSelectId}">
@@ -153,7 +155,7 @@ export class BlipSelect extends Nanocomponent {
   update(props) {
     if (props.options) {
       this.optionsList.render({
-        ...props,
+        options: props.options,
       })
 
       return false
@@ -166,16 +168,19 @@ export class BlipSelect extends Nanocomponent {
    * Returns a object based on config options
    */
   _optionsListConfig() {
+    const defaults = {
+      options: this.props.options,
+      OptionCreator: this.configOptions.optionCreator,
+    }
+
     return this.configOptions.canAddOption
       ? {
-        options: this.props.options,
+        ...defaults,
         canAddOption: this.configOptions.canAddOption,
         newOption: this.props.newOption,
-        OptionCreator: OptionItem,
       }
       : {
-        options: this.props.options,
-        OptionCreator: OptionItem,
+        ...defaults,
       }
   }
 
@@ -195,22 +200,35 @@ export class BlipSelect extends Nanocomponent {
     return new CreatebleOptionsList({
       onOptionClick: this._onOptionClick.bind(this),
       onTryAccessInput: () => this.input.focus(),
-      onAddOption: (emitter) => {
-        const { $event: { newOption } } = emitter
-        this.clearInput()
-        this.input.focus()
-
-        const newOptions = this.props.options.concat(newOption)
-        this.props.options = newOptions
-
-        this.render({
-          options: newOptions,
-        })
-
-        this.configOptions.onAddOption.call(this, emitter)
-      },
+      onAddOption: this._handleAddOption.bind(this),
       addOptionText: this.configOptions.canAddOption.text,
     })
+  }
+
+  /**
+   * Handle add option event
+   * @param {EventEmitter} emitter
+   */
+  _handleAddOption(emitter) {
+    const { $event: { newOption } } = emitter
+    const newOptions = this.props.options.concat(newOption)
+    this.props.options = newOptions
+
+    this.optionsList.render({
+      options: newOptions,
+    })
+
+    this.programaticInputChange = true
+    this.input.value = ''
+    this.input.focus()
+
+    if (this.isSelectOpen) {
+      setTimeout(() => { // Time for add new option and render new list
+        this._closeSelect()
+      }, 100)
+    }
+
+    this.configOptions.onAddOption.call(this, emitter)
   }
 
   /**
@@ -240,7 +258,7 @@ export class BlipSelect extends Nanocomponent {
         }
         break
       case 13: // enter
-        if (this.configOptions.canAddOption) {
+        if (this.configOptions.canAddOption && this.input.value.trim() !== '') {
           this.optionsList.addOption(this.input.value)
         }
         break
@@ -270,14 +288,33 @@ export class BlipSelect extends Nanocomponent {
     }
     const inputValue = this.input.value
     const searchResults = this._getSearchResults(inputValue)
+    this.noResultsFound = searchResults.length < 0
 
     this.configOptions.onInputChange(EventEmitter({ value: inputValue, event }))
 
-    this.noResultsFound = searchResults.length < 0
-    this.render({
+    if (!this.isSelectOpen) {
+      this._openSelect()
+    }
+
+    // Avoids duplicate render when add a new option and clear input
+    if (this.programaticInputChange) {
+      this.programaticInputChange = false
+      return
+    }
+
+    this.optionsList.render({
       options: searchResults,
       newOption: inputValue,
     })
+  }
+
+  /**
+   * Handle input click
+   */
+  _onInputClick(event) {
+    if (!this.isSelectOpen) {
+      this._openSelect()
+    }
   }
 
   /**
@@ -360,15 +397,10 @@ export class BlipSelect extends Nanocomponent {
    * @param {DOMEvent} event
    */
   _onOptionClick({ $event }) {
-    const { event } = $event
+    const { event, optionProps } = $event
 
     if (this.isSelectOpen) {
-      const target = event.currentTarget
-      const selectedOption = {
-        label: target.getAttribute('data-label'),
-        value: target.getAttribute('data-value'),
-      }
-      this._setInputValue(selectedOption)
+      this._setInputValue(optionProps)
       this._resetSelectedOptions()
       event.target.classList.add(blipSelectOptionSeletedClass)
 

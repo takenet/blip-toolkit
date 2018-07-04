@@ -3,8 +3,6 @@ import { EventEmitter } from '@lib/eventEmitter'
 import Nanocomponent from 'nanocomponent'
 import html from 'nanohtml'
 
-const ANIMATION_TIMEOUT = 300
-
 const blipTagContainerClass = 'blip-tag-container'
 const blipTagClass = 'blip-tag'
 const blipTagLabelClass = 'blip-tag__label'
@@ -13,6 +11,7 @@ const blipTagColorOptionClass = 'blip-tag-color-option'
 const blipTagCanRemoveClass = 'blip-tag--can-remove'
 export const blipTagSelectColorClass = 'blip-tag-select-color'
 export const blipTagCompactClass = 'blip-tag--compact'
+export const defaultTagBackground = '#2cc3d5'
 
 // Color options
 const colors = ['#0CC7CB', '#FF4A1E', '#FF6F1E', '#FF961E', '#1EDEFF', '#1EA1FF', '#61D36F', '#37C5AB', '#7762E3', '#EA4D9C', '#FC91AE', '#FF1E90']
@@ -23,7 +22,6 @@ export class BlipTag extends Nanocomponent {
     mode: 'full', // can be full or compact
     classes: '',
     tagClasses: '',
-    canChangeBackground: false,
     canRemoveTag: true,
     onRemove: undefined,
     toggleCollapse: false,
@@ -45,67 +43,18 @@ export class BlipTag extends Nanocomponent {
     this._handleTagClick = this._onTagClick.bind(this)
 
     this.props = {
-      id: this.$state.id,
+      id: this.tagOptions.id,
       background: undefined,
       label: undefined,
+      canChangeBackground: false,
     }
-  }
-
-  /**
-   * Render tag template with options
-   * @param {Object} props - Tag template properties
-   */
-  createElement(props) {
-    this.props = props
-
-    const renderRemoveButton = () =>
-      this.tagOptions.onRemove || this.tagOptions.canRemoveTag
-        ? html`<button onclick="${this._handleRemoveTag}" class="${blipTagRemoveClass}">x</button>`
-        : ''
-
-    const renderTagClasses = () => {
-      let tagClasses = `${blipTagClass} ${this.tagOptions.tagClasses}`
-
-      if (this.tagOptions.mode === 'compact') {
-        tagClasses += ` ${blipTagCompactClass}`
-      }
-
-      if (this.tagOptions.canRemoveTag || this.tagOptions.onRemove) {
-        tagClasses += ` ${blipTagCanRemoveClass}`
-      }
-
-      return tagClasses
-    }
-
-    return html`
-      <div class="${blipTagContainerClass} ${this.tagOptions.classes}">
-        <div id="${props.id || this.tagOptions.id}">
-          <div tabindex="0"
-            onclick="${this._handleTagClick}"
-            onkeydown="${this._handleTagKeydown}"
-            class="${renderTagClasses()}"
-            style="background: ${props.background};">
-            <span class="${blipTagLabelClass}">${props.label}</span>
-            ${renderRemoveButton()}
-          </div>
-        </div>
-        ${this.tagOptions.canChangeBackground ? html`
-        <ul class="${blipTagSelectColorClass}" tabindex="0">
-          ${colors.map(c => html`<li onclick="${this._selectColor.bind(this)}" class="${blipTagColorOptionClass}" style="background: ${c}" data-color="${c}"></li>`)}
-        </ul>` : ''}
-      </div>
-    `
-  }
-
-  update() {
-    return true
   }
 
   /**
    * Returns canChangeBackground property
    */
   get canChangeBackground() {
-    return this.tagOptions.canChangeBackground
+    return this.props.canChangeBackground
   }
 
   /**
@@ -146,6 +95,62 @@ export class BlipTag extends Nanocomponent {
   }
 
   /**
+   * Render tag template with options
+   * @param {Object} props - Tag template properties
+   */
+  createElement(props) {
+    this.props = {
+      ...this.props,
+      ...props,
+    }
+
+    const renderRemoveButton = () =>
+      this.tagOptions.onRemove || this.tagOptions.canRemoveTag
+        ? html`<button onclick="${this._handleRemoveTag}" class="${blipTagRemoveClass}">x</button>`
+        : ''
+
+    const renderTagClasses = () => {
+      let tagClasses = `${blipTagClass} ${this.tagOptions.tagClasses}`
+
+      if (this.tagOptions.mode === 'compact') {
+        tagClasses += ` ${blipTagCompactClass}`
+      }
+
+      if (this.tagOptions.canRemoveTag || this.tagOptions.onRemove) {
+        tagClasses += ` ${blipTagCanRemoveClass}`
+      }
+
+      return tagClasses
+    }
+
+    return html`
+      <div class="${blipTagContainerClass} ${this.tagOptions.classes}">
+        <div id="${this.props.id || this.tagOptions.id}">
+          <div tabindex="0"
+            onclick="${this._handleTagClick}"
+            onkeydown="${this._handleTagKeydown}"
+            class="${renderTagClasses()}"
+            style="${this.props.background ? `background: ${this.props.background}` : ''}">
+            <span class="${blipTagLabelClass}">${this.props.label}</span>
+            ${renderRemoveButton()}
+          </div>
+        </div>
+        ${this.props.canChangeBackground ? html`
+        <ul class="${blipTagSelectColorClass}" tabindex="0">
+          ${colors.map(c => html`<li onclick="${this._selectColor.bind(this)}" class="${blipTagColorOptionClass}" style="background: ${c}" data-color="${c}"></li>`)}
+        </ul>` : ''}
+      </div>
+    `
+  }
+
+  /**
+   * Update component callback
+   */
+  update() {
+    return true
+  }
+
+  /**
    * Returns label value
    */
   getValue() {
@@ -161,42 +166,19 @@ export class BlipTag extends Nanocomponent {
     this.render({
       ...this.props,
       background,
+      canChangeBackground: false,
     })
-    this.tagOptions.onSelectColor.call(this, EventEmitter({ color: background, tag: this }))
-    this.hideColorOptions()
-  }
-
-  /**
-   * Hide color options container
-   */
-  hideColorOptions() {
-    const colorOptionsContainer = this.element.querySelector(`.${blipTagSelectColorClass}`)
-
-    colorOptionsContainer.style.transform = 'scale(0)'
-    colorOptionsContainer.style.opacity = 0
-
-    setTimeout(() => { // Needed for animation
-      colorOptionsContainer.style.display = 'none'
-    }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
+    this.tagOptions.onSelectColor.call(this, EventEmitter({ tag: this }))
   }
 
   /**
    * Function invoked when remove tag
    */
-  _removeTag(backspace) {
-    if (this.tagOptions.onRemove) {
+  _removeTag() {
+    if (this.tagOptions.onRemove && this.tagOptions.canRemoveTag) {
       this.tagOptions.onRemove.call(this, EventEmitter({
-        tag: {
-          element: this.element,
-          id: this.tagOptions.id,
-          label: this.props.label,
-        },
-        backspace,
+        tag: this,
       }))
-    }
-
-    if (this.tagOptions.canRemoveTag) {
-      this.element.parentNode.removeChild(this.element)
     }
   }
 
@@ -206,7 +188,7 @@ export class BlipTag extends Nanocomponent {
   _onTagKeydown(event) {
     switch (event.keyCode) {
       case 8: // backspace
-        this._removeTag(true)
+        this._removeTag()
         break
     }
   }

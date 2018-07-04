@@ -1,8 +1,12 @@
+import Nanocomponent from 'nanocomponent'
+import html from 'nanohtml'
+
 import {
   BlipTag,
   blipTagSelectColorClass,
+  defaultTagBackground,
 } from '../blipTag'
-import { BlipSelect } from '../blipSelect'
+import { BlipSelect, blipSelectOptionClass } from '../blipSelect'
 import { EventEmitter } from '@lib/eventEmitter'
 import {
   strToEl,
@@ -10,29 +14,35 @@ import {
   guid,
   insertAfter,
 } from '@lib/utils'
-import { blipSelectOptionClass } from '../blipSelect/BlipSelectBase'
+
+import { TagOption } from './TagOption'
+import { compose } from '../shared'
 
 const blipSelectPrefixClass = 'blip-select'
 const blipTagsClass = 'blip-tags'
 const blipTagOnListClass = 'blip-tag--on-list'
 const blipTagLabelOptionClass = 'blip-tag__label-option'
 
-export class BlipTags {
+// Utils
+const hideBackgroundOptions = t => ({ ...t, canChangeBackground: false })
+const addIdIfNotExists = t => t.id ? t : ({ ...t, id: `blip-tag-${guid()}` })
+const addBackgroundIfNotExists = t => t.background ? t : ({ ...t, background: defaultTagBackground })
+
+export class BlipTags extends Nanocomponent {
   $state = {
-    addTagText: 'Add tag',
+    promptTextCreator: 'Add tag',
     mode: 'full', // can be 'full' or 'compact'
     canChangeBackground: true,
     toggleTagsMode: false,
-    tags: [],
     onTagAdded: () => {},
     onTagRemoved: () => {},
     onSelectTagColor: () => {},
   }
 
-  constructor(element, options) {
-    this.element = element
+  constructor(options) {
+    super()
+
     this.selectElement = ''
-    this.tags = []
     this.blipSelectId = `${blipSelectPrefixClass}-${guid()}`
     this.inputBuffer = ''
 
@@ -41,7 +51,30 @@ export class BlipTags {
       ...options,
     }
 
-    this._setup()
+    this._handleAddNewOption = this.addTag.bind(this)
+    this._handleInputChange = this._onInputChange.bind(this)
+    this._handleSelectOption = this._onSelectOption.bind(this)
+    this._handleBlipSelectBlur = this._onSelectBlur.bind(this)
+    this._handleSanitizeNewOption = this._sanitizeNewOption.bind(this)
+    this._handleCustomSearch = this._customOptionsSearch.bind(this)
+
+    this.blipSelectInstance = new BlipSelect({
+      mode: 'autocomplete',
+      canAddOption: {
+        text: this.tagsOptions.promptTextCreator,
+      },
+      onAddOption: this._handleAddNewOption,
+      // onSelectOption: this._handleSelectOption,
+      onInputChange: this._handleInputChange,
+      onBlur: this._handleBlipSelectBlur,
+      newOption: this._handleSanitizeNewOption,
+      optionCreator: TagOption,
+    })
+
+    this.props = {
+      tags: [],
+      options: [],
+    }
   }
 
   /**
@@ -49,6 +82,58 @@ export class BlipTags {
    */
   get lastTag() {
     return last(this.tags)
+  }
+
+  /**
+   * Setup blip tags view
+   */
+  createElement(props) {
+    const { tags, options } = props
+    const normalizedTags = tags ? tags.map(compose(addIdIfNotExists, addBackgroundIfNotExists)) : []
+    const normalizedOptions = options ? options.map(compose(addIdIfNotExists, addBackgroundIfNotExists)) : []
+
+    this.props = {
+      ...this.props,
+      ...props,
+      tags: normalizedTags,
+      options: normalizedOptions,
+    }
+
+    const renderTag = t => new BlipTag({
+      canRemoveTag: true,
+      onSelectColor: this._onSelectTagColor.bind(this),
+      onRemove: this._handleRemoveTag.bind(this),
+    }).render(t)
+
+    return html`
+      <div class="${blipTagsClass}">
+        ${this.props.tags.map(renderTag)}
+        ${this.blipSelectInstance.render({ options: this.props.options })}
+      </div>
+    `
+  }
+
+  /**
+   * Update component callback
+   * @param {Object} props
+   */
+  update(props) {
+    return true
+  }
+
+  /**
+   * Handle tag remove
+   */
+  _handleRemoveTag({ $event }) {
+    const { tag } = $event
+
+    if (tag) {
+      const newTags = this.props.tags.filter(t => t.id !== tag.props.id)
+
+      this.render({
+        tags: newTags,
+      })
+    }
   }
 
   /**
@@ -79,7 +164,7 @@ export class BlipTags {
     `)
 
     this.selectElement = this.tagsContainer.querySelector(`#${this.blipSelectId}`)
-    this._handleAddNewOption = this._onAddNewOption.bind(this)
+    this._handleAddNewOption = this.addTag.bind(this)
     this._handleInputChange = this._onInputChange.bind(this)
     this._handleSelectOption = this._onSelectOption.bind(this)
     this._handleBlipSelectBlur = this._onSelectBlur.bind(this)
@@ -91,7 +176,7 @@ export class BlipTags {
       {
         mode: 'autocomplete',
         canAddOption: {
-          text: this.tagsOptions.addTagText,
+          text: this.tagsOptions.promptTextCreator,
         },
         onAddNewOption: this._handleAddNewOption,
         onSelectOption: this._handleSelectOption,
@@ -170,22 +255,11 @@ export class BlipTags {
    * @param {EventEmitter} emitter - EventEmitter object
    */
   _onSelectOption({ $event }) {
+    const { label, background } = $event
+    const newOption = { label, background }
     this.blipSelectInstance.clearInput()
 
-    const { label, value } = $event
-    const tag = new BlipTag({ label, background: value, canChangeBackground: false })
-    this.addTag(tag)
-  }
-
-  /**
-   * On add option callback from BlipSelect
-   * @param {EventEmitter} obj - Object that contains option object of BlipSelect component
-   */
-  _onAddNewOption({ $event }) {
-    const { label, id } = $event
-
-    const tag = new BlipTag({ label, id, canChangeBackground: this.tagsOptions.canChangeBackground })
-    this.addTag(tag)
+    this.addTag(EventEmitter({ newOption }))
   }
 
   /**
@@ -199,8 +273,10 @@ export class BlipTags {
     switch (event.keyCode) {
       case 8: // backspace
         if (currentInputBuffer === '') {
-          if (this.tags.length > 0) {
-            last(this.tags).tagElement.focus()
+          if (this.props.tags.length > 0) {
+            const tagsElement = this.element.querySelectorAll('.blip-tag-container .blip-tag')
+
+            last([...tagsElement]).focus()
           }
         }
         break
@@ -211,11 +287,11 @@ export class BlipTags {
    * Hide last tag color options
    */
   _hideLastTagOptions() {
-    if (this.tags.length > 0) {
-      if (this.lastTag.canChangeBackground) {
-        this.lastTag.hideColorOptions()
-      }
-    }
+    // if (this.props.tags.length > 0 && this.props.tags.some(t => t.canChangeBackground)) {
+    //   this.render({
+    //     tags: this.props.tags.map(t => ({...t, canChangeBackground: false})),
+    //   })
+    // }
   }
 
   /**
@@ -283,37 +359,23 @@ export class BlipTags {
    * Add tag on DOM and tags array
    * @param {BlipTag} tag - tag instance
    */
-  addTag(tagInstance, focusOnInput) {
-    const {
-      id,
-      label,
-      canChangeBackground,
-      tagOptions: { background },
-    } = tagInstance
+  addTag({ $event }) {
+    const { newOption } = $event
 
-    const tag = new BlipTag({
-      id,
-      label,
-      canChangeBackground,
-      background,
-      onRemove: this._removeTag.bind(this),
-      onSelectColor: this._onSelectTagColor.bind(this),
-      classes: `${blipTagOnListClass}`,
+    const newTags = this.props.tags
+      .map(hideBackgroundOptions) // Hide last background options
+      .concat({
+        ...newOption,
+        canChangeBackground: this.tagsOptions.canChangeBackground,
+      }) // Add new tag
+
+    this.render({
+      tags: newTags,
+      options: this.props.options.concat({ ...newOption }),
     })
 
-    // Hide last tag color options if I can
-    this._hideLastTagOptions()
-
-    // Insert tag element into DOM
-    this.insertTagIntoDom(tag)
-
-    if (focusOnInput) {
-      this.blipSelectInstance.input.focus()
-    }
-
-    this.tagsOptions.onTagAdded.call(this, EventEmitter({ tag }))
-
-    return tag
+    this.blipSelectInstance.input.focus()
+    this.tagsOptions.onTagAdded.call(this, EventEmitter({ tag: newOption }))
   }
 
   /**
@@ -337,6 +399,19 @@ export class BlipTags {
    * @param {EventEmitter} emitter - emitter obj
    */
   _onSelectTagColor(emitter) {
+    const { $event: { tag } } = emitter
+    this.render({
+      tags: this.props.tags.map(t =>
+        t.id === tag.props.id
+          ? ({
+            ...t,
+            canChangeBackground: false,
+            background: tag.props.background,
+          })
+          : t
+      ),
+    })
+
     this.tagsOptions.onSelectTagColor.call(this, emitter)
   }
 

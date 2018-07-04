@@ -1,8 +1,10 @@
-import { guid } from '@lib/utils'
 import { EventEmitter } from '@lib/eventEmitter'
 import Nanocomponent from 'nanocomponent'
-import html from 'nanohtml'
 
+/**
+ * This class abstracts any option item of option list.
+ * This pattern allows to create custom option item class, with its props and view
+ */
 export class OptionItem extends Nanocomponent {
   $defaults = {
     onOptionClick: undefined,
@@ -16,52 +18,17 @@ export class OptionItem extends Nanocomponent {
       ...this.$defaults,
       ...options,
     }
-
-    this.props = {
-      value: undefined,
-      label: undefined,
-      id: undefined,
-    }
-  }
-
-  /**
-   * Render element view
-   */
-  createElement(props) {
-    this.props = {
-      ...this.props,
-      ...props,
-    }
-
-    const fillOptionId = id => id || `blip-select__option-${guid()}`
-
-    return html`
-      <li tabindex="0"
-        onclick="${this._onOptionClick.bind(this)}"
-        onkeydown="${this._attachOptionKeyboardListeners.bind(this)}"
-        class="blip-select__option"
-        id="${fillOptionId(this.props.id)}"
-        data-label="${this.props.label}"
-        data-value="${this.props.value}">${this.props.label}</li>
-    `
-  }
-
-  /**
-   * Update element callback
-   */
-  update() {
-    return true
   }
 
   /**
    * Attach keyboard listeners when some option is focused
    */
-  _attachOptionKeyboardListeners(event) {
+  attachOptionKeyboardListeners(event) {
     const element = event.target
 
     switch (event.keyCode) {
       case 13: // enter
-        this._onOptionClick(event)
+        this.onOptionClick(event)
         break
       case 40: // arrow down
         if (element.nextSibling) {
@@ -82,9 +49,9 @@ export class OptionItem extends Nanocomponent {
    * Handle option click
    * @param {ClickEvent} event - Dom event click
    */
-  _onOptionClick(event) {
+  onOptionClick(event) {
     if (this.options.onOptionClick) {
-      this.options.onOptionClick.call(this, EventEmitter({ event }))
+      this.options.onOptionClick.call(this, EventEmitter({ event, optionProps: this.props }))
     } else {
       throw new Error('onOptionClick callback should be implemented')
     }

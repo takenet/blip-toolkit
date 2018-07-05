@@ -7,11 +7,11 @@
 .blip-tag-select-color {
   background: #fff;
   box-shadow: 0 1px 12px 0 rgba(173, 182, 185, 0.29);
-  padding: 10px;
+  padding: 14px;
   margin: 0;
-  width: 145px;
+  width: 149px;
   position: absolute;
-  top: 160%;
+  top: 140%;
   line-height: 1;
   border-radius: 3px;
   transform-origin: 0 0;
@@ -39,6 +39,7 @@
 .blip-tag {
   display: inline-block;
   padding: 4px 15px;
+  margin-top: 4px;
   border-radius: 20px;
   background: $bp-color-bot;
   max-width: 300px;
@@ -97,7 +98,8 @@
 
 .blip-tag-color-option {
   width: 24px; height: 24px;
-  margin: 2px;
+  margin: 3px;
+  border-radius: 4px;
   cursor: pointer;
   display: inline-block;
 }

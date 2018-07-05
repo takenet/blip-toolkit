@@ -49,24 +49,37 @@ The variation **bp-btn--flat** has a transparent background and an opaque border
 </table>
 ```
 
-<h3>Small</h3>
+<h3>Size</h3>
 
-The variation **bp-btn--small** modifies the button's min-width to 100px.
+The main size variations modify only the button's min-width: **bp-btn--large** (240px), **bp-btn--small** (100px) and **bp-btn--extra-small** (60px).
 
-```small.html
+```size.html
 <table>
   <tbody>
     <tr>
+    <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Base Small</button>
+        <button class="bp-btn bp-btn--blip-dark bp-btn--extra-small">XS</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--extra-small</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Small</button>
       </td>
       <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--city bp-btn--flat bp-btn--small">Flat Small</button>
+        <button class="bp-btn bp-btn--blip-dark">Normal</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-city">.bp-btn--city</span> .bp-btn--flat .bp-btn--small</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span></td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--blip-dark bp-btn--large">Large</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--large</td>
     </tr>
   </tbody>
 </table>
@@ -297,6 +310,23 @@ The variation **bp-btn--no-background** makes the **base** button's background c
         <button class="bp-btn bp-btn--c-rooftop bp-btn--no-background">No Background</button>
       </td>
       <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-rooftop">.bp-btn--c-rooftop</span> .bp-btn--no-background</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+<h3>Text-only</h3>
+
+The variation **bp-btn--text-only** not only makes the **base** button's background color transparent, but also its size fits the text inside. Its min-width is 0px, its height is auto, its line-height is 18px and its horizontal padding is smaller.
+
+```text-only.html
+<table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--silver bp-btn--text-only">Text Only</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only</td>
     </tr>
   </tbody>
 </table>

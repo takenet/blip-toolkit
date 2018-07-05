@@ -5,9 +5,6 @@
 		
 
 		<style>
-					.bp-divider-v {
-  height: 30px;
-}
 		</style>
 
 		<style>
@@ -58,65 +55,26 @@
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
-	<body>					<table class="w-100">
-  <tbody class="w-100">
-    <tr class="w-100">
-      <td>
-        <div class="bp-bg-rooftop bp-divider-v"></div>
-      </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-bg-rooftop
-      </td>
-    </tr>
+	<body>					<table>
+  <tbody>
     <tr>
-      <td>
-        <div class="bp-bg-rooftop bp-divider-v bp-divider--medium"></div>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--silver bp-btn--text-only">Text Only</button>
       </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-divider--medium .bp-bg-rooftop
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="bp-bg-rooftop bp-divider-v bp-divider--large"></div>
-      </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-divider--large .bp-bg-rooftop
-      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only</td>
     </tr>
   </tbody>
 </table>
-			<script type="text/x-stylemark" data-language="html"><table class="w-100">
-  <tbody class="w-100">
-    <tr class="w-100">
-      <td>
-        <div class="bp-bg-rooftop bp-divider-v"></div>
-      </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-bg-rooftop
-      </td>
-    </tr>
+			<script type="text/x-stylemark" data-language="html"><table>
+  <tbody>
     <tr>
-      <td>
-        <div class="bp-bg-rooftop bp-divider-v bp-divider--medium"></div>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--silver bp-btn--text-only">Text Only</button>
       </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-divider--medium .bp-bg-rooftop
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="bp-bg-rooftop bp-divider-v bp-divider--large"></div>
-      </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-divider--large .bp-bg-rooftop
-      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only</td>
     </tr>
   </tbody>
 </table></script>
-			<script type="text/x-stylemark" data-language="css">.bp-divider-v {
-  height: 30px;
-}</script>
 
 		<!--
 			Vanilla JS
@@ -149,10 +107,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-divider-vertical', []);
+						module = angular.module('stylemark-button-text-only', []);
 					}
 
-					module.controller('stylemark-divider-vertical-' + index, function($scope) {
+					module.controller('stylemark-button-text-only-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

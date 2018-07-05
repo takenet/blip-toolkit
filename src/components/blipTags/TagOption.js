@@ -12,7 +12,7 @@ export class TagOption extends OptionItem {
     this.props = {
       background: defaultTagBackground,
       label: undefined,
-      id: undefined,
+      id: `blip-tag-${guid()}`,
     }
   }
 
@@ -25,14 +25,12 @@ export class TagOption extends OptionItem {
       ...props,
     }
 
-    const fillOptionId = id => id || `blip-select__option-${guid()}`
-
     return html`
       <li tabindex="0"
         onclick="${this.onOptionClick.bind(this)}"
         onkeydown="${this.attachOptionKeyboardListeners.bind(this)}"
         class="blip-select__option"
-        id="${fillOptionId(this.props.id)}">
+        id="${this.props.id}">
         <span class="blip-tag__label-option" style="background: ${this.props.background}">${this.props.label}</span>
       </li>
     `

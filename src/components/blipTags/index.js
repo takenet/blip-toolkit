@@ -6,13 +6,12 @@ import {
   blipTagSelectColorClass,
   defaultTagBackground,
 } from '../blipTag'
-import { BlipSelect, blipSelectOptionClass } from '../blipSelect'
+import { BlipSelect } from '../blipSelect'
 import { EventEmitter } from '@lib/eventEmitter'
 import {
   strToEl,
   last,
   guid,
-  insertAfter,
 } from '@lib/utils'
 
 import { TagOption } from './TagOption'
@@ -20,8 +19,6 @@ import { compose } from '../shared'
 
 const blipSelectPrefixClass = 'blip-select'
 const blipTagsClass = 'blip-tags'
-const blipTagOnListClass = 'blip-tag--on-list'
-const blipTagLabelOptionClass = 'blip-tag__label-option'
 
 // Utils
 const hideBackgroundOptions = t => ({ ...t, canChangeBackground: false })
@@ -52,10 +49,9 @@ export class BlipTags extends Nanocomponent {
     }
 
     this._handleAddNewOption = this.addTag.bind(this)
-    this._handleInputChange = this._onInputChange.bind(this)
+    this._handleInputKeyup = this._onInputKeyup.bind(this)
     this._handleSelectOption = this._onSelectOption.bind(this)
     this._handleBlipSelectBlur = this._onSelectBlur.bind(this)
-    this._handleSanitizeNewOption = this._sanitizeNewOption.bind(this)
     this._handleCustomSearch = this._customOptionsSearch.bind(this)
 
     this.blipSelectInstance = new BlipSelect({
@@ -64,8 +60,8 @@ export class BlipTags extends Nanocomponent {
         text: this.tagsOptions.promptTextCreator,
       },
       onAddOption: this._handleAddNewOption,
-      // onSelectOption: this._handleSelectOption,
-      onInputChange: this._handleInputChange,
+      onSelectOption: this._handleSelectOption,
+      onInputKeyup: this._handleInputKeyup,
       onBlur: this._handleBlipSelectBlur,
       newOption: this._handleSanitizeNewOption,
       optionCreator: TagOption,
@@ -78,19 +74,16 @@ export class BlipTags extends Nanocomponent {
   }
 
   /**
-   * Get last tag
-   */
-  get lastTag() {
-    return last(this.tags)
-  }
-
-  /**
    * Setup blip tags view
    */
   createElement(props) {
     const { tags, options } = props
-    const normalizedTags = tags ? tags.map(compose(addIdIfNotExists, addBackgroundIfNotExists)) : []
-    const normalizedOptions = options ? options.map(compose(addIdIfNotExists, addBackgroundIfNotExists)) : []
+    const normalizedTags = tags
+      ? tags.map(compose(addIdIfNotExists, addBackgroundIfNotExists))
+      : this.props.tags
+    const normalizedOptions = options
+      ? options.map(compose(addIdIfNotExists, addBackgroundIfNotExists))
+      : this.props.options
 
     this.props = {
       ...this.props,
@@ -117,7 +110,7 @@ export class BlipTags extends Nanocomponent {
    * Update component callback
    * @param {Object} props
    */
-  update(props) {
+  update() {
     return true
   }
 
@@ -125,14 +118,22 @@ export class BlipTags extends Nanocomponent {
    * Handle tag remove
    */
   _handleRemoveTag({ $event }) {
-    const { tag } = $event
-
+    const { tag, event } = $event
     if (tag) {
       const newTags = this.props.tags.filter(t => t.id !== tag.props.id)
 
       this.render({
         tags: newTags,
       })
+
+      if (event && event.keyCode === 8) {
+        const tagsElement = this.element.querySelectorAll('.blip-tag-container .blip-tag')
+        if (tagsElement.length > 0) {
+          last([...tagsElement]).focus()
+        } else {
+          this.blipSelectInstance.input.focus()
+        }
+      }
     }
   }
 
@@ -165,7 +166,7 @@ export class BlipTags extends Nanocomponent {
 
     this.selectElement = this.tagsContainer.querySelector(`#${this.blipSelectId}`)
     this._handleAddNewOption = this.addTag.bind(this)
-    this._handleInputChange = this._onInputChange.bind(this)
+    this._handleInputKeyup = this._onInputKeyup.bind(this)
     this._handleSelectOption = this._onSelectOption.bind(this)
     this._handleBlipSelectBlur = this._onSelectBlur.bind(this)
     this._handleSanitizeNewOption = this._sanitizeNewOption.bind(this)
@@ -180,27 +181,13 @@ export class BlipTags extends Nanocomponent {
         },
         onAddNewOption: this._handleAddNewOption,
         onSelectOption: this._handleSelectOption,
-        onInputChange: this._handleInputChange,
+        onInputChange: this._handleInputKeyup,
         onBlur: this._handleBlipSelectBlur,
-        newOption: this._handleSanitizeNewOption,
         customSearch: this._handleCustomSearch,
       })
 
     if (this.tagsOptions.canChangeBackground) {
       this.blipSelectInstance._arrayToDomOptions = this._overrideSelectDomOptions.bind(this.blipSelectInstance)
-    }
-  }
-
-  /**
-   * Sanitize new option
-   */
-  _sanitizeNewOption({ $event }) {
-    const { context } = $event
-    const label = context.input.value
-
-    return {
-      value: '#2cc3d5',
-      label,
     }
   }
 
@@ -224,22 +211,6 @@ export class BlipTags extends Nanocomponent {
   }
 
   /**
-   * Bind pre-defined tags if exists
-   */
-  bindTagsIfExists() {
-    if (this.tagsOptions.tags.length > 0) {
-      switch (this.tagsOptions.mode) {
-        case 'full':
-          this.bulkInsertTags(this.tagsOptions.tags)
-          break
-        case 'compact':
-          this.bulkInsertCompactTags(this.tagsOptions.tags)
-          break
-      }
-    }
-  }
-
-  /**
    * Handle BlipSelect blur
    */
   _onSelectBlur(event) {
@@ -255,17 +226,22 @@ export class BlipTags extends Nanocomponent {
    * @param {EventEmitter} emitter - EventEmitter object
    */
   _onSelectOption({ $event }) {
-    const { label, background } = $event
-    const newOption = { label, background }
+    const { optionProps } = $event
+
     this.blipSelectInstance.clearInput()
 
-    this.addTag(EventEmitter({ newOption }))
+    this.render({
+      tags: this.props.tags.concat(optionProps),
+    })
+
+    this.blipSelectInstance.input.focus()
+    this.tagsOptions.onTagAdded.call(this, EventEmitter({ tag: optionProps }))
   }
 
   /**
    * Handle BlipSelect input change
    */
-  _onInputChange({ $event }) {
+  _onInputKeyup({ $event }) {
     const { event, value } = $event
     const currentInputBuffer = this.inputBuffer
     this.inputBuffer = value
@@ -292,67 +268,6 @@ export class BlipTags extends Nanocomponent {
     //     tags: this.props.tags.map(t => ({...t, canChangeBackground: false})),
     //   })
     // }
-  }
-
-  /**
-   * Insert tag into DOM
-   */
-  insertTagIntoDom(tag) {
-    if (this.tags.length === 0) {
-      this.tagsContainer.prepend(tag.element)
-    } else {
-      const lastElement = last(this.tags).element
-      insertAfter(tag.element, lastElement)
-    }
-
-    this.tags = this.tags.concat(tag)
-  }
-
-  /**
-   * Insert multiple tags from array (in compact mode)
-   * @param {Array} tags - { label: string, background: string }
-   */
-  bulkInsertCompactTags(tags) {
-    tags.map(({ label, background }) => {
-      const tag = new BlipTag({
-        label,
-        background,
-        canChangeBackground: false,
-        canRemoveTag: false,
-        toggleCollapse: false,
-        onTagClick: this.onTagClick.bind(this),
-        mode: 'compact',
-        classes: `${blipTagOnListClass} `,
-      })
-
-      // Insert tag element into DOM
-      this.insertTagIntoDom(tag)
-    })
-  }
-
-  /**
-   * Insert multiple tags from array
-   * @param {Array} tags - { label: string, background: string, id: string }
-   */
-  bulkInsertTags(tags) {
-    tags.map(({ label, background, id }) => {
-      const tag = new BlipTag({
-        label,
-        [background ? 'background' : '']: background,
-        [id ? 'id' : '']: id,
-        canChangeBackground: false,
-        onRemove: this._removeTag.bind(this),
-        onSelectColor: this._onSelectTagColor.bind(this),
-        classes: `${blipTagOnListClass}`,
-      })
-
-      // Insert tag element into DOM
-      this.insertTagIntoDom(tag)
-      this.blipSelectInstance.addNewOption({
-        label: tag.label,
-        value: tag.tagOptions.background,
-      }, false)
-    })
   }
 
   /**
@@ -400,16 +315,20 @@ export class BlipTags extends Nanocomponent {
    */
   _onSelectTagColor(emitter) {
     const { $event: { tag } } = emitter
-    this.render({
-      tags: this.props.tags.map(t =>
-        t.id === tag.props.id
-          ? ({
-            ...t,
-            canChangeBackground: false,
-            background: tag.props.background,
-          })
-          : t
-      ),
+    const addNewBackground = newTag => currentTag =>
+      currentTag.id === newTag.props.id
+        ? ({
+          ...currentTag,
+          canChangeBackground: false,
+          background: newTag.props.background,
+        })
+        : currentTag
+
+    this.props.tags = this.props.tags.map(addNewBackground(tag))
+    this.props.options = this.props.options.map(addNewBackground(tag))
+
+    this.blipSelectInstance.render({
+      options: this.props.options,
     })
 
     this.tagsOptions.onSelectTagColor.call(this, emitter)
@@ -422,29 +341,5 @@ export class BlipTags extends Nanocomponent {
     if (this.tagsOptions.toggleTagsMode) {
       this.tags.forEach(t => t.toggleCollapse())
     }
-  }
-
-  /**
-   * Override BlipSelect '_arrayToDomOptions' method due to customize generated options
-   * Scope: the blip select instance
-   * @override
-   * @param {Array} options - Options array
-   */
-  _overrideSelectDomOptions(options = [{ value: '', label: '', id: '' }]) {
-    // Reset HTML content
-    this.selectOptionsContainer.innerHTML = ''
-
-    // Add options to container
-    options.forEach(({ value, label, id }) => {
-      this.selectOptionsContainer.appendChild(
-        strToEl(`
-          <li tabindex="0" class="${blipSelectOptionClass}" id="${id}" data-label="${label}" data-value="${value}">
-            <span class="${blipTagLabelOptionClass}" style="background: ${value}">${label}</span>
-          </li>
-        `)
-      )
-    })
-
-    this._setupOptionsEventHandlers()
   }
 }

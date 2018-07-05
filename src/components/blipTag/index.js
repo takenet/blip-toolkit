@@ -72,22 +72,6 @@ export class BlipTag extends Nanocomponent {
   }
 
   /**
-   * Returns tag background
-   */
-  get tagBackground() {
-    return this.tagOptions.background
-  }
-
-  /**
-   * Tag background
-   */
-  set tagBackground(value) {
-    this.tagOptions.background = value
-    this.tagContainer.querySelector(`.${blipTagClass}`)
-      .style.background = value
-  }
-
-  /**
    * Returns tag Id
    */
   get id() {
@@ -125,15 +109,14 @@ export class BlipTag extends Nanocomponent {
 
     return html`
       <div class="${blipTagContainerClass} ${this.tagOptions.classes}">
-        <div id="${this.props.id || this.tagOptions.id}">
-          <div tabindex="0"
-            onclick="${this._handleTagClick}"
-            onkeydown="${this._handleTagKeydown}"
-            class="${renderTagClasses()}"
-            style="${this.props.background ? `background: ${this.props.background}` : ''}">
-            <span class="${blipTagLabelClass}">${this.props.label}</span>
-            ${renderRemoveButton()}
-          </div>
+        <div tabindex="0"
+          id="${this.props.id || this.tagOptions.id}"
+          onclick="${this._handleTagClick}"
+          onkeydown="${this._handleTagKeydown}"
+          class="${renderTagClasses()}"
+          style="${this.props.background ? `background: ${this.props.background}` : ''}">
+          <span class="${blipTagLabelClass}">${this.props.label}</span>
+          ${renderRemoveButton()}
         </div>
         ${this.props.canChangeBackground ? html`
         <ul class="${blipTagSelectColorClass}" tabindex="0">
@@ -174,10 +157,11 @@ export class BlipTag extends Nanocomponent {
   /**
    * Function invoked when remove tag
    */
-  _removeTag() {
+  _removeTag(event) {
     if (this.tagOptions.onRemove && this.tagOptions.canRemoveTag) {
       this.tagOptions.onRemove.call(this, EventEmitter({
         tag: this,
+        event,
       }))
     }
   }
@@ -188,7 +172,7 @@ export class BlipTag extends Nanocomponent {
   _onTagKeydown(event) {
     switch (event.keyCode) {
       case 8: // backspace
-        this._removeTag()
+        this._removeTag(event)
         break
     }
   }

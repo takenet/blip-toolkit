@@ -28,7 +28,7 @@ export class BlipSelect extends Nanocomponent {
     noResultsFound: false,
     disabled: false,
     label: '',
-    placeholder: '',
+    placeholder: 'Select...',
     mode: 'select',
     noResultsText: 'No results found',
     beforeOpenSelect: () => {},
@@ -36,6 +36,7 @@ export class BlipSelect extends Nanocomponent {
     beforeCloseSelect: () => {},
     afterCloseSelect: () => {},
     onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
+    onInputKeyup: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
     onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
     onFocus: () => {},
     onBlur: () => {},
@@ -60,6 +61,7 @@ export class BlipSelect extends Nanocomponent {
     this._handleInputClick = this._onInputClick.bind(this)
     this._handleCenterOption = this._centerSelectedOption.bind(this)
     this._handleInputKeydown = this._attachInputKeyboardListener.bind(this)
+    this._handleInputKeyup = this._onInputKeyup.bind(this)
 
     // Nested components
     this.optionsList = this._chooseOptionListInstance()
@@ -131,14 +133,15 @@ export class BlipSelect extends Nanocomponent {
 
     return html`
       <div class="bp-input-wrapper blip-select ${hasBulletClass()}">
-        <label class="bp-label bp-c-rooftop">${this.props.label}</label>
+        <label class="bp-label bp-c-rooftop">${this.configOptions.label}</label>
         <input placeholder="${this.configOptions.placeholder}"
           class="blip-select__input bp-c-cloud"
           value="${this.props.inputValue}"
           onfocus="${this._handleSelectFocus}"
           onblur="${this._handleSelectBlur}"
           onkeydown="${this._handleInputKeydown}"
-          onkeyup="${this._handleInputChange}"
+          onkeyup="${this._handleInputKeyup}"
+          oninput="${this._handleInputChange}"
           onclick="${this._handleInputClick}"
           data-target="${this.customSelectId}"
           readonly="${isReadOnly()}">
@@ -218,7 +221,6 @@ export class BlipSelect extends Nanocomponent {
       options: newOptions,
     })
 
-    this.programaticInputChange = true
     this.input.value = ''
     this.input.focus()
 
@@ -280,12 +282,25 @@ export class BlipSelect extends Nanocomponent {
   }
 
   /**
+   * On input key up event
+   */
+  _onInputKeyup(event) {
+    if (typeof this.configOptions.onInputKeyup !== 'function') {
+      throw new Error('Callback "onInputKeyup" is not a function')
+    }
+
+    const inputValue = this.input.value
+    this.configOptions.onInputKeyup(EventEmitter({ value: inputValue, event }))
+  }
+
+  /**
    * On input change event
    */
   _onInputChange(event) {
     if (typeof this.configOptions.onInputChange !== 'function') {
       throw new Error('Callback "onInputChange" is not a function')
     }
+
     const inputValue = this.input.value
     const searchResults = this._getSearchResults(inputValue)
     this.noResultsFound = searchResults.length < 0
@@ -294,12 +309,6 @@ export class BlipSelect extends Nanocomponent {
 
     if (!this.isSelectOpen) {
       this._openSelect()
-    }
-
-    // Avoids duplicate render when add a new option and clear input
-    if (this.programaticInputChange) {
-      this.programaticInputChange = false
-      return
     }
 
     this.optionsList.render({
@@ -321,15 +330,16 @@ export class BlipSelect extends Nanocomponent {
    * Set value to input
    * @param {Object} object - value/label pair
    */
-  _setInputValue({ value, label }) {
-    this.input.value = label || value
+  _setInputValue(optionProps) {
+    const { label } = optionProps
+    this.input.value = label
     this.props.inputValue = this.input.value
     if (typeof this.configOptions.onSelectOption !== 'function') {
       throw new Error('Callback "onSelectOption" is not a function')
     }
 
-    if (value || label) {
-      this.configOptions.onSelectOption.call(this, EventEmitter({ value, label }))
+    if (label) {
+      this.configOptions.onSelectOption.call(this, EventEmitter({ optionProps }))
     }
   }
 
@@ -337,7 +347,7 @@ export class BlipSelect extends Nanocomponent {
    * Clear input value
    */
   clearInput() {
-    this._setInputValue({ value: '', label: '' })
+    this._setInputValue({ label: '' })
 
     const event = new CustomEvent('keyup', { detail: { shouldOpenSelect: false } })
     this.input.dispatchEvent(event)
@@ -345,21 +355,21 @@ export class BlipSelect extends Nanocomponent {
 
   /**
    * Programatically sets value to input
-   * @param {Object} param0 - Value/label pair
+   * @param {Object} props - props to be setted
    */
-  setValue({ value, label } = { value: '', label: '' }) {
-    if (value) {
-      const match = this.props.options.find(o => o.value === value)
+  setValue({ label, ...rest }) {
+    if (rest.value) {
+      const match = this.props.options.find(o => o.value === rest.value)
 
       if (match) {
         match.element.classList.add(blipSelectOptionSeletedClass)
 
         this._setInputValue({
-          value: match.value,
           label: match.label,
+          ...rest,
         })
       } else {
-        this._setInputValue({ value, label })
+        this._setInputValue({ label, ...rest })
       }
 
       const event = new CustomEvent('keyup', { detail: { shouldOpenSelect: false } })

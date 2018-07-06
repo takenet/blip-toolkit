@@ -12,6 +12,7 @@ examples:
   css:
     - "./dist/blip-toolkit.css"
     - "./node_modules/tachyons/css/tachyons.min.css"
+    - "./docs/src/assets/css/all.css"
 
   js:
     - "./dist/blip-toolkit.js"

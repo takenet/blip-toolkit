@@ -3,13 +3,11 @@ import html from 'nanohtml'
 
 import {
   BlipTag,
-  blipTagSelectColorClass,
   defaultTagBackground,
 } from '../blipTag'
 import { BlipSelect } from '../blipSelect'
 import { EventEmitter } from '@lib/eventEmitter'
 import {
-  strToEl,
   last,
   guid,
 } from '@lib/utils'
@@ -137,60 +135,6 @@ export class BlipTags extends Nanocomponent {
   }
 
   /**
-   * Setup tags element
-   */
-  _setup() {
-    switch (this.tagsOptions.mode) {
-      case 'full':
-        this._setupFullMode()
-        break
-      case 'compact':
-        this._setupCompactMode()
-        break
-    }
-
-    this.element.appendChild(this.tagsContainer)
-    this.bindTagsIfExists()
-  }
-
-  /**
-   * Setup BlipTags in full mode
-   */
-  _setupFullMode() {
-    this.tagsContainer = strToEl(`
-      <div class="${blipTagsClass}">
-        <select id="${this.blipSelectId}"></select>
-      </div>
-    `)
-
-    this.selectElement = this.tagsContainer.querySelector(`#${this.blipSelectId}`)
-    this._handleAddNewOption = this.addTag.bind(this)
-    this._handleInputKeyup = this._onInputKeyup.bind(this)
-    this._handleSelectOption = this._onSelectOption.bind(this)
-    this._handleBlipSelectBlur = this._onSelectBlur.bind(this)
-    this._handleSanitizeNewOption = this._sanitizeNewOption.bind(this)
-    this._handleCustomSearch = this._customOptionsSearch.bind(this)
-
-    this.blipSelectInstance = new BlipSelect(
-      this.selectElement,
-      {
-        mode: 'autocomplete',
-        canAddOption: {
-          text: this.tagsOptions.promptTextCreator,
-        },
-        onAddNewOption: this._handleAddNewOption,
-        onSelectOption: this._handleSelectOption,
-        onInputChange: this._handleInputKeyup,
-        onBlur: this._handleBlipSelectBlur,
-        customSearch: this._handleCustomSearch,
-      })
-
-    if (this.tagsOptions.canChangeBackground) {
-      this.blipSelectInstance._arrayToDomOptions = this._overrideSelectDomOptions.bind(this.blipSelectInstance)
-    }
-  }
-
-  /**
    * Custom options search
    */
   _customOptionsSearch({ $event }) {
@@ -201,24 +145,9 @@ export class BlipTags extends Nanocomponent {
   }
 
   /**
-   * Setup BlipTags in compact mode
-   */
-  _setupCompactMode() {
-    this.tagsContainer = strToEl(`
-      <div class="${blipTagsClass}"></div>
-    `)
-  }
-
-  /**
    * Handle BlipSelect blur
    */
-  _onSelectBlur(event) {
-    if (event.relatedTarget && event.relatedTarget.classList.contains(blipTagSelectColorClass)) {
-      return
-    }
-
-    this._hideLastTagOptions()
-  }
+  _onSelectBlur(event) {}
 
   /**
    * Handle select option
@@ -260,17 +189,6 @@ export class BlipTags extends Nanocomponent {
         }
         break
     }
-  }
-
-  /**
-   * Hide last tag color options
-   */
-  _hideLastTagOptions() {
-    // if (this.props.tags.length > 0 && this.props.tags.some(t => t.canChangeBackground)) {
-    //   this.render({
-    //     tags: this.props.tags.map(t => ({...t, canChangeBackground: false})),
-    //   })
-    // }
   }
 
   /**

@@ -135,7 +135,7 @@ export class BlipSelect extends Nanocomponent {
       <div class="bp-input-wrapper blip-select ${hasBulletClass()}">
         <label class="bp-label bp-c-rooftop">${this.configOptions.label}</label>
         <input placeholder="${this.configOptions.placeholder}"
-          class="blip-select__input bp-c-cloud"
+          class="blip-select__input bp-c-rooftop"
           value="${this.props.inputValue}"
           onfocus="${this._handleSelectFocus}"
           onblur="${this._handleSelectBlur}"

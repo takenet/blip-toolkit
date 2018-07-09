@@ -96,7 +96,7 @@ export class BlipTag extends Nanocomponent {
     const renderTagClasses = () => {
       let tagClasses = `${blipTagClass} ${this.tagOptions.tagClasses}`
 
-      if (this.tagOptions.mode === 'compact') {
+      if (this.tagOptions.collapsed) {
         tagClasses += ` ${blipTagCompactClass}`
       }
 
@@ -133,7 +133,12 @@ export class BlipTag extends Nanocomponent {
   /**
    * Update component callback
    */
-  update() {
+  update(props) {
+    if (props.collapsed !== undefined) {
+      this.toggleCollapse()
+      return false
+    }
+
     return true
   }
 
@@ -189,7 +194,9 @@ export class BlipTag extends Nanocomponent {
     this.tagOptions.onTagClick.call(this, EventEmitter({ tag: this }))
 
     if (this.tagOptions.toggleCollapse) {
-      this.toggleCollapse()
+      this.render({
+        collapsed: !this.props.collapsed,
+      })
     }
   }
 
@@ -197,10 +204,10 @@ export class BlipTag extends Nanocomponent {
    * Toggle tag mode (collapse or full)
    */
   toggleCollapse() {
-    if (this.tagElement.classList.contains(blipTagCompactClass)) {
-      this.tagElement.classList.remove(blipTagCompactClass)
+    if (this.element.classList.contains(blipTagCompactClass)) {
+      this.element.classList.remove(blipTagCompactClass)
     } else {
-      this.tagElement.classList.add(blipTagCompactClass)
+      this.element.classList.add(blipTagCompactClass)
     }
   }
 }

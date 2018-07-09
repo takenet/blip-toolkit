@@ -64,12 +64,16 @@
 }
 
 .blip-tag--compact {
-  max-width: 30px;
-  max-height: 6px;
-  transition: max-width 600ms, max-height 600ms cubic-bezier(0, 1, 0, 1);
+  .blip-tag__remove { display: none }
 
-  .blip-tag__label {
-    opacity: 0;
+  .blip-tag {
+    max-width: 30px;
+    max-height: 6px;
+    transition: max-width 600ms, max-height 600ms cubic-bezier(0, 1, 0, 1);
+
+    .blip-tag__label {
+      opacity: 0;
+    }
   }
 }
 

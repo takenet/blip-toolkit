@@ -63,12 +63,33 @@ export class CreatebleOptionsList extends Nanocomponent {
   _renderAddOption(newOption) {
     return this._canAddOption(this.props.newOption)
       ? html`
-          <div tabindex="0" onclick="${this.addOption.bind(this, newOption)}" class="blip-select__option blip-select__add-option">
+          <div tabindex="0"
+            onkeydown="${this._handleNewOptionKeydown.bind(this)}"
+            onclick="${this.addOption.bind(this, newOption)}"
+            class="blip-select__option blip-select__add-option">
             <small>${this.options.addOptionText}</small>
             <div class="blip-new-option-text">${newOption}</div>
           </div>
         `
       : ''
+  }
+
+  /**
+   * Handle keydown events on 'new option' element
+   * @param {DOMEvent} event
+   */
+  _handleNewOptionKeydown(event) {
+    const element = event.target
+
+    switch (event.keyCode) {
+      case 38: // arrow up
+        if (element.previousElementSibling) {
+          element.previousElementSibling.focus()
+        } else if (this.options.onTryAccessInput) {
+          this.options.onTryAccessInput()
+        }
+        break
+    }
   }
 
   /**

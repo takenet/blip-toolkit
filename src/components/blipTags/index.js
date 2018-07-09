@@ -63,7 +63,6 @@ export class BlipTags extends Nanocomponent {
       onSelectOption: this._handleSelectOption,
       onInputKeyup: this._handleInputKeyup,
       onBlur: this._handleBlipSelectBlur,
-      newOption: this._handleSanitizeNewOption,
       optionCreator: TagOption,
     })
 
@@ -227,8 +226,12 @@ export class BlipTags extends Nanocomponent {
    */
   _onSelectOption({ $event }) {
     const { optionProps } = $event
-
     this.blipSelectInstance.clearInput()
+
+    if (this.props.tags.some(t => t.label === optionProps.label)) {
+      this.blipSelectInstance.input.focus()
+      return
+    }
 
     this.render({
       tags: this.props.tags.concat(optionProps),
@@ -277,6 +280,10 @@ export class BlipTags extends Nanocomponent {
   addTag({ $event }) {
     const { newOption } = $event
 
+    if (this.props.options.some(t => t.label === newOption.label)) {
+      return
+    }
+
     const newTags = this.props.tags
       .map(hideBackgroundOptions) // Hide last background options
       .concat({
@@ -291,22 +298,6 @@ export class BlipTags extends Nanocomponent {
 
     this.blipSelectInstance.input.focus()
     this.tagsOptions.onTagAdded.call(this, EventEmitter({ tag: newOption }))
-  }
-
-  /**
-   * Remove tag from list and dom
-   * @param {EventEmitter} obj - object that contais tag object of BlipTag component
-   */
-  _removeTag({ $event }) {
-    const { tag, backspace } = $event
-    this.tags = this.tags.filter(t => t.tagOptions.id !== tag.id)
-    this.tagsOptions.onTagRemoved.call(this, EventEmitter({ tag }))
-
-    if (backspace && this.tags.length > 0) {
-      last(this.tags).tagElement.focus()
-    } else {
-      this.blipSelectInstance.input.focus()
-    }
   }
 
   /**

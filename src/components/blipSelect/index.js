@@ -157,6 +157,7 @@ export class BlipSelect extends Nanocomponent {
    */
   update(props) {
     if (props.options) {
+      this.props.options = props.options
       this.optionsList.render({
         options: props.options,
       })
@@ -251,6 +252,10 @@ export class BlipSelect extends Nanocomponent {
     switch (event.keyCode) {
       case 40: // arrow down
         const currentElement = document.activeElement
+        if (!this.isSelectOpen) {
+          this._openSelect()
+          return
+        }
 
         if (currentElement === event.target) {
           const firstElement = this.optionsList.element.firstElementChild
@@ -260,10 +265,18 @@ export class BlipSelect extends Nanocomponent {
         }
         break
       case 13: // enter
+        if (this.props.options.some(t => t.label === this.input.value)) {
+          return
+        }
+
         if (this.configOptions.canAddOption && this.input.value.trim() !== '') {
           this.optionsList.addOption(this.input.value)
         }
         break
+      case 27: // esc
+        if (this.isSelectOpen) {
+          this._closeSelect()
+        }
     }
   }
 
@@ -277,7 +290,7 @@ export class BlipSelect extends Nanocomponent {
         items: this.props.options,
       }))
       : this.props.options.filter(
-        ({ value, label }) => label.toLowerCase().includes(query.toLowerCase())
+        ({ label }) => label.toLowerCase().includes(query.toLowerCase())
       )
   }
 
@@ -368,13 +381,13 @@ export class BlipSelect extends Nanocomponent {
           label: match.label,
           ...rest,
         })
-      } else {
-        this._setInputValue({ label, ...rest })
       }
-
-      const event = new CustomEvent('keyup', { detail: { shouldOpenSelect: false } })
-      this.input.dispatchEvent(event)
+    } else {
+      this._setInputValue({ label, ...rest })
     }
+
+    const event = new CustomEvent('input', { detail: { shouldOpenSelect: false } })
+    this.input.dispatchEvent(event)
   }
 
   /**

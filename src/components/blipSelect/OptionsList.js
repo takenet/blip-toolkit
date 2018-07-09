@@ -40,7 +40,7 @@ export class OptionsList extends Nanocomponent {
 
     return html`
       <ul>
-        ${this.props.options.length > 0 ? this.props.options.map(renderOption) : renderEmptyOption()}
+        ${this.props.options.length > 0 ? this.props.options.map(renderOption) : renderEmptyOption(this.options.noResultsText)}
       </ul>
     `
   }

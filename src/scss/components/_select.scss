@@ -14,6 +14,8 @@
   font-family: $bp-ff;
   font-size: $bp-fs-6;
   align-self: center;
+  position: relative;
+  z-index: 1;
 
   &:focus { outline: none; }
 }

@@ -109,19 +109,23 @@ export class BlipTag extends Nanocomponent {
 
     return html`
       <div class="${blipTagContainerClass} ${this.tagOptions.classes}">
-        <div tabindex="0"
-          id="${this.props.id || this.tagOptions.id}"
-          onclick="${this._handleTagClick}"
-          onkeydown="${this._handleTagKeydown}"
-          class="${renderTagClasses()}"
-          style="${this.props.background ? `background: ${this.props.background}` : ''}">
-          <span class="${blipTagLabelClass}">${this.props.label}</span>
-          ${renderRemoveButton()}
+        <div class="blip-tag-wrapper">
+          <div tabindex="0"
+            id="${this.props.id || this.tagOptions.id}"
+            onclick="${this._handleTagClick}"
+            onkeydown="${this._handleTagKeydown}"
+            class="${renderTagClasses()}"
+            style="${this.props.background ? `background: ${this.props.background}` : ''}">
+            <span class="${blipTagLabelClass}">${this.props.label}</span>
+            ${renderRemoveButton()}
+          </div>
+          ${this.props.canChangeBackground ? html`
+          <ul class="${blipTagSelectColorClass}" tabindex="0">
+            ${colors.map(c => html`
+              <li onclick="${this._selectColor.bind(this)}" class="${blipTagColorOptionClass}" style="background: ${c}" data-color="${c}"></li>
+            `)}
+          </ul>` : ''}
         </div>
-        ${this.props.canChangeBackground ? html`
-        <ul class="${blipTagSelectColorClass}" tabindex="0">
-          ${colors.map(c => html`<li onclick="${this._selectColor.bind(this)}" class="${blipTagColorOptionClass}" style="background: ${c}" data-color="${c}"></li>`)}
-        </ul>` : ''}
       </div>
     `
   }

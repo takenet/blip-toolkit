@@ -29,6 +29,7 @@ export class BlipTags extends Nanocomponent {
     mode: 'full', // can be 'full' or 'compact'
     canChangeBackground: true,
     toggleTagsMode: false,
+    canRemoveTags: true,
     onTagAdded: () => {},
     onTagRemoved: () => {},
     onSelectTagColor: () => {},
@@ -90,10 +91,14 @@ export class BlipTags extends Nanocomponent {
     }
 
     const renderTag = t => new BlipTag({
-      canRemoveTag: true,
+      canRemoveTag: this.tagsOptions.canRemoveTags,
       onSelectColor: this._onSelectTagColor.bind(this),
       onRemove: this._handleRemoveTag.bind(this),
-    }).render(t)
+      onTagClick: this._onTagClick.bind(this),
+    }).render(({
+      ...t,
+      collapsed: this.tagsOptions.mode === 'compact',
+    }))
 
     return html`
       <div class="${blipTagsClass}">
@@ -246,9 +251,17 @@ export class BlipTags extends Nanocomponent {
   /**
    * Handle tag click
    */
-  onTagClick({ $event }) {
+  _onTagClick({ $event }) {
     if (this.tagsOptions.toggleTagsMode) {
-      this.tags.forEach(t => t.toggleCollapse())
+      const tagElements = [...this.element.querySelectorAll('.blip-tag-container')]
+
+      tagElements.forEach(t => {
+        if (t.classList.contains('blip-tag--compact')) {
+          t.classList.remove('blip-tag--compact')
+        } else {
+          t.classList.add('blip-tag--compact')
+        }
+      })
     }
   }
 }

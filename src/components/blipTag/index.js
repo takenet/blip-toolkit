@@ -4,7 +4,6 @@ import Nanocomponent from 'nanocomponent'
 import html from 'nanohtml'
 
 const blipTagContainerClass = 'blip-tag-container'
-const blipTagClass = 'blip-tag'
 const blipTagLabelClass = 'blip-tag__label'
 const blipTagRemoveClass = 'blip-tag__remove'
 const blipTagColorOptionClass = 'blip-tag-color-option'
@@ -18,7 +17,7 @@ const colors = ['#0CC7CB', '#FF4A1E', '#FF6F1E', '#FF961E', '#1EDEFF', '#1EA1FF'
 
 export class BlipTag extends Nanocomponent {
   $state = {
-    id: `${blipTagClass}-${guid()}`,
+    id: `blip-tag-${guid()}`,
     mode: 'full', // can be full or compact
     classes: '',
     tagClasses: '',
@@ -47,6 +46,7 @@ export class BlipTag extends Nanocomponent {
       background: undefined,
       label: undefined,
       canChangeBackground: false,
+      collapsed: false,
     }
   }
 
@@ -68,7 +68,7 @@ export class BlipTag extends Nanocomponent {
    * Returns single tag element
    */
   get tagElement() {
-    return this.tagContainer.querySelector(`.${blipTagClass}`)
+    return this.tagContainer.querySelector('.blip-tag')
   }
 
   /**
@@ -89,14 +89,14 @@ export class BlipTag extends Nanocomponent {
     }
 
     const renderRemoveButton = () =>
-      this.tagOptions.onRemove || this.tagOptions.canRemoveTag
+      this.tagOptions.onRemove && this.tagOptions.canRemoveTag
         ? html`<button onclick="${this._handleRemoveTag}" class="${blipTagRemoveClass}">x</button>`
         : ''
 
     const renderTagClasses = () => {
-      let tagClasses = `${blipTagClass} ${this.tagOptions.tagClasses}`
+      let tagClasses = `${this.tagOptions.tagClasses}`
 
-      if (this.tagOptions.collapsed) {
+      if (this.props.collapsed) {
         tagClasses += ` ${blipTagCompactClass}`
       }
 
@@ -108,13 +108,13 @@ export class BlipTag extends Nanocomponent {
     }
 
     return html`
-      <div class="${blipTagContainerClass} ${this.tagOptions.classes}">
+      <div class="${blipTagContainerClass} ${this.tagOptions.classes} ${renderTagClasses()}">
         <div class="blip-tag-wrapper">
           <div tabindex="0"
             id="${this.props.id || this.tagOptions.id}"
             onclick="${this._handleTagClick}"
             onkeydown="${this._handleTagKeydown}"
-            class="${renderTagClasses()}"
+            class="blip-tag"
             style="${this.props.background ? `background: ${this.props.background}` : ''}">
             <span class="${blipTagLabelClass}">${this.props.label}</span>
             ${renderRemoveButton()}

@@ -10,26 +10,26 @@ Dividers are implemented through either **bp-divider-h** (horizontal) or **bp-di
   <tbody class="w-100">
     <tr class="w-100">
       <td class="w-30">
-        <div class="w-100 bp-bg-rooftop bp-divider-h"></div>
+        <div class="bp-divider-h"></div>
       </td>
       <td class="w-70 tl">
-        .bp-divider-h .bp-bg-rooftop
+        .bp-divider-h
       </td>
     </tr>
     <tr class="w-100">
       <td class="w-30">
-        <div class="w-100 bp-bg-rooftop bp-divider-h bp-divider--medium"></div>
+        <div class="bp-divider-h bp-divider--medium"></div>
       </td>
       <td class="w-70 tl">
-        .bp-divider-h .bp-divider--medium .bp-bg-rooftop
+        .bp-divider-h .bp-divider--medium
       </td>
     </tr>
     <tr class="w-100">
       <td class="w-30">
-        <div class="w-100 bp-bg-rooftop bp-divider-h bp-divider--large"></div>
+        <div class="bp-divider-h bp-divider--large"></div>
       </td>
       <td class="w-70 tl">
-        .bp-divider-h .bp-divider--large .bp-bg-rooftop
+        .bp-divider-h .bp-divider--large
       </td>
     </tr>
   </tbody>
@@ -40,34 +40,34 @@ Dividers are implemented through either **bp-divider-h** (horizontal) or **bp-di
 <table class="w-100">
   <tbody class="w-100">
     <tr class="w-100">
-      <td>
-        <div class="bp-bg-rooftop bp-divider-v"></div>
+      <td class="divider-container">
+        <div class="bp-divider-v"></div>
       </td>
       <td class="w-100 tl">
-        .bp-divider-v .bp-bg-rooftop
+        .bp-divider-v
       </td>
     </tr>
     <tr>
-      <td>
-        <div class="bp-bg-rooftop bp-divider-v bp-divider--medium"></div>
+      <td class="divider-container">
+        <div class="bp-divider-v bp-divider--medium"></div>
       </td>
       <td class="w-100 tl">
-        .bp-divider-v .bp-divider--medium .bp-bg-rooftop
+        .bp-divider-v .bp-divider--medium
       </td>
     </tr>
     <tr>
-      <td>
-        <div class="bp-bg-rooftop bp-divider-v bp-divider--large"></div>
+      <td class="divider-container">
+        <div class="bp-divider-v bp-divider--large"></div>
       </td>
       <td class="w-100 tl">
-        .bp-divider-v .bp-divider--large .bp-bg-rooftop
+        .bp-divider-v .bp-divider--large
       </td>
     </tr>
   </tbody>
 </table>
 ```
 ```vertical.css hidden
-.bp-divider-v {
+.divider-container {
   height: 30px;
 }
 ```

@@ -5,6 +5,9 @@
 		
 
 		<style>
+					.divider-container {
+  height: 30px;
+}
 		</style>
 
 		<style>
@@ -55,38 +58,65 @@
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
-	<body>					<table>
-  <tbody>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Base Small</button>
+	<body>					<table class="w-100">
+  <tbody class="w-100">
+    <tr class="w-100">
+      <td class="divider-container">
+        <div class="bp-divider-v"></div>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
+      <td class="w-100 tl">
+        .bp-divider-v
+      </td>
     </tr>
     <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--city bp-btn--flat bp-btn--small">Flat Small</button>
+      <td class="divider-container">
+        <div class="bp-divider-v bp-divider--medium"></div>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-city">.bp-btn--city</span> .bp-btn--flat .bp-btn--small</td>
+      <td class="w-100 tl">
+        .bp-divider-v .bp-divider--medium
+      </td>
+    </tr>
+    <tr>
+      <td class="divider-container">
+        <div class="bp-divider-v bp-divider--large"></div>
+      </td>
+      <td class="w-100 tl">
+        .bp-divider-v .bp-divider--large
+      </td>
     </tr>
   </tbody>
 </table>
-			<script type="text/x-stylemark" data-language="html"><table>
-  <tbody>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Base Small</button>
+			<script type="text/x-stylemark" data-language="html"><table class="w-100">
+  <tbody class="w-100">
+    <tr class="w-100">
+      <td class="divider-container">
+        <div class="bp-divider-v"></div>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
+      <td class="w-100 tl">
+        .bp-divider-v
+      </td>
     </tr>
     <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--city bp-btn--flat bp-btn--small">Flat Small</button>
+      <td class="divider-container">
+        <div class="bp-divider-v bp-divider--medium"></div>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-city">.bp-btn--city</span> .bp-btn--flat .bp-btn--small</td>
+      <td class="w-100 tl">
+        .bp-divider-v .bp-divider--medium
+      </td>
+    </tr>
+    <tr>
+      <td class="divider-container">
+        <div class="bp-divider-v bp-divider--large"></div>
+      </td>
+      <td class="w-100 tl">
+        .bp-divider-v .bp-divider--large
+      </td>
     </tr>
   </tbody>
 </table></script>
+			<script type="text/x-stylemark" data-language="css">.divider-container {
+  height: 30px;
+}</script>
 
 		<!--
 			Vanilla JS
@@ -119,10 +149,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-small', []);
+						module = angular.module('stylemark-divider-vertical', []);
 					}
 
-					module.controller('stylemark-button-small-' + index, function($scope) {
+					module.controller('stylemark-divider-vertical-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

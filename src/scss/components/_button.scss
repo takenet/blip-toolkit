@@ -47,9 +47,20 @@
   @include bp-btn--custom($bp-btn-color, $bp-btn-bg-color);
 
   /** Size **/
+  &.bp-btn--extra-small {
+    min-width: 60px;
+  }
 
   &.bp-btn--small {
     min-width: 100px;
+  }
+
+  &.bp-btn--medium {
+    min-width: 160px;
+  }
+
+  &.bp-btn--large {
+    min-width: 240px;
   }
 
   /** Custom BLiP Setups **/

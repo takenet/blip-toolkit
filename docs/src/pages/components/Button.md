@@ -24,9 +24,35 @@ Buttons are implemented through the base class **bp-btn**. They have a min-width
 </table>
 ```
 
-<h1>Variations</h1>
+<h3>Size</h3>
 
-Buttons can accept variations alongside their base class. Variations are modifiers that can affect properties such as background-color, border and max-width.
+There are two size variations that modify a button's minimum width: **bp-btn--small** (100px) and **bp-btn--large** (240px).
+
+```size.html
+<table>
+  <tbody>
+    <tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Small</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--blip-dark">Normal</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span></td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--blip-dark bp-btn--large">Large</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--large</td>
+    </tr>
+  </tbody>
+</table>
+```
 
 <h3>Flat</h3>
 
@@ -51,24 +77,24 @@ The variation **bp-btn--flat** has a transparent background and an opaque border
 </table>
 ```
 
-<h3>Small</h3>
+<h3>Text-only</h3>
 
-The variation **bp-btn--small** modifies the button's min-width to 100px.
+The variation **bp-btn--text-only** not only makes the **base** button's background color transparent, but also its size fits the text inside. Its min-width is 0px, its height is auto, its line-height is 18px and its horizontal padding is smaller.
 
-```small.html
+```text-only.html
 <table>
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Base Small</button>
+        <button class="bp-btn bp-btn--silver bp-btn--text-only">Text Only</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--city bp-btn--flat bp-btn--small">Flat Small</button>
+        <button class="bp-btn bp-btn--silver bp-btn--text-only" disabled>Text Only</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-city">.bp-btn--city</span> .bp-btn--flat .bp-btn--small</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only [disabled]</td>
     </tr>
   </tbody>
 </table>
@@ -172,7 +198,7 @@ On the base class, the variation **bp-btn--colorName** sets the button's backgro
 
 <h3>Ready-made colors: Flat Button</h3>
 
-On the flat variation, **bp-btn--colorName** sets the button's border and text color to the palette color.
+In the flat variation, **bp-btn--colorName** sets the button's border and text color to the palette color.
 
 ```color-flat.html
 <table>
@@ -222,6 +248,65 @@ On the flat variation, **bp-btn--colorName** sets the button's border and text c
         <button class="bp-btn bp-btn--flat bp-btn--true">Flat True</button>
       </td>
       <td class="bp-fs-5 tl">.bp-btn .bp-btn--flat
+        <span class="bp-c-true">.bp-btn--true</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+```
+
+<h3>Ready-made colors: Text-only Button</h3>
+
+In the text-only variation, **bp-btn--colorName** sets only the button's text color to the palette color. The variation **bp-btn--c-colorName** will work the same way in this case.
+
+```color-text-only.html
+<table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--text-only bp-btn--bot">Text-only Bot</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--text-only
+        <span class="bp-c-bot">.bp-btn--bot</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--text-only bp-btn--blip-light">Text-only BLiP Light</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--text-only
+        <span class="bp-c-blip-light">.bp-btn--bot</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--text-only bp-btn--blip-dark">Text-only BLiP Dark</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--text-only
+        <span class="bp-c-blip-dark">.bp-btn--blip-dark</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--text-only bp-btn--warning">Text-only Warning</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--text-only
+        <span class="bp-c-warning">.bp-btn--warning</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--text-only bp-btn--delete">Text-only Delete</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--text-only
+        <span class="bp-c-delete">.bp-btn--delete</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--text-only bp-btn--true">Text-only True</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--text-only
         <span class="bp-c-true">.bp-btn--true</span>
       </td>
     </tr>
@@ -291,6 +376,8 @@ The variation **bp-btn--bg-colorName** modifies the button's background color.
 
 The variation **bp-btn--no-background** makes the **base** button's background color transparent. It should not affect a flat button.
 
+Although it gives a similar result to **bp-btn--text-only**, this variation is recommended only for dynamic styling, since it keeps the button's original padding and size.
+
 ```no-background.html
 <table>
   <tbody>
@@ -307,6 +394,8 @@ The variation **bp-btn--no-background** makes the **base** button's background c
 <h3>No border</h3>
 
 The variation **bp-btn--no-border** makes the **flat** button's border color transparent. It should not affect a base button.
+
+Although it gives a similar result to **bp-btn--text-only**, this variation is recommended only for dynamic styling, since it keeps the button's original padding and size.
 
 ```no-border.html
 <table>

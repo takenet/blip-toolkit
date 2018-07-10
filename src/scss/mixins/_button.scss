@@ -8,6 +8,9 @@
   @include bp-btn--flat ($secondary-color, $secondary-color);
   @include bp-btn--regular-arrow($secondary-color);
   @include bp-btn--flat-arrow($secondary-color);
+  @include bp-btn--text-only($secondary-color);
+  @include bp-btn--no-background();
+  @include bp-btn--no-border();
 }
 
 @mixin bp-btn--arrow () {

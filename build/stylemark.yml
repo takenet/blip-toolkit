@@ -26,4 +26,6 @@ examples:
 #webpackAppPath: 'BLiPToolkit'
 # For Webpack apps (esp. React, Angular, etc.), this is the `output.library` value in your webpack config
 
-# order: (optional) See Ordering section
+order:
+  - +Style
+  - +Components

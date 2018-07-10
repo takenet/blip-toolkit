@@ -47,7 +47,6 @@
   @include bp-btn--custom($bp-btn-color, $bp-btn-bg-color);
 
   /** Size **/
-
   &.bp-btn--small {
     min-width: 100px;
   }
@@ -261,7 +260,4 @@
   &.bp-btn--bg-sky {
     @include bp-btn--bg($bp-color-sky);
   }
-
-  @include bp-btn--no-background();
-  @include bp-btn--no-border();
 }

@@ -51,6 +51,14 @@
     min-width: 100px;
   }
 
+  &.bp-btn--medium {
+    min-width: 160px;
+  }
+
+  &.bp-btn--large {
+    min-width: 240px;
+  }
+
   /** Custom BLiP Setups **/
 
   &.bp-btn--bot {

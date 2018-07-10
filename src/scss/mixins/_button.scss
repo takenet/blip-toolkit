@@ -48,6 +48,27 @@
   }
 }
 
+@mixin bp-btn--text-only($color) {
+  &.bp-btn--text-only {
+    min-width: 0;
+    height: auto;
+    line-height: $bp-btn-text-only-line-height;
+    padding: $bp-btn-text-only-padding;
+    color: $color;
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      color: bp-darken($color);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: $bp-btn-bg-color;
+    }
+  }
+}
+
 @mixin bp-btn--flat($color, $border-color) {
   &.bp-btn--flat {
     color: $color;
@@ -134,7 +155,8 @@
 @mixin bp-btn--c($color) {
   color: $color;
 
-  &.bp-btn--flat {
+  &.bp-btn--flat,
+  &.bp-btn--text-only {
     &:hover {
       color: bp-darken($color);
     }

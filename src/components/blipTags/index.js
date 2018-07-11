@@ -15,9 +15,6 @@ import {
 import { TagOption } from './TagOption'
 import { compose } from '../shared'
 
-const blipSelectPrefixClass = 'blip-select'
-const blipTagsClass = 'blip-tags'
-
 // Utils
 const hideBackgroundOptions = t => ({ ...t, canChangeBackground: false })
 const addIdIfNotExists = t => t.id ? t : ({ ...t, id: `blip-tag-${guid()}` })
@@ -39,7 +36,7 @@ export class BlipTags extends Nanocomponent {
     super()
 
     this.selectElement = ''
-    this.blipSelectId = `${blipSelectPrefixClass}-${guid()}`
+    this.blipSelectId = `blip-select-${guid()}`
     this.inputBuffer = ''
 
     this.tagsOptions = {
@@ -64,6 +61,8 @@ export class BlipTags extends Nanocomponent {
       onBlur: this._handleBlipSelectBlur,
       optionCreator: TagOption,
     })
+
+    this.addGlobalListeners()
 
     this.props = {
       tags: [],
@@ -100,10 +99,12 @@ export class BlipTags extends Nanocomponent {
       collapsed: this.tagsOptions.mode === 'compact',
     }))
 
+    const shouldRenderSelect = () => this.tagsOptions.mode === 'full'
+
     return html`
-      <div class="${blipTagsClass}">
+      <div class="blip-tags ${this.tagsOptions.mode === 'compact' ? 'blip-tags--compact-mode' : ''}">
         ${this.props.tags.map(renderTag)}
-        ${this.blipSelectInstance.render({ options: this.props.options })}
+        ${shouldRenderSelect() ? this.blipSelectInstance.render({ options: this.props.options }) : ''}
       </div>
     `
   }
@@ -117,6 +118,32 @@ export class BlipTags extends Nanocomponent {
   }
 
   /**
+   * Called when the component is removed from the DOM
+   */
+  unload() {
+    document.removeEventListener(this.handleCloseColors)
+  }
+
+  /**
+   * Global event listeners
+   */
+  addGlobalListeners() {
+    this.handleCloseColors = (event) => {
+      if (event.target && event.target.classList.contains('blip-tag-select-color')) {
+        return
+      }
+
+      if (this.props.tags.some(t => t.canChangeBackground)) {
+        this.render({
+          tags: this.props.tags.map(hideBackgroundOptions),
+        })
+      }
+    }
+
+    document.addEventListener('click', this.handleCloseColors.bind(this))
+  }
+
+  /**
    * Handle tag remove
    */
   _handleRemoveTag({ $event }) {
@@ -127,6 +154,8 @@ export class BlipTags extends Nanocomponent {
       this.render({
         tags: newTags,
       })
+
+      this.tagsOptions.onTagRemoved.call(this, EventEmitter({ $event }))
 
       if (event && event.keyCode === 8) {
         const tagsElement = this.element.querySelectorAll('.blip-tag-container .blip-tag')

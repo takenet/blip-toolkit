@@ -1,0 +1,33 @@
+.bp-textarea-wrapper {
+  border: 0.1*$m solid $bp-color-breeze;
+  border-radius: 0.4*$m;
+  padding: 0.3*$m 0.5*$m;
+  margin-bottom: 1.5*$m;
+}
+
+.bp-textarea-wrapper--focus {
+  box-shadow: 0 0.2*$m 1.2*$m 0 rgba(0, 0, 0, 0.1);
+  border-color: $bp-color-blip-light;
+  transition: box-shadow .5s ease-in;
+}
+
+.bp-textarea-wrapper--disabled {
+  background-color: $bp-color-offwhite;
+  border-color: $bp-color-breeze;
+}
+
+.bp-textarea,
+.bp-textare[disabled] {
+  resize: none;
+  border: none;
+  font-size: $bp-fs-6;
+  background: $bp-color-white;
+  padding: 0;
+  overflow: auto;
+  min-height: 0;
+  @include placeholder($bp-color-cloud);
+
+  &:focus {
+    border: none;
+  }
+}

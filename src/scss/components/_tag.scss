@@ -52,10 +52,10 @@
 
   &:focus { outline: 0; }
 
-  &.blip-tag--can-remove {
-    &:focus {
-      background: $bp-color-rooftop !important; // Tags background is set inline, so !important is necessary
-    }
+}
+.blip-tag--can-remove {
+  .blip-tag:focus {
+    background: $bp-color-rooftop !important; // Tags background is set inline, so !important is necessary
   }
 }
 

@@ -119,7 +119,7 @@ export class BlipTag extends Nanocomponent {
             <span class="${blipTagLabelClass}">${this.props.label}</span>
             ${renderRemoveButton()}
           </div>
-          ${this.props.canChangeBackground ? html`
+          ${this.props.canChangeBackground && !this.props.collapsed ? html`
           <ul class="${blipTagSelectColorClass}" tabindex="0">
             ${colors.map(c => html`
               <li onclick="${this._selectColor.bind(this)}" class="${blipTagColorOptionClass}" style="background: ${c}" data-color="${c}"></li>
@@ -134,8 +134,9 @@ export class BlipTag extends Nanocomponent {
    * Update component callback
    */
   update(props) {
-    if (props.collapsed !== undefined) {
+    if (props.collapsed !== undefined && props.collapsed !== this.props.collapsed) {
       this.toggleCollapse()
+      this.props.collapsed = props.collapsed
       return false
     }
 

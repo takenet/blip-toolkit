@@ -1,5 +1,0 @@
----
-name: Input
-category: Components
----
-

@@ -73,62 +73,87 @@ There are **eight** custom line heights, ordered by decrescent size and based on
 
 These line heights are calculated by multiplying their respective font size by 1.5, according to [W3's accessibility specifications](https://www.w3.org/TR/WCAG20-TECHS/C21.html).
 
-```font-size.html
+```line-height-custom.html
 <table>
   <tbody>
     <tr>
-      <td class="bp-lh-1 tc">
+      <td class="bp-fs-1 bp-lh-1 tc">
         Line Height 1 </br> 4.5rem / 72px
       </td>
-      <td class="bp-fs-5 tl">.bp-lh-1</td>
+      <td class="bp-fs-5 tl">.bp-fs-1 .bp-lh-1</td>
     </tr>
     <tr>
-      <td class="bp-lh-2 tc">
+      <td class="bp-fs-2 bp-lh-2 tc">
         Line Height 2 </br> 3rem / 48px
       </td>
-      <td class="bp-fs-5 tl">.bp-lh-2</td>
+      <td class="bp-fs-5 tl">.bp-fs-2 .bp-lh-2</td>
     </tr>
     <tr>
-      <td class="bp-lh-3 tc">
+      <td class="bp-fs-3 bp-lh-3 tc">
         Line Height 3 </br> 2.25rem / 36px
       </td>
-      <td class="bp-fs-5 tl">.bp-lh-3</td>
+      <td class="bp-fs-5 tl">.bp-fs-3 .bp-lh-3</td>
     </tr>
     <tr>
-      <td class="bp-lh-4 tc">
-        Line Height 1 </br> 4.5rem / 72px
+      <td class="bp-fs-4 bp-lh-4 tc">
+        Line Height 4 </br> 1.875rem / 30px
       </td>
-      <td class="bp-fs-5 tl">.bp-lh-4</td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-4</td>
     </tr>
     <tr>
-      <td class="bp-lh-5 tc">
-        Line Height 1 </br> 4.5rem / 72px
+      <td class="bp-fs-5 bp-lh-5 tc">
+        Line Height 5 </br> 1.5rem / 24px
       </td>
-      <td class="bp-fs-5 tl">.bp-lh-5</td>
+      <td class="bp-fs-5 tl">.bp-fs-5 .bp-lh-5</td>
     </tr>
     <tr>
-      <td class="bp-lh-6 tc">
-        Line Height 1 </br> 4.5rem / 72px
+      <td class="bp-fs-6 bp-lh-6 tc">
+        Line Height 6 </br> 1.3125rem / 21px
       </td>
-      <td class="bp-fs-5 tl">.bp-lh-6</td>
+      <td class="bp-fs-5 tl">.bp-fs-6 .bp-lh-6</td>
     </tr>
     <tr>
-      <td class="bp-lh-7 tc">
-        Line Height 1 </br> 4.5rem / 72px
+      <td class="bp-fs-7 bp-lh-7 tc">
+        Line Height 7 </br> 1.125rem / 18px
       </td>
-      <td class="bp-fs-5 tl">.bp-lh-7</td>
+      <td class="bp-fs-5 tl">.bp-fs-7 .bp-lh-7</td>
     </tr>
     <tr>
-      <td class="bp-lh-8 tc">
-        Line Height 1 </br> 4.5rem / 72px
+      <td class="bp-fs-8 bp-lh-8 tc">
+        Line Height 8 </br> 1.125rem / 15px
       </td>
-      <td class="bp-fs-5 tl">.bp-lh-8</td>
+      <td class="bp-fs-5 tl">.bp-fs-8 .bp-lh-8</td>
     </tr>
   </tbody>
 </table>
 ```
 
-There are also **four** relative line-height classes: **zero** (0%), **simple** (100%), **plus** (150%) and **double** (200%).
+There are also **four** relative line-height classes: **bp-lh-zero** (0%), **bp-lh-simple** (100%), **bp-lh-plus** (150%) and **bp-lh-double** (200%).
+
+```line-height-relative.html
+<table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-4 bp-lh-simple tc">
+        Line Height </br> Simple / 100%
+      </td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-simple</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-4 bp-lh-plus tc">
+        Line Height </br> Plus / 150%
+      </td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-plus</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-4 bp-lh-double tc">
+        Line Height </br> Double / 200%
+      </td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-double</td>
+    </tr>
+  </tbody>
+</table>
+```
 
 <h3> Font Weight </h3>
 

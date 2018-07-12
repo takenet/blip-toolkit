@@ -170,9 +170,9 @@ The variation **bp-btn--text-only** not only makes the **base** button's backgro
 </table>
 ```
 
-<h3>Ready-made colors: Base Button</h3>
+<h3>Custom colored: Base Button</h3>
 
-Buttons have ready-made color variations for all colors in BLiP's palette. They can be applied using the variation **bp-btn--{color}**.
+Buttons have custom-colored variations for all colors in BLiP's palette. They can be applied using the variation **bp-btn--{color}**.
 
 On the base class, the variation **bp-btn--{color}** sets the button's background color to the palette color and its text color to either black or white.
 
@@ -231,7 +231,7 @@ On the base class, the variation **bp-btn--{color}** sets the button's backgroun
 </table>
 ```
 
-<h3>Ready-made colors: Flat & Dashed Buttons</h3>
+<h3>Custom colored: Flat & Dashed Buttons</h3>
 
 In the flat and dashed variations, **bp-btn--{color}** sets the button's border and text color to the palette color.
 
@@ -290,7 +290,7 @@ In the flat and dashed variations, **bp-btn--{color}** sets the button's border 
 </table>
 ```
 
-<h3>Ready-made colors: Text-only Button</h3>
+<h3>Custom colored: Text-only Button</h3>
 
 In the text-only variation, **bp-btn--{color}** sets only the button's text color to the palette color. The variation **bp-btn--c-colorName** will work the same way in this case.
 

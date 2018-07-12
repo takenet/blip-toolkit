@@ -66,6 +66,11 @@
   }
 }
 
+.blip-select__add-option {
+  small {
+    color: #fff;
+  }
+}
 
 .blip-select__option--selected {
   background: $bp-color-offwhite;

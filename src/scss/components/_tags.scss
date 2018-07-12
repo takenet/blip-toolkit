@@ -1,12 +1,12 @@
 .blip-tags {
-  border: 1px solid $bp-color-breeze;
+  border: 1px solid $bp-color-city;
   border-radius: 3px;
   padding: 0 5px;
   flex-wrap: wrap;
   @include flex-box;
 
-  &:focus {
-    border-color: $bp-color-blip-light;
+  &:hover {
+    border-color: $bp-color-rooftop;
   }
 
   .blip-select {
@@ -16,14 +16,15 @@
   }
 
   .bp-input-wrapper {
-    height: 3.7*$m;
+    height: 2.6*$m;
     border: 0;
     padding: 0;
     margin-top: 3px;
   }
 
-  .bp-input-wrapper--focus {
+  &.bp-input-wrapper--focus {
     box-shadow: none;
+    border-color: $bp-color-blip-light;
   }
 
   .blip-select__options {
@@ -63,5 +64,6 @@
   border-radius: 20px;
   color: #fff;
   display: inline-block;
-  padding: 4px 15px;
+  padding: 3px 12px;
+  font-size: $bp-fs-6;
 }

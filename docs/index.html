@@ -1,0 +1,2996 @@
+<!doctype html>
+<html lang="en-us" id="insta">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link href="_stylemark/css/all.css" rel="stylesheet">
+		<link rel="icon" href="" type="image/x-icon">
+
+		<!-- @todo Replace with custom icomoon/fontello bundle -->
+		<script src="https://use.fontawesome.com/6dd56ad32d.js"></script>
+
+		<title>Toolkit</title>
+
+	</head>
+	<body class="overflow-x-off i-page theme-page">
+		<div class="i-page__content theme-content">
+
+			<div class="i-nav-select theme-mobile-nav">
+				<form class="form">
+					<select class="form-control form-control-lg theme-mobile-nav-select">
+						<option disabled selected>Go to…</option>
+							<optgroup label="Getting Started">
+									<option value="welcome">Welcome</option>
+							</optgroup>
+							<optgroup label="Utilities">
+									<option value="color">Color</option>
+									<option value="typography">Typography</option>
+							</optgroup>
+							<optgroup label="Components">
+									<option value="button">Button</option>
+									<option value="checkbox">Checkbox</option>
+									<option value="divider">Divider</option>
+									<option value="dropdown">Dropdown</option>
+									<option value="input">Input</option>
+									<option value="radio">Radio</option>
+							</optgroup>
+					</select>
+				</form>
+			</div>
+
+				<div id="category-getting started" class="theme-content-category">
+						<div id="welcome" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Welcome</h1>
+	<div class="theme-content-element-description"><p>Hello, <strong>BLiPPER</strong>!</p>
+<p>This is the documentation for <strong>BLiP Toolkit</strong>. Here you will get to know the classes and patterns which compose the elements from <strong>BLiP&#39;s platform</strong>.</p>
+<p><strong>BLiP Toolkit</strong> is a compilation of SCSS configuration and Vanilla JS components made to fit <strong>BLiP</strong>&#39;s needs. The toolkit was created in order to standardize CSS specifications and component behavious between all of <strong>BLiP</strong>&#39;s products. From the simplest details, like typography and section dividers, to more complex components, such as tag selectors, <strong>BLiP Toolkit</strong> makes for an easy implementation of styles and functionalities.</p>
+<p>It is important to read the documentation and be aware of our design patterns. That way, the project&#39;s code will be more organized and future changes will be easier.</p>
+<h3> Design Principles </h3>
+
+<p>Our <strong>design principles</strong> help maintain a visual quality that reflects the values and characteristics of our brand.</p>
+<ul>
+<li><strong>Reliability through consistency:</strong> componentes must communicate with each other and be hierarchical, representing <strong>BLiP</strong>&#39;s design as a family in the smallest details.</li>
+<li><strong>Empowering users through simplicity:</strong> our design mitigates visual interference, helping users focus on what is important, learn and evolve faster.</li>
+<li><strong>Familiarity, elegance and innovation:</strong> Elements reproduce behaviour that mimics the real world: they have weight and are influenced by light, moviment and other phenomenons.</li>
+<li><strong>Constant evolution - &quot;Level Up&quot;:</strong> Improvements are made alongside users, strengthening <strong>BLiP</strong>&#39;s community.</li>
+</ul>
+<h3> Installation </h3>
+
+<p>To install <strong>BLiP Toolkit</strong> in your project, use <code>npm install blip-toolkit</code></p>
+<p>You can also check our <a href="https://github.com/takenet/blip-toolkit">GitHub</a> or <a href="https://www.npmjs.com/package/blip-toolkit">NPM JS page</a>.</p>
+</div>
+</div>
+
+				</div>
+				<div id="category-utilities" class="theme-content-category">
+						<div id="color" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Color</h1>
+	<div class="theme-content-element-description"><p>BLiP&#39;s color palette consists of three groups of colors: <strong>Corporates</strong>, <strong>Semiotics</strong> and <strong>Neutrals</strong>.</p>
+<p>Insert classes containing a <strong>root</strong> followed by a <strong>color&#39;s name</strong> to apply color on:</p>
+<ul>
+<li>Backgrounds: bp-bg-{color}</li>
+<li>Borders: bp-bc-{color}</li>
+<li>Text: bp-c-{color}</li>
+</ul>
+<h3> Corporate Palette </h3>
+
+<p><strong>Corporate</strong> colors are nuances which feature BLiP&#39;s brand and must be used for highlighting and catching users&#39; attention.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="color-corporates.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="color-corporates.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-bot&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-bot&quot;&gt;
+      bp-bg-bot
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-bot&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-bot&quot;&gt;
+      bp-bc-bot
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-bot bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-bot&quot;&gt;
+      bp-c-bot
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-blip-light&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-light&quot;&gt;
+      bp-bg-blip-light
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-blip-light&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-light&quot;&gt;
+      bp-bc-blip-light
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-blip-light bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-light&quot;&gt;
+      bp-c-blip-light
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-blip-dark&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-dark&quot;&gt;
+      bp-bg-blip-dark
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-blip-dark&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-dark&quot;&gt;
+      bp-bc-blip-dark
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-blip-dark bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-dark&quot;&gt;
+      bp-c-blip-dark
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-bot&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-bot&quot;&gt;
+      bp-bg-bot
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-bot&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-bot&quot;&gt;
+      bp-bc-bot
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-bot bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-bot&quot;&gt;
+      bp-c-bot
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-blip-light&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-light&quot;&gt;
+      bp-bg-blip-light
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-blip-light&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-light&quot;&gt;
+      bp-bc-blip-light
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-blip-light bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-light&quot;&gt;
+      bp-c-blip-light
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-blip-dark&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-dark&quot;&gt;
+      bp-bg-blip-dark
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-blip-dark&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-dark&quot;&gt;
+      bp-bc-blip-dark
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-blip-dark bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-blip-dark&quot;&gt;
+      bp-c-blip-dark
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	</div>
+</div><h3> Semiotic Palette </h3>
+
+<p><strong>Semiotic</strong> colors carry recurrent meanings and transmit messages to users.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="color-semiotics.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="color-semiotics.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-warning&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-warning&quot;&gt;
+      bp-bg-warning
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-warning&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-warning&quot;&gt;
+      bp-bc-warning
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-warning bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-warning&quot;&gt;
+      bp-c-warning
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-delete&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-delete&quot;&gt;
+      bp-bg-delete
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-delete&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-delete&quot;&gt;
+      bp-bc-delete
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-delete bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-delete&quot;&gt;
+      bp-c-delete
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-true&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-true&quot;&gt;
+      bp-bg-true
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-true&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-true&quot;&gt;
+      bp-bc-true
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-true bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-true&quot;&gt;
+      bp-c-true
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-warning&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-warning&quot;&gt;
+      bp-bg-warning
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-warning&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-warning&quot;&gt;
+      bp-bc-warning
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-warning bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-warning&quot;&gt;
+      bp-c-warning
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-delete&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-delete&quot;&gt;
+      bp-bg-delete
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-delete&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-delete&quot;&gt;
+      bp-bc-delete
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-delete bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-delete&quot;&gt;
+      bp-c-delete
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-true&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-true&quot;&gt;
+      bp-bg-true
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-true&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-true&quot;&gt;
+      bp-bc-true
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-true bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-true&quot;&gt;
+      bp-c-true
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	</div>
+</div><h3> Neutral Palette </h3>
+
+<p><strong>Neutral</strong> colors are tones used in typography and the biggest part of the platform&#39;s components. These colors create a fluid experience, with no visual noise.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="color-neutrals.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="color-neutrals.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-onix&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-onix&quot;&gt;
+      bp-bg-onix
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-onix&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-onix&quot;&gt;
+      bp-bc-onix
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-onix bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-onix&quot;&gt;
+      bp-c-onix
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-city&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-city&quot;&gt;
+      bp-bg-city
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-city&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-city&quot;&gt;
+      bp-bc-city
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-city bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-city&quot;&gt;
+      bp-c-city
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-desk&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-desk&quot;&gt;
+      bp-bg-desk
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-desk&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-desk&quot;&gt;
+      bp-bc-desk
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-desk bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-desk&quot;&gt;
+      bp-c-desk
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-rooftop&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-rooftop&quot;&gt;
+      bp-bg-rooftop
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-rooftop&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-rooftop&quot;&gt;
+      bp-bc-rooftop
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-rooftop bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-rooftop&quot;&gt;
+      bp-c-rooftop
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-cloud&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-cloud&quot;&gt;
+      bp-bg-cloud
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-cloud&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-cloud&quot;&gt;
+      bp-bc-cloud
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-cloud bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-cloud&quot;&gt;
+      bp-c-cloud
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-silver&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-silver&quot;&gt;
+      bp-bg-silver
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-silver&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-silver&quot;&gt;
+      bp-bc-silver
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-silver bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-silver&quot;&gt;
+      bp-c-silver
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-time&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-time&quot;&gt;
+      bp-bg-time
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-time&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-time&quot;&gt;
+      bp-bc-time
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-time bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-time&quot;&gt;
+      bp-c-time
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-breeze&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bg-breeze
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-breeze&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bc-breeze
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-breeze bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-c-breeze
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-sky&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bg-sky
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-sky&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bc-sky
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-sky bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-c-sky
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-offwhite&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bg-offwhite
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-offwhite&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bc-offwhite
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-offwhite bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-c-offwhite
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-onix&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-onix&quot;&gt;
+      bp-bg-onix
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-onix&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-onix&quot;&gt;
+      bp-bc-onix
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-onix bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-onix&quot;&gt;
+      bp-c-onix
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-city&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-city&quot;&gt;
+      bp-bg-city
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-city&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-city&quot;&gt;
+      bp-bc-city
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-city bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-city&quot;&gt;
+      bp-c-city
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-desk&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-desk&quot;&gt;
+      bp-bg-desk
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-desk&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-desk&quot;&gt;
+      bp-bc-desk
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-desk bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-desk&quot;&gt;
+      bp-c-desk
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-rooftop&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-rooftop&quot;&gt;
+      bp-bg-rooftop
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-rooftop&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-rooftop&quot;&gt;
+      bp-bc-rooftop
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-rooftop bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-rooftop&quot;&gt;
+      bp-c-rooftop
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-cloud&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-cloud&quot;&gt;
+      bp-bg-cloud
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-cloud&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-cloud&quot;&gt;
+      bp-bc-cloud
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-cloud bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-cloud&quot;&gt;
+      bp-c-cloud
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-silver&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-silver&quot;&gt;
+      bp-bg-silver
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-silver&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-silver&quot;&gt;
+      bp-bc-silver
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-silver bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-silver&quot;&gt;
+      bp-c-silver
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-time&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-time&quot;&gt;
+      bp-bg-time
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-time&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-time&quot;&gt;
+      bp-bc-time
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-time bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-time&quot;&gt;
+      bp-c-time
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-breeze&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bg-breeze
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-breeze&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bc-breeze
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-breeze bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-c-breeze
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-sky&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bg-sky
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-sky&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bc-sky
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-sky bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-c-sky
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-offwhite&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bg-offwhite
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-offwhite&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-bc-offwhite
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-offwhite bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db bp-c-black&quot;&gt;
+      bp-c-offwhite
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="typography" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Typography</h1>
+	<div class="theme-content-element-description"><p>BLiP&#39;s typography is defined by one particular font family: <strong>Nunito</strong>.</p>
+<p>Although <strong>Nunito</strong> is embedded throughout every <strong>BLiP Toolkit</strong> component, you can apply it using <strong>bp-ff-nunito</strong>.</p>
+<h3> Font Size </h3>
+
+<p>There are <strong>eight</strong> custom font sizes, ordered by decrescent size.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="typography-font-size.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="typography-font-size.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-1 tc&quot;&gt;
+        Size 1 / 48px / 3rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-2 tc&quot;&gt;
+        Size 2 / 32x / 2rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-3 tc&quot;&gt;
+        Size 3 / 24px / 1.5rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-4 tc&quot;&gt;
+        Size 4 / 20px / 1.25rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        Size 5 / 16px / 1rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-6 tc&quot;&gt;
+        Size 6 / 14px / 0.875rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-7 tc&quot;&gt;
+        Size 7 / 12px / 0.75rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-8 tc&quot;&gt;
+        Size 8 / 10px / 0.625rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-8&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-1 tc&quot;&gt;
+        Size 1 / 48px / 3rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-2 tc&quot;&gt;
+        Size 2 / 32x / 2rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-3 tc&quot;&gt;
+        Size 3 / 24px / 1.5rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-4 tc&quot;&gt;
+        Size 4 / 20px / 1.25rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        Size 5 / 16px / 1rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-6 tc&quot;&gt;
+        Size 6 / 14px / 0.875rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-7 tc&quot;&gt;
+        Size 7 / 12px / 0.75rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-8 tc&quot;&gt;
+        Size 8 / 10px / 0.625rem
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fs-8&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3> Font Weight </h3>
+
+<p>There are <strong>three</strong> custom font sizes: <strong>regular</strong>, <strong>bold</strong> and <strong>extra bold</strong>.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="typography-font-weight.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="typography-font-weight.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fw-regular tc&quot;&gt;
+        Regular / 400
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fw-regular&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fw-bold tc&quot;&gt;
+        Bold  / 600
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fw-bold&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fw-extra-bold tc&quot;&gt;
+        Extra Bold / 700
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fw-extra-bold&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fw-regular tc&quot;&gt;
+        Regular / 400
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fw-regular&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fw-bold tc&quot;&gt;
+        Bold  / 600
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fw-bold&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fw-extra-bold tc&quot;&gt;
+        Extra Bold / 700
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-fw-extra-bold&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+				</div>
+				<div id="category-components" class="theme-content-category">
+						<div id="button" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Button</h1>
+	<div class="theme-content-element-description"><p>Buttons are implemented through the base class <strong>bp-btn</strong>. They have a min-width of 160px, an opaque background that darkens on hover and no border.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-base.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-base.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn&quot;&gt;Base Default&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn&quot; disabled&gt;Base Default&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn&quot;&gt;Base Default&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn&quot; disabled&gt;Base Default&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Size</h3>
+
+<p>There are two size variations that modify a button&#39;s minimum width: <strong>bp-btn--small</strong> (100px) and <strong>bp-btn--large</strong> (240px).</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-size.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-size.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark bp-btn--small&quot;&gt;Small&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt; .bp-btn--small&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark&quot;&gt;Normal&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark bp-btn--large&quot;&gt;Large&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt; .bp-btn--large&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark bp-btn--small&quot;&gt;Small&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt; .bp-btn--small&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark&quot;&gt;Normal&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark bp-btn--large&quot;&gt;Large&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt; .bp-btn--large&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Flat</h3>
+
+<p>The variation <strong>bp-btn--flat</strong> has a transparent background and an opaque border. Usually, its text and border have the same color and they darken on hover.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-flat.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-flat.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot;&gt;Flat Default&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-btn--blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt; .bp-btn--flat&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot; disabled&gt;Flat Default&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-btn--blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt; .bp-btn--flat [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot;&gt;Flat Default&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-btn--blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt; .bp-btn--flat&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot; disabled&gt;Flat Default&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-btn--blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt; .bp-btn--flat [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Text-only</h3>
+
+<p>The variation <strong>bp-btn--text-only</strong> not only makes the <strong>base</strong> button&#39;s background color transparent, but also its size fits the text inside. Its min-width is 0px, its height is auto, its line-height is 18px and its horizontal padding is smaller.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-text-only.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-text-only.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark bp-btn--extra-small&quot;&gt;XS&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt; .bp-btn--extra-small&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--silver bp-btn--text-only&quot;&gt;Text Only&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-silver&quot;&gt;.bp-btn--silver&lt;/span&gt; .bp-btn--text-only&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--silver bp-btn--text-only&quot; disabled&gt;Text Only&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-silver&quot;&gt;.bp-btn--silver&lt;/span&gt; .bp-btn--text-only [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark bp-btn--extra-small&quot;&gt;XS&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt; .bp-btn--extra-small&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--silver bp-btn--text-only&quot;&gt;Text Only&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-silver&quot;&gt;.bp-btn--silver&lt;/span&gt; .bp-btn--text-only&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--silver bp-btn--text-only&quot; disabled&gt;Text Only&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-silver&quot;&gt;.bp-btn--silver&lt;/span&gt; .bp-btn--text-only [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Arrow</h3>
+
+<p>The variation <strong>bp-btn--arrow</strong> adds a pointy fashion to the button. It works for both base and flat buttons.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-arrow.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-arrow.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot bp-btn--arrow&quot;&gt;Base Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt; .bp-btn--arrow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot bp-btn--arrow&quot; disabled&gt;Base Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt; .bp-btn--arrow [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow&quot;&gt;Flat Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-onix&quot;&gt;.bp-btn--onix&lt;/span&gt; .bp-btn--flat .bp-btn--arrow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow&quot; disabled&gt;Flat Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-onix&quot;&gt;.bp-btn--onix&lt;/span&gt; .bp-btn--flat .bp-btn--arrow [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot bp-btn--arrow&quot;&gt;Base Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt; .bp-btn--arrow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot bp-btn--arrow&quot; disabled&gt;Base Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt; .bp-btn--arrow [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow&quot;&gt;Flat Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-onix&quot;&gt;.bp-btn--onix&lt;/span&gt; .bp-btn--flat .bp-btn--arrow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow&quot; disabled&gt;Flat Arrow&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-onix&quot;&gt;.bp-btn--onix&lt;/span&gt; .bp-btn--flat .bp-btn--arrow [disabled]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Ready-made colors: Base Button</h3>
+
+<p>Buttons have ready-made color variations for all colors in BLiP&#39;s palette. They can be applied using the variation <strong>bp-btn--{color}</strong>.</p>
+<p>On the base class, the variation <strong>bp-btn--{color}</strong> sets the button&#39;s background color to the palette color and its text color to either black or white.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-color-base.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-color-base.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot&quot;&gt;Bot &lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-light&quot;&gt;BLiP Light&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark&quot;&gt;BLiP Dark&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--warning&quot;&gt;Warning&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-warning&quot;&gt;.bp-btn--warning&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--delete&quot;&gt;Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--delete&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--true&quot;&gt;True&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-true&quot;&gt;.bp-btn--true&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bot&quot;&gt;Bot &lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-light&quot;&gt;BLiP Light&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-blip-light&quot;&gt;.bp-btn--blip-light&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--blip-dark&quot;&gt;BLiP Dark&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--warning&quot;&gt;Warning&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-warning&quot;&gt;.bp-btn--warning&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--delete&quot;&gt;Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--delete&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--true&quot;&gt;True&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn
+        &lt;span class=&quot;bp-c-true&quot;&gt;.bp-btn--true&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Ready-made colors: Flat Button</h3>
+
+<p>In the flat variation, <strong>bp-btn--{color}</strong> sets the button&#39;s border and text color to the palette color.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-color-flat.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-color-flat.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--bot&quot;&gt;Flat Bot&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot;&gt;Flat BLiP Light&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-blip-light&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-dark&quot;&gt;Flat BLiP Dark&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--warning&quot;&gt;Flat Warning&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-warning&quot;&gt;.bp-btn--warning&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--delete&quot;&gt;Flat Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--delete&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--true&quot;&gt;Flat True&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-true&quot;&gt;.bp-btn--true&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--bot&quot;&gt;Flat Bot&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-light&quot;&gt;Flat BLiP Light&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-blip-light&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--blip-dark&quot;&gt;Flat BLiP Dark&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--warning&quot;&gt;Flat Warning&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-warning&quot;&gt;.bp-btn--warning&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--delete&quot;&gt;Flat Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--delete&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--true&quot;&gt;Flat True&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat
+        &lt;span class=&quot;bp-c-true&quot;&gt;.bp-btn--true&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Ready-made colors: Text-only Button</h3>
+
+<p>In the text-only variation, <strong>bp-btn--{color}</strong> sets only the button&#39;s text color to the palette color. The variation <strong>bp-btn--c-colorName</strong> will work the same way in this case.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-color-text-only.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-color-text-only.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--bot&quot;&gt;Text-only Bot&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--blip-light&quot;&gt;Text-only BLiP Light&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-blip-light&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--blip-dark&quot;&gt;Text-only BLiP Dark&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--warning&quot;&gt;Text-only Warning&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-warning&quot;&gt;.bp-btn--warning&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--delete&quot;&gt;Text-only Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--delete&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--true&quot;&gt;Text-only True&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-true&quot;&gt;.bp-btn--true&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--bot&quot;&gt;Text-only Bot&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-bot&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--blip-light&quot;&gt;Text-only BLiP Light&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-blip-light&quot;&gt;.bp-btn--bot&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--blip-dark&quot;&gt;Text-only BLiP Dark&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-blip-dark&quot;&gt;.bp-btn--blip-dark&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--warning&quot;&gt;Text-only Warning&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-warning&quot;&gt;.bp-btn--warning&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--delete&quot;&gt;Text-only Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--delete&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--text-only bp-btn--true&quot;&gt;Text-only True&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--text-only
+        &lt;span class=&quot;bp-c-true&quot;&gt;.bp-btn--true&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Text color</h3>
+
+<p>The variation <strong>bp-btn--c-colorName</strong> modifies the button&#39;s text color.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-text-color.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-text-color.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-delete&quot;&gt;Text Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--c-delete&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-black&quot;&gt;Text Black&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--c-black&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-white&quot;&gt;Text White&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--c-white&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-delete&quot;&gt;Text Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--c-delete&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-black&quot;&gt;Text Black&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--c-black&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-white&quot;&gt;Text White&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--c-white&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Background color</h3>
+
+<p>The variation <strong>bp-btn--bg-colorName</strong> modifies the button&#39;s background color.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-background-color.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-background-color.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-delete&quot;&gt;Background Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--bg-delete&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-black&quot;&gt;Background Black&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--bg-black&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-white bp-btn--c-black&quot;&gt;Background White&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--bg-white .bp-btn--c-black&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-delete&quot;&gt;Background Delete&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-delete&quot;&gt;.bp-btn--bg-delete&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-black&quot;&gt;Background Black&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--bg-black&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--bg-white bp-btn--c-black&quot;&gt;Background White&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--bg-white .bp-btn--c-black&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>No background</h3>
+
+<p>The variation <strong>bp-btn--no-background</strong> makes the <strong>base</strong> button&#39;s background color transparent. It should not affect a flat button.</p>
+<p>Although it gives a similar result to <strong>bp-btn--text-only</strong>, this variation is recommended only for dynamic styling, since it keeps the button&#39;s original padding and size.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-no-background.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-no-background.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-rooftop bp-btn--no-background&quot;&gt;No Background&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-rooftop&quot;&gt;.bp-btn--c-rooftop&lt;/span&gt; .bp-btn--no-background&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--c-rooftop bp-btn--no-background&quot;&gt;No Background&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-c-rooftop&quot;&gt;.bp-btn--c-rooftop&lt;/span&gt; .bp-btn--no-background&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Text-only</h3>
+
+<p>The variation <strong>bp-btn--text-only</strong> not only makes the <strong>base</strong> button&#39;s background color transparent, but also its size fits the text inside. Its min-width is 0px, its height is auto, its line-height is 18px and its horizontal padding is smaller.</p>
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--silver bp-btn--text-only&quot;&gt;Text Only&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-silver&quot;&gt;.bp-btn--silver&lt;/span&gt; .bp-btn--text-only&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--silver bp-btn--text-only&quot;&gt;Text Only&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn &lt;span class=&quot;bp-silver&quot;&gt;.bp-btn--silver&lt;/span&gt; .bp-btn--text-only&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>No border</h3>
+
+<p>The variation <strong>bp-btn--no-border</strong> makes the <strong>flat</strong> button&#39;s border color transparent. It should not affect a base button.</p>
+<p>Although it gives a similar result to <strong>bp-btn--text-only</strong>, this variation is recommended only for dynamic styling, since it keeps the button&#39;s original padding and size.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="button-no-border.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="button-no-border.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--desk bp-btn--no-border&quot;&gt;No Border&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat &lt;span class=&quot;bp-c-desk&quot;&gt;.bp-btn--desk&lt;/span&gt; .bp-btn--no-border&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;bp-fs-5 tc&quot;&gt;
+        &lt;button class=&quot;bp-btn bp-btn--flat bp-btn--desk bp-btn--no-border&quot;&gt;No Border&lt;/button&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;bp-fs-5 tl&quot;&gt;.bp-btn .bp-btn--flat &lt;span class=&quot;bp-c-desk&quot;&gt;.bp-btn--desk&lt;/span&gt; .bp-btn--no-border&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="checkbox" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Checkbox</h1>
+	<div class="theme-content-element-description"><p>Checkboxes are implemented with four elements in a certain configuration: <code>&lt;label class=&quot;bp-input--check--wrapper&quot;&gt;</code>, <code>&lt;input class=&quot;bp-input&quot;&gt;</code>, <code>&lt;div class=&quot;bp-input--checkbox&quot;&gt;</code> and <code>&lt;span&gt;</code>.</p>
+<p>The code <strong>MUST</strong> be exactly as the following example&#39;s in order to give the desired result.</p>
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;label class=&quot;bp-input--check--wrapper flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;checkbox&quot; name=&quot;checkbox-input&quot; value=&quot;1&quot; checked&gt;
+          &lt;div class=&quot;bp-input--checkbox bp-fs-6 bp-c-white tc mr2&quot;&gt;&amp;check;&lt;/div&gt;
+          &lt;span&gt;Option 1&lt;/span&gt;
+        &lt;/label&gt;
+
+        &lt;label class=&quot;bp-input--check--wrapper flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;checkbox&quot; name=&quot;checkbox-input&quot; value=&quot;2&quot;&gt;
+          &lt;div class=&quot;bp-input--checkbox bp-fs-6 bp-c-white tc mr2&quot;&gt;&amp;check;&lt;/div&gt;
+          &lt;span&gt;Option 2&lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        input.bp-input + div.bp-input--checkbox
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;label class=&quot;bp-input--check--wrapper flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;checkbox&quot; name=&quot;checkbox-input&quot; value=&quot;1&quot; checked&gt;
+          &lt;div class=&quot;bp-input--checkbox bp-fs-6 bp-c-white tc mr2&quot;&gt;&amp;check;&lt;/div&gt;
+          &lt;span&gt;Option 1&lt;/span&gt;
+        &lt;/label&gt;
+
+        &lt;label class=&quot;bp-input--check--wrapper flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;checkbox&quot; name=&quot;checkbox-input&quot; value=&quot;2&quot;&gt;
+          &lt;div class=&quot;bp-input--checkbox bp-fs-6 bp-c-white tc mr2&quot;&gt;&amp;check;&lt;/div&gt;
+          &lt;span&gt;Option 2&lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        input.bp-input + div.bp-input--checkbox
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="divider" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Divider</h1>
+	<div class="theme-content-element-description"><p>Dividers are implemented through either <strong>bp-divider-h</strong> (horizontal) or <strong>bp-divider-v</strong> (vertical). They are basically lines with a width ranging from 1 to 3 px, depending on their variation: base (1px), <strong>bp-divider--medium</strong> (2px) or <strong>bp-divider--large</strong> (3px).</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="divider-horizontal.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="divider-horizontal.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;div class=&quot;bp-divider-h&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        .bp-divider-h
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;div class=&quot;bp-divider-h bp-divider--medium&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        .bp-divider-h .bp-divider--medium
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;div class=&quot;bp-divider-h bp-divider--large&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        .bp-divider-h .bp-divider--large
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;div class=&quot;bp-divider-h&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        .bp-divider-h
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;div class=&quot;bp-divider-h bp-divider--medium&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        .bp-divider-h .bp-divider--medium
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;div class=&quot;bp-divider-h bp-divider--large&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        .bp-divider-h .bp-divider--large
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="divider-vertical.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="divider-vertical.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;divider-container&quot;&gt;
+        &lt;div class=&quot;bp-divider-v&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-100 tl&quot;&gt;
+        .bp-divider-v
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;divider-container&quot;&gt;
+        &lt;div class=&quot;bp-divider-v bp-divider--medium&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-100 tl&quot;&gt;
+        .bp-divider-v .bp-divider--medium
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;divider-container&quot;&gt;
+        &lt;div class=&quot;bp-divider-v bp-divider--large&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-100 tl&quot;&gt;
+        .bp-divider-v .bp-divider--large
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;divider-container&quot;&gt;
+        &lt;div class=&quot;bp-divider-v&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-100 tl&quot;&gt;
+        .bp-divider-v
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;divider-container&quot;&gt;
+        &lt;div class=&quot;bp-divider-v bp-divider--medium&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-100 tl&quot;&gt;
+        .bp-divider-v .bp-divider--medium
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;divider-container&quot;&gt;
+        &lt;div class=&quot;bp-divider-v bp-divider--large&quot;&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-100 tl&quot;&gt;
+        .bp-divider-v .bp-divider--large
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="dropdown" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Dropdown</h1>
+	<div class="theme-content-element-description"><p>Dropdowns are implemented through the base class <strong>bp-dropdown</strong>. They only delimit a dropdown&#39;s container CSS. Its size is decided by its content.</p>
+<p>Dropdowns <strong>must</strong> have at least one variation of orientation - <strong>bp-dropdown--right</strong> or <strong>bp-dropdown--left</strong> - and one of visibility - <strong>bp-dropdown--show</strong> or <strong>bp-dropdown--hide</strong>.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="dropdown-base.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="dropdown-base.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-100 bp-fs-5 tc&quot;&gt;
+        &lt;div class=&quot;relative&quot;&gt;
+          &lt;div class=&quot;bp-dropdown bp-dropdown--show bp-dropdown--left&quot;&gt;
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--left
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-100 bp-fs-5 tc&quot;&gt;
+        &lt;div class=&quot;relative&quot;&gt;
+          &lt;div class=&quot;bp-dropdown bp-dropdown--show bp-dropdown--right&quot;&gt;
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--right
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-100 bp-fs-5 tc&quot;&gt;
+        &lt;div class=&quot;relative&quot;&gt;
+          &lt;div class=&quot;bp-dropdown bp-dropdown--show bp-dropdown--left&quot;&gt;
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--left
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-100 bp-fs-5 tc&quot;&gt;
+        &lt;div class=&quot;relative&quot;&gt;
+          &lt;div class=&quot;bp-dropdown bp-dropdown--show bp-dropdown--right&quot;&gt;
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--right
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="input" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Input</h1>
+	<div class="theme-content-element-description"></div>
+</div>
+
+						<div id="radio" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Radio</h1>
+	<div class="theme-content-element-description"><p>Radios are implemented with four elements in a certain configuration:</p>
+<ul>
+<li><code>&lt;label class=&quot;bp-input--check--wrapper&quot;&gt;</code></li>
+<li><code>&lt;input class=&quot;bp-input&quot;&gt;</code></li>
+<li><code>&lt;div class=&quot;bp-input--radio&quot;&gt;</code></li>
+<li><code>&lt;span&gt;</code></li>
+</ul>
+<p>The code <strong>MUST</strong> be exactly as the following example&#39;s in order to give the desired result.</p>
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;label class=&quot;bp-input--check--wrapper pb0 mb0 flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;radio&quot; value=&quot;1&quot; name=&quot;radio-group&quot;&gt;
+          &lt;div class=&quot;bp-input--radio&quot;&gt;&lt;/div&gt;
+          &lt;span class=&quot;ml2&quot;&gt;Option 1&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label class=&quot;bp-input--check--wrapper pb0 mb0 flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;radio&quot; value=&quot;2&quot; name=&quot;radio-group&quot;&gt;
+          &lt;div class=&quot;bp-input--radio&quot;&gt;&lt;/div&gt;
+          &lt;span class=&quot;ml2&quot;&gt;Option 2&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label class=&quot;bp-input--check--wrapper pb0 mb0 flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;radio&quot; value=&quot;3&quot; name=&quot;radio-group&quot;&gt;
+          &lt;div class=&quot;bp-input--radio&quot;&gt;&lt;/div&gt;
+          &lt;span class=&quot;ml2&quot;&gt;Option 3&lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        input.bp-input + div.bp-input--radio
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table class=&quot;w-100&quot;&gt;
+  &lt;tbody class=&quot;w-100&quot;&gt;
+    &lt;tr class=&quot;w-100&quot;&gt;
+      &lt;td class=&quot;w-30&quot;&gt;
+        &lt;label class=&quot;bp-input--check--wrapper pb0 mb0 flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;radio&quot; value=&quot;1&quot; name=&quot;radio-group&quot;&gt;
+          &lt;div class=&quot;bp-input--radio&quot;&gt;&lt;/div&gt;
+          &lt;span class=&quot;ml2&quot;&gt;Option 1&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label class=&quot;bp-input--check--wrapper pb0 mb0 flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;radio&quot; value=&quot;2&quot; name=&quot;radio-group&quot;&gt;
+          &lt;div class=&quot;bp-input--radio&quot;&gt;&lt;/div&gt;
+          &lt;span class=&quot;ml2&quot;&gt;Option 2&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label class=&quot;bp-input--check--wrapper pb0 mb0 flex items-center&quot;&gt;
+          &lt;input class=&quot;bp-input&quot; type=&quot;radio&quot; value=&quot;3&quot; name=&quot;radio-group&quot;&gt;
+          &lt;div class=&quot;bp-input--radio&quot;&gt;&lt;/div&gt;
+          &lt;span class=&quot;ml2&quot;&gt;Option 3&lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;w-70 tl&quot;&gt;
+        input.bp-input + div.bp-input--radio
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+				</div>
+		</div>
+		<div
+			class="i-page__sidebar theme-sidebar"
+			style="background: #242b36;color: #fff;"
+		>
+			<h1 class="i-sidebar-title h4 mt-4 theme-sidebar-header">
+					<img class="i-sidebar-logo mr-2 theme-sidebar-header-logo" src="./docs/src/assets/icons/logo-blip.png" height="40" alt="">
+				<span class="theme-sidebar-header-title">Toolkit</span>
+			</h1>
+			
+			<div class="relative mt-3 mb-2 px-0 theme-sidebar-search">
+				<div class="i-search-input">
+					<input id="search-filter" name="filter" type="search" placeholder="Search" class="form-control i-sidebar-item-filter">
+					<label for="search-filter" class="search-input-icon icon-search"></label>
+					<button type="button" class="i-search-input-reset" aria-label="Clear">
+						<i class="icon-cross"></i>
+					</button>
+				</div>
+			</div>
+			
+			<div class="theme-sidebar-categories">
+					<div class="i-sidebar-list-group theme-sidebar-category">
+			
+						<h5
+							class="pt-4 mb-1 theme-sidebar-category-title"
+							data-filter-value=" Welcome "
+						>
+							<a href="#category-getting started" class="i-sidebar-list-item">
+								<b>Getting Started</b>
+							</a>
+						</h5>
+			
+						<div>
+								<a
+									href="#welcome"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Welcome"
+								>
+									<span>Welcome</span>
+								</a>
+						</div>
+			
+					</div>
+					<div class="i-sidebar-list-group theme-sidebar-category">
+			
+						<h5
+							class="pt-4 mb-1 theme-sidebar-category-title"
+							data-filter-value=" Color  Typography "
+						>
+							<a href="#category-utilities" class="i-sidebar-list-item">
+								<b>Utilities</b>
+							</a>
+						</h5>
+			
+						<div>
+								<a
+									href="#color"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Color"
+								>
+									<span>Color</span>
+								</a>
+								<a
+									href="#typography"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Typography"
+								>
+									<span>Typography</span>
+								</a>
+						</div>
+			
+					</div>
+					<div class="i-sidebar-list-group theme-sidebar-category">
+			
+						<h5
+							class="pt-4 mb-1 theme-sidebar-category-title"
+							data-filter-value=" Button  Checkbox  Divider  Dropdown  Input  Radio "
+						>
+							<a href="#category-components" class="i-sidebar-list-item">
+								<b>Components</b>
+							</a>
+						</h5>
+			
+						<div>
+								<a
+									href="#button"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Button"
+								>
+									<span>Button</span>
+								</a>
+								<a
+									href="#checkbox"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Checkbox"
+								>
+									<span>Checkbox</span>
+								</a>
+								<a
+									href="#divider"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Divider"
+								>
+									<span>Divider</span>
+								</a>
+								<a
+									href="#dropdown"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Dropdown"
+								>
+									<span>Dropdown</span>
+								</a>
+								<a
+									href="#input"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Input"
+								>
+									<span>Input</span>
+								</a>
+								<a
+									href="#radio"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Radio"
+								>
+									<span>Radio</span>
+								</a>
+						</div>
+			
+					</div>
+			</div>
+			
+			<div class="i-sidebar-filter-no-results i-muted i-pad-horiz-2 theme-sidebar-search-no-results">
+				No matches.
+			</div>
+			
+			<div class="row no-gutters mt-auto py-4 theme-sidebar-footer">
+				<span class="col">
+					Generated by <a href="https://github.com/nextbigsoundinc/stylemark">Stylemark</a>
+				</span>
+			</div>
+		</div>
+
+		<script src="_stylemark/js/vendor/jquery-3.2.1.slim.min.js"></script>
+		<script src="_stylemark/js/vendor/popper.min.js"></script>
+		<script src="_stylemark/js/vendor/tether.min.js"></script>
+		<script src="_stylemark/js/vendor/bootstrap.min.js"></script>
+		<script src="_stylemark/js/vendor/iframeResizer.min.js"></script>
+		<script src="_stylemark/js/vendor/lazyframe.min.js"></script>
+		<script src="_stylemark/js/vendor/highlight.min.js"></script>
+		<script src="_stylemark/js/vendor/clipboard.min.js"></script>
+		<script src="_stylemark/js/app.js"></script>
+
+	</body>
+</html>

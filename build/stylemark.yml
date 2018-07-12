@@ -27,5 +27,6 @@ examples:
 # For Webpack apps (esp. React, Angular, etc.), this is the `output.library` value in your webpack config
 
 order:
-  - +Style
+  - +Getting Started
+  - +Utilities
   - +Components

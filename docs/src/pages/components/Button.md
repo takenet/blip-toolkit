@@ -144,9 +144,9 @@ The variation **bp-btn--arrow** adds a pointy fashion to the button. It works fo
 
 <h3>Ready-made colors: Base Button</h3>
 
-Buttons have ready-made color variations for all colors in BLiP's palette. They can be applied using the variation **bp-btn--colorName**.
+Buttons have ready-made color variations for all colors in BLiP's palette. They can be applied using the variation **bp-btn--{color}**.
 
-On the base class, the variation **bp-btn--colorName** sets the button's background color to the palette color and its text color to either black or white.
+On the base class, the variation **bp-btn--{color}** sets the button's background color to the palette color and its text color to either black or white.
 
 ```color-base.html
 <table>
@@ -205,7 +205,7 @@ On the base class, the variation **bp-btn--colorName** sets the button's backgro
 
 <h3>Ready-made colors: Flat Button</h3>
 
-In the flat variation, **bp-btn--colorName** sets the button's border and text color to the palette color.
+In the flat variation, **bp-btn--{color}** sets the button's border and text color to the palette color.
 
 ```color-flat.html
 <table>
@@ -264,7 +264,7 @@ In the flat variation, **bp-btn--colorName** sets the button's border and text c
 
 <h3>Ready-made colors: Text-only Button</h3>
 
-In the text-only variation, **bp-btn--colorName** sets only the button's text color to the palette color. The variation **bp-btn--c-colorName** will work the same way in this case.
+In the text-only variation, **bp-btn--{color}** sets only the button's text color to the palette color. The variation **bp-btn--c-colorName** will work the same way in this case.
 
 ```color-text-only.html
 <table>

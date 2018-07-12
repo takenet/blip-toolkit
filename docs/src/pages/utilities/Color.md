@@ -1,6 +1,6 @@
 ---
 name: Color
-category: Style
+category: Utilities
 ---
 
 BLiP's color palette consists of three groups of colors: **Corporates**, **Semiotics** and **Neutrals**.

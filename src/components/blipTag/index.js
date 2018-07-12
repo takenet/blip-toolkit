@@ -100,7 +100,7 @@ export class BlipTag extends Nanocomponent {
         tagClasses += ` ${blipTagCompactClass}`
       }
 
-      if (this.tagOptions.canRemoveTag || this.tagOptions.onRemove) {
+      if (this.tagOptions.canRemoveTag && this.tagOptions.onRemove) {
         tagClasses += ` ${blipTagCanRemoveClass}`
       }
 

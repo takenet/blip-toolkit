@@ -5,9 +5,6 @@
 		
 
 		<style>
-					.divider-container {
-  height: 30px;
-}
 		</style>
 
 		<style>
@@ -54,69 +51,42 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
-	<body>					<table class="w-100">
-  <tbody class="w-100">
-    <tr class="w-100">
-      <td class="divider-container">
-        <div class="bp-divider-v"></div>
+	<body>					<table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
       </td>
-      <td class="w-100 tl">
-        .bp-divider-v
-      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
     </tr>
     <tr>
-      <td class="divider-container">
-        <div class="bp-divider-v bp-divider--medium"></div>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
       </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-divider--medium
-      </td>
-    </tr>
-    <tr>
-      <td class="divider-container">
-        <div class="bp-divider-v bp-divider--large"></div>
-      </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-divider--large
-      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
     </tr>
   </tbody>
 </table>
-			<script type="text/x-stylemark" data-language="html"><table class="w-100">
-  <tbody class="w-100">
-    <tr class="w-100">
-      <td class="divider-container">
-        <div class="bp-divider-v"></div>
+			<script type="text/x-stylemark" data-language="html"><table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
       </td>
-      <td class="w-100 tl">
-        .bp-divider-v
-      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
     </tr>
     <tr>
-      <td class="divider-container">
-        <div class="bp-divider-v bp-divider--medium"></div>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
       </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-divider--medium
-      </td>
-    </tr>
-    <tr>
-      <td class="divider-container">
-        <div class="bp-divider-v bp-divider--large"></div>
-      </td>
-      <td class="w-100 tl">
-        .bp-divider-v .bp-divider--large
-      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
     </tr>
   </tbody>
 </table></script>
-			<script type="text/x-stylemark" data-language="css">.divider-container {
-  height: 30px;
-}</script>
 
 		<!--
 			Vanilla JS
@@ -149,10 +119,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-divider-vertical', []);
+						module = angular.module('stylemark-button-flat', []);
 					}
 
-					module.controller('stylemark-divider-vertical-' + index, function($scope) {
+					module.controller('stylemark-button-flat-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

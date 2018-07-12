@@ -1,0 +1,15 @@
+.i-example {
+  font-family: 'Nunito', 'Helvetica', sans-serif;
+}
+
+td,
+p,
+div,
+span {
+  font-family: 'Nunito', 'Helvetica', sans-serif;
+}
+
+table tbody td {
+  padding: 8px 24px 8px 4px;
+}
+

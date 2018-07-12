@@ -51,51 +51,51 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
-	<body>					<table class="w-100">
-  <tbody class="w-100">
-    <tr class="w-100">
-      <td class="w-100 bp-fs-5 tc">
-        <div class="relative">
-          <div class="bp-dropdown bp-dropdown--show bp-dropdown--left">
-            .bp-dropdown .bp-dropdown--show .bp-dropdown--left
-          </div>
-        </div>
+	<body>					<table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--c-delete">Text Delete</button>
       </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-delete">.bp-btn--c-delete</span></td>
     </tr>
-    <tr class="w-100">
-      <td class="w-100 bp-fs-5 tc">
-        <div class="relative">
-          <div class="bp-dropdown bp-dropdown--show bp-dropdown--right">
-            .bp-dropdown .bp-dropdown--show .bp-dropdown--right
-          </div>
-        </div>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--c-black">Text Black</button>
       </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-black</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--c-white">Text White</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-white</td>
     </tr>
   </tbody>
 </table>
-			<script type="text/x-stylemark" data-language="html"><table class="w-100">
-  <tbody class="w-100">
-    <tr class="w-100">
-      <td class="w-100 bp-fs-5 tc">
-        <div class="relative">
-          <div class="bp-dropdown bp-dropdown--show bp-dropdown--left">
-            .bp-dropdown .bp-dropdown--show .bp-dropdown--left
-          </div>
-        </div>
+			<script type="text/x-stylemark" data-language="html"><table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--c-delete">Text Delete</button>
       </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-delete">.bp-btn--c-delete</span></td>
     </tr>
-    <tr class="w-100">
-      <td class="w-100 bp-fs-5 tc">
-        <div class="relative">
-          <div class="bp-dropdown bp-dropdown--show bp-dropdown--right">
-            .bp-dropdown .bp-dropdown--show .bp-dropdown--right
-          </div>
-        </div>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--c-black">Text Black</button>
       </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-black</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--c-white">Text White</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-white</td>
     </tr>
   </tbody>
 </table></script>
@@ -131,10 +131,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-dropdown-base', []);
+						module = angular.module('stylemark-button-text-color', []);
 					}
 
-					module.controller('stylemark-dropdown-base-' + index, function($scope) {
+					module.controller('stylemark-button-text-color-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

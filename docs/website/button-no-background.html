@@ -51,7 +51,7 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
@@ -59,51 +59,9 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--bot">Bot </button>
+        <button class="bp-btn bp-btn--c-rooftop bp-btn--no-background">No Background</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-bot">.bp-btn--bot</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-light">BLiP Light</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-blip-light">.bp-btn--blip-light</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark">BLiP Dark</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-blip-dark">.bp-btn--blip-dark</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--warning">Warning</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-warning">.bp-btn--warning</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--delete">Delete</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-delete">.bp-btn--delete</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--true">True</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-true">.bp-btn--true</span>
-      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-rooftop">.bp-btn--c-rooftop</span> .bp-btn--no-background</td>
     </tr>
   </tbody>
 </table>
@@ -111,51 +69,9 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--bot">Bot </button>
+        <button class="bp-btn bp-btn--c-rooftop bp-btn--no-background">No Background</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-bot">.bp-btn--bot</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-light">BLiP Light</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-blip-light">.bp-btn--blip-light</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark">BLiP Dark</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-blip-dark">.bp-btn--blip-dark</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--warning">Warning</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-warning">.bp-btn--warning</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--delete">Delete</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-delete">.bp-btn--delete</span>
-      </td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--true">True</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn
-        <span class="bp-c-true">.bp-btn--true</span>
-      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-rooftop">.bp-btn--c-rooftop</span> .bp-btn--no-background</td>
     </tr>
   </tbody>
 </table></script>
@@ -191,10 +107,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-color-base', []);
+						module = angular.module('stylemark-button-no-background', []);
 					}
 
-					module.controller('stylemark-button-color-base-' + index, function($scope) {
+					module.controller('stylemark-button-no-background-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

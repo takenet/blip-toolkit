@@ -51,39 +51,53 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
 	<body>					<table>
   <tbody>
     <tr>
+    <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
+        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Small</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
+        <button class="bp-btn bp-btn--blip-dark">Normal</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span></td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--blip-dark bp-btn--large">Large</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--large</td>
     </tr>
   </tbody>
 </table>
 			<script type="text/x-stylemark" data-language="html"><table>
   <tbody>
     <tr>
+    <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
+        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Small</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
+        <button class="bp-btn bp-btn--blip-dark">Normal</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span></td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--blip-dark bp-btn--large">Large</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--large</td>
     </tr>
   </tbody>
 </table></script>
@@ -119,10 +133,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-flat', []);
+						module = angular.module('stylemark-button-size', []);
 					}
 
-					module.controller('stylemark-button-flat-' + index, function($scope) {
+					module.controller('stylemark-button-size-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

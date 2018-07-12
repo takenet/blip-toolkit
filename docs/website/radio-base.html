@@ -51,65 +51,59 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
-	<body>					<table>
-  <tbody>
-    <tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--extra-small">XS</button>
+	<body>					<table class="w-100">
+  <tbody class="w-100">
+    <tr class="w-100">
+      <td class="w-30">
+        <label class="bp-input--check--wrapper pb0 mb2 flex items-center">
+          <input class="bp-input" type="radio" value="1" name="radio-group">
+          <div class="bp-input--radio"></div>
+          <span class="ml2">Option 1</span>
+        </label>
+        <label class="bp-input--check--wrapper pb0 mb2 flex items-center">
+          <input class="bp-input" type="radio" value="2" name="radio-group">
+          <div class="bp-input--radio"></div>
+          <span class="ml2">Option 2</span>
+        </label>
+        <label class="bp-input--check--wrapper pb0 mb2 flex items-center">
+          <input class="bp-input" type="radio" value="3" name="radio-group">
+          <div class="bp-input--radio"></div>
+          <span class="ml2">Option 3</span>
+        </label>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--extra-small</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Small</button>
+      <td class="w-70 bp-fs-5 bp-lh-5 tl">
+        label.bp-input--check--wrapper </br> input.bp-input </br> div.bp-input--radio
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark">Normal</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span></td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--large">Large</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--large</td>
     </tr>
   </tbody>
 </table>
-			<script type="text/x-stylemark" data-language="html"><table>
-  <tbody>
-    <tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--extra-small">XS</button>
+			<script type="text/x-stylemark" data-language="html"><table class="w-100">
+  <tbody class="w-100">
+    <tr class="w-100">
+      <td class="w-30">
+        <label class="bp-input--check--wrapper pb0 mb2 flex items-center">
+          <input class="bp-input" type="radio" value="1" name="radio-group">
+          <div class="bp-input--radio"></div>
+          <span class="ml2">Option 1</span>
+        </label>
+        <label class="bp-input--check--wrapper pb0 mb2 flex items-center">
+          <input class="bp-input" type="radio" value="2" name="radio-group">
+          <div class="bp-input--radio"></div>
+          <span class="ml2">Option 2</span>
+        </label>
+        <label class="bp-input--check--wrapper pb0 mb2 flex items-center">
+          <input class="bp-input" type="radio" value="3" name="radio-group">
+          <div class="bp-input--radio"></div>
+          <span class="ml2">Option 3</span>
+        </label>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--extra-small</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--small">Small</button>
+      <td class="w-70 bp-fs-5 bp-lh-5 tl">
+        label.bp-input--check--wrapper </br> input.bp-input </br> div.bp-input--radio
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--small</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark">Normal</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span></td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--large">Large</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--large</td>
     </tr>
   </tbody>
 </table></script>
@@ -145,10 +139,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-size', []);
+						module = angular.module('stylemark-radio-base', []);
 					}
 
-					module.controller('stylemark-button-size-' + index, function($scope) {
+					module.controller('stylemark-radio-base-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

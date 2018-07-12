@@ -5,6 +5,17 @@
 		
 
 		<style>
+					
+.example-container {
+  width: 240px;
+}
+
+.card-container {
+  height: 120px;
+  width: 120px;
+  padding: 0;
+  margin-bottom: 0.25rem;
+}
 		</style>
 
 		<style>
@@ -51,66 +62,99 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
-	<body>					<table class="w-100">
-  <tbody class="w-100">
-    <tr class="w-100">
-      <td class="w-30">
-        <div class="bp-divider-h"></div>
-      </td>
-      <td class="w-70 tl">
-        .bp-divider-h
-      </td>
-    </tr>
-    <tr class="w-100">
-      <td class="w-30">
-        <div class="bp-divider-h bp-divider--medium"></div>
-      </td>
-      <td class="w-70 tl">
-        .bp-divider-h .bp-divider--medium
-      </td>
-    </tr>
-    <tr class="w-100">
-      <td class="w-30">
-        <div class="bp-divider-h bp-divider--large"></div>
-      </td>
-      <td class="w-70 tl">
-        .bp-divider-h .bp-divider--large
-      </td>
-    </tr>
-  </tbody>
-</table>
-			<script type="text/x-stylemark" data-language="html"><table class="w-100">
-  <tbody class="w-100">
-    <tr class="w-100">
-      <td class="w-30">
-        <div class="bp-divider-h"></div>
-      </td>
-      <td class="w-70 tl">
-        .bp-divider-h
-      </td>
-    </tr>
-    <tr class="w-100">
-      <td class="w-30">
-        <div class="bp-divider-h bp-divider--medium"></div>
-      </td>
-      <td class="w-70 tl">
-        .bp-divider-h .bp-divider--medium
-      </td>
-    </tr>
-    <tr class="w-100">
-      <td class="w-30">
-        <div class="bp-divider-h bp-divider--large"></div>
-      </td>
-      <td class="w-70 tl">
-        .bp-divider-h .bp-divider--large
-      </td>
-    </tr>
-  </tbody>
-</table></script>
+	<body>					<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-shine">
+    </div>
+    <span class="db tc bp-c-time">
+      .bp-grad-shine: (180deg, #f9fbfc 0%, #ecf1f3 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-bot">
+    </div>
+    <span class="db tc bp-c-blip-dark">
+      .bp-grad-bot: (90deg, #51DBE3 0%, #28B4C3 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-blip">
+    </div>
+    <span class="db tc bp-c-blip-light">
+      .bp-grad-blip: (137.45deg, #1BD6E7 0%, #0FC3F8 56.17%, #0ABCFF 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-center items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-suit">
+    </div>
+    <span class="db tc bp-c-suit">
+      .bp-grad-suit: (90deg,#3d4554,#2f3747);
+    </span>
+  </div>
+</div>
+			<script type="text/x-stylemark" data-language="html"><div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-shine">
+    </div>
+    <span class="db tc bp-c-time">
+      .bp-grad-shine: (180deg, #f9fbfc 0%, #ecf1f3 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-bot">
+    </div>
+    <span class="db tc bp-c-blip-dark">
+      .bp-grad-bot: (90deg, #51DBE3 0%, #28B4C3 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-blip">
+    </div>
+    <span class="db tc bp-c-blip-light">
+      .bp-grad-blip: (137.45deg, #1BD6E7 0%, #0FC3F8 56.17%, #0ABCFF 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-center items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-suit">
+    </div>
+    <span class="db tc bp-c-suit">
+      .bp-grad-suit: (90deg,#3d4554,#2f3747);
+    </span>
+  </div>
+</div></script>
+			<script type="text/x-stylemark" data-language="css">
+.example-container {
+  width: 240px;
+}
+
+.card-container {
+  height: 120px;
+  width: 120px;
+  padding: 0;
+  margin-bottom: 0.25rem;
+}</script>
 
 		<!--
 			Vanilla JS
@@ -143,10 +187,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-divider-horizontal', []);
+						module = angular.module('stylemark-color-gradients', []);
 					}
 
-					module.controller('stylemark-divider-horizontal-' + index, function($scope) {
+					module.controller('stylemark-color-gradients-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

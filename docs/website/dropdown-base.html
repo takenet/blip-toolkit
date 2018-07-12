@@ -51,39 +51,51 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
-	<body>					<table>
-  <tbody>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn">Base Default</button>
+	<body>					<table class="w-100">
+  <tbody class="w-100">
+    <tr class="w-100">
+      <td class="w-100 bp-fs-5 tc">
+        <div class="relative">
+          <div class="bp-dropdown bp-dropdown--show bp-dropdown--left">
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--left
+          </div>
+        </div>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn</td>
     </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn" disabled>Base Default</button>
+    <tr class="w-100">
+      <td class="w-100 bp-fs-5 tc">
+        <div class="relative">
+          <div class="bp-dropdown bp-dropdown--show bp-dropdown--right">
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--right
+          </div>
+        </div>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn [disabled]</td>
     </tr>
   </tbody>
 </table>
-			<script type="text/x-stylemark" data-language="html"><table>
-  <tbody>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn">Base Default</button>
+			<script type="text/x-stylemark" data-language="html"><table class="w-100">
+  <tbody class="w-100">
+    <tr class="w-100">
+      <td class="w-100 bp-fs-5 tc">
+        <div class="relative">
+          <div class="bp-dropdown bp-dropdown--show bp-dropdown--left">
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--left
+          </div>
+        </div>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn</td>
     </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn" disabled>Base Default</button>
+    <tr class="w-100">
+      <td class="w-100 bp-fs-5 tc">
+        <div class="relative">
+          <div class="bp-dropdown bp-dropdown--show bp-dropdown--right">
+            .bp-dropdown .bp-dropdown--show .bp-dropdown--right
+          </div>
+        </div>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn [disabled]</td>
     </tr>
   </tbody>
 </table></script>
@@ -119,10 +131,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-base', []);
+						module = angular.module('stylemark-dropdown-base', []);
 					}
 
-					module.controller('stylemark-button-base-' + index, function($scope) {
+					module.controller('stylemark-dropdown-base-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

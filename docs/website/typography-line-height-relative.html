@@ -51,27 +51,51 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
 	<body>					<table>
   <tbody>
     <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--silver bp-btn--text-only">Text Only</button>
+      <td class="bp-fs-4 bp-lh-simple tc">
+        Line Height </br> Simple / 100%
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only</td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-simple</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-4 bp-lh-plus tc">
+        Line Height </br> Plus / 150%
+      </td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-plus</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-4 bp-lh-double tc">
+        Line Height </br> Double / 200%
+      </td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-double</td>
     </tr>
   </tbody>
 </table>
 			<script type="text/x-stylemark" data-language="html"><table>
   <tbody>
     <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--silver bp-btn--text-only">Text Only</button>
+      <td class="bp-fs-4 bp-lh-simple tc">
+        Line Height </br> Simple / 100%
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only</td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-simple</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-4 bp-lh-plus tc">
+        Line Height </br> Plus / 150%
+      </td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-plus</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-4 bp-lh-double tc">
+        Line Height </br> Double / 200%
+      </td>
+      <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-double</td>
     </tr>
   </tbody>
 </table></script>
@@ -107,10 +131,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-text-only', []);
+						module = angular.module('stylemark-typography-line-height-relative', []);
 					}
 
-					module.controller('stylemark-button-text-only-' + index, function($scope) {
+					module.controller('stylemark-typography-line-height-relative-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

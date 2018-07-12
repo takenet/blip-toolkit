@@ -51,7 +51,7 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
@@ -59,21 +59,9 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--c-delete">Text Delete</button>
+        <button class="bp-btn bp-btn--flat bp-btn--desk bp-btn--no-border">No Border</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-delete">.bp-btn--c-delete</span></td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--c-black">Text Black</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-black</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--c-white">Text White</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-white</td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--flat <span class="bp-c-desk">.bp-btn--desk</span> .bp-btn--no-border</td>
     </tr>
   </tbody>
 </table>
@@ -81,21 +69,9 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--c-delete">Text Delete</button>
+        <button class="bp-btn bp-btn--flat bp-btn--desk bp-btn--no-border">No Border</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-delete">.bp-btn--c-delete</span></td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--c-black">Text Black</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-black</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--c-white">Text White</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn .bp-btn--c-white</td>
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--flat <span class="bp-c-desk">.bp-btn--desk</span> .bp-btn--no-border</td>
     </tr>
   </tbody>
 </table></script>
@@ -131,10 +107,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-text-color', []);
+						module = angular.module('stylemark-button-no-border', []);
 					}
 
-					module.controller('stylemark-button-text-color-' + index, function($scope) {
+					module.controller('stylemark-button-no-border-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

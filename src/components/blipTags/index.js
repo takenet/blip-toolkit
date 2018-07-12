@@ -14,6 +14,7 @@ import {
 
 import { TagOption } from './TagOption'
 import { compose } from '../shared'
+import { differenceByLabel } from '../../lib/utils'
 
 // Utils
 const hideBackgroundOptions = t => ({ ...t, canChangeBackground: false })
@@ -22,7 +23,8 @@ const addBackgroundIfNotExists = t => t.background ? t : ({ ...t, background: de
 
 export class BlipTags extends Nanocomponent {
   $state = {
-    promptTextCreator: 'Add tag',
+    promptTextCreator: 'Create tag',
+    placeholder: 'Add tag...',
     mode: 'full', // can be 'full' or 'compact'
     canChangeBackground: true,
     toggleTagsMode: false,
@@ -48,6 +50,7 @@ export class BlipTags extends Nanocomponent {
     this._handleInputKeyup = this._onInputKeyup.bind(this)
     this._handleSelectOption = this._onSelectOption.bind(this)
     this._handleBlipSelectBlur = this._onSelectBlur.bind(this)
+    this._handleBlipSelectFocus = this._onSelectFocus.bind(this)
     this._handleCustomSearch = this._customOptionsSearch.bind(this)
 
     this.blipSelectInstance = new BlipSelect({
@@ -59,7 +62,9 @@ export class BlipTags extends Nanocomponent {
       onSelectOption: this._handleSelectOption,
       onInputKeyup: this._handleInputKeyup,
       onBlur: this._handleBlipSelectBlur,
+      onFocus: this._handleBlipSelectFocus,
       optionCreator: TagOption,
+      placeholder: this.tagsOptions.placeholder,
     })
 
     this.addGlobalListeners()
@@ -68,6 +73,13 @@ export class BlipTags extends Nanocomponent {
       tags: [],
       options: [],
     }
+  }
+
+  /**
+   * Options view list
+   */
+  get optionsList() {
+    return this.props.options.filter(differenceByLabel(this.props.tags)) || []
   }
 
   /**
@@ -104,7 +116,7 @@ export class BlipTags extends Nanocomponent {
     return html`
       <div class="blip-tags ${this.tagsOptions.mode === 'compact' ? 'blip-tags--compact-mode' : ''}">
         ${this.props.tags.map(renderTag)}
-        ${shouldRenderSelect() ? this.blipSelectInstance.render({ options: this.props.options }) : ''}
+        ${shouldRenderSelect() ? this.blipSelectInstance.render({ options: this.optionsList }) : ''}
       </div>
     `
   }
@@ -121,7 +133,7 @@ export class BlipTags extends Nanocomponent {
    * Called when the component is removed from the DOM
    */
   unload() {
-    document.removeEventListener(this.handleCloseColors)
+    document.removeEventListener('click', this.handleCloseColors)
   }
 
   /**
@@ -181,7 +193,16 @@ export class BlipTags extends Nanocomponent {
   /**
    * Handle BlipSelect blur
    */
-  _onSelectBlur(event) {}
+  _onSelectBlur(event) {
+    this.element.classList.remove('bp-input-wrapper--focus')
+  }
+
+  /**
+   * Handle BlipSelect focus
+   */
+  _onSelectFocus(event) {
+    this.element.classList.add('bp-input-wrapper--focus')
+  }
 
   /**
    * Handle select option
@@ -271,7 +292,7 @@ export class BlipTags extends Nanocomponent {
     this.props.options = this.props.options.map(addNewBackground(tag))
 
     this.blipSelectInstance.render({
-      options: this.props.options,
+      options: this.optionsList,
     })
 
     this.tagsOptions.onSelectTagColor.call(this, emitter)

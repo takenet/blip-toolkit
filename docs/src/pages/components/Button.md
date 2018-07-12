@@ -56,7 +56,7 @@ There are two size variations that modify a button's minimum width: **bp-btn--sm
 
 <h3>Flat</h3>
 
-The variation **bp-btn--flat** has a transparent background and an opaque border. Usually, its text and border have the same color and they darken on hover.
+The variation **bp-btn--flat** has a transparent background and a solid border. Usually, its text and border have the same color and they darken on hover.
 
 ```flat.html
 <table>
@@ -65,43 +65,36 @@ The variation **bp-btn--flat** has a transparent background and an opaque border
       <td class="bp-fs-5 tc">
         <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
         <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-btn--blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
     </tr>
   </tbody>
 </table>
 ```
 
-<h3>Text-only</h3>
+<h3>Dashed</h3>
 
-The variation **bp-btn--text-only** not only makes the **base** button's background color transparent, but also its size fits the text inside. Its min-width is 0px, its height is auto, its line-height is 18px and its horizontal padding is smaller.
+The variation **bp-btn--dashed** has a transparent background and a dashed border. Usually, its text and border have the same color and they darken on hover.
 
-```text-only.html
+```dashed.html
 <table>
   <tbody>
     <tr>
-    <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--blip-dark bp-btn--extra-small">XS</button>
+        <button class="bp-btn bp-btn--dashed bp-btn--blip-light">Dashed Default</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-dark">.bp-btn--blip-dark</span> .bp-btn--extra-small</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--dashed</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--silver bp-btn--text-only">Text Only</button>
+        <button class="bp-btn bp-btn--dashed bp-btn--blip-light" disabled>Dashed Default</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--silver bp-btn--text-only" disabled>Text Only</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--dashed [disabled]</td>
     </tr>
   </tbody>
 </table>
@@ -137,6 +130,41 @@ The variation **bp-btn--arrow** adds a pointy fashion to the button. It works fo
         <button class="bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow" disabled>Flat Arrow</button>
       </td>
       <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-onix">.bp-btn--onix</span> .bp-btn--flat .bp-btn--arrow [disabled]</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--time bp-btn--dashed bp-btn--arrow">Dashed Arrow</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-time">.bp-btn--time</span> .bp-btn--dashed .bp-btn--arrow</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--time bp-btn--dashed bp-btn--arrow" disabled>Dashed Arrow</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-time">.bp-btn--time</span> .bp-btn--dashed .bp-btn--arrow [disabled]</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+<h3>Text-only</h3>
+
+The variation **bp-btn--text-only** not only makes the **base** button's background color transparent, but also its size fits the text inside. Its min-width is 0px, its height is auto, its line-height is 18px and its horizontal padding is smaller.
+
+```text-only.html
+<table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--silver bp-btn--text-only">Text Only</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--silver bp-btn--text-only" disabled>Text Only</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only [disabled]</td>
     </tr>
   </tbody>
 </table>
@@ -203,9 +231,9 @@ On the base class, the variation **bp-btn--{color}** sets the button's backgroun
 </table>
 ```
 
-<h3>Ready-made colors: Flat Button</h3>
+<h3>Ready-made colors: Flat & Dashed Buttons</h3>
 
-In the flat variation, **bp-btn--{color}** sets the button's border and text color to the palette color.
+In the flat and dashed variations, **bp-btn--{color}** sets the button's border and text color to the palette color.
 
 ```color-flat.html
 <table>
@@ -236,25 +264,25 @@ In the flat variation, **bp-btn--{color}** sets the button's border and text col
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--warning">Flat Warning</button>
+        <button class="bp-btn bp-btn--dashed bp-btn--warning">Dashed Warning</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn .bp-btn--flat
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--dashed
         <span class="bp-c-warning">.bp-btn--warning</span>
       </td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--delete">Flat Delete</button>
+        <button class="bp-btn bp-btn--dashed bp-btn--delete">Dashed Delete</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn .bp-btn--flat
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--dashed
         <span class="bp-c-delete">.bp-btn--delete</span>
       </td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--flat bp-btn--true">Flat True</button>
+        <button class="bp-btn bp-btn--dashed bp-btn--true">Dashed True</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn .bp-btn--flat
+      <td class="bp-fs-5 tl">.bp-btn .bp-btn--dashed
         <span class="bp-c-true">.bp-btn--true</span>
       </td>
     </tr>
@@ -393,23 +421,6 @@ Although it gives a similar result to **bp-btn--text-only**, this variation is r
         <button class="bp-btn bp-btn--c-rooftop bp-btn--no-background">No Background</button>
       </td>
       <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-rooftop">.bp-btn--c-rooftop</span> .bp-btn--no-background</td>
-    </tr>
-  </tbody>
-</table>
-```
-
-<h3>Text-only</h3>
-
-The variation **bp-btn--text-only** not only makes the **base** button's background color transparent, but also its size fits the text inside. Its min-width is 0px, its height is auto, its line-height is 18px and its horizontal padding is smaller.
-
-```text-only.html
-<table>
-  <tbody>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--silver bp-btn--text-only">Text Only</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-silver">.bp-btn--silver</span> .bp-btn--text-only</td>
     </tr>
   </tbody>
 </table>

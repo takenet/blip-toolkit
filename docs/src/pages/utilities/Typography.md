@@ -67,6 +67,69 @@ There are **eight** custom font sizes, ordered by decrescent size.
 </table>
 ```
 
+<h3> Line Height </h3>
+
+There are **eight** custom line heights, ordered by decrescent size and based on all font sizes.
+
+These line heights are calculated by multiplying their respective font size by 1.5, according to [W3's accessibility specifications](https://www.w3.org/TR/WCAG20-TECHS/C21.html).
+
+```font-size.html
+<table>
+  <tbody>
+    <tr>
+      <td class="bp-lh-1 tc">
+        Line Height 1 </br> 4.5rem / 72px
+      </td>
+      <td class="bp-fs-5 tl">.bp-lh-1</td>
+    </tr>
+    <tr>
+      <td class="bp-lh-2 tc">
+        Line Height 2 </br> 3rem / 48px
+      </td>
+      <td class="bp-fs-5 tl">.bp-lh-2</td>
+    </tr>
+    <tr>
+      <td class="bp-lh-3 tc">
+        Line Height 3 </br> 2.25rem / 36px
+      </td>
+      <td class="bp-fs-5 tl">.bp-lh-3</td>
+    </tr>
+    <tr>
+      <td class="bp-lh-4 tc">
+        Line Height 1 </br> 4.5rem / 72px
+      </td>
+      <td class="bp-fs-5 tl">.bp-lh-4</td>
+    </tr>
+    <tr>
+      <td class="bp-lh-5 tc">
+        Line Height 1 </br> 4.5rem / 72px
+      </td>
+      <td class="bp-fs-5 tl">.bp-lh-5</td>
+    </tr>
+    <tr>
+      <td class="bp-lh-6 tc">
+        Line Height 1 </br> 4.5rem / 72px
+      </td>
+      <td class="bp-fs-5 tl">.bp-lh-6</td>
+    </tr>
+    <tr>
+      <td class="bp-lh-7 tc">
+        Line Height 1 </br> 4.5rem / 72px
+      </td>
+      <td class="bp-fs-5 tl">.bp-lh-7</td>
+    </tr>
+    <tr>
+      <td class="bp-lh-8 tc">
+        Line Height 1 </br> 4.5rem / 72px
+      </td>
+      <td class="bp-fs-5 tl">.bp-lh-8</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+There are also **four** relative line-height classes: **zero** (0%), **simple** (100%), **plus** (150%) and **double** (200%).
+
 <h3> Font Weight </h3>
 
 There are **three** custom font sizes: **regular**, **bold** and **extra bold**.

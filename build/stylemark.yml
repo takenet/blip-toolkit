@@ -4,6 +4,9 @@ name:
 theme:
   logo: "./docs/src/assets/icons/logo-blip.png"
 
+  css:
+    - "./docs/src/assets/css/theme.css"
+
   sidebar:
     background: '#242b36'
     textColor: '#fff'
@@ -12,7 +15,7 @@ examples:
   css:
     - "./dist/blip-toolkit.css"
     - "./node_modules/tachyons/css/tachyons.min.css"
-    - "./docs/src/assets/css/all.css"
+    - "./docs/src/assets/css/examples.css"
 
   js:
     - "./dist/blip-toolkit.js"
@@ -26,4 +29,7 @@ examples:
 #webpackAppPath: 'BLiPToolkit'
 # For Webpack apps (esp. React, Angular, etc.), this is the `output.library` value in your webpack config
 
-# order: (optional) See Ordering section
+order:
+  - +Getting Started
+  - +Utilities
+  - +Components

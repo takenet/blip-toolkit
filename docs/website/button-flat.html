@@ -51,7 +51,7 @@
 
 			<link rel="stylesheet" href="./dist/blip-toolkit.css">
 			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
-			<link rel="stylesheet" href="./docs/src/assets/css/all.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
 			<script src="./dist/blip-toolkit.js"></script>
 	</head>
 
@@ -59,27 +59,15 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--bot bp-btn--arrow">Base Arrow</button>
+        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-bot">.bp-btn--bot</span> .bp-btn--arrow</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--bot bp-btn--arrow" disabled>Base Arrow</button>
+        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-bot">.bp-btn--bot</span> .bp-btn--arrow [disabled]</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow">Flat Arrow</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-onix">.bp-btn--onix</span> .bp-btn--flat .bp-btn--arrow</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow" disabled>Flat Arrow</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-onix">.bp-btn--onix</span> .bp-btn--flat .bp-btn--arrow [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
     </tr>
   </tbody>
 </table>
@@ -87,27 +75,15 @@
   <tbody>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--bot bp-btn--arrow">Base Arrow</button>
+        <button class="bp-btn bp-btn--flat bp-btn--blip-light">Flat Default</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-bot">.bp-btn--bot</span> .bp-btn--arrow</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat</td>
     </tr>
     <tr>
       <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--bot bp-btn--arrow" disabled>Base Arrow</button>
+        <button class="bp-btn bp-btn--flat bp-btn--blip-light" disabled>Flat Default</button>
       </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-bot">.bp-btn--bot</span> .bp-btn--arrow [disabled]</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow">Flat Arrow</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-onix">.bp-btn--onix</span> .bp-btn--flat .bp-btn--arrow</td>
-    </tr>
-    <tr>
-      <td class="bp-fs-5 tc">
-        <button class="bp-btn bp-btn--onix bp-btn--flat bp-btn--arrow" disabled>Flat Arrow</button>
-      </td>
-      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-onix">.bp-btn--onix</span> .bp-btn--flat .bp-btn--arrow [disabled]</td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--flat [disabled]</td>
     </tr>
   </tbody>
 </table></script>
@@ -143,10 +119,10 @@
 					}
 					else {
 						// Creates a new module
-						module = angular.module('stylemark-button-arrow', []);
+						module = angular.module('stylemark-button-flat', []);
 					}
 
-					module.controller('stylemark-button-arrow-' + index, function($scope) {
+					module.controller('stylemark-button-flat-' + index, function($scope) {
 						$scope.$eval(block);
 					});
 				});

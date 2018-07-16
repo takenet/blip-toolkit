@@ -1,5 +1,7 @@
 .bp-divider-h {
+  background-color: $bp-divider-bg-color;
   height: $bp-divider-base-size;
+  width: $bp-divider-length;
 
   &.bp-divider--medium {
     height: $bp-divider-medium-size;
@@ -11,7 +13,9 @@
 }
 
 .bp-divider-v {
+  background-color: $bp-divider-bg-color;
   width: $bp-divider-base-size;
+  height: $bp-divider-length;
 
   &.bp-divider--medium {
     width: $bp-divider-medium-size;

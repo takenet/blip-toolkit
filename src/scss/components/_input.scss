@@ -27,7 +27,7 @@
 .bp-input[type="password"][readonly] {
   border: none;
   font-size: $bp-fs-6;
-  background: transparent;
+  background: $bp-color-white;
   width: 89%;
   height: auto;
   padding: 0;
@@ -38,6 +38,18 @@
     outline: none;
   }
 }
+
+.bp-input[disabled],
+.bp-input[type="email"][disabled],
+.bp-input[type="number"][disabled],
+.bp-input[type="search"][disabled],
+.bp-input[type="text"][disabled],
+.bp-input[type="tel"][disabled],
+.bp-input[type="url"][disabled],
+.bp-input[type="password"][disabled] {
+  background-color: $bp-color-offwhite;
+}
+
 
 /**
 * Eliminating arrows from number input

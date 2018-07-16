@@ -5,9 +5,12 @@
 
 @mixin bp-btn--custom ($primary-color, $secondary-color) {
   @include bp-btn--regular ($primary-color, $secondary-color);
-  @include bp-btn--flat ($secondary-color, $secondary-color);
+  @include bp-btn--bordered ($secondary-color, $secondary-color);
   @include bp-btn--regular-arrow($secondary-color);
-  @include bp-btn--flat-arrow($secondary-color);
+  @include bp-btn--bordered-arrow($secondary-color);
+  @include bp-btn--text-only($secondary-color);
+  @include bp-btn--no-background();
+  @include bp-btn--no-border();
 }
 
 @mixin bp-btn--arrow () {
@@ -41,15 +44,67 @@
   &:disabled {
     background-color: $bp-btn-bg-color;
     color: $bp-btn-color;
-    border: none;
+    border-width: 0;
   }
 }
 
-@mixin bp-btn--flat($color, $border-color) {
-  &.bp-btn--flat {
+@mixin bp-btn--text-only($color) {
+  &.bp-btn--text-only {
+    min-width: 0;
+    height: auto;
+    line-height: $bp-btn-text-only-line-height;
+    padding: $bp-btn-text-only-padding;
     color: $color;
     background-color: transparent;
-    border: $bp-btn-border;
+
+    &:hover {
+      background-color: transparent;
+      color: bp-darken($color);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: $bp-btn-bg-color;
+    }
+  }
+}
+
+@mixin bp-btn--bordered($color, $border-color) {
+  &.bp-btn--flat {
+    border-style: $bp-btn-flat-border-style;
+  }
+
+  &.bp-btn--dashed {
+    border-style: $bp-btn-dashed-border-style;
+  }
+
+  &.bp-btn--flat,
+  &.bp-btn--dashed {
+    color: $color;
+    background-color: transparent;
+    border-width: $bp-btn-border-width;
+    border-color: $border-color;
+
+    &:hover {
+      background-color: transparent;
+      border-color: bp-darken($border-color);
+      color: bp-darken($color);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: $bp-btn-bg-color;
+      border-width: $bp-btn-border-width;
+      border-color: $bp-btn-bg-color;
+    }
+  }
+}
+
+@mixin bp-btn--dashed($color, $border-color) {
+  &.bp-btn--dashed {
+    color: $color;
+    background-color: transparent;
+    border: $bp-btn-dashed-border;
     border-color: $border-color;
 
     &:hover {
@@ -62,7 +117,7 @@
       background-color: transparent;
       color: $bp-btn-bg-color;
       border-color: $bp-btn-bg-color;
-      border: $bp-btn-border;
+      border: $bp-btn-dashed-border;
     }
   }
 }
@@ -84,26 +139,37 @@
       &:after {
         background-color: $bp-btn-bg-color;
         color: $bp-btn-color;
-        border: none;
+        border-width: 0;
       }
     }
   }
 }
 
-@mixin bp-btn--flat-arrow($color) {
+@mixin bp-btn--bordered-arrow($color) {
   &.bp-btn--arrow {
     &.bp-btn--flat {
+      &:after {
+        border-style: $bp-btn-flat-border-style;
+      }
+    }
+
+    &.bp-btn--dashed {
+      &:after {
+        border-style: $bp-btn-dashed-border-style;
+      }
+    }
+
+    &.bp-btn--flat,
+    &.bp-btn--dashed {
       border-right: none;
       &:after {
         width: 27px;
         height: 27px;
         right: -14px;
         top: 5px;
-        border: $bp-btn-border;
-        border-left: none;
-        border-bottom: none;
-        background-color: transparent;
+        border-width: $bp-btn-border-width $bp-btn-border-width 0 0;
         border-color: $color;
+        background-color: transparent;
       }
 
       &:hover {
@@ -118,10 +184,8 @@
         &:after {
           background-color: transparent;
           color: $bp-btn-bg-color;
+          border-width: $bp-btn-border-width $bp-btn-border-width 0 0;
           border-color: $bp-btn-bg-color;
-          border: $bp-btn-border;
-          border-left: none;
-          border-bottom: none;
         }
       }
     }
@@ -131,9 +195,21 @@
 @mixin bp-btn--c($color) {
   color: $color;
 
-  &.bp-btn--flat {
+  &:disabled {
+    color: $bp-btn-color;
+  }
+
+  &.bp-btn--flat,
+  &.bp-btn--text-only {
     &:hover {
       color: bp-darken($color);
+    }
+
+    &:disabled {
+      color: $bp-btn-bg-color;
+      &:hover {
+        color: $bp-btn-bg-color;
+      }
     }
   }
 }
@@ -141,8 +217,18 @@
 @mixin bp-btn--bg($bg-color) {
   background-color: $bg-color;
 
+  &:disabled {
+    background-color: $bp-btn-bg-color;
+  }
+
   &:hover {
     background-color: bp-darken($bg-color);
+  }
+
+  &:disabled {
+    &:hover {
+      background-color: $bp-btn-bg-color;
+    }
   }
 
   @include bp-btn--regular-arrow($bg-color);
@@ -150,13 +236,13 @@
 
 @mixin bp-btn--no-border() {
   &.bp-btn--no-border {
-    border: none;
+    border-width: 0;
     &:active,
     &:focus,
     &:visited,
     &:hover,
     &:disabled {
-      border: none;
+      border-width: 0;
     }
   }
 }

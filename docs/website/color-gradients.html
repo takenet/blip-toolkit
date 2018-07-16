@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+
+	<head>
+		
+
+		<style>
+					
+.example-container {
+  width: 240px;
+}
+
+.card-container {
+  height: 120px;
+  width: 120px;
+  padding: 0;
+  margin-bottom: 0.25rem;
+}
+		</style>
+
+		<style>
+			html, body {
+				min-height: 0 !important;
+				height: auto !important;
+			}
+		</style>
+
+		<script>
+			function findAndHandleStylemarkBlocks(languages, handler) {
+				var blocks = getStylemarkBlocks(languages);
+				handleStylemarkBlocks(blocks, handler);
+			}
+
+			function getStylemarkBlocks(languages) {
+				languages = typeof languages === 'string' ? [languages] : languages;
+
+				var selectors = [];
+
+				for (var i = 0; i < languages.length; i++) {
+					selectors.push('script[data-language="' + languages[i] + '"]');
+				}
+
+				var selector = selectors.join(',');
+				var scripts = document.querySelectorAll(selector);
+				var blocks = [];
+
+				for (var i = 0, length = scripts.length; i < length; i++) {
+					if (scripts[i].innerText) {
+						blocks.push(scripts[i].innerText);
+					}
+				}
+
+				return blocks;
+			}
+
+			function handleStylemarkBlocks(blocks, handler) {
+				for (var i = 0, length = blocks.length; i < length; i++) {
+					handler(blocks[i], i);
+				}
+			}
+		</script>
+
+			<link rel="stylesheet" href="./dist/blip-toolkit.css">
+			<link rel="stylesheet" href="./node_modules/tachyons/css/tachyons.min.css">
+			<link rel="stylesheet" href="./docs/src/assets/css/examples.css">
+			<script src="./dist/blip-toolkit.js"></script>
+	</head>
+
+	<body>					<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-shine">
+    </div>
+    <span class="db tc bp-c-time">
+      .bp-grad-shine: (180deg, #f9fbfc 0%, #ecf1f3 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-bot">
+    </div>
+    <span class="db tc bp-c-blip-dark">
+      .bp-grad-bot: (90deg, #51DBE3 0%, #28B4C3 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-blip">
+    </div>
+    <span class="db tc bp-c-blip-light">
+      .bp-grad-blip: (137.45deg, #1BD6E7 0%, #0FC3F8 56.17%, #0ABCFF 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-center items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-suit">
+    </div>
+    <span class="db tc bp-c-suit">
+      .bp-grad-suit: (90deg,#3d4554,#2f3747);
+    </span>
+  </div>
+</div>
+			<script type="text/x-stylemark" data-language="html"><div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-shine">
+    </div>
+    <span class="db tc bp-c-time">
+      .bp-grad-shine: (180deg, #f9fbfc 0%, #ecf1f3 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-bot">
+    </div>
+    <span class="db tc bp-c-blip-dark">
+      .bp-grad-bot: (90deg, #51DBE3 0%, #28B4C3 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-blip">
+    </div>
+    <span class="db tc bp-c-blip-light">
+      .bp-grad-blip: (137.45deg, #1BD6E7 0%, #0FC3F8 56.17%, #0ABCFF 100%);
+    </span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-center items-center mt2 mb2 mh3">
+    <div class="db card-container bp-grad-suit">
+    </div>
+    <span class="db tc bp-c-suit">
+      .bp-grad-suit: (90deg,#3d4554,#2f3747);
+    </span>
+  </div>
+</div></script>
+			<script type="text/x-stylemark" data-language="css">
+.example-container {
+  width: 240px;
+}
+
+.card-container {
+  height: 120px;
+  width: 120px;
+  padding: 0;
+  margin-bottom: 0.25rem;
+}</script>
+
+		<!--
+			Vanilla JS
+		-->
+
+		<script>
+			findAndHandleStylemarkBlocks('js', function(block) {
+				eval(block);
+			});
+		</script>
+
+		<!--
+			AngularJS
+		-->
+
+		<script>
+			(function(angular) {
+
+				if (!angular) {
+					return;
+				}
+
+				findAndHandleStylemarkBlocks('angularjs', function(block, index) {
+					var moduleElem = document.querySelector('[ng-app]');
+					var module;
+
+					if (moduleElem) {
+						// Uses an existing module
+						module = angular.module(moduleElem.getAttribute('ng-app'));
+					}
+					else {
+						// Creates a new module
+						module = angular.module('stylemark-color-gradients', []);
+					}
+
+					module.controller('stylemark-color-gradients-' + index, function($scope) {
+						$scope.$eval(block);
+					});
+				});
+			})(window.angular);
+		</script>
+
+		<!--
+			React / JSX
+		-->
+
+		<script>
+			(function(ReactDOM) {
+
+				if (!ReactDOM) {
+					return;
+				}
+
+				findAndHandleStylemarkBlocks('jsx', function(block, index) {
+					var rootNode = document.querySelectorAll('.stylemark-react-root')[index];
+					var Component = eval(block);
+					ReactDOM.render(Component, rootNode);
+				});
+			})(window.ReactDOM);
+		</script>
+
+		<!--
+			Ember
+		-->
+
+		<script>
+			(function(Ember) {
+
+				if (!Ember) {
+					return;
+				}
+
+				findAndHandleStylemarkBlocks(['handlebars', 'hbs'], function(block, index) {
+					var render = function() {
+						var app = window.noop
+						var container = app.__container__;
+						var renderer = container.lookup('renderer:-dom');
+						var template = Ember.HTMLBars.compile(block);
+
+						var jsBlocks = getStylemarkBlocks('js');
+						var jsBlock = jsBlocks && jsBlocks[0] ? jsBlocks[0] : '{}';
+						var context;
+						eval('context = ' + jsBlock);
+
+						// Credit:
+						// http://stackoverflow.com/questions/27950413/render-ember-js-hbs-template-to-a-string#answer-35625858
+						var compile = function(container, template, context) {
+							return new Ember.RSVP.Promise(function(resolve) {
+								Ember.Component.extend(Ember.merge({
+									style: 'display:none;',
+									layout: template,
+									container: container,
+									renderer: renderer,
+
+									init: function() {
+										this._super.apply(this, arguments);
+										Ember.setOwner(this, container);
+									},
+
+									didRender: function() {
+										var elem = this.$();
+										resolve(elem);
+										this.destroy();
+									}
+								}, context))
+									.create()
+									.append();
+
+							});
+						};
+
+						compile(container, template, context).then(function(elem) {
+							var node = document.querySelectorAll('.stylemark-ember-root')[index];
+							jQuery(node).append(elem);
+						});
+					};
+
+					var isReady = function() {
+						return window.noop
+							&& window.noop.__container__;
+					};
+
+					var checkReady = function() {
+						if (isReady()) {
+							render();
+						}
+						else {
+							setTimeout(checkReady, 20);
+						}
+					};
+
+					checkReady();
+				});
+
+			})(window.Ember);
+		</script>
+
+		<script src="_stylemark/js/vendor/iframeResizer.contentWindow.min.js"></script>
+	</body>
+</html>

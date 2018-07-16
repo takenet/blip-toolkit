@@ -11,32 +11,37 @@ describe('BlipTag', () => {
 
   describe('Element', () => {
     it('should give a tag element with label passed as param', () => {
-      const component = new BlipTag({
+      const component = new BlipTag()
+      component.render({
         label: 'my-tag',
       })
 
-      expect(component.getValue()).toEqual('my-tag')
+      expect(component.props.label).toEqual('my-tag')
     })
 
     it('should set a tag background', () => {
-      const component = new BlipTag({
-        label: 'my-tag',
+      const component = new BlipTag()
+      const tagElement = component.render({
         canChangeBackground: true,
       })
 
-      component._selectColor('#FF4A1E')
-      expect(component.tagContainer.querySelector('.blip-tag').style.background).toEqual('rgb(255, 74, 30)')
+      const someColor = tagElement.querySelectorAll('.blip-tag-select-color li')[1]
+      someColor.dispatchEvent(new Event('click'))
+
+      expect(component.props.background).toEqual(someColor.getAttribute('data-color'))
     })
 
     it('should remove a tag', () => {
       const component = new BlipTag({
-        label: 'my-tag',
         canRemoveTag: true,
+        onRemove: function() {
+          console.log('Tag removed callback called')
+        },
       })
 
-      tagList.appendChild(component.element)
+      spyOn(component.tagOptions, 'onRemove')
       component._removeTag()
-      expect(component.tagContainer).toBeUndefined()
+      expect(component.tagOptions.onRemove).toHaveBeenCalled()
     })
   })
 })

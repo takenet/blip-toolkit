@@ -57,3 +57,13 @@ export const last = array => array[array.length - 1]
 export const insertAfter = (newElement, referenceElement) => {
   referenceElement.parentNode.insertBefore(newElement, referenceElement.nextSibling)
 }
+
+/**
+ * Returns the difference between two arrays
+ * @param {Array} a
+ * @param {Array} b
+ */
+export const differenceByLabel = otherArray => current =>
+  otherArray.filter(other => {
+    return other.label === current.label
+  }).length === 0

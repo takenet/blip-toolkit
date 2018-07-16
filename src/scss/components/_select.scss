@@ -14,15 +14,14 @@
   font-family: $bp-ff;
   font-size: $bp-fs-6;
   align-self: center;
+  position: relative;
+  z-index: 1;
 
   &:focus { outline: none; }
 }
 
 .blip-select__options {
   background: #fff;
-  padding: 0;
-  margin: 1px 0 0 0;
-  list-style: none;
   position: absolute;
   top: 100%; left: 0;
   width: 100%; max-height: 500px;
@@ -35,7 +34,13 @@
   opacity: 0;
   transition: 200ms;
   overflow-y: auto;
-  z-index: 1;
+  z-index: 2;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
 }
 
 .blip-select__options--open-top {
@@ -54,6 +59,16 @@
   &:focus {
     background: $bp-color-offwhite;
     outline: 0;
+  }
+
+  &.blip-select__empty-option {
+    cursor: default;
+  }
+}
+
+.blip-select__add-option {
+  small {
+    color: #fff;
   }
 }
 

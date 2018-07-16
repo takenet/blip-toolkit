@@ -1,18 +1,9 @@
 import { BlipTags } from '../../src/components/blipTags'
-import { BlipTag } from '../../src/components/blipTag'
 
 describe('BlipTags', () => {
-  let tagList
-
-  beforeEach(() => {
-    tagList = document.createElement('div')
-    tagList.id = 'my-tag-list'
-    document.body.appendChild(tagList)
-  })
-
   describe('Instance', () => {
     it('should return a BlipTags instance', () => {
-      const tags = new BlipTags(tagList)
+      const tags = new BlipTags()
 
       expect(tags instanceof BlipTags).toBeTruthy()
     })
@@ -22,30 +13,47 @@ describe('BlipTags', () => {
     describe('Handle tags', () => {
       describe('Add', () => {
         it('should add a tag', () => {
-          const tagsInstance = new BlipTags(tagList)
-          const tag = new BlipTag({ label: 'Tag', background: 'red' })
-          tagsInstance.addTag(tag)
+          const tagsInstance = new BlipTags()
 
-          expect(tagsInstance.tags.filter(t => t.label === 'Tag').length > 0).toBeTruthy()
+          document.body.appendChild(tagsInstance.render({
+            tags: [{ label: 'a', background: 'red' }, { label: 'b' }, { label: 'c' }],
+            options: [{ label: 'a', background: 'red' }, { label: 'b' }, { label: 'c' }, { label: 'd', background: 'black' }],
+          }))
+
+          tagsInstance.addTag({
+            $event: {
+              newOption: {
+                label: 'Added tag',
+                background: 'black',
+              },
+            },
+          })
+
+          expect(tagsInstance.props.tags.some(t => t.label === 'Added tag')).toBeTruthy()
         })
       })
 
       describe('Remove', () => {
         it('should remove a tag', () => {
-          const tagsInstance = new BlipTags(tagList)
-          const tag = new BlipTag({ label: 'Tag', background: 'red' })
-          const newTag = tagsInstance.addTag(tag)
+          const tagsInstance = new BlipTags()
+          document.body.appendChild(tagsInstance.render({
+            tags: [{ label: 'Tag 1', background: 'red' }],
+          }))
 
-          tagsInstance._removeTag({
+          expect(tagsInstance.props.tags.some(t => t.label === 'Tag 1')).toBeTruthy()
+
+          const tagId = tagsInstance.props.tags[0].id
+          tagsInstance._handleRemoveTag({
             $event: {
               tag: {
-                label: newTag.label,
-                id: newTag.tagOptions.id,
+                props: {
+                  id: tagId,
+                },
               },
             },
           })
 
-          expect(tagsInstance.tags.filter(t => t.label === 'Tag').length === 0).toBeTruthy()
+          expect(tagsInstance.props.tags.some(t => t.label === 'Tag 1')).toBeFalsy()
         })
       })
     })

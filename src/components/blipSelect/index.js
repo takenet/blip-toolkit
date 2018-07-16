@@ -72,6 +72,8 @@ export class BlipSelect extends Nanocomponent {
       inputValue: '',
       options: [],
     }
+
+    this.addGlobalListeners()
   }
 
   /**
@@ -130,7 +132,8 @@ export class BlipSelect extends Nanocomponent {
     }
 
     const isReadOnly = () => this.configOptions.mode === 'select'
-    const hasBulletClass = () => this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
+    const hasBulletClass = () =>
+      this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
 
     return html`
       <div class="bp-input-wrapper blip-select ${hasBulletClass()}">
@@ -215,7 +218,9 @@ export class BlipSelect extends Nanocomponent {
    * @param {EventEmitter} emitter
    */
   _handleAddOption(emitter) {
-    const { $event: { newOption } } = emitter
+    const {
+      $event: { newOption },
+    } = emitter
 
     console.log(newOption)
 
@@ -233,7 +238,8 @@ export class BlipSelect extends Nanocomponent {
     this.input.focus()
 
     if (this.isSelectOpen) {
-      setTimeout(() => { // Time for add new option and render new list
+      setTimeout(() => {
+        // Time for add new option and render new list
         this._closeSelect()
       }, 100)
     }
@@ -272,7 +278,7 @@ export class BlipSelect extends Nanocomponent {
         }
         break
       case 13: // enter
-        if (this.props.options.some(t => t.label === this.input.value)) {
+        if (this.props.options.some((t) => t.label === this.input.value)) {
           return
         }
 
@@ -292,12 +298,15 @@ export class BlipSelect extends Nanocomponent {
    */
   _getSearchResults(query) {
     return this.configOptions.customSearch
-      ? this.configOptions.customSearch.call(this, EventEmitter({
-        query,
-        items: this.props.options,
-      }))
-      : this.props.options.filter(
-        ({ label }) => label.toLowerCase().includes(query.toLowerCase())
+      ? this.configOptions.customSearch.call(
+        this,
+        EventEmitter({
+          query,
+          items: this.props.options,
+        }),
+      )
+      : this.props.options.filter(({ label }) =>
+        label.toLowerCase().includes(query.toLowerCase()),
       )
   }
 
@@ -317,6 +326,7 @@ export class BlipSelect extends Nanocomponent {
    * On input change event
    */
   _onInputChange(event) {
+    console.log('input change')
     if (typeof this.configOptions.onInputChange !== 'function') {
       throw new Error('Callback "onInputChange" is not a function')
     }
@@ -359,7 +369,10 @@ export class BlipSelect extends Nanocomponent {
     }
 
     if (label) {
-      this.configOptions.onSelectOption.call(this, EventEmitter({ optionProps }))
+      this.configOptions.onSelectOption.call(
+        this,
+        EventEmitter({ optionProps }),
+      )
     }
   }
 
@@ -369,7 +382,9 @@ export class BlipSelect extends Nanocomponent {
   clearInput() {
     this._setInputValue({ label: '' })
 
-    const event = new CustomEvent('keyup', { detail: { shouldOpenSelect: false } })
+    const event = new CustomEvent('keyup', {
+      detail: { shouldOpenSelect: false },
+    })
     this.input.dispatchEvent(event)
   }
 
@@ -379,7 +394,7 @@ export class BlipSelect extends Nanocomponent {
    */
   setValue({ label, ...rest }) {
     if (rest.value) {
-      const match = this.props.options.find(o => o.value === rest.value)
+      const match = this.props.options.find((o) => o.value === rest.value)
 
       if (match) {
         match.element.classList.add(blipSelectOptionSeletedClass)
@@ -393,7 +408,9 @@ export class BlipSelect extends Nanocomponent {
       this._setInputValue({ label, ...rest })
     }
 
-    const event = new CustomEvent('input', { detail: { shouldOpenSelect: false } })
+    const event = new CustomEvent('input', {
+      detail: { shouldOpenSelect: false },
+    })
     this.input.dispatchEvent(event)
   }
 
@@ -408,7 +425,7 @@ export class BlipSelect extends Nanocomponent {
       }
     }
 
-    const match = this.props.options.find(o => o.label === this.input.value)
+    const match = this.props.options.find((o) => o.label === this.input.value)
     if (match) {
       return {
         value: match.value,
@@ -444,12 +461,16 @@ export class BlipSelect extends Nanocomponent {
    * Remove all selected class from options
    */
   _resetSelectedOptions() {
-    const elementOptions = [...this.element.querySelector(`#${this.customSelectId}`).querySelectorAll('li')]
+    const elementOptions = [
+      ...this.element
+        .querySelector(`#${this.customSelectId}`)
+        .querySelectorAll('li'),
+    ]
     elementOptions.forEach(
-      o =>
+      (o) =>
         o.classList.contains(blipSelectOptionSeletedClass)
           ? o.classList.remove(blipSelectOptionSeletedClass)
-          : ''
+          : '',
     )
   }
 
@@ -457,7 +478,12 @@ export class BlipSelect extends Nanocomponent {
    * On select click
    */
   _onSelectFocus(event) {
-    if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.props.options.length === 0)) {
+    if (
+      this.isDisabled ||
+      (this.input.value === '' &&
+        this.configOptions.canAddOption &&
+        this.props.options.length === 0)
+    ) {
       return
     }
 
@@ -508,7 +534,8 @@ export class BlipSelect extends Nanocomponent {
     }
     this.configOptions.onBlur(event)
 
-    setTimeout(() => { // Needed for get option value on "li" click
+    setTimeout(() => {
+      // Needed for get option value on "li" click
       this._closeSelect()
     }, ANIMATION_TIMEOUT - 200)
   }
@@ -517,10 +544,13 @@ export class BlipSelect extends Nanocomponent {
    * Open select setting up styles
    */
   _openSelect() {
-    const selectOptionsContainer = this.element.querySelector(`.blip-select__options`)
+    const selectOptionsContainer = this.element.querySelector(
+      `.blip-select__options`,
+    )
     selectOptionsContainer.style.display = 'block'
 
-    setTimeout(() => { // Needed for animation
+    setTimeout(() => {
+      // Needed for animation
       selectOptionsContainer.style.transform = 'scale(1)'
       selectOptionsContainer.style.opacity = 1
     })
@@ -535,16 +565,22 @@ export class BlipSelect extends Nanocomponent {
    * If has a selected option, center scroll to element
    */
   _centerSelectedOption(ev) {
-    const selectedOption = this.optionsList.element.querySelector(`li.${blipSelectOptionSeletedClass}`)
+    const selectedOption = this.optionsList.element.querySelector(
+      `li.${blipSelectOptionSeletedClass}`,
+    )
 
-    if (this.optionsList.element.scrollHeight > this.optionsList.element.clientHeight && ev.propertyName === 'transform') {
+    if (
+      this.optionsList.element.scrollHeight >
+        this.optionsList.element.clientHeight &&
+      ev.propertyName === 'transform'
+    ) {
       if (!selectedOption) {
         return
       }
 
       let scrollOffset =
-            selectedOption.getBoundingClientRect().top -
-            this.optionsList.element.getBoundingClientRect().top // scroll to selected option
+        selectedOption.getBoundingClientRect().top -
+        this.optionsList.element.getBoundingClientRect().top // scroll to selected option
       scrollOffset -= this.optionsList.element.clientHeight / 2 // center in dropdown
 
       this.optionsList.element.scrollTop = scrollOffset
@@ -555,7 +591,9 @@ export class BlipSelect extends Nanocomponent {
    * Close select setting up styles
    */
   _closeSelect() {
-    const selectOptionsContainer = this.element.querySelector(`.blip-select__options`)
+    const selectOptionsContainer = this.element.querySelector(
+      `.blip-select__options`,
+    )
 
     if (typeof this.configOptions.onBeforeCloseSelect !== 'function') {
       throw Error('Callback "onBeforeCloseSelect" is not a function')
@@ -571,7 +609,8 @@ export class BlipSelect extends Nanocomponent {
     selectOptionsContainer.style.transform = 'scale(0)'
     selectOptionsContainer.style.opacity = 0
 
-    setTimeout(() => { // Needed for animation
+    setTimeout(() => {
+      // Needed for animation
       selectOptionsContainer.style.display = 'none'
       selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
     }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
@@ -599,6 +638,18 @@ export class BlipSelect extends Nanocomponent {
     this.input.removeEventListener('focus', this._handleSelectFocus)
     this.input.removeEventListener('blur', this._handleSelectBlur)
     this.input.removeEventListener('keyup', this._handleInputChange)
+  }
+
+  /**
+   * Remove element listeners
+   */
+  addGlobalListeners() {
+    this.element.querySelector('input').addEventListener('resetFilter', event => {
+      console.log('evento')
+      this.optionsList.render({
+        options: this.props.options,
+      })
+    })
   }
 
   /**

@@ -72,8 +72,6 @@ export class BlipSelect extends Nanocomponent {
       inputValue: '',
       options: [],
     }
-
-    // this.addGlobalListeners()
   }
 
   /**
@@ -170,6 +168,13 @@ export class BlipSelect extends Nanocomponent {
     }
 
     return true
+  }
+
+  /**
+   * Called after component update
+   */
+  afterupdate() {
+    this.addGlobalListeners()
   }
 
   /**
@@ -645,7 +650,6 @@ export class BlipSelect extends Nanocomponent {
    */
   addGlobalListeners() {
     this.element.querySelector('input').addEventListener('resetFilter', event => {
-      console.log('evento')
       this.optionsList.render({
         options: this.props.options,
       })

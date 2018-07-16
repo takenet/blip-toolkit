@@ -73,7 +73,7 @@ export class BlipSelect extends Nanocomponent {
       options: [],
     }
 
-    this.addGlobalListeners()
+    // this.addGlobalListeners()
   }
 
   /**

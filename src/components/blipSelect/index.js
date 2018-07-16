@@ -31,10 +31,11 @@ export class BlipSelect extends Nanocomponent {
     placeholder: 'Select...',
     mode: 'select',
     noResultsText: 'No results found',
-    beforeOpenSelect: () => {},
-    afterOpenSelect: () => {},
-    beforeCloseSelect: () => {},
-    afterCloseSelect: () => {},
+    clearAfterAdd: true, // Clear input after add new option
+    onBeforeOpenSelect: () => {},
+    onAfterOpenSelect: () => {},
+    onBeforeCloseSelect: () => {},
+    onAfterCloseSelect: () => {},
     onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
     onInputKeyup: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
     onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
@@ -215,6 +216,9 @@ export class BlipSelect extends Nanocomponent {
    */
   _handleAddOption(emitter) {
     const { $event: { newOption } } = emitter
+
+    console.log(newOption)
+
     const newOptions = this.props.options.concat(newOption)
     this.props.options = newOptions
 
@@ -222,7 +226,10 @@ export class BlipSelect extends Nanocomponent {
       options: newOptions,
     })
 
-    this.input.value = ''
+    if (this.configOptions.clearAfterAdd) {
+      this.input.value = ''
+    }
+
     this.input.focus()
 
     if (this.isSelectOpen) {
@@ -449,28 +456,28 @@ export class BlipSelect extends Nanocomponent {
   /**
    * On select click
    */
-  _onSelectFocus() {
+  _onSelectFocus(event) {
     if (this.isDisabled || (this.input.value === '' && this.configOptions.canAddOption && this.props.options.length === 0)) {
       return
     }
 
-    if (typeof this.configOptions.beforeOpenSelect !== 'function') {
-      throw Error('Callback "beforeOpenSelect" is not a function')
+    if (typeof this.configOptions.onBeforeOpenSelect !== 'function') {
+      throw Error('Callback "onBeforeOpenSelect" is not a function')
     }
 
-    if (typeof this.configOptions.afterOpenSelect !== 'function') {
-      throw Error('Callback "afterOpenSelect" is not a function')
+    if (typeof this.configOptions.onAfterOpenSelect !== 'function') {
+      throw Error('Callback "onAfterOpenSelect" is not a function')
     }
 
     // Callback invoked before select open
-    this.configOptions.beforeOpenSelect()
+    this.configOptions.onBeforeOpenSelect()
 
-    this.configOptions.onFocus()
+    this.configOptions.onFocus(event)
 
     this._openSelect()
 
     // Callback invoked after select open
-    this.configOptions.afterOpenSelect()
+    this.configOptions.onAfterOpenSelect()
   }
 
   /**
@@ -494,12 +501,12 @@ export class BlipSelect extends Nanocomponent {
   /**
    * On select blur
    */
-  _onSelectBlur(e) {
+  _onSelectBlur(event) {
     // Prevents close container before user can select any option
-    if (this._isPartOfComponent(e)) {
+    if (this._isPartOfComponent(event)) {
       return
     }
-    this.configOptions.onBlur(e)
+    this.configOptions.onBlur(event)
 
     setTimeout(() => { // Needed for get option value on "li" click
       this._closeSelect()
@@ -550,16 +557,16 @@ export class BlipSelect extends Nanocomponent {
   _closeSelect() {
     const selectOptionsContainer = this.element.querySelector(`.blip-select__options`)
 
-    if (typeof this.configOptions.beforeCloseSelect !== 'function') {
-      throw Error('Callback "beforeCloseSelect" is not a function')
+    if (typeof this.configOptions.onBeforeCloseSelect !== 'function') {
+      throw Error('Callback "onBeforeCloseSelect" is not a function')
     }
 
-    if (typeof this.configOptions.afterCloseSelect !== 'function') {
-      throw Error('Callback "afterCloseSelect" is not a function')
+    if (typeof this.configOptions.onAfterCloseSelect !== 'function') {
+      throw Error('Callback "onAfterCloseSelect" is not a function')
     }
 
     // Callback invoked before select open
-    this.configOptions.beforeCloseSelect()
+    this.configOptions.onBeforeCloseSelect()
 
     selectOptionsContainer.style.transform = 'scale(0)'
     selectOptionsContainer.style.opacity = 0
@@ -575,7 +582,7 @@ export class BlipSelect extends Nanocomponent {
     this.isSelectOpen = false
 
     // Callback invoked after select open
-    this.configOptions.afterCloseSelect()
+    this.configOptions.onAfterCloseSelect()
   }
 
   /**

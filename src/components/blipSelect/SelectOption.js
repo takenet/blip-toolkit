@@ -11,7 +11,7 @@ export class SelectOption extends OptionItem {
     this.props = {
       value: undefined,
       label: undefined,
-      id: undefined,
+      id: `blip-select__option-${guid()}`,
     }
   }
 

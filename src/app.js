@@ -1,8 +1,11 @@
-// Polyfills
 import './lib/prependPolyfill'
+import './scss/main.scss'
+
+if (!window._babelPolyfill) {
+  require('babel-polyfill')
+}
 
 //
-import './scss/main.scss'
 export { BlipSelect } from './components/blipSelect'
 export { BlipTags } from './components/blipTags'
 export { BlipTag } from './components/blipTag'

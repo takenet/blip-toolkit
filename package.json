@@ -91,6 +91,7 @@
     "components"
   ],
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "stylemark": "^3.0.1",
     "tachyons": "^4.10.0"
   }

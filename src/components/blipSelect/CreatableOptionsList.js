@@ -81,7 +81,7 @@ export class CreatebleOptionsList extends Nanocomponent {
             onkeydown="${this._handleNewOptionKeydown.bind(this)}"
             onclick="${this.addOption.bind(this, newOption)}"
             class="blip-select__option blip-select__add-option">
-            <small>${this.options.addOptionText}</small>
+            <small class="blip-prompt-add-option">${this.options.addOptionText}</small>
             <div class="blip-new-option-text">${newOption}</div>
           </div>
         `

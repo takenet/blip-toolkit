@@ -143,14 +143,13 @@ export class BlipTags extends Nanocomponent {
    */
   addGlobalListeners() {
     this.handleCloseColors = (event) => {
-      console.log(event.target)
-
       if (
         event.target &&
         (
           event.target.classList.contains('blip-tag-select-color') ||
           event.target.classList.contains('blip-select__add-option') ||
-          event.target.classList.contains('blip-new-option-text')
+          event.target.classList.contains('blip-new-option-text') ||
+          event.target.classList.contains('blip-prompt-add-option')
         )
       ) {
         return

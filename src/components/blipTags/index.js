@@ -32,6 +32,7 @@ export class BlipTags extends Nanocomponent {
     onTagAdded: () => {},
     onTagRemoved: () => {},
     onSelectTagColor: () => {},
+    onTagClick: () => {},
   }
 
   constructor(options) {
@@ -328,5 +329,7 @@ export class BlipTags extends Nanocomponent {
         }
       })
     }
+
+    this.configOptions.onTagClick.call(this, EventEmitter({ ...$event }))
   }
 }

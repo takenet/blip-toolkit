@@ -1,4 +1,5 @@
 import './lib/prependPolyfill'
+import './lib/customEventPolyfill'
 import './scss/main.scss'
 
 if (!window._babelPolyfill) {

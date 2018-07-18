@@ -1,6 +1,7 @@
 import Nanocomponent from 'nanocomponent'
 import html from 'nanohtml'
 import { EventEmitter } from '@lib/eventEmitter'
+import { renderEmptyOption } from '../shared'
 
 export class CreatebleOptionsList extends Nanocomponent {
   constructor(options) {
@@ -11,6 +12,9 @@ export class CreatebleOptionsList extends Nanocomponent {
     this.props = {
       options: [],
       newOption: '',
+      addOptionText: '',
+      emptyMessage: '',
+      blockNewEntries: false,
       OptionCreator: undefined,
     }
   }
@@ -36,7 +40,7 @@ export class CreatebleOptionsList extends Nanocomponent {
     return html`
       <ul>
         ${this.props.options.map(renderOption)}
-        ${this._renderAddOption(this.props.newOption)}
+        ${this.shouldRenderEmptyOption() ? renderEmptyOption(this.props.emptyMessage) : this._renderAddOption(this.props.newOption)}
       </ul>
     `
   }
@@ -54,14 +58,23 @@ export class CreatebleOptionsList extends Nanocomponent {
   _canAddOption(newOption) {
     return newOption &&
       newOption.trim() !== '' &&
+      !this.props.blockNewEntries &&
       !this.props.options.some(o => o.label === newOption)
+  }
+
+  /**
+   * Check if component should render empty option
+   */
+  shouldRenderEmptyOption() {
+    return this.props.options.length === 0 &&
+      this.props.blockNewEntries
   }
 
   /**
    * Render add new option
    */
   _renderAddOption(newOption) {
-    return this._canAddOption(this.props.newOption)
+    return this._canAddOption(newOption)
       ? html`
           <div tabindex="0"
             onkeydown="${this._handleNewOptionKeydown.bind(this)}"

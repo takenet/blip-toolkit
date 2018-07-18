@@ -63,6 +63,7 @@ export class BlipTags extends Nanocomponent {
       onInputKeyup: this._handleInputKeyup,
       onBlur: this._handleBlipSelectBlur,
       onFocus: this._handleBlipSelectFocus,
+      customSearch: this._handleCustomSearch,
       optionCreator: TagOption,
       placeholder: this.tagsOptions.placeholder,
     })
@@ -184,10 +185,24 @@ export class BlipTags extends Nanocomponent {
    * Custom options search
    */
   _customOptionsSearch({ $event }) {
-    const { query } = $event
-    const searchResults = this.tags.filter(t => t.label.toLowerCase().includes(query.toLowerCase()))
+    const { query, items } = $event
+    const lowerCaseQuery = query.toLowerCase()
+    const searchResults = items.filter(({ label }) => label.toLowerCase().includes(lowerCaseQuery))
 
-    return searchResults.map(({ label, tagBackground: value }) => ({ label, value }))
+    if (
+      this.props.tags.some(t => t.label.toLowerCase() === lowerCaseQuery)
+    ) {
+      this.blipSelectInstance.render({
+        blockNewEntries: true,
+        emptyMessage: 'Tag já adicionada',
+      })
+    } else {
+      this.blipSelectInstance.render({
+        blockNewEntries: false,
+      })
+    }
+
+    return searchResults
   }
 
   /**

@@ -71,6 +71,8 @@ export class BlipSelect extends Nanocomponent {
     this.props = {
       inputValue: '',
       options: [],
+      blockNewEntries: false,
+      emptyMessage: '',
     }
   }
 
@@ -167,6 +169,16 @@ export class BlipSelect extends Nanocomponent {
       return false
     }
 
+    if (props.blockNewEntries !== undefined) {
+      this.props.blockNewEntries = props.blockNewEntries
+      this.optionsList.render({
+        blockNewEntries: props.blockNewEntries,
+        emptyMessage: props.emptyMessage,
+      })
+
+      return false
+    }
+
     return true
   }
 
@@ -191,6 +203,7 @@ export class BlipSelect extends Nanocomponent {
         ...defaults,
         canAddOption: this.configOptions.canAddOption,
         newOption: this.props.newOption,
+        emptyMessage: this.props.emptyMessage,
       }
       : {
         ...defaults,
@@ -215,6 +228,17 @@ export class BlipSelect extends Nanocomponent {
       onTryAccessInput: () => this.input.focus(),
       onAddOption: this._handleAddOption.bind(this),
       addOptionText: this.configOptions.canAddOption.text,
+    })
+  }
+
+  /**
+   * Creates a OptionList instance with bindings
+   */
+  _createOptionsListInstance() {
+    return new OptionsList({
+      onOptionClick: this._onOptionClick.bind(this),
+      onTryAccessInput: () => this.input.focus(),
+      noResultsFound: this.configOptions.noResultsFound,
     })
   }
 
@@ -253,17 +277,6 @@ export class BlipSelect extends Nanocomponent {
   }
 
   /**
-   * Creates a OptionList instance with bindings
-   */
-  _createOptionsListInstance() {
-    return new OptionsList({
-      onOptionClick: this._onOptionClick.bind(this),
-      onTryAccessInput: () => this.input.focus(),
-      noResultsFound: this.configOptions.noResultsFound,
-    })
-  }
-
-  /**
    * Attach keyboard listeners when input is focused
    */
   _attachInputKeyboardListener(event) {
@@ -283,7 +296,10 @@ export class BlipSelect extends Nanocomponent {
         }
         break
       case 13: // enter
-        if (this.props.options.some((t) => t.label === this.input.value)) {
+        if (
+          this.props.options.some((t) => t.label === this.input.value) ||
+          this.props.blockNewEntries
+        ) {
           return
         }
 
@@ -331,7 +347,6 @@ export class BlipSelect extends Nanocomponent {
    * On input change event
    */
   _onInputChange(event) {
-    console.log('input change')
     if (typeof this.configOptions.onInputChange !== 'function') {
       throw new Error('Callback "onInputChange" is not a function')
     }

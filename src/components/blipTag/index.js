@@ -168,6 +168,11 @@ export class BlipTag extends Nanocomponent {
    * Function invoked when remove tag
    */
   _removeTag(event) {
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+
     if (this.tagOptions.onRemove && this.tagOptions.canRemoveTag) {
       this.tagOptions.onRemove.call(this, EventEmitter({
         tag: this,

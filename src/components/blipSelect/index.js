@@ -251,7 +251,7 @@ export class BlipSelect extends Nanocomponent {
     return new OptionsList({
       onOptionClick: this._onOptionClick.bind(this),
       onTryAccessInput: () => this.input.focus(),
-      noResultsFound: this.configOptions.noResultsFound,
+      noResultsText: this.configOptions.noResultsText,
     })
   }
 

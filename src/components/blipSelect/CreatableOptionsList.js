@@ -49,6 +49,7 @@ export class CreatebleOptionsList extends Nanocomponent {
    * Update element callback
    */
   update() {
+    this.props.newOption = ''
     return true
   }
 

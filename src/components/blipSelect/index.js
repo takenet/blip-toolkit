@@ -251,8 +251,6 @@ export class BlipSelect extends Nanocomponent {
       $event: { newOption },
     } = emitter
 
-    console.log(newOption)
-
     const newOptions = this.props.options.concat(newOption)
     this.props.options = newOptions
 

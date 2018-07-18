@@ -1,45 +1,55 @@
 # Blip Select
 
-Blip select is a JavaScript plugin to customize your select. You can use just as custom select or autocomplete behavior.
+Blip select is a JavaScript plugin to customize your select. We are using [nanocomponent](https://github.com/choojs/nanocomponent) to get a decent and clean lifecycle to our components. You can use just as custom select or autocomplete behavior.
+
+## [Example](https://codesandbox.io/s/146p3r1wx7)
 
 ## Usage
 
-```html
-<select id="amazing-select">
-  <option value="Option 1">Option 1</option>
-  <option value="Option 2">Option 2</option>
-  <option value="Option 3">Option 3</option>
-</select>
+```javascript
+import { BlipSelect } from 'blip-toolkit'
+const blipSelect = new BlipSelect()
+const selectElement = blipSelect.render({
+  options: [
+    { label: 'Option 1', value: 'opt1' },
+    { label: 'Option 2', value: 'opt2' },
+    { label: 'Option 3', value: 'opt3' },
+  ]
+})
 
-<script type="text/javascript">
-  import { BlipSelect } from 'blip-toolkit'
-  const amazingSelect = document.getElementById('amazing-select')
-  const blipSelect = new BlipSelect(amazingSelect)
-</script>
+document.body.appendChild(selectElement)
 ```
 
 Youn can also pass options to `BlipSelect` instance
 
-```html
-<select id="amazing-select">
-  <option value="Option 1">Option 1</option>
-  <option value="Option 2">Option 2</option>
-  <option value="Option 3">Option 3</option>
-</select>
+```javascript
+import { BlipSelect } from 'blip-toolkit'
+const blipSelect = new BlipSelect({
+  label: 'Custom Select',
+  onSelectOption: () => console.log('Option selected!')
+})
 
-<script type="text/javascript">
-  import { BlipSelect } from 'blip-toolkit'
-  const amazingSelect = document.getElementById('amazing-select')
-  const blipSelect = new BlipSelect(amazingSelect, {
-    label: 'Custom Select',
-    onSelectOption: () => console.log('Option selected!')
-  })
-</script>
+document.body.appendChild(blipSelect.render({
+  options: [{ label: 'Option 1', value: 'opt1' }],
+}))
+```
+
+To update select options programatically, call `render()` method with new options.
+
+```javascript
+const newOptions = [{
+  label: 'New option 1',
+  value: 'newOpt1',
+}]
+
+blipSelect.render({
+  options: newOptions,
+})
 ```
 
 ## Options
 
-`BlipSelect` is flexible, so you can pass some options and callbacks to be executed during usage
+`BlipSelect` is flexible, so you can pass some options and callbacks to be executed during usage. This component has **options** (callbacks and immutable properties, like 'label', 'mode' and etc) and **rendered properties**, as youy can see at [nanocomponent docs](https://github.com/choojs/nanocomponent).
 
 ---
 
@@ -68,6 +78,31 @@ You can set select as `disabled`
 ```js
 instance.isDisabled = true
 ```
+
+---
+
+#### `canAddOption` - object
+
+You can have a select that can add new options to options list, if the search results for user input is empty. This behavior require `autocomplete` mode.
+
+```javascript
+const selectInstance = new BlipSelect({
+  mode: 'autocomplete',
+  canAddOption: {
+    text: 'Add new option',
+  },
+})
+
+document.body.appendChild(
+  selectInstance.render({
+    options: [{ label: 'Option 1', value: 'opt1' }]
+  })
+)
+```
+
+---
+
+#### `clearAfterAdd` - boolean
 
 ---
 

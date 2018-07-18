@@ -73,6 +73,7 @@ export class BlipSelect extends Nanocomponent {
       options: [],
       blockNewEntries: false,
       emptyMessage: '',
+      disabled: this.configOptions.disabled,
     }
   }
 
@@ -148,6 +149,7 @@ export class BlipSelect extends Nanocomponent {
           oninput="${this._handleInputChange}"
           onclick="${this._handleInputClick}"
           data-target="${this.customSelectId}"
+          disabled="${this.isDisabled}"
           readonly="${isReadOnly()}">
         <div class="blip-select__options" id="${this.customSelectId}">
           ${this.optionsList.render(this._optionsListConfig())}
@@ -179,6 +181,14 @@ export class BlipSelect extends Nanocomponent {
       return false
     }
 
+    if (props.disabled !== undefined) {
+      this.isDisabled = props.disabled
+      this.optionsList.render({
+        disabled: props.disabled,
+      })
+      return false
+    }
+
     return true
   }
 
@@ -186,6 +196,9 @@ export class BlipSelect extends Nanocomponent {
    * Called after component update
    */
   afterupdate() {
+    if (this.configOptions.disabled !== undefined) {
+      this.isDisabled = this.configOptions.disabled
+    }
     this.addGlobalListeners()
   }
 

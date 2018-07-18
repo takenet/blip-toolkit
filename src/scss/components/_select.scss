@@ -1,6 +1,8 @@
 .blip-select {
   @include flex-box;
   flex-wrap: wrap;
+
+  &.bp-input-wrapper { background-color: transparent; }
 }
 
 .blip-select__input {

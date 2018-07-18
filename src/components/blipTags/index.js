@@ -330,6 +330,6 @@ export class BlipTags extends Nanocomponent {
       })
     }
 
-    this.configOptions.onTagClick.call(this, EventEmitter({ ...$event }))
+    this.tagsOptions.onTagClick.call(this, EventEmitter({ ...$event }))
   }
 }

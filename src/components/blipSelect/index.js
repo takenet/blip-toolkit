@@ -293,6 +293,8 @@ export class BlipSelect extends Component {
   _attachInputKeyboardListener(event) {
     switch (event.keyCode) {
       case 40: // arrow down
+        event.preventDefault()
+        event.stopPropagation()
         const currentElement = document.activeElement
         if (!this.isSelectOpen) {
           this._openSelect()

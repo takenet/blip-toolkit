@@ -26,6 +26,7 @@ export class BlipTag extends Component {
     toggleCollapse: false,
     onTagClick: () => {},
     onSelectColor: () => {},
+    onTagKeydown: () => {},
   }
 
   constructor(options) {
@@ -185,6 +186,8 @@ export class BlipTag extends Component {
    * Handle tag keydown when its is focused
    */
   _onTagKeydown(event) {
+    this.tagOptions.onTagKeydown.call(this, event)
+
     switch (event.keyCode) {
       case 8: // backspace
         this._removeTag(event)

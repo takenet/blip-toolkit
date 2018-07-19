@@ -32,10 +32,15 @@ export class OptionItem extends Component {
         break
       case 40: // arrow down
         if (element.nextSibling) {
+          event.preventDefault()
+          event.stopPropagation()
           element.nextSibling.focus()
         }
         break
       case 38: // arrow up
+        event.preventDefault()
+        event.stopPropagation()
+
         if (element.previousElementSibling) {
           element.previousElementSibling.focus()
         } else if (this.options.onTryAccessInput) {

@@ -3,6 +3,7 @@
   border-radius: 3px;
   padding: 0 5px;
   flex-wrap: wrap;
+  position: relative;
   @include flex-box;
 
   &:hover {
@@ -20,6 +21,7 @@
     border: 0;
     padding: 0;
     margin-top: 3px;
+    position: initial;
   }
 
   &.bp-input-wrapper--focus {

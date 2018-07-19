@@ -1,11 +1,11 @@
 import { EventEmitter } from '@lib/eventEmitter'
-import Nanocomponent from 'nanocomponent'
+import { Component } from '@component'
 
 /**
  * This class abstracts any option item of option list.
  * This pattern allows to create custom option item class, with its props and view
  */
-export class OptionItem extends Nanocomponent {
+export class OptionItem extends Component {
   $defaults = {
     onOptionClick: undefined,
     onTryAccessInput: undefined,

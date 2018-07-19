@@ -1,6 +1,6 @@
 import { guid } from '@lib/utils'
 import { EventEmitter } from '@lib/eventEmitter'
-import Nanocomponent from 'nanocomponent'
+import { Component } from '@component'
 import html from 'nanohtml'
 
 const blipTagContainerClass = 'blip-tag-container'
@@ -15,7 +15,7 @@ export const defaultTagBackground = '#2cc3d5'
 // Color options
 const colors = ['#0CC7CB', '#FF4A1E', '#FF6F1E', '#FF961E', '#1EDEFF', '#1EA1FF', '#61D36F', '#37C5AB', '#7762E3', '#EA4D9C', '#FC91AE', '#FF1E90']
 
-export class BlipTag extends Nanocomponent {
+export class BlipTag extends Component {
   $state = {
     id: `blip-tag-${guid()}`,
     mode: 'full', // can be full or compact

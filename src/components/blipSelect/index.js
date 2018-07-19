@@ -2,7 +2,7 @@ import { guid } from '@lib/utils'
 import { OptionsList } from './OptionsList'
 import { EventEmitter } from '@lib/eventEmitter'
 
-import Nanocomponent from 'nanocomponent'
+import { Component } from '@component'
 import html from 'nanohtml'
 import { CreatebleOptionsList } from './CreatableOptionsList'
 import { SelectOption } from './SelectOption'
@@ -19,7 +19,7 @@ const bpCblipLightClass = 'bp-c-blip-light'
 const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
 const bpInputWrapperDisabledClass = 'bp-input-wrapper--disabled'
 
-export class BlipSelect extends Nanocomponent {
+export class BlipSelect extends Component {
   /**
    * Component state
    */

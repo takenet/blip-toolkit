@@ -83,6 +83,7 @@ module.exports = {
   resolve: {
     alias: {
       '@lib': path.resolve(__dirname, '../src/lib'),
+      '@component': path.resolve(__dirname, '../src/components/component.js'),
     },
   },
   plugins: [

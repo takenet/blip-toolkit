@@ -1,9 +1,9 @@
-import Nanocomponent from 'nanocomponent'
+import { Component } from '@component'
 import html from 'nanohtml'
 import { EventEmitter } from '@lib/eventEmitter'
 import { renderEmptyOption } from '../shared'
 
-export class CreatebleOptionsList extends Nanocomponent {
+export class CreatebleOptionsList extends Component {
   constructor(options) {
     super()
 

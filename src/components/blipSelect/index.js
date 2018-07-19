@@ -363,20 +363,22 @@ export class BlipSelect extends Nanocomponent {
     }
 
     const inputValue = this.input.value
-    Promise.resolve(this._getSearchResults(inputValue)).then((searchResults) => {
-      this.noResultsFound = searchResults.length < 0
+    Promise
+      .resolve(this._getSearchResults(inputValue))
+      .then((searchResults) => {
+        this.noResultsFound = searchResults.length < 0
 
-      this.configOptions.onInputChange(EventEmitter({ value: inputValue, event }))
+        this.configOptions.onInputChange(EventEmitter({ value: inputValue, event }))
 
-      if (!this.isSelectOpen) {
-        this._openSelect()
-      }
+        if (!this.isSelectOpen) {
+          this._openSelect()
+        }
 
-      this.optionsList.render({
-        options: searchResults,
-        newOption: inputValue,
+        this.optionsList.render({
+          options: searchResults,
+          newOption: inputValue,
+        })
       })
-    })
   }
 
   /**

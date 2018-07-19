@@ -55,25 +55,27 @@ describe('BlipSelect', () => {
           expect(component.input.value).toEqual('val1')
         })
 
-        // it('should modify default search', () => {
-        //   const component = new BlipSelect({
-        //     mode: 'autocomplete',
-        //     customSearch: ({ $event }) => {
-        //       const { query, items } = $event
-        //       return items.filter(i => i.label.endsWith(query))
-        //     },
-        //   })
+        it('should modify default search', () => {
+          const component = new BlipSelect({
+            mode: 'autocomplete',
+            customSearch: ({ $event }) => {
+              const { query, items } = $event
+              return items.filter(i => i.label.endsWith(query))
+            },
+          })
 
-        //   document.body.appendChild(component.render({
-        //     options: mockOptions,
-        //   }))
+          document.body.appendChild(component.render({
+            options: mockOptions,
+          }))
 
-        //   component.setValue({ label: '1' })
-        //   component.input.dispatchEvent(new Event('input'))
+          component.input.value = '1'
+          component.input.dispatchEvent(new Event('input'))
 
-        //   expect(component.optionsList.props.options.length).toEqual(1)
-        //   expect(component.optionsList.props.options[0].label).toEqual('label 1')
-        // })
+          setTimeout(() => {
+            expect(component.optionsList.props.options.length).toEqual(1)
+            expect(component.optionsList.props.options[0].label).toEqual('label 1')
+          })
+        })
       })
     })
 

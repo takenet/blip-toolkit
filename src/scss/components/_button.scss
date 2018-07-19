@@ -77,6 +77,14 @@
     @include bp-btn--custom($bp-color-white, $bp-color-warning);
   }
 
+  &.bp-btn--warning-light {
+    @include bp-btn--custom($bp-color-white, $bp-color-warning-light);
+  }
+
+  &.bp-btn--warning-yellow {
+    @include bp-btn--custom($bp-color-white, $bp-color-warning-yellow);
+  }
+
   &.bp-btn--delete {
     @include bp-btn--custom($bp-color-white, $bp-color-delete);
   }
@@ -151,6 +159,14 @@
     @include bp-btn--c($bp-color-warning);
   }
 
+  &.bp-btn--c-warning-light {
+    @include bp-btn--c($bp-color-warning-light);
+  }
+
+  &.bp-btn--c-warning-yellow {
+    @include bp-btn--c($bp-color-warning-yellow);
+  }
+
   &.bp-btn--c-delete {
     @include bp-btn--c($bp-color-delete);
   }
@@ -223,6 +239,14 @@
 
   &.bp-btn--bg-warning {
     @include bp-btn--bg($bp-color-warning);
+  }
+
+  &.bp-btn--bg-warning-light {
+    @include bp-btn--bg($bp-color-warning-light);
+  }
+
+  &.bp-btn--bg-warning-yellow {
+    @include bp-btn--bg($bp-color-warning-yellow);
   }
 
   &.bp-btn--bg-delete {

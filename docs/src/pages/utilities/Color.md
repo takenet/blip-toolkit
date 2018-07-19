@@ -43,6 +43,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       .bp-c-bot
     </span>
   </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Bot</span>
+    <span>#2cc3d5</span>
+  </div>
 </div>
 
 
@@ -59,7 +64,7 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <div class="db card-container ba bw2 bp-bc-blip-light">
     </div>
     <span class="db tc bp-c-blip-light">
-      bp-bc-b.lip-light
+      .bp-bc-blip-light
     </span>
   </div>
 
@@ -70,8 +75,13 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       </span>
     </div>
     <span class="db tc bp-c-blip-light">
-      bp-c-bl.ip-light
+      .bp-c-blip-light
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>BLiP Light</span>
+    <span>#0cc8cc</span>
   </div>
 </div>
 
@@ -89,7 +99,7 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <div class="db card-container ba bw2 bp-bc-blip-dark">
     </div>
     <span class="db tc bp-c-blip-dark">
-      bp-bc-.blip-dark
+      .bp-bc-blip-dark
     </span>
   </div>
 
@@ -100,8 +110,13 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       </span>
     </div>
     <span class="db tc bp-c-blip-dark">
-      bp-c-b.lip-dark
+      .bp-c-blip-dark
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>BLiP Dark</span>
+    <span>#15afb2</span>
   </div>
 </div>
 ```
@@ -145,7 +160,7 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <div class="db card-container ba bw2 bp-bc-warning">
     </div>
     <span class="db tc bp-c-warning">
-      bp-b.c-warning
+      .bp-bc-warning
     </span>
   </div>
 
@@ -156,11 +171,83 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       </span>
     </div>
     <span class="db tc bp-c-warning">
-      bp-c.-warning
+      .bp-c-warning
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Warning</span>
+    <span>#f76556</span>
   </div>
 </div>
 
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-warning-light">
+    </div>
+    <span class="db tc bp-c-warning-light">
+      .bp-bg-warning-light
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-warning-light">
+    </div>
+    <span class="db tc bp-c-warning-light">
+      .bp-bc-warning-light
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-warning-light bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-warning-light">
+      .bp-c-warning-light
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Warning Light</span>
+    <span>#fbeaea</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-warning-yellow">
+    </div>
+    <span class="db tc bp-c-warning-yellow">
+      .bp-bg-warning-yellow
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-warning-yellow">
+    </div>
+    <span class="db tc bp-c-warning-yellow">
+      .bp-bc-warning-yellow
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-warning-yellow bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-warning-yellow">
+      .bp-c-warning-yellow
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Warning Yellow</span>
+    <span>#ffcf33</span>
+  </div>
+</div>
 
 <div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
@@ -175,7 +262,7 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <div class="db card-container ba bw2 bp-bc-delete">
     </div>
     <span class="db tc bp-c-delete">
-      bp-.bc-delete
+      .bp-bc-delete
     </span>
   </div>
 
@@ -186,8 +273,13 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       </span>
     </div>
     <span class="db tc bp-c-delete">
-      bp-.c-delete
+      .bp-c-delete
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Delete</span>
+    <span>#fb7a6d</span>
   </div>
 </div>
 
@@ -205,7 +297,7 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <div class="db card-container ba bw2 bp-bc-true">
     </div>
     <span class="db tc bp-c-true">
-      b.p-bc-true
+      .bp-bc-true
     </span>
   </div>
 
@@ -216,8 +308,13 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       </span>
     </div>
     <span class="db tc bp-c-true">
-      b.p-c-true
+      .bp-c-true
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>True</span>
+    <span>#4dcb7b</span>
   </div>
 </div>
 ```
@@ -274,6 +371,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       .bp-c-onix
     </span>
   </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Onix</span>
+    <span>#242b36</span>
+  </div>
 </div>
 
 <div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
@@ -302,6 +404,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <span class="db tc bp-c-suit">
       .bp-c-suit
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Suit</span>
+    <span>#3d4554</span>
   </div>
 </div>
 
@@ -333,6 +440,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       .bp-c-city
     </span>
   </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>City</span>
+    <span>#52636c</span>
+  </div>
 </div>
 
 
@@ -362,6 +474,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <span class="db tc bp-c-desk">
       .bp-c-desk
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Desk</span>
+    <span>#607B99</span>
   </div>
 </div>
 
@@ -393,6 +510,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       .bp-c-rooftop
     </span>
   </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Rooftop</span>
+    <span>#738192</span>
+  </div>
 </div>
 
 
@@ -422,6 +544,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <span class="db tc bp-c-cloud">
       .bp-c-cloud
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Cloud</span>
+    <span>#8ca0b3</span>
   </div>
 </div>
 
@@ -453,6 +580,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       .bp-c-silver
     </span>
   </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Silver</span>
+    <span>#94a3ab</span>
+  </div>
 </div>
 
 
@@ -482,6 +614,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <span class="db tc bp-c-time">
       .bp-c-time
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Time</span>
+    <span>#a8bfc4</span>
   </div>
 </div>
 
@@ -513,6 +650,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       .bp-c-breeze
     </span>
   </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Breeze</span>
+    <span>#c9dfe4</span>
+  </div>
 </div>
 
 
@@ -543,6 +685,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
       .bp-c-sky
     </span>
   </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Sky</span>
+    <span>#daf2f4</span>
+  </div>
 </div>
 
 
@@ -572,6 +719,11 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <span class="db tc bp-c-black">
       .bp-c-offwhite
     </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Offwhite</span>
+    <span>#eaeeee</span>
   </div>
 </div>
 ```

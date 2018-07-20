@@ -43,7 +43,7 @@
   margin: 4px 0;
   border-radius: 20px;
   background: $bp-color-bot;
-  max-width: 100%;
+  max-width: 300px;
   transition: max-width 1.2s, max-height 1s cubic-bezier(0, 1, 0, 1);
   text-overflow: ellipsis;
   cursor: pointer;

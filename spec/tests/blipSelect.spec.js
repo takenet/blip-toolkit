@@ -33,6 +33,17 @@ describe('BlipSelect', () => {
         expect(component.input.disabled).toBeTruthy()
       })
 
+      it('should invalidate component', () => {
+        const component = new BlipSelect()
+        document.body.appendChild(component.render({
+          options: mockOptions,
+        }))
+
+        component.isInvalid = true
+
+        expect(component.input.invalid).toBeTruthy()
+      })
+
       it('should enable component', () => {
         const component = new BlipSelect()
         document.body.appendChild(component.render({

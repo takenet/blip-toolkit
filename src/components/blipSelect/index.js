@@ -17,7 +17,8 @@ const bpInputWithBulletClass = 'bp-input--with-bullet'
 const bpCrooftopClass = 'bp-c-rooftop'
 const bpCblipLightClass = 'bp-c-blip-light'
 const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
-const bpInputWrapperDisabledClass = 'bp-input-wrapper--disabled'
+const bpInputWrapperDisabledClass = 'bp-select-wrapper--disabled'
+const bpInputWrapperInvalidClass = 'bp-select-wrapper--invalid'
 
 export class BlipSelect extends Component {
   /**
@@ -27,6 +28,7 @@ export class BlipSelect extends Component {
     isSelectOpen: false,
     noResultsFound: false,
     disabled: false,
+    invalid: false,
     label: '',
     placeholder: 'Select...',
     mode: 'select',
@@ -116,9 +118,34 @@ export class BlipSelect extends Component {
     switch (value) {
       case true:
         this.element.classList.add(bpInputWrapperDisabledClass)
+        if (this.isInvalid) {
+          this.element.classList.remove(bpInputWrapperInvalidClass)
+        }
         break
       case false:
         this.element.classList.remove(bpInputWrapperDisabledClass)
+        if (this.isInvalid) {
+          this.element.classList.add(bpInputWrapperInvalidClass)
+        }
+        break
+    }
+  }
+
+  get isInvalid() {
+    return this.configOptions.invalid
+  }
+
+  set isInvalid(value) {
+    this.configOptions.invalid = value
+    this.input.invalid = value
+    switch (value) {
+      case true:
+        if (!this.isDisabled) {
+          this.element.classList.add(bpInputWrapperInvalidClass)
+        }
+        break
+      case false:
+        this.element.classList.remove(bpInputWrapperInvalidClass)
         break
     }
   }
@@ -135,7 +162,6 @@ export class BlipSelect extends Component {
     const isReadOnly = () => this.configOptions.mode === 'select'
     const hasBulletClass = () =>
       this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
-
     return html`
       <div class="bp-input-wrapper blip-select ${hasBulletClass()}">
         <label class="bp-label bp-c-rooftop">${this.configOptions.label}</label>
@@ -189,6 +215,14 @@ export class BlipSelect extends Component {
       return false
     }
 
+    if (props.invalid !== undefined) {
+      this.isInvalid = props.invalid
+      this.optionsList.render({
+        invalid: props.invalid,
+      })
+      return false
+    }
+
     return true
   }
 
@@ -198,6 +232,10 @@ export class BlipSelect extends Component {
   afterupdate() {
     if (this.configOptions.disabled !== undefined) {
       this.isDisabled = this.configOptions.disabled
+    }
+
+    if (this.configOptions.invalid !== undefined) {
+      this.isInvalid = this.configOptions.invalid
     }
     this.addGlobalListeners()
   }

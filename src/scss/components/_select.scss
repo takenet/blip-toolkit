@@ -3,6 +3,22 @@
   flex-wrap: wrap;
 
   &.bp-input-wrapper { background-color: transparent; }
+
+  &.bp-select-wrapper--invalid {
+    border-color: $bp-color-delete;
+    background-color: $bp-color-warning-light;
+
+    &.bp-input-wrapper--focus {
+      label {
+        color: $bp-color-delete;
+      }
+    }
+  }
+
+  &.bp-select-wrapper--disabled {
+    background-color: $bp-color-offwhite;
+    border-color: $bp-color-breeze;
+  }
 }
 
 .blip-select__input {

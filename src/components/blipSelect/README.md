@@ -47,7 +47,7 @@ blipSelect.render({
 })
 ```
 
-## Options
+## Instance options
 
 `BlipSelect` is flexible, so you can pass some options and callbacks to be executed during usage. This component has **options** (callbacks and immutable properties, like 'label', 'mode' and etc) and **rendered properties**, as youy can see at [nanocomponent docs](https://github.com/choojs/nanocomponent).
 
@@ -105,6 +105,20 @@ document.body.appendChild(
 #### `clearAfterAdd` - boolean
 
 Clear input after add new option
+
+---
+
+## Rendered properties
+
+#### `options` - array
+
+Options list
+
+---
+
+#### `inputValue` - string
+
+Input value to be initiated with select
 
 ---
 

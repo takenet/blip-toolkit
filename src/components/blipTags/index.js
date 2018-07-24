@@ -1,4 +1,4 @@
-import Nanocomponent from 'nanocomponent'
+import { Component } from '@component'
 import html from 'nanohtml'
 
 import {
@@ -21,7 +21,7 @@ const hideBackgroundOptions = t => ({ ...t, canChangeBackground: false })
 const addIdIfNotExists = t => t.id ? t : ({ ...t, id: `blip-tag-${guid()}` })
 const addBackgroundIfNotExists = t => t.background ? t : ({ ...t, background: defaultTagBackground })
 
-export class BlipTags extends Nanocomponent {
+export class BlipTags extends Component {
   $state = {
     promptTextCreator: 'Create tag',
     placeholder: 'Add tag...',

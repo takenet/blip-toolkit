@@ -2,6 +2,7 @@
   position: relative;
   display: inline-block;
   outline: 0;
+  max-width: 100%;
 }
 
 .blip-tag-select-color {
@@ -50,8 +51,8 @@
   color: #fff;
 
   &:focus { outline: 0; }
-
 }
+
 .blip-tag--can-remove {
   .blip-tag:focus {
     background: $bp-color-rooftop !important; // Tags background is set inline, so !important is necessary
@@ -82,35 +83,17 @@
     .blip-tag__label {
       opacity: 0;
       transition: 60ms;
-      animation: tagOut 0s forwards;
     }
   }
 }
 
 .blip-tag__label {
   line-height: 1;
-  animation: tagIn 4s forwards;
-  word-break: break-word;
   opacity: 1;
   transition: opacity 1.2s;
-}
-
-@keyframes tagIn {
-  0% {
-    word-break: initial;
-  }
-  100% {
-    word-break: break-word;
-  }
-}
-
-@keyframes tagOut {
-  0% {
-    word-break: break-word;
-  }
-  100% {
-    word-break: initial;
-  }
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .blip-tag--on-list {

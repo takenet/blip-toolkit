@@ -1,9 +1,9 @@
-import Nanocomponent from 'nanocomponent'
+import { Component } from '@component'
 import html from 'nanohtml'
 import { SelectOption } from './SelectOption'
 import { renderEmptyOption } from '../shared'
 
-export class OptionsList extends Nanocomponent {
+export class OptionsList extends Component {
   $defaults = {
     onOptionClick: undefined,
     onTryAccessInput: undefined,

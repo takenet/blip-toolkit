@@ -74,7 +74,8 @@
     }
   },
   "_moduleAliases": {
-    "@lib": "./src/lib"
+    "@lib": "./src/lib",
+    "@component": "./src/components/component.js"
   },
   "repository": {
     "type": "git",

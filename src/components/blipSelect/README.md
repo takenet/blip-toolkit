@@ -104,6 +104,8 @@ document.body.appendChild(
 
 #### `clearAfterAdd` - boolean
 
+Clear input after add new option
+
 ---
 
 ## Methods

@@ -1,11 +1,11 @@
 import { EventEmitter } from '@lib/eventEmitter'
-import Nanocomponent from 'nanocomponent'
+import { Component } from '@component'
 
 /**
  * This class abstracts any option item of option list.
  * This pattern allows to create custom option item class, with its props and view
  */
-export class OptionItem extends Nanocomponent {
+export class OptionItem extends Component {
   $defaults = {
     onOptionClick: undefined,
     onTryAccessInput: undefined,
@@ -32,10 +32,15 @@ export class OptionItem extends Nanocomponent {
         break
       case 40: // arrow down
         if (element.nextSibling) {
+          event.preventDefault()
+          event.stopPropagation()
           element.nextSibling.focus()
         }
         break
       case 38: // arrow up
+        event.preventDefault()
+        event.stopPropagation()
+
         if (element.previousElementSibling) {
           element.previousElementSibling.focus()
         } else if (this.options.onTryAccessInput) {

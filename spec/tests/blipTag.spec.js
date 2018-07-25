@@ -34,7 +34,7 @@ describe('BlipTag', () => {
     it('should remove a tag', () => {
       const component = new BlipTag({
         canRemoveTag: true,
-        onRemove: function() {
+        onRemove: () => {
           console.log('Tag removed callback called')
         },
       })
@@ -42,6 +42,44 @@ describe('BlipTag', () => {
       spyOn(component.tagOptions, 'onRemove')
       component._removeTag()
       expect(component.tagOptions.onRemove).toHaveBeenCalled()
+    })
+
+    it('should execute tag click callback', () => {
+      const component = new BlipTag({
+        onTagClick: () => {
+          console.log('tag clicked')
+        },
+      })
+
+      const tagElement = component.render({
+        label: 'My tag',
+      })
+
+      document.body.appendChild(tagElement)
+      spyOn(component.tagOptions, 'onTagClick')
+      tagElement.querySelector('.blip-tag').dispatchEvent(new Event('click'))
+      expect(component.tagOptions.onTagClick).toHaveBeenCalled()
+    })
+
+    it('should update collapsed prop', () => {
+      const component = new BlipTag({
+        onTagClick: () => {
+          console.log('tag clicked')
+        },
+      })
+
+      component.render({
+        label: 'My tag',
+      })
+
+      expect(component.props.label).toEqual('My tag')
+
+      component.render({
+        collapsed: true,
+      })
+
+      expect(component.props.collapsed).toBeTruthy()
+      expect(component.props.label).toEqual('My tag')
     })
   })
 })

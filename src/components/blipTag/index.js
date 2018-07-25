@@ -66,13 +66,6 @@ export class BlipTag extends Component {
   }
 
   /**
-   * Returns single tag element
-   */
-  get tagElement() {
-    return this.tagContainer.querySelector('.blip-tag')
-  }
-
-  /**
    * Returns tag Id
    */
   get id() {

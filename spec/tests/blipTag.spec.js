@@ -39,6 +39,12 @@ describe('BlipTag', () => {
         },
       })
 
+      const element = component.render({
+        label: 'My tag',
+      })
+
+      document.body.appendChild(element)
+
       spyOn(component.tagOptions, 'onRemove')
       component._removeTag()
       expect(component.tagOptions.onRemove).toHaveBeenCalled()
@@ -80,6 +86,56 @@ describe('BlipTag', () => {
 
       expect(component.props.collapsed).toBeTruthy()
       expect(component.props.label).toEqual('My tag')
+    })
+
+    it('should toggle collapse property', () => {
+      const component = new BlipTag()
+
+      const element = component.render({
+        label: 'My tag',
+      })
+
+      document.body.appendChild(element)
+
+      component.toggleCollapse()
+      expect(element.classList.contains('blip-tag--compact')).toBeTruthy()
+
+      component.toggleCollapse()
+      expect(element.classList.contains('blip-tag--compact')).toBeFalsy()
+    })
+  })
+
+  describe('Getters', () => {
+    it('should get "label" property', () => {
+      const component = new BlipTag()
+
+      component.render({
+        label: 'My tag',
+      })
+
+      expect(component.label).toEqual(component.props.label)
+    })
+
+    it('should get "canChangeBackground" property', () => {
+      const component = new BlipTag()
+
+      component.render({
+        canChangeBackground: false,
+      })
+
+      expect(component.canChangeBackground).toEqual(component.props.canChangeBackground)
+    })
+
+    it('should get tagElement', () => {
+      const component = new BlipTag({
+        id: 'custom-tag-id',
+      })
+
+      component.render({
+        label: 'My tag',
+      })
+
+      expect(component.id).toEqual(component.tagOptions.id)
     })
   })
 })

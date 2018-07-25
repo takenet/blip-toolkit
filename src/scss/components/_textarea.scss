@@ -28,8 +28,8 @@
   overflow-y: auto;
   width: 100%;
   height: 7.2*$m;
-  display: block;
   line-height: $bp-lh-6;
+  display: block;
   margin-top: 0.2*$m;
 
   @include placeholder($bp-color-cloud);

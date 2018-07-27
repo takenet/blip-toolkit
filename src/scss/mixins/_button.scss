@@ -211,29 +211,3 @@
 
   @include bp-btn--regular-arrow($bg-color);
 }
-
-@mixin bp-btn--no-border() {
-  &.bp-btn--no-border {
-    border-width: 0;
-    &:active,
-    &:focus,
-    &:visited,
-    &:hover,
-    &:disabled {
-      border-width: 0;
-    }
-  }
-}
-
-@mixin bp-btn--no-background() {
-  &.bp-btn--no-background {
-    background-color: transparent;
-    &:active,
-    &:focus,
-    &:visited,
-    &:hover,
-    &:disabled {
-      background-color: transparent;
-    }
-  }
-}

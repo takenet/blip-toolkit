@@ -193,6 +193,7 @@ export class BlipTag extends Component {
    * @param {Event} event - Click event
    */
   _onTagClick(event) {
+    event.stopPropagation()
     this.tagOptions.onTagClick.call(this, EventEmitter({ tag: this }))
 
     if (this.tagOptions.toggleCollapse) {

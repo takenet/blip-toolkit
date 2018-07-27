@@ -292,7 +292,4 @@
   &.bp-btn--bg-sky {
     @include bp-btn--bg($bp-color-sky);
   }
-
-  @include bp-btn--no-background();
-  @include bp-btn--no-border();
 }

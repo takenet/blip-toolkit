@@ -64,6 +64,7 @@ typings/
 
 # Project
 dist/
+!docs/website/dist/
 sandbox/
 
 

@@ -2,7 +2,7 @@
   @include flex-box;
   flex-wrap: wrap;
 
-  &.bp-input-wrapper { background-color: transparent; }
+  &.bp-input-wrapper { background-color: $bp-color-white; }
 
   &.bp-select-wrapper--invalid {
     border-color: $bp-color-delete;

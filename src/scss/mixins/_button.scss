@@ -9,26 +9,26 @@
   @include bp-btn--regular-arrow($secondary-color);
   @include bp-btn--bordered-arrow($secondary-color);
   @include bp-btn--text-only($secondary-color);
-  @include bp-btn--no-background();
-  @include bp-btn--no-border();
 }
 
 @mixin bp-btn--arrow () {
-  overflow: visible;
-  position: relative;
-  &:after {
-    content: ' ';
-    width: 28px;
-    height: 28px;
-    position: absolute;
-    right: -14px;
-    top: 7px;
-    transform: rotate(45deg);
-  }
-
-  &:disabled {
+  &.bp-btn--arrow {
+    overflow: visible;
+    position: relative;
     &:after {
-      cursor: default;
+      content: ' ';
+      width: 28px;
+      height: 28px;
+      position: absolute;
+      right: -14px;
+      top: 7px;
+      transform: rotate(45deg);
+    }
+
+    &:disabled {
+      &:after {
+        cursor: default;
+      }
     }
   }
 }
@@ -96,28 +96,6 @@
       color: $bp-btn-bg-color;
       border-width: $bp-btn-border-width;
       border-color: $bp-btn-bg-color;
-    }
-  }
-}
-
-@mixin bp-btn--dashed($color, $border-color) {
-  &.bp-btn--dashed {
-    color: $color;
-    background-color: transparent;
-    border: $bp-btn-dashed-border;
-    border-color: $border-color;
-
-    &:hover {
-      background-color: transparent;
-      border-color: bp-darken($border-color);
-      color: bp-darken($color);
-    }
-
-    &:disabled {
-      background-color: transparent;
-      color: $bp-btn-bg-color;
-      border-color: $bp-btn-bg-color;
-      border: $bp-btn-dashed-border;
     }
   }
 }
@@ -232,30 +210,4 @@
   }
 
   @include bp-btn--regular-arrow($bg-color);
-}
-
-@mixin bp-btn--no-border() {
-  &.bp-btn--no-border {
-    border-width: 0;
-    &:active,
-    &:focus,
-    &:visited,
-    &:hover,
-    &:disabled {
-      border-width: 0;
-    }
-  }
-}
-
-@mixin bp-btn--no-background() {
-  &.bp-btn--no-background {
-    background-color: transparent;
-    &:active,
-    &:focus,
-    &:visited,
-    &:hover,
-    &:disabled {
-      background-color: transparent;
-    }
-  }
 }

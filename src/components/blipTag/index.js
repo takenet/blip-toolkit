@@ -107,6 +107,8 @@ export class BlipTag extends Component {
           <div tabindex="0"
             id="${this.props.id || this.tagOptions.id}"
             onclick="${this._handleTagClick}"
+            onmousedown="${this._stopPropagation}"
+            onmouseup="${this._stopPropagation}"
             onkeydown="${this._handleTagKeydown}"
             class="blip-tag"
             style="${this.props.background ? `background: ${this.props.background}` : ''}">
@@ -142,6 +144,10 @@ export class BlipTag extends Component {
    */
   getValue() {
     return this.props.label
+  }
+
+  _stopPropagation(event) {
+    event.stopPropagation()
   }
 
   /**

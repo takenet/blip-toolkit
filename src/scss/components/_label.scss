@@ -1,6 +1,8 @@
 .bp-label {
   margin: 0;
   font-size: $bp-fs-7;
-  font-weight: 600;
+  height: 1.6*$m;
+  line-height: 1.6*$m;
+  font-weight: $bp-fw-bold;
   display: block;
 }

@@ -26,7 +26,7 @@ Buttons are implemented through the base class **bp-btn**. They have a min-width
 
 <h3>Size</h3>
 
-There are two size variations that modify a button's minimum width: **bp-btn--small** (100px) and **bp-btn--large** (240px).
+There are two size variations that modify a button's minimum width: **bp-btn--small** (120px) and **bp-btn--large** (240px).
 
 ```size.html
 <table>

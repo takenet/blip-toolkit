@@ -310,7 +310,7 @@ In the text-only variation, **bp-btn--{color}** sets only the button's text colo
         <button class="bp-btn bp-btn--text-only bp-btn--blip-light">Text-only BLiP Light</button>
       </td>
       <td class="bp-fs-5 tl">.bp-btn .bp-btn--text-only
-        <span class="bp-c-blip-light">.bp-btn--bot</span>
+        <span class="bp-c-blip-light">.bp-btn--blip-light</span>
       </td>
     </tr>
     <tr>

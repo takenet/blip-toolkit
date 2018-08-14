@@ -18,6 +18,11 @@
   border-color: $bp-color-breeze;
 }
 
+
+.bp-textarea-wrapper--invalid {
+  border-color: $bp-color-delete;
+}
+
 .bp-textarea,
 .bp-textarea[disabled],
 .bp-textarea[readonly] {

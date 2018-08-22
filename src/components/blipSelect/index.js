@@ -83,6 +83,7 @@ export class BlipSelect extends Component {
    * Select input
    */
   get input() {
+    if (!this.element) return
     return this.element.querySelector('input')
   }
 
@@ -112,6 +113,8 @@ export class BlipSelect extends Component {
   }
 
   set isDisabled(value) {
+    if (!this.element) return
+
     this.configOptions.disabled = value
     this.input.disabled = value
 
@@ -159,11 +162,13 @@ export class BlipSelect extends Component {
       ...props,
     }
 
+    this.isDisabled = props.disabled
+
     const isReadOnly = () => this.configOptions.mode === 'select'
     const hasBulletClass = () =>
       this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
     return html`
-      <div class="bp-input-wrapper blip-select ${hasBulletClass()}">
+      <div class="bp-input-wrapper blip-select ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''} ${hasBulletClass()}">
         <label class="bp-label bp-c-rooftop">${this.configOptions.label}</label>
         <input placeholder="${this.configOptions.placeholder}"
           class="blip-select__input bp-c-rooftop"

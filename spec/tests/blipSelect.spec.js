@@ -11,7 +11,7 @@ const mockOptions = [
 ]
 
 describe('BlipSelect', () => {
-  describe('Behaviors', () => {
+  describe('Initial', () => {
     it('should has a list of options', () => {
       const component = new BlipSelect()
       const renderedElement = component.render({
@@ -96,6 +96,38 @@ describe('BlipSelect', () => {
           expect(component.optionsList.props.options[0].label).toEqual('label 1')
         })
       })
+    })
+  })
+
+  describe('Update props', () => {
+    it('should update disabled property', () => {
+      const component = new BlipSelect()
+      const renderedElement = component.render({
+        options: mockOptions,
+      })
+
+      document.body.appendChild(renderedElement)
+
+      component.render({
+        disabled: true,
+      })
+
+      expect(renderedElement.classList.contains('bp-select-wrapper--disabled')).toBeTruthy()
+    })
+
+    it('should update invalid property', () => {
+      const component = new BlipSelect()
+      const renderedElement = component.render({
+        options: mockOptions,
+      })
+
+      document.body.appendChild(renderedElement)
+
+      component.render({
+        invalid: true,
+      })
+
+      expect(renderedElement.classList.contains('bp-select-wrapper--invalid')).toBeTruthy()
     })
   })
 

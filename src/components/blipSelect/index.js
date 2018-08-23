@@ -74,6 +74,7 @@ export class BlipSelect extends Component {
       inputValue: '',
       options: [],
       blockNewEntries: false,
+      invalid: this.configOptions.invalid,
       emptyMessage: '',
       disabled: this.configOptions.disabled,
     }
@@ -139,6 +140,8 @@ export class BlipSelect extends Component {
   }
 
   set isInvalid(value) {
+    if (!this.element) return
+
     this.configOptions.invalid = value
     this.input.invalid = value
     switch (value) {
@@ -161,8 +164,6 @@ export class BlipSelect extends Component {
       ...this.props,
       ...props,
     }
-
-    this.isDisabled = props.disabled
 
     const isReadOnly = () => this.configOptions.mode === 'select'
     const hasBulletClass = () =>

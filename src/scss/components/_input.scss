@@ -70,8 +70,9 @@
 * Input of type checkbox
 */
 .bp-input--check--wrapper {
-  display: block;
-  padding-bottom: 0.5*$m;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .bp-input[type="checkbox"],
@@ -83,8 +84,10 @@
 .bp-input--radio, {
   color: transparent;
   display: inline-block;
+  text-align: center;
+  margin-right: 0.5*$m;
+  font-size: $bp-fs-6;
   border: 0.1*$m solid $bp-color-time;
-  font-size: $bp-fs-7;
   transition: all 500ms;
 
   &:hover {
@@ -111,12 +114,16 @@
   color: $bp-color-white;
   background-color: $bp-color-blip-light;
   border-color: $bp-color-blip-light;
-  animation: checkbox .6s ease;
 
   &:hover {
     background-color: bp-darken($bp-color-blip-light);
     border-color: bp-darken($bp-color-blip-light);
   }
+}
+
+.bp-input[type="checkbox"]:checked:not(:disabled) ~ .bp-input--checkbox,
+.bp-input[type="radio"]:checked:not(:disabled) ~ .bp-input--radio {
+  animation: checkbox .6s ease;
 }
 
 @include keyframes(checkbox) {
@@ -130,7 +137,7 @@
 }
 
 .bp-input[type="checkbox"]:disabled ~ .bp-input--checkbox,
-.bp-input[type="radio"]:disabled ~ .bp-input--checkbox {
+.bp-input[type="radio"]:disabled ~ .bp-input--radio {
   background-color: $bp-color-offwhite;
   border-color: $bp-color-breeze;
 
@@ -138,6 +145,10 @@
     background-color: $bp-color-offwhite;
     border-color: $bp-color-breeze;
   }
+}
+
+.bp-input[type="radio"]:disabled:not(:checked) ~ .bp-input--radio {
+  padding: 0;
 }
 
 /**

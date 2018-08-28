@@ -16,20 +16,25 @@ The code **MUST** be exactly as the following example's in order to give the des
   <tbody class="w-100">
     <tr class="w-100">
       <td class="w-30">
-        <label class="bp-input--check--wrapper pb0 mb2 flex items-center">
-          <input class="bp-input" type="radio" value="1" name="radio-group">
+        <label class="bp-input--check--wrapper mb2">
+          <input class="bp-input" type="radio" value="1" name="radio-group" checked>
           <div class="bp-input--radio"></div>
           <span class="ml2">Option 1</span>
         </label>
-        <label class="bp-input--check--wrapper pb0 mb2 flex items-center">
+        <label class="bp-input--check--wrapper mb4">
           <input class="bp-input" type="radio" value="2" name="radio-group">
           <div class="bp-input--radio"></div>
           <span class="ml2">Option 2</span>
         </label>
-        <label class="bp-input--check--wrapper pb0 mb2 flex items-center">
-          <input class="bp-input" type="radio" value="3" name="radio-group">
+        <label class="bp-input--check--wrapper mb2">
+          <input class="bp-input" type="radio" value="1" name="radio-disabled-group" disabled checked>
           <div class="bp-input--radio"></div>
-          <span class="ml2">Option 3</span>
+          <span class="ml2">Option 1 (Disabled and Checked)</span>
+        </label>
+        <label class="bp-input--check--wrapper mb2">
+          <input class="bp-input" type="radio" value="2" name="radio-disabled-group" disabled>
+          <div class="bp-input--radio"></div>
+          <span class="ml2">Option 2 (Disabled and Not Checked)</span>
         </label>
       </td>
       <td class="w-70 bp-fs-5 bp-lh-5 tl">

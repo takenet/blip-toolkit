@@ -81,6 +81,7 @@
 
 .bp-input--checkbox,
 .bp-input--radio, {
+  color: transparent;
   display: inline-block;
   border: 0.1*$m solid $bp-color-time;
   font-size: $bp-fs-7;
@@ -105,8 +106,9 @@
   background-clip: content-box;
 }
 
-.bp-input[type="checkbox"]:checked + .bp-input--checkbox,
-.bp-input[type="radio"]:checked + .bp-input--radio {
+.bp-input[type="checkbox"]:checked ~ .bp-input--checkbox,
+.bp-input[type="radio"]:checked ~ .bp-input--radio {
+  color: $bp-color-white;
   background-color: $bp-color-blip-light;
   border-color: $bp-color-blip-light;
   animation: checkbox .6s ease;
@@ -127,10 +129,8 @@
   100% { transform: scale(1, 1); }
 }
 
-.bp-input--checkbox--disabled,
-.bp-input--radio--disabled,
-.bp-input[type="checkbox"]:checked + .bp-input--checkbox--disabled,
-.bp-input[type="radio"]:checked + .bp-input--radio--disabled {
+.bp-input[type="checkbox"]:disabled ~ .bp-input--checkbox,
+.bp-input[type="radio"]:disabled ~ .bp-input--checkbox {
   background-color: $bp-color-offwhite;
   border-color: $bp-color-breeze;
 

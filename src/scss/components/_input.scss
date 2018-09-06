@@ -29,7 +29,7 @@
   font-size: $bp-fs-6;
   background: $bp-color-white;
   margin-top: 0.2*$m;
-  width: 89%;
+  width: calc(100% - 30px);
   height: 1.9*$m;
   line-height: 1.9*$m;
   padding: 0;

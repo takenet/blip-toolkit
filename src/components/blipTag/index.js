@@ -84,7 +84,7 @@ export class BlipTag extends Component {
 
     const renderRemoveButton = () =>
       this.tagOptions.onRemove && this.tagOptions.canRemoveTag
-        ? html`<button onclick="${this._handleRemoveTag}" class="${blipTagRemoveClass}">x</button>`
+        ? html`<span onclick="${this._handleRemoveTag}" class="${blipTagRemoveClass}">x</span>`
         : ''
 
     const renderTagClasses = () => {

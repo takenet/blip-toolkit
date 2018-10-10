@@ -78,6 +78,17 @@ export class BlipTags extends Component {
   }
 
   /**
+   * Click to focus on input
+   */
+  wrapperClick(event) {
+    const target = event.target
+    if (target) {
+      const input = target.querySelector('input')
+      input && input.focus()
+    }
+  }
+
+  /**
    * Options view list
    */
   get optionsList() {
@@ -116,7 +127,7 @@ export class BlipTags extends Component {
     const shouldRenderSelect = () => this.tagsOptions.mode === 'full'
 
     return html`
-      <div class="blip-tags ${this.tagsOptions.mode === 'compact' ? 'blip-tags--compact-mode' : ''}">
+      <div class="blip-tags ${this.tagsOptions.mode === 'compact' ? 'blip-tags--compact-mode' : ''}" onclick=${this.wrapperClick}>
         ${this.props.tags.map(renderTag)}
         ${shouldRenderSelect() ? this.blipSelectInstance.render({ options: this.optionsList }) : ''}
       </div>

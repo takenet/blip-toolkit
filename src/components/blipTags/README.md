@@ -13,7 +13,7 @@ import { BlipTags } from 'blip-toolkit'
 const tags = new BlipTags(document.getElementById('tag-list'), {
   onTagAdded: ({ $event }) => console.log('tagAdded', $event),
   onTagRemoved: ({ $event }) => console.log('tagRemoved', $event),
-  onSelectTagColor: ({ $event }) => => console.log('tagColorSelected', $event),
+  onSelectTagColor: ({ $event }) => console.log('tagColorSelected', $event),
   addTagText: 'Add tag',
 })
 </script>

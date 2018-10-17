@@ -22,6 +22,7 @@
 }
 
 .blip-select__input {
+  @include placeholder($bp-color-cloud);
   cursor: pointer;
   display: block;
   border: 0;

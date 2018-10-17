@@ -1,8 +1,18 @@
-.blip-tag-container {
+.blip-tag-wrapper {
+  margin-right: 5px;
   position: relative;
+  font-weight: normal;
   display: inline-block;
   outline: 0;
   max-width: 100%;
+}
+
+.blip-tag-wrapper,
+.blip-tag-select-color,
+.blip-tag__label,
+.blip-tag__remove {
+  font-size: $bp-fs-6;
+  line-height: $bp-lh-simple;
 }
 
 .blip-tag-select-color {
@@ -13,7 +23,6 @@
   width: 149px;
   position: absolute;
   top: 160%;
-  line-height: 1;
   border-radius: 3px;
   transform-origin: 0 0;
   transition: 300ms;
@@ -40,14 +49,12 @@
 .blip-tag {
   @include flex-box;
   padding: 3px 12px;
-  margin: 4px 0;
+  margin: 0;
   border-radius: 20px;
   background: $bp-color-bot;
   max-width: 300px;
   transition: max-width 1.2s, max-height 1s cubic-bezier(0, 1, 0, 1);
-  text-overflow: ellipsis;
   cursor: pointer;
-  overflow: hidden;
   color: #fff;
 
   &:focus { outline: 0; }
@@ -57,12 +64,6 @@
   .blip-tag:focus {
     background: $bp-color-rooftop !important; // Tags background is set inline, so !important is necessary
   }
-}
-
-.blip-tag-wrapper {
-  position: relative;
-  font-size: $bp-fs-6;
-  font-weight: normal;
 }
 
 .blip-tag--compact {
@@ -88,12 +89,12 @@
 }
 
 .blip-tag__label {
-  line-height: 1;
   opacity: 1;
   transition: opacity 1.2s;
   max-width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
+  word-break: normal;
 }
 
 .blip-tag--on-list {
@@ -108,10 +109,8 @@
   height: auto;
   min-width: auto;
   padding: 0;
-  margin-left: 7px;
-  line-height: 1;
+  margin-left: 0.8*$m;
   color: #fff;
-  font-size: $bp-fs-7;
 
   &:focus {
     outline: none;
@@ -119,8 +118,9 @@
 }
 
 .blip-tag-color-option {
-  width: 24px; height: 24px;
-  margin: 3px;
+  width: 2.4*$m;
+  height: 2.4*$m;
+  margin: 0.3*$m;
   border-radius: 4px;
   cursor: pointer;
   display: inline-block;

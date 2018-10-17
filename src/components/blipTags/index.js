@@ -53,21 +53,26 @@ export class BlipTags extends Component {
     this._handleBlipSelectBlur = this._onSelectBlur.bind(this)
     this._handleBlipSelectFocus = this._onSelectFocus.bind(this)
     this._handleCustomSearch = this._customOptionsSearch.bind(this)
+    this._handleWrapperClick = this._onWrapperClick.bind(this)
+    this._handleWrapperEnter = this._onWrapperEnter.bind(this)
+    this._handleWrapperLeave = this._onWrapperLeave.bind(this)
 
-    this.blipSelectInstance = new BlipSelect({
-      mode: 'autocomplete',
-      canAddOption: {
-        text: this.tagsOptions.promptTextCreator,
-      },
-      onAddOption: this._handleAddNewOption,
-      onSelectOption: this._handleSelectOption,
-      onInputKeyup: this._handleInputKeyup,
-      onBlur: this._handleBlipSelectBlur,
-      onFocus: this._handleBlipSelectFocus,
-      customSearch: this._handleCustomSearch,
-      optionCreator: TagOption,
-      placeholder: this.tagsOptions.placeholder,
-    })
+    if (this.tagsOptions.mode === 'full') {
+      this.blipSelectInstance = new BlipSelect({
+        mode: 'autocomplete',
+        canAddOption: {
+          text: this.tagsOptions.promptTextCreator,
+        },
+        onAddOption: this._handleAddNewOption,
+        onSelectOption: this._handleSelectOption,
+        onInputKeyup: this._handleInputKeyup,
+        onBlur: this._handleBlipSelectBlur,
+        onFocus: this._handleBlipSelectFocus,
+        customSearch: this._handleCustomSearch,
+        optionCreator: TagOption,
+        placeholder: this.tagsOptions.placeholder,
+      })
+    }
 
     this.addGlobalListeners()
 
@@ -78,21 +83,36 @@ export class BlipTags extends Component {
   }
 
   /**
-   * Click to focus on input
-   */
-  wrapperClick(event) {
-    const target = event.target
-    if (target) {
-      const input = target.querySelector('input')
-      input && input.focus()
-    }
-  }
-
-  /**
    * Options view list
    */
   get optionsList() {
     return this.props.options.filter(differenceByLabel(this.props.tags)) || []
+  }
+
+  /**
+   * Click to focus on input
+   */
+  _onWrapperClick(event) {
+    const target = event.target
+    if (target && this.blipSelectInstance) {
+      this.blipSelectInstance.input.onclick(event)
+    }
+  }
+
+  _onWrapperEnter() {
+    if (this.blipSelectInstance) {
+      this.blipSelectInstance.render({
+        isParentHighlighted: true,
+      })
+    }
+  }
+
+  _onWrapperLeave() {
+    if (this.blipSelectInstance) {
+      this.blipSelectInstance.render({
+        isParentHighlighted: false,
+      })
+    }
   }
 
   /**
@@ -126,10 +146,21 @@ export class BlipTags extends Component {
 
     const shouldRenderSelect = () => this.tagsOptions.mode === 'full'
 
+    if (shouldRenderSelect()) {
+      return html`
+        <div class="blip-tags"
+          onclick=${this._handleWrapperClick}
+          onmouseenter=${this._handleWrapperEnter}
+          onmouseleave="${this._handleWrapperLeave}">
+          ${this.props.tags.map(renderTag)}
+          ${this.blipSelectInstance.render({ options: this.optionsList })}
+        </div>
+      `
+    }
+
     return html`
-      <div class="blip-tags ${this.tagsOptions.mode === 'compact' ? 'blip-tags--compact-mode' : ''}" onclick=${this.wrapperClick}>
+      <div class="blip-tags blip-tags--compact-mode">
         ${this.props.tags.map(renderTag)}
-        ${shouldRenderSelect() ? this.blipSelectInstance.render({ options: this.optionsList }) : ''}
       </div>
     `
   }
@@ -191,7 +222,7 @@ export class BlipTags extends Component {
       this.tagsOptions.onTagRemoved.call(this, EventEmitter({ $event }))
 
       if (event && event.keyCode === 8) {
-        const tagsElement = this.element.querySelectorAll('.blip-tag-container .blip-tag')
+        const tagsElement = this.element.querySelectorAll('.blip-tag-wrapper .blip-tag')
         if (tagsElement.length > 0) {
           last([...tagsElement]).focus()
         } else {
@@ -272,8 +303,7 @@ export class BlipTags extends Component {
       case 8: // backspace
         if (currentInputBuffer === '') {
           if (this.props.tags.length > 0) {
-            const tagsElement = this.element.querySelectorAll('.blip-tag-container .blip-tag')
-
+            const tagsElement = this.element.querySelectorAll('.blip-tag-wrapper .blip-tag')
             last([...tagsElement]).focus()
           }
         }
@@ -338,7 +368,7 @@ export class BlipTags extends Component {
    */
   _onTagClick({ $event }) {
     if (this.tagsOptions.toggleTagsMode) {
-      const tagElements = [...this.element.querySelectorAll('.blip-tag-container')]
+      const tagElements = [...this.element.querySelectorAll('.blip-tag-wrapper')]
 
       tagElements.forEach(t => {
         if (t.classList.contains('blip-tag--compact')) {

@@ -28,6 +28,7 @@ export class BlipSelect extends Component {
     isSelectOpen: false,
     noResultsFound: false,
     disabled: false,
+    focused: false,
     invalid: false,
     placeholder: 'Select...',
     mode: 'select',
@@ -77,6 +78,7 @@ export class BlipSelect extends Component {
       invalid: this.configOptions.invalid,
       emptyMessage: '',
       disabled: this.configOptions.disabled,
+      isParentHighlighted: false,
     }
   }
 
@@ -104,6 +106,18 @@ export class BlipSelect extends Component {
 
   set isSelectOpen(value) {
     this.$defaults.isSelectOpen = value
+  }
+
+  /**
+   * Is focused
+   */
+
+  get isFocused() {
+    return this.configOptions.focused
+  }
+
+  set isFocused(value) {
+    this.configOptions.focused = value
   }
 
   /**
@@ -194,6 +208,11 @@ export class BlipSelect extends Component {
    * Component update
    */
   update(props) {
+    if (props.isParentHighlighted !== undefined) {
+      this.props.isParentHighlighted = props.isParentHighlighted
+      return false
+    }
+
     if (props.options) {
       this.props.options = props.options
       this.optionsList.render({
@@ -431,7 +450,9 @@ export class BlipSelect extends Component {
    * Handle input click
    */
   _onInputClick(event) {
-    if (!this.isSelectOpen) {
+    if (event.target && event.target.classList.contains('blip-tags')) {
+      this.input.focus()
+    } else if (!this.isSelectOpen) {
       this._openSelect()
     }
   }
@@ -558,6 +579,13 @@ export class BlipSelect extends Component {
    * On select click
    */
   _onSelectFocus(event) {
+    // Prevents unecessary focus callback
+    if (this.isFocused) {
+      return
+    }
+
+    this.isFocused = true
+
     if (
       this.isDisabled ||
       (this.input.value === '' &&
@@ -601,17 +629,25 @@ export class BlipSelect extends Component {
       }
     }
 
-    return false
+    return this.props.isParentHighlighted
   }
 
   /**
    * On select blur
    */
   _onSelectBlur(event) {
+    // Prevents unecessary blur callback
+    if (!this.isFocused) {
+      return
+    }
+
+    this.isFocused = false
+
     // Prevents close container before user can select any option
     if (this._isPartOfComponent(event)) {
       return
     }
+
     this.configOptions.onBlur(event)
 
     setTimeout(() => {

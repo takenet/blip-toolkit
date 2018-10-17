@@ -3,7 +3,6 @@ import { EventEmitter } from '@lib/eventEmitter'
 import { Component } from '@component'
 import html from 'nanohtml'
 
-const blipTagContainerClass = 'blip-tag-container'
 const blipTagLabelClass = 'blip-tag__label'
 const blipTagRemoveClass = 'blip-tag__remove'
 const blipTagColorOptionClass = 'blip-tag-color-option'
@@ -31,7 +30,6 @@ export class BlipTag extends Component {
 
   constructor(options) {
     super()
-    this.tagContainer = ''
 
     this.tagOptions = {
       ...this.$state,
@@ -102,26 +100,24 @@ export class BlipTag extends Component {
     }
 
     return html`
-      <div class="${blipTagContainerClass} ${this.tagOptions.classes} ${renderTagClasses()}">
-        <div class="blip-tag-wrapper">
-          <div tabindex="0"
-            id="${this.props.id || this.tagOptions.id}"
-            onclick="${this._handleTagClick}"
-            onmousedown="${this._stopPropagation}"
-            onmouseup="${this._stopPropagation}"
-            onkeydown="${this._handleTagKeydown}"
-            class="blip-tag"
-            style="${this.props.background ? `background: ${this.props.background}` : ''}">
-            <span class="${blipTagLabelClass}">${this.props.label}</span>
-            ${renderRemoveButton()}
-          </div>
-          ${this.props.canChangeBackground && !this.props.collapsed ? html`
-          <ul class="${blipTagSelectColorClass}" tabindex="0">
-            ${colors.map(c => html`
-              <li onclick="${this._selectColor.bind(this)}" class="${blipTagColorOptionClass}" style="background: ${c}" data-color="${c}"></li>
-            `)}
-          </ul>` : ''}
+      <div class="blip-tag-wrapper ${this.tagOptions.classes} ${renderTagClasses()}">
+        <div tabindex="0"
+          id="${this.props.id || this.tagOptions.id}"
+          onclick="${this._handleTagClick}"
+          onmousedown="${this._stopPropagation}"
+          onmouseup="${this._stopPropagation}"
+          onkeydown="${this._handleTagKeydown}"
+          class="blip-tag"
+          style="${this.props.background ? `background: ${this.props.background}` : ''}">
+          <span class="${blipTagLabelClass}">${this.props.label}</span>
+          ${renderRemoveButton()}
         </div>
+        ${this.props.canChangeBackground && !this.props.collapsed ? html`
+        <ul class="${blipTagSelectColorClass}" tabindex="0">
+          ${colors.map(c => html`
+            <li onclick="${this._selectColor.bind(this)}" class="${blipTagColorOptionClass}" style="background: ${c}" data-color="${c}"></li>
+          `)}
+        </ul>` : ''}
       </div>
     `
   }

@@ -17,12 +17,13 @@
     position: relative;
     &:after {
       content: ' ';
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       position: absolute;
       right: -14px;
-      top: 7px;
+      top: 6px;
       transform: rotate(45deg);
+      border-radius: 3px;
     }
 
     &:disabled {
@@ -127,12 +128,16 @@
   &.bp-btn--arrow {
     &.bp-btn--flat {
       &:after {
+        width: 28px;
+        height: 28px;
         border-style: $bp-btn-flat-border-style;
       }
     }
 
     &.bp-btn--dashed {
       &:after {
+        width: 27px;
+        height: 27px;
         border-style: $bp-btn-dashed-border-style;
       }
     }
@@ -141,10 +146,9 @@
     &.bp-btn--dashed {
       border-right: none;
       &:after {
-        width: 27px;
-        height: 27px;
         right: -14px;
-        top: 5px;
+        top: 4px;
+        border-radius: 3px;
         border-width: $bp-btn-border-width $bp-btn-border-width 0 0;
         border-color: $color;
         background-color: transparent;

@@ -45,7 +45,7 @@ export class BlipSelect extends Component {
     onBlur: () => {},
     onAddOption: () => {},
     customSearch: undefined, // Function that should return a list of { value, label } pair
-    canAddOption: false,
+    canAddOptions: false,
     optionCreator: SelectOption,
   }
 
@@ -274,10 +274,10 @@ export class BlipSelect extends Component {
       OptionCreator: this.configOptions.optionCreator,
     }
 
-    return this.configOptions.canAddOption
+    return this.configOptions.canAddOptions
       ? {
         ...defaults,
-        canAddOption: this.configOptions.canAddOption,
+        canAddOptions: this.configOptions.canAddOptions,
         newOption: this.props.newOption,
         emptyMessage: this.props.emptyMessage,
       }
@@ -290,7 +290,7 @@ export class BlipSelect extends Component {
    * Return instance based on config options
    */
   _chooseOptionListInstance() {
-    return this.configOptions.canAddOption
+    return this.configOptions.canAddOptions
       ? this._createCreatableOptionListInstance()
       : this._createOptionsListInstance()
   }
@@ -303,7 +303,7 @@ export class BlipSelect extends Component {
       onOptionClick: this._onOptionClick.bind(this),
       onTryAccessInput: () => this.input.focus(),
       onAddOption: this._handleAddOption.bind(this),
-      addOptionText: this.configOptions.canAddOption.text,
+      addOptionText: this.configOptions.canAddOptions.text,
     })
   }
 
@@ -379,7 +379,7 @@ export class BlipSelect extends Component {
           return
         }
 
-        if (this.configOptions.canAddOption && this.input.value.trim() !== '') {
+        if (this.configOptions.canAddOptions && this.input.value.trim() !== '') {
           this.optionsList.addOption(this.input.value)
         }
         break
@@ -589,7 +589,7 @@ export class BlipSelect extends Component {
     if (
       this.isDisabled ||
       (this.input.value === '' &&
-        this.configOptions.canAddOption &&
+        this.configOptions.canAddOptions &&
         this.props.options.length === 0)
     ) {
       return

@@ -135,7 +135,7 @@ describe('BlipSelect', () => {
     it('should add new option', () => {
       const component = new BlipSelect({
         mode: 'autocomplete',
-        canAddOption: {
+        canAddOptions: {
           text: 'Add option',
         },
       })

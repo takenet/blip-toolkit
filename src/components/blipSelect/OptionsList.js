@@ -19,7 +19,7 @@ export class OptionsList extends Component {
 
     this.props = {
       options: [],
-      canAddOption: false,
+      canAddOptions: false,
     }
   }
 

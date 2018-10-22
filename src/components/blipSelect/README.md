@@ -81,14 +81,14 @@ instance.isDisabled = true
 
 ---
 
-#### `canAddOption` - object
+#### `canAddOptions` - object
 
 You can have a select that can add new options to options list, if the search results for user input is empty. This behavior require `autocomplete` mode.
 
 ```javascript
 const selectInstance = new BlipSelect({
   mode: 'autocomplete',
-  canAddOption: {
+  canAddOptions: {
     text: 'Add new option',
   },
 })
@@ -236,12 +236,12 @@ new BlipSelect(element, {
 
 ### `onAddNewOption` - function
 
-**autocomplete and canAddOption properties required**. Takes one `$event` argument, that have three properties: `value`, `label` and `element`
+**autocomplete and canAddOptions properties required**. Takes one `$event` argument, that have three properties: `value`, `label` and `element`
 
 ```js
 new BlipSelect(element, {
   mode: 'autocomplete',
-  canAddOption: {
+  canAddOptions: {
     text: 'Add option',
   },
   onAddNewOption: ({ $event : { value, label, element }}) => console.log(value, label, element)

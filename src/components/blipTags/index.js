@@ -29,6 +29,7 @@ export class BlipTags extends Component {
     canChangeBackground: true,
     toggleTagsMode: false,
     canRemoveTags: true,
+    canAddOptions: true,
     onTagAdded: () => {},
     onTagRemoved: () => {},
     onSelectTagColor: () => {},
@@ -60,9 +61,11 @@ export class BlipTags extends Component {
     if (this.tagsOptions.mode === 'full') {
       this.blipSelectInstance = new BlipSelect({
         mode: 'autocomplete',
-        canAddOption: {
-          text: this.tagsOptions.promptTextCreator,
-        },
+        canAddOptions: this.tagsOptions.canAddOptions
+          ? {
+            text: this.tagsOptions.promptTextCreator,
+          }
+          : false,
         onAddOption: this._handleAddNewOption,
         onSelectOption: this._handleSelectOption,
         onInputKeyup: this._handleInputKeyup,

@@ -11,6 +11,7 @@ export class SelectOption extends OptionItem {
     this.props = {
       value: undefined,
       label: undefined,
+      description: undefined,
       id: `blip-select__option-${guid()}`,
     }
   }
@@ -25,6 +26,8 @@ export class SelectOption extends OptionItem {
     }
 
     const fillOptionId = id => id || `blip-select__option-${guid()}`
+    const labelElement = html`<span class="blip-select__option__label">${this.props.label}</span>`
+    const descriptionElement = this.props.description ? html`<span class="blip-select__option__desc">${this.props.description}</span>` : ''
 
     return html`
       <li tabindex="0"
@@ -32,7 +35,7 @@ export class SelectOption extends OptionItem {
         onkeydown="${this.attachOptionKeyboardListeners.bind(this)}"
         class="blip-select__option"
         id="${fillOptionId(this.props.id)}"
-        >${this.props.label}</li>
+        >${labelElement}${descriptionElement}</li>
     `
   }
 

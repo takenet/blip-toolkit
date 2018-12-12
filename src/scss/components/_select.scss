@@ -76,6 +76,8 @@
   margin-bottom: 0;
   cursor: pointer;
   word-break: break-word;
+  display: flex;
+  justify-content: flex-start;
 
   &:hover,
   &:focus {
@@ -85,6 +87,18 @@
 
   &.blip-select__empty-option {
     cursor: default;
+  }
+
+  .blip-select__option__label {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .blip-select__option__desc {
+    margin-left: auto;
+    flex-shrink: 0;
   }
 }
 

@@ -27,7 +27,7 @@ export class SelectOption extends OptionItem {
 
     const fillOptionId = id => id || `blip-select__option-${guid()}`
     const labelElement = html`<span class="blip-select__option__label">${this.props.label}</span>`
-    const descriptionElement = this.props.description ? html`<span class="blip-select__option__desc">${this.props.description}</span>` : ''
+    const descriptionElement = this.props.description ? html`<span class="blip-select__option__description">${this.props.description}</span>` : ''
 
     return html`
       <li tabindex="0"

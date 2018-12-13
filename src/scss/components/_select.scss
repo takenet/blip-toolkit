@@ -76,8 +76,12 @@
   margin-bottom: 0;
   cursor: pointer;
   word-break: break-word;
+
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
 
   &:hover,
   &:focus {
@@ -99,6 +103,9 @@
   .blip-select__option__description {
     margin-left: auto;
     flex-shrink: 0;
+    font-size: $bp-fs-7;
+    color: $bp-color-rooftop;
+    line-height: 100%;
   }
 }
 

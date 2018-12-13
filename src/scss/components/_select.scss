@@ -89,7 +89,7 @@
     cursor: default;
   }
 
-  .blip-select__option__label {
+  .blip-select__option__label:not(:only-child) {
     width: 100%;
     white-space: nowrap;
     overflow: hidden;

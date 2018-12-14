@@ -93,6 +93,10 @@
     @include bp-btn--custom($bp-color-white, $bp-color-true);
   }
 
+  &.bp-btn--obsidian {
+    @include bp-btn--custom($bp-color-white, $bp-color-obsidian);
+  }
+
   &.bp-btn--onix {
     @include bp-btn--custom($bp-color-white, $bp-color-onix);
   }
@@ -175,6 +179,10 @@
     @include bp-btn--c($bp-color-true);
   }
 
+  &.bp-btn--c-obsidian {
+    @include bp-btn--c($bp-color-obsidian);
+  }
+
   &.bp-btn--c-onix {
     @include bp-btn--c($bp-color-onix);
   }
@@ -255,6 +263,10 @@
 
   &.bp-btn--bg-true {
     @include bp-btn--bg($bp-color-true);
+  }
+
+  &.bp-btn--bg-obsidian {
+    @include bp-btn--bg($bp-color-obsidian);
   }
 
   &.bp-btn--bg-onix {

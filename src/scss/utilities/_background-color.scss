@@ -38,6 +38,10 @@
   background-color: b-darken($bp-color-true);
 }
 
+.bp-bg-obsidian {
+  background-color: $bp-color-obsidian;
+}
+
 .bp-bg-onix {
   background-color: $bp-color-onix;
 }
@@ -107,5 +111,13 @@
 
 .bp-grad-suit {
   background-image: $bp-gradient-suit;
+}
+
+.bp-grad-business {
+  background-image: $bp-gradient-business;
+}
+
+.bp-grad-enterprise {
+  background-image: $bp-gradient-enterprise;
 }
 

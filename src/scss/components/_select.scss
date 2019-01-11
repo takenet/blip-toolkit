@@ -111,7 +111,12 @@
 
 .blip-select__add-option {
   small {
+    margin-right: 0.5*$m;
     color: #fff;
+  }
+
+  div.blip-new-option-text {
+    margin-top: -0.3*$m;
   }
 }
 

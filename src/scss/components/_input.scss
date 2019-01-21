@@ -74,7 +74,7 @@
   @include flex-box();
   flex-direction: row;
   flex-wrap: nowrap;
-  align-items: start;
+  align-items: flex-start;
   font-size: $bp-fs-6;
   line-height: $bp-lh-6;
 }

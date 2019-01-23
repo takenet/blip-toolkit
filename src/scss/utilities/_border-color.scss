@@ -41,6 +41,14 @@
   border-color: bp-darken($bp-color-true);
 }
 
+.bp-bc-piano {
+  border-color: $bp-color-piano;
+}
+
+.bp-bc-console {
+  border-color: $bp-color-console;
+}
+
 .bp-bc-obsidian {
   border-color: $bp-color-obsidian;
 }

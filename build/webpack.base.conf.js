@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: ['./src/app.js'],
@@ -91,5 +92,8 @@ module.exports = {
       filename: 'blip-toolkit.css',
       chunkFilename: '[id].css',
     }),
+    new CopyWebpackPlugin([
+      { from: './src/scss/**/*.scss', to: path.resolve(__dirname, '../dist/scss'), flatten: true }
+    ])
   ],
 }

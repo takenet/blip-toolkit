@@ -93,7 +93,7 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
     new CopyWebpackPlugin([
-      { from: './src/scss/**/*.scss', to: path.resolve(__dirname, '../dist/scss'), flatten: true }
+      { from: './src/scss/', to: path.resolve(__dirname, '../dist/scss/'), toType: 'dir' }
     ])
   ],
 }

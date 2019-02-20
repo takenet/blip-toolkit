@@ -13,7 +13,7 @@ $bp-lh-plus: 175%;
 $bp-lh-double: 250%;
 
 //Line-heights based on font-size multiplied by $bp-lh-plus ratio and floored
-$bp-lh-base: 24px;
+$bp-lh-base: 2.4*$m;
 
 $bp-lh-8: 1.7*$m;
 $bp-lh-7: 2.1*$m;

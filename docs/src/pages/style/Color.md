@@ -1,6 +1,6 @@
 ---
 name: Color
-category: Utilities
+category: Style
 ---
 
 BLiP's color palette consists of three groups of colors: **Corporates**, **Semiotics** and **Neutrals**.
@@ -183,40 +183,6 @@ Insert classes containing a **root** followed by a **color's name** to apply col
 
 <div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <div class="db card-container bp-bg-warning-light">
-    </div>
-    <span class="db tc bp-c-warning-light">
-      .bp-bg-warning-light
-    </span>
-  </div>
-
-  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <div class="db card-container ba bw2 bp-bc-warning-light">
-    </div>
-    <span class="db tc bp-c-warning-light">
-      .bp-bc-warning-light
-    </span>
-  </div>
-
-  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <div class="flex flex-column justify-end card-container">
-      <span class="bp-c-warning-light bp-fs-2 bp-fw-bold tc">
-        Aa
-      </span>
-    </div>
-    <span class="db tc bp-c-warning-light">
-      .bp-c-warning-light
-    </span>
-  </div>
-
-  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <span>Warning Light</span>
-    <span>#fbeaea</span>
-  </div>
-</div>
-
-<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
-  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
     <div class="db card-container bp-bg-warning-yellow">
     </div>
     <span class="db tc bp-c-warning-yellow">
@@ -246,6 +212,40 @@ Insert classes containing a **root** followed by a **color's name** to apply col
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
     <span>Warning Yellow</span>
     <span>#ffcf33</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-warning-light">
+    </div>
+    <span class="db tc bp-c-warning-light">
+      .bp-bg-warning-light
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-warning-light">
+    </div>
+    <span class="db tc bp-c-warning-light">
+      .bp-bc-warning-light
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-warning-light bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-warning-light">
+      .bp-c-warning-light
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Warning Light</span>
+    <span>#fbeaea</span>
   </div>
 </div>
 
@@ -344,6 +344,108 @@ Insert classes containing a **root** followed by a **color's name** to apply col
 **Neutral** colors are tones used in typography and the biggest part of the platform's components. These colors create a fluid experience, with no visual noise.
 
 ```neutrals.html
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-piano">
+    </div>
+    <span class="db tc bp-c-piano">
+      .bp-bg-piano
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-piano">
+    </div>
+    <span class="db tc bp-c-piano">
+      .bp-bc-piano
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-piano bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-piano">
+      .bp-c-piano
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Piano</span>
+    <span>#191919</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-console">
+    </div>
+    <span class="db tc bp-c-console">
+      .bp-bg-console
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-console">
+    </div>
+    <span class="db tc bp-c-console">
+      .bp-bc-console
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-console bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-console">
+      .bp-c-console
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Console</span>
+    <span>#1d1d1d</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-obsidian">
+    </div>
+    <span class="db tc bp-c-obsidian">
+      .bp-bg-obsidian
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-obsidian">
+    </div>
+    <span class="db tc bp-c-obsidian">
+      .bp-bc-obsidian
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-obsidian bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-obsidian">
+      .bp-c-obsidian
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Obsidian</span>
+    <span>#1a272f</span>
+  </div>
+</div>
+
 <div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
     <div class="db card-container bp-bg-onix">

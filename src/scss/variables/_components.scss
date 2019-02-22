@@ -57,4 +57,27 @@ $bp-divider-medium-size: 2px;
 $bp-divider-large-size: 3px;
 
 
+//Table
+$bp-table-color: $bp-color-city;
+$bp-table-bg-color: $bp-color-white;
+$bp-table_edge-padding: 2.5*$m;
+
+$bp-table_head-bg-color: $bp-color-white;
+$bp-table_head-border-color: $bp-color-offwhite;
+$bp-table_head-font-size: $bp-fs-5;
+$bp-table_head-line-height: $bp-lh-plus;
+$bp-table_head-font-weight: $bp-fw-bold;
+
+$bp-table_th-padding: 2*$m 1*$m;
+
+$bp-table_body-bg-color: $bp-color-white;
+$bp-table_body-font-size: $bp-fs-6;
+$bp-table_body-line-height: $bp-lh-plus;
+$bp-table_body-font-weight: $bp-fw-regular;
+
+$bp-table_td-padding: 1*$m 1*$m;
+
+
+
+
 

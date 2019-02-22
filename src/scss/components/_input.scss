@@ -85,7 +85,7 @@
 }
 
 .bp-input--checkbox,
-.bp-input--radio, {
+.bp-input--radio {
   cursor: default;
   @include no-select();
   color: transparent;

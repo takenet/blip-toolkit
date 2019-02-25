@@ -3,6 +3,7 @@
   display: table;
   table-layout: fixed;
 
+  font-family: $bp-ff;
   color: $bp-table-color;
   background-color: $bp-table-bg-color;
 
@@ -10,46 +11,24 @@
   border-collapse: collapse;
   border-spacing: 0;
 
+  cursor: default;
+
   thead {
-    background-color: $bp-table_head-bg-color;
     border-bottom: 0.2*$m solid $bp-table_head-border-color;
 
-    font-size: $bp-table_head-font-size;
-    line-height: $bp-table_head-line-height;
-    font-weight: $bp-table_head-font-weight;
+    tr {
+      background-color: $bp-table_head-bg-color;
+    }
 
     th {
+      height: 6*$m;
       padding: $bp-table_th-padding;
 
-      white-space: normal;
-      word-break: keep-all;
-      text-align: left;
-      overflow: hidden;
+      font-size: $bp-table_head-font-size;
+      line-height: $bp-table_head-line-height;
+      font-weight: $bp-table_head-font-weight;
 
-      &:first-of-type {
-        padding-left: $bp-table_edge-padding;
-      }
-
-      &:last-of-type {
-        padding-right: $bp-table_edge-padding;
-      }
-    }
-  }
-
-  tbody {
-    background-color: $bp-table_body-bg-color;
-
-    font-size: $bp-table_body-font-size;
-    line-height: $bp-table_body-line-height;
-    font-weight: $bp-table_body-font-weight;
-
-    td {
-      padding: $bp-table_td-padding;
-
-      white-space: normal;
-      word-break: break-word;
-      overflow: hidden;
-      text-align: left;
+      border: none;
 
       &:first-of-type {
         padding-left: $bp-table_edge-padding;
@@ -70,38 +49,67 @@
       background-color: $bp-color-whisper;
     }
 
+    td {
+      height: 4.7*$m;
+      padding: $bp-table_td-padding;
+
+      font-size: $bp-table_body-font-size;
+      line-height: $bp-table_body-line-height;
+      font-weight: $bp-table_body-font-weight;
+
+      border: none;
+
+      &:first-of-type {
+        padding-left: $bp-table_edge-padding;
+      }
+
+      &:last-of-type {
+        padding-right: $bp-table_edge-padding;
+      }
+    }
+  }
+}
+
+.bp-table.bp-table--scroll-y,
+.bp-table-chart.bp-table-chart--scroll-y table {
+  display: flex;
+  flex-direction: column;
+
+  thead {
+    flex: 0 0 auto;
+    display: block;
+    tr {
+      width: calc(100% - 1.7*#{$m});
+    }
   }
 
-  &.bp-table--scroll-y,
-  &.bp-table-chart--scroll-y table {
-    display: flex;
-    flex-direction: column;
+  tbody {
+    flex: 1 1 auto;
+    display: block;
 
-    thead {
-      flex: 0 0 auto;
-      display: block;
-      tr {
-        width: calc(100% - 1.7*#{$m});
-      }
+    tr {
+      width: 100%;
     }
 
-    tbody {
-      flex: 1 1 auto;
-      display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include scrollbar($bp-color-time);
+  }
 
-      tr {
-        width: 100%;
-      }
+  thead tr,
+  tbody tr {
+    display: table;
+    table-layout: fixed;
+  }
+}
 
-      overflow-y: auto;
-      overflow-x: hidden;
-      @include scrollbar($bp-color-time);
-    }
+.bp-table.bp-table-chart--sort,
+.bp-table-chart.bp-table-chart--sort table {
+  th {
+    cursor: pointer;
 
-    thead tr,
-    tbody tr {
-      display: table;
-      table-layout: fixed;
+    &:focus {
+      outline: 0;
     }
   }
 }

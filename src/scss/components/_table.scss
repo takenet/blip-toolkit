@@ -80,6 +80,8 @@
     display: block;
     tr {
       width: calc(100% - 1.7*#{$m});
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 

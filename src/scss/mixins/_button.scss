@@ -1,8 +1,3 @@
-@mixin button() {
-  -webkit-appearance: button;
-  -moz-appearance: button;
-}
-
 @mixin bp-btn--custom ($primary-color, $secondary-color) {
   @include bp-btn--regular ($primary-color, $secondary-color);
   @include bp-btn--bordered ($secondary-color, $secondary-color);

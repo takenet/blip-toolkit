@@ -178,6 +178,7 @@
 
   &.bp-btn--flat,
   &.bp-btn--text-only {
+    color: $color;
     &:hover {
       color: bp-darken($color);
     }
@@ -194,15 +195,12 @@
 @mixin bp-btn--bg($bg-color) {
   background-color: $bg-color;
 
-  &:disabled {
-    background-color: $bp-btn-bg-color;
-  }
-
   &:hover {
     background-color: bp-darken($bg-color);
   }
 
   &:disabled {
+    background-color: $bp-btn-bg-color;
     &:hover {
       background-color: $bp-btn-bg-color;
     }

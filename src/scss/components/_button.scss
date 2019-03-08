@@ -59,6 +59,16 @@
 
   /** Custom BLiP Setups **/
 
+  /* Color */
+
+  &.bp-btn--black {
+    @include bp-btn--custom($bp-color-white, $bp-color-black);
+  }
+
+  &.bp-btn--white {
+    @include bp-btn--custom($bp-color-white, $bp-color-white);
+  }
+
   &.bp-btn--bot {
     @include bp-btn--custom($bp-color-white, $bp-color-bot);
   }

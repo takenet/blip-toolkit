@@ -3,8 +3,8 @@
   Color Variables
 */
 
-$lighten-amount: 10%;
-$darken-amount: 10%;
+$lighten-amount: 7%;
+$darken-amount: 7%;
 
 @function bp-lighten($color) {
   @return lighten($color, $lighten-amount);

@@ -28,11 +28,11 @@
   border: none;
   font-size: $bp-fs-6;
   background: $bp-color-white;
-  margin-top: 0.2*$m;
+  margin-top: 0.2 * $m;
   width: 100%;
-  margin-right: 1*$m;
-  height: 1.9*$m;
-  line-height: 1.9*$m;
+  margin-right: 1 * $m;
+  height: 1.9 * $m;
+  line-height: 1.9 * $m;
   padding: 0;
   @include placeholder($bp-color-cloud);
 
@@ -53,7 +53,6 @@
   background-color: $bp-color-offwhite;
 }
 
-
 /**
 * Eliminating arrows from number input
 */
@@ -65,6 +64,47 @@
 
 .bp-input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/**
+* Input of type password
+*/
+
+.password-strength-wrapper {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  .str-lvl {
+    height: 7px !important;
+    width: 16px !important;
+    background: #d3d3d3;
+    border-radius: 3.5px;
+    display: inline-block;
+    &.lvl-one {
+      &.weak {
+        background-color: $bp-color-warning;
+      }
+      &.medium {
+        background-color: $bp-color-warning-yellow;
+      }
+      &.strong {
+        background-color: $bp-color-true;
+      }
+    }
+    &.lvl-two {
+      &.medium {
+        background-color: $bp-color-warning-yellow;
+      }
+      &.strong {
+        background-color: $bp-color-true;
+      }
+    }
+    &.lvl-three {
+      &.strong {
+        background-color: $bp-color-true;
+      }
+    }
+  }
 }
 
 /**
@@ -90,11 +130,11 @@
   @include no-select();
   color: transparent;
   text-align: center;
-  margin-right: 0.8*$m;
+  margin-right: 0.8 * $m;
   flex-shrink: 0;
   font-size: $bp-fs-6;
   line-height: $bp-lh-6;
-  border: 0.1*$m solid $bp-color-time;
+  border: 0.1 * $m solid $bp-color-time;
   transition: all 500ms;
 
   &:hover {
@@ -106,16 +146,16 @@
   @include flex-box;
   align-items: center;
   justify-content: center;
-  border-radius: 0.2*$m;
-  width: 2.1*$m;
-  height: 2.1*$m;
+  border-radius: 0.2 * $m;
+  width: 2.1 * $m;
+  height: 2.1 * $m;
 }
 
 .bp-input--radio {
-  width: 2.1*$m;
-  height: 2.1*$m;
-  border-radius: 2*$m;
-  padding: 0.4*$m;
+  width: 2.1 * $m;
+  height: 2.1 * $m;
+  border-radius: 2 * $m;
+  padding: 0.4 * $m;
   background-clip: content-box;
 }
 
@@ -133,17 +173,31 @@
 
 .bp-input[type="checkbox"]:checked:not(:disabled) ~ .bp-input--checkbox,
 .bp-input[type="radio"]:checked:not(:disabled) ~ .bp-input--radio {
-  animation: checkbox .6s ease;
+  animation: checkbox 0.6s ease;
 }
 
 @include keyframes(checkbox) {
-  0% { transform: scale(1, 1); }
-  30% { transform: scale(1.25, 0.75); }
-  40% { transform: scale(0.75, 1.25); }
-  50% { transform: scale(1.15, 0.85); }
-  65% { transform: scale(0.95, 1.05); }
-  75% { transform: scale(1.05, 0.95); }
-  100% { transform: scale(1, 1); }
+  0% {
+    transform: scale(1, 1);
+  }
+  30% {
+    transform: scale(1.25, 0.75);
+  }
+  40% {
+    transform: scale(0.75, 1.25);
+  }
+  50% {
+    transform: scale(1.15, 0.85);
+  }
+  65% {
+    transform: scale(0.95, 1.05);
+  }
+  75% {
+    transform: scale(1.05, 0.95);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
 
 .bp-input[type="checkbox"]:disabled ~ .bp-input--checkbox,
@@ -165,10 +219,10 @@
 * Wrapper
 */
 .bp-input-wrapper {
-  height: 4.7*$m;
-  border: 0.1*$m solid $bp-color-breeze;
-  border-radius: 0.4*$m;
-  padding: 0.5*$m;
+  height: 4.7 * $m;
+  border: 0.1 * $m solid $bp-color-breeze;
+  border-radius: 0.4 * $m;
+  padding: 0.5 * $m;
   position: relative;
   background-color: $bp-color-white;
 }
@@ -176,7 +230,8 @@
 .bp-input--with-bullet {
   &:after {
     content: "";
-    width: 0; height: 0;
+    width: 0;
+    height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-top: 5px solid $bp-color-desk;
@@ -193,9 +248,9 @@
 }
 
 .bp-input-wrapper--focus {
-  box-shadow: 0 0.2*$m 1.2*$m 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2 * $m 1.2 * $m 0 rgba(0, 0, 0, 0.1);
   border-color: $bp-color-blip-light;
-  transition: box-shadow .5s ease-in;
+  transition: box-shadow 0.5s ease-in;
 }
 
 .bp-input-wrapper--invalid {
@@ -218,7 +273,7 @@
   right: 0;
   bottom: 0;
   background-color: $bp-color-white;
-  font-size: 1.9*$m;
-  line-height: 0.5*$m;
+  font-size: 1.9 * $m;
+  line-height: 0.5 * $m;
   padding-left: 5px;
 }

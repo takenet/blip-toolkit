@@ -25,5 +25,6 @@ module.exports = {
       'exports': 'always-multiline',
       'functions': 'ignore',
     }],
+    'no-useless-escape': 0
   }
 }

@@ -1,6 +1,3 @@
-/* import { guid } from '@lib/utils'
-import { EventEmitter } from '@lib/eventEmitter' */
-
 import { Component } from '@component'
 import html from 'nanohtml'
 
@@ -10,7 +7,6 @@ const blipInputInvalidClass = 'bp-input-wrapper--invalid'
 const blipInputDisabledClass = 'bp-input-wrapper--disabled'
 
 const bpCrooftopClass = 'bp-c-rooftop'
-// const bpCblipLightClass = 'bp-c-blip-light'
 const bpCblipDarkClass = 'bp-c-blip-dark'
 const bpCTrueClass = 'bp-c-true'
 const bpCWarningClass = 'bp-c-warning'
@@ -27,9 +23,15 @@ export class BlipInput extends Component {
     required: false,
     minLength: 0,
     maxLength: 0,
-    requiredErrorMsg: 'Este campo é obrigatório',
-    maxLengthErrorMsg: 'O valor é muito longo',
-    minLengthErrorMsg: 'O valor é muito curto',
+    requiredErrorMsg: 'This is a required field',
+    maxLengthErrorMsg: 'The value is too long',
+    minLengthErrorMsg: 'The value is too short',
+    emailTypeErrorMsg: 'This is not a valid email',
+    urlTypeErrorMsg: 'This is not a valid website',
+    inputFocus: () => { },
+    inputBlur: () => { },
+    inputChanged: (value) => { },
+    inputError: (value) => { },
   }
 
   constructor(options) {
@@ -50,6 +52,14 @@ export class BlipInput extends Component {
     }
   }
 
+  get error() {
+    return this.props.error
+  }
+
+  get valid() {
+    return this.props.valid
+  }
+
   /**
  * Setup custom select view
  */
@@ -65,9 +75,9 @@ export class BlipInput extends Component {
 
     return html`
         <div>
-          <div class="bp-input-wrapper relative ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
+          <div class="bp-input-wrapper mb2 relative ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
               <label class="bp-label tl ${labelClass}">
-                ${this.props.label}
+                ${this.props.label} ${this.configOptions.required ? ' *' : ''}
               </label>
               ${this.configOptions.type === 'password' && !this.props.disabled ? html`<div class="password-strength-wrapper">
               <span class="column str-lvl lvl-one ${this.props.valid ? this.props.passwordStrength : ''}"></span>
@@ -90,18 +100,20 @@ export class BlipInput extends Component {
                   />
               </div>
           </div>
-          ${this.props.error && !this.props.pristine ? html`<div class="error bp-fs-7 mt5 ${bpCWarningClass}">${this.props.error}</div>` : ''}
+          ${this.props.error && !this.props.pristine ? html`<div class="error bp-fs-7 mb2 ${bpCWarningClass}">${this.props.error}</div>` : ''}
         </div>
     `
   }
 
   _onInputFocus = () => {
     this.props.focused = true
+    this.configOptions.inputFocus()
     this.render(this.props)
   }
 
   _onInputBlur = () => {
     this.props.focused = false
+    this.configOptions.inputBlur()
     this.render(this.props)
   }
 
@@ -109,14 +121,28 @@ export class BlipInput extends Component {
     this.props.value = event.target.value
     this.props.pristine = false
     this.props.valid = this._inputValidate(this.props.value)
+    if (!this.props.valid) {
+      this.configOptions.inputError(this.error)
+    }
     if (this.configOptions.type === 'password') {
       this._checkPasswordStrength()
     }
+    this.configOptions.inputChanged(this.props.value)
     this.render(this.props)
   }
 
   _onInputChange = (event) => {
     this.props.value = event.target.value
+    this.props.pristine = false
+    this.props.valid = this._inputValidate(this.props.value)
+    if (!this.props.valid) {
+      this.configOptions.inputError(this.error)
+    }
+    if (this.configOptions.type === 'password') {
+      this._checkPasswordStrength()
+    }
+    this.configOptions.inputChanged(this.props.value)
+    this.render(this.props)
   }
 
   _inputValidate = (value) => {
@@ -131,6 +157,21 @@ export class BlipInput extends Component {
     if (required && !value) {
       this.props.error = requiredErrorMsg
       return false
+    }
+    if (this.configOptions.type === 'email') {
+      let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+      if (value && !emailRegex.test(value)) {
+        this.props.error = this.configOptions.emailTypeErrorMsg
+        return false
+      }
+    }
+    if (this.configOptions.type === 'url') {
+      let urlRegex = /^(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i
+
+      if (value && !urlRegex.test(value)) {
+        this.props.error = this.configOptions.urlTypeErrorMsg
+        return false
+      }
     }
     if (maxLength !== 0 && value.length > maxLength) {
       this.props.error = maxLengthErrorMsg
@@ -179,14 +220,6 @@ export class BlipInput extends Component {
     }
   }
 
-  get error() {
-    return this.props.error
-  }
-
-  get valid() {
-    return this.props.valid
-  }
-
   /**
    * Component update
    */
@@ -225,7 +258,6 @@ export class BlipInput extends Component {
   }
 
   destroy() {
-    // this._removeEventHandlers()
     this._removeElements()
   }
 }

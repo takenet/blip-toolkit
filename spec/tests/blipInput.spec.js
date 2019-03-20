@@ -9,5 +9,19 @@ describe('BlipInput', () => {
 
       expect(label.innerHTML).toEqual('My label')
     })
+
+    it('should invalidate input', () => {
+      const component = new BlipInput({
+        minLength: 10,
+      })
+      const renderedElement = component.render({
+        label: 'Label',
+        value: 'invalid',
+      })
+
+      const keyUpEvent = new Event('keyup', { key: 'a' })
+      renderedElement.dispatchEvent(keyUpEvent)
+      expect(component.props.error !== '').toBeTruthy()
+    })
   })
 })

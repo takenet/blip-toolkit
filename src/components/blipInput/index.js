@@ -74,12 +74,12 @@ export class BlipInput extends Component {
               <span class="column str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
               <span class="column str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>
             </div>` : ''}
-              
+
               <div class="w-100 relative flex flex-row justify-between">
-                  <input 
-                    class="w-100 bp-input bp-c-city" 
-                    type="${this.configOptions.type}" 
-                    value="${this.props.value}" 
+                  <input
+                    class="w-100 bp-input bp-c-city"
+                    type="${this.configOptions.type}"
+                    value="${this.props.value}"
                     placeholder="${this.configOptions.placeholder}"
                     onfocus="${this._onInputFocus}"
                     onblur="${this._onInputBlur}"
@@ -218,8 +218,8 @@ export class BlipInput extends Component {
   }
 
   /**
- * Remove elements from DOM
- */
+   * Remove elements from DOM
+   */
   _removeElements() {
     this.element.parentNode.removeChild(this.element)
   }

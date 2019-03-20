@@ -16,6 +16,8 @@ export class BlipInput extends Component {
    * Component state
    */
   $defaults = {
+    id: '',
+    name: '',
     type: 'text',
     focused: false,
     pristine: true,
@@ -87,6 +89,8 @@ export class BlipInput extends Component {
               
               <div class="w-100 relative flex flex-row justify-between">
                   <input 
+                    id="${this.configOptions.id}"
+                    name="${this.configOptions.name}"
                     class="w-100 bp-input bp-c-city" 
                     type="${this.configOptions.type}" 
                     value="${this.props.value}" 
@@ -173,11 +177,11 @@ export class BlipInput extends Component {
         return false
       }
     }
-    if (maxLength !== 0 && value.length > maxLength) {
+    if (value && maxLength !== 0 && value.length > maxLength) {
       this.props.error = maxLengthErrorMsg
       return false
     }
-    if (minLength !== 0 && value.length < minLength) {
+    if (value && minLength !== 0 && value.length < minLength) {
       this.props.error = minLengthErrorMsg
       return false
     }

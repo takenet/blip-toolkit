@@ -30,10 +30,10 @@ export class BlipInput extends Component {
     minLengthErrorMsg: 'The value is too short',
     emailTypeErrorMsg: 'This is not a valid email',
     urlTypeErrorMsg: 'This is not a valid website',
-    inputFocus: () => { },
-    inputBlur: () => { },
-    inputChanged: (value) => { },
-    inputError: (value) => { },
+    onInputFocus: () => { },
+    onInputBlur: () => { },
+    onInputChange: (value) => { },
+    onInputError: (value) => { },
   }
 
   constructor(options) {
@@ -73,7 +73,7 @@ export class BlipInput extends Component {
 
     this.props.valid = this._inputValidate(this.props.value)
 
-    let labelClass = this._getLabelClass()
+    const labelClass = this._getLabelClass()
 
     return html`
         <div>
@@ -111,13 +111,13 @@ export class BlipInput extends Component {
 
   _onInputFocus = () => {
     this.props.focused = true
-    this.configOptions.inputFocus()
+    this.configOptions.onInputFocus()
     this.render(this.props)
   }
 
   _onInputBlur = () => {
     this.props.focused = false
-    this.configOptions.inputBlur()
+    this.configOptions.onInputBlur()
     this.render(this.props)
   }
 
@@ -131,7 +131,7 @@ export class BlipInput extends Component {
     if (this.configOptions.type === 'password') {
       this._checkPasswordStrength()
     }
-    this.configOptions.inputChanged(this.props.value)
+    this.configOptions.onInputChange(this.props.value)
     this.render(this.props)
   }
 
@@ -140,17 +140,17 @@ export class BlipInput extends Component {
     this.props.pristine = false
     this.props.valid = this._inputValidate(this.props.value)
     if (!this.props.valid) {
-      this.configOptions.inputError(this.error)
+      this.configOptions.onInputError(this.error)
     }
     if (this.configOptions.type === 'password') {
       this._checkPasswordStrength()
     }
-    this.configOptions.inputChanged(this.props.value)
+    this.configOptions.onInputChange(this.props.value)
     this.render(this.props)
   }
 
   _inputValidate = (value) => {
-    let {
+    const {
       required,
       maxLength,
       minLength,
@@ -163,14 +163,14 @@ export class BlipInput extends Component {
       return false
     }
     if (this.configOptions.type === 'email') {
-      let emailRegex = /^\w+([\.-/+]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+      const emailRegex = /^\w+([\.-/+]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
       if (value && !emailRegex.test(value)) {
         this.props.error = this.configOptions.emailTypeErrorMsg
         return false
       }
     }
     if (this.configOptions.type === 'url') {
-      let urlRegex = /^(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i
+      const urlRegex = /^(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i
 
       if (value && !urlRegex.test(value)) {
         this.props.error = this.configOptions.urlTypeErrorMsg
@@ -208,10 +208,10 @@ export class BlipInput extends Component {
   }
 
   _checkPasswordStrength = () => {
-    let strongRegex = new RegExp(
+    const strongRegex = new RegExp(
       '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*\\.\\-_])(?=.{8,})',
     )
-    let mediumRegex = new RegExp(
+    const mediumRegex = new RegExp(
       '^((?=.*[a-z])|(?=.*[A-Z]))(?=.*[0-9])(?=.{6,})',
     )
 

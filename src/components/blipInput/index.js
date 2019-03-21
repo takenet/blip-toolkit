@@ -86,7 +86,7 @@ export class BlipInput extends Component {
               <span class="column str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
               <span class="column str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>
             </div>` : ''}
-              
+
               <div class="w-100 relative flex flex-row justify-between">
                   <input 
                     id="${this.configOptions.id}"
@@ -163,7 +163,7 @@ export class BlipInput extends Component {
       return false
     }
     if (this.configOptions.type === 'email') {
-      let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+      let emailRegex = /^\w+([\.-/+]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
       if (value && !emailRegex.test(value)) {
         this.props.error = this.configOptions.emailTypeErrorMsg
         return false
@@ -255,8 +255,8 @@ export class BlipInput extends Component {
   }
 
   /**
- * Remove elements from DOM
- */
+   * Remove elements from DOM
+   */
   _removeElements() {
     this.element.parentNode.removeChild(this.element)
   }

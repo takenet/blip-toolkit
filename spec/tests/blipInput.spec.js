@@ -9,7 +9,6 @@ describe('BlipInput', () => {
 
       expect(label.innerHTML).toEqual('My label')
     })
-
   })
   describe('Validation', () => {
     it('should validate minLength', () => {
@@ -18,15 +17,15 @@ describe('BlipInput', () => {
       })
       const renderedElement = component.render()
 
-      const input = renderedElement.querySelector('input');
+      const input = renderedElement.querySelector('input')
 
-      input.value = '12';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeFalsy();
+      input.value = '12'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeFalsy()
 
-      input.value = '123';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = '123'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
     })
 
     it('should validate maxLength', () => {
@@ -36,19 +35,19 @@ describe('BlipInput', () => {
 
       const renderedElement = component.render()
 
-      const input = renderedElement.querySelector('input');
+      const input = renderedElement.querySelector('input')
 
-      input.value = '12';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = '12'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = '123';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = '123'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = '1234';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeFalsy();
+      input.value = '1234'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeFalsy()
     })
 
     it('should validate required', () => {
@@ -58,17 +57,17 @@ describe('BlipInput', () => {
 
       const renderedElement = component.render()
 
-      const input = renderedElement.querySelector('input');
+      const input = renderedElement.querySelector('input')
 
-      expect(component.props.valid).toBeFalsy();
+      expect(component.props.valid).toBeFalsy()
 
-      input.value = '123';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = '123'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = '';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeFalsy();
+      input.value = ''
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeFalsy()
     })
 
     it('should validate email field', () => {
@@ -78,33 +77,33 @@ describe('BlipInput', () => {
 
       const renderedElement = component.render()
 
-      const input = renderedElement.querySelector('input');
+      const input = renderedElement.querySelector('input')
 
-      expect(component.props.valid).toBeTruthy();
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = 'teste';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeFalsy();
+      input.value = 'teste'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeFalsy()
 
-      input.value = 'teste@';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeFalsy();
+      input.value = 'teste@'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeFalsy()
 
-      input.value = 'teste@teste';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeFalsy();
+      input.value = 'teste@teste'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeFalsy()
 
-      input.value = 'teste@teste.com';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = 'teste@teste.com'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = 'teste@teste.com.br';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = 'teste@teste.com.br'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = 'teste+10@teste.com.br';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = 'teste+10@teste.com.br'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
     })
 
     it('should validate url field', () => {
@@ -114,46 +113,45 @@ describe('BlipInput', () => {
 
       const renderedElement = component.render()
 
-      const input = renderedElement.querySelector('input');
+      const input = renderedElement.querySelector('input')
 
-      expect(component.props.valid).toBeTruthy();
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = 'take';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeFalsy();
+      input.value = 'take'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeFalsy()
 
-      input.value = 'http://take';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeFalsy();
+      input.value = 'http://take'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeFalsy()
 
-      input.value = 'take.';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeFalsy();
+      input.value = 'take.'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeFalsy()
 
-      input.value = 'take.net';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = 'take.net'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = 'take.com.br';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = 'take.com.br'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = 'take.com:8080';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = 'take.com:8080'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = 'www.take.com';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = 'www.take.com'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = 'http://www.take.com';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = 'http://www.take.com'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
 
-      input.value = 'https://www.take.com';
-      input.dispatchEvent(new Event('keyup'));
-      expect(component.props.valid).toBeTruthy();
+      input.value = 'https://www.take.com'
+      input.dispatchEvent(new Event('keyup'))
+      expect(component.props.valid).toBeTruthy()
     })
-
   })
 })

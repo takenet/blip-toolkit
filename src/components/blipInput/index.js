@@ -126,7 +126,7 @@ export class BlipInput extends Component {
     this.props.pristine = false
     this.props.valid = this._inputValidate(this.props.value)
     if (!this.props.valid) {
-      this.configOptions.inputError(this.error)
+      this.configOptions.onInputError(this.error)
     }
     if (this.configOptions.type === 'password') {
       this._checkPasswordStrength()

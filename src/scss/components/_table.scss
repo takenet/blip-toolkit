@@ -1,5 +1,5 @@
 .bp-table,
-.bp-table-chart table {
+.bp-table-chart table { /* Class for Google Charts' table */
   display: table;
   table-layout: fixed;
 
@@ -105,7 +105,7 @@
   }
 }
 
-.bp-table.bp-table-chart--sort,
+.bp-table.bp-table-chart--sort, /* Class for sorting arrows of Google Charts' table */
 .bp-table-chart.bp-table-chart--sort table {
   th {
     cursor: pointer;

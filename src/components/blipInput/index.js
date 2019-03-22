@@ -81,7 +81,7 @@ export class BlipInput extends Component {
               <label class="bp-label tl ${labelClass}">
                 ${this.props.label} ${this.configOptions.required ? ' *' : ''}
               </label>
-              ${this.configOptions.type === 'password' && !this.props.disabled ? html`<div class="password-strength-wrapper">
+              ${this.configOptions.type === 'password' && !this.props.disabled ? html`<div class="bp-input__password-strength">
               <span class="column str-lvl lvl-one ${this.props.valid ? this.props.passwordStrength : ''}"></span>
               <span class="column str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
               <span class="column str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>

@@ -8,5 +8,6 @@ global.document = jsdomInstance.window.document
 global.window = jsdomInstance.window
 global.Element = jsdomInstance.window.Element
 global.HTMLLabelElement = jsdomInstance.window.HTMLLabelElement
+global.HTMLElement = jsdomInstance.window.HTMLElement
 global.Event = jsdomInstance.window.Event
 global.CustomEvent = jsdomInstance.window.CustomEvent

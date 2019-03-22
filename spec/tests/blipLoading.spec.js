@@ -5,7 +5,7 @@ describe('BlipLoading', () => {
     it('should return a BlipLoading instance', () => {
       const loading = new BlipLoading()
 
-      expect(loading instanceof BlipLoading).toBeTruthy()
+      expect(loading instanceof HTMLElement).toBeTruthy()
     })
   })
 })

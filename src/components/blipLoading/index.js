@@ -2,7 +2,7 @@ import html from 'nanohtml'
 
 export const BlipLoading = (props = {}) => {
   return html`
-    <div class="bp-loading ${props.darkBackground ? 'dark-background' : ''}" style="width:${props.width}; height:${props.height}; ">
+    <div class="bp-loading__content">
         <div class="bp-loading1 bp-loading__circle"></div>
         <div class="bp-loading2 bp-loading__circle"></div>
         <div class="bp-loading3 bp-loading__circle"></div>

@@ -48,10 +48,8 @@ export class BlipInput extends Component {
     // Component props
     this.props = {
       value: '',
-      error: '',
       customError: '',
       label: '',
-      pristine: this.configOptions.pristine,
       focused: this.configOptions.focused,
     }
   }

@@ -145,6 +145,12 @@ If the input is focused
 
 ---
 
+#### `pristine` - boolean
+
+If the input is pristine
+
+---
+
 #### `valid` - boolean
 
 If the input is valid. It is read only

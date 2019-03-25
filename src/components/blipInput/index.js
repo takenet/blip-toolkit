@@ -50,6 +50,7 @@ export class BlipInput extends Component {
       value: '',
       customError: '',
       label: '',
+      pristine: this.configOptions.pristine,
       focused: this.configOptions.focused,
     }
   }

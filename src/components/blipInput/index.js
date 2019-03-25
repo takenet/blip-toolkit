@@ -25,6 +25,7 @@ export class BlipInput extends Component {
     required: false,
     minLength: 0,
     maxLength: 0,
+    showPasswordStrength: true,
     requiredErrorMsg: 'This is a required field',
     maxLengthErrorMsg: 'The value is too long',
     minLengthErrorMsg: 'The value is too short',
@@ -48,6 +49,7 @@ export class BlipInput extends Component {
     this.props = {
       value: '',
       error: '',
+      customError: '',
       label: '',
       pristine: this.configOptions.pristine,
       focused: this.configOptions.focused,
@@ -56,6 +58,12 @@ export class BlipInput extends Component {
 
   get error() {
     return this.props.error
+  }
+
+  set error(value) {
+    this.props.error = value
+    this.props.valid = false
+    this.render(this.props)
   }
 
   get valid() {
@@ -75,13 +83,18 @@ export class BlipInput extends Component {
 
     const labelClass = this._getLabelClass()
 
+    if (this.props.customError) {
+      this.props.valid = false
+      this.props.error = this.props.customError
+    }
+
     return html`
         <div>
           <div class="bp-input-wrapper mb2 relative ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
               <label class="bp-label tl ${labelClass}">
                 ${this.props.label} ${this.configOptions.required ? ' *' : ''}
               </label>
-              ${this.configOptions.type === 'password' && !this.props.disabled ? html`<div class="bp-input__password-strength">
+              ${this.configOptions.type === 'password' && this.configOptions.showPasswordStrength && !this.props.disabled ? html`<div class="bp-input__password-strength">
               <span class="column str-lvl lvl-one ${this.props.valid ? this.props.passwordStrength : ''}"></span>
               <span class="column str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
               <span class="column str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>

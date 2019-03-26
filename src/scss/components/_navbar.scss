@@ -16,7 +16,7 @@
     nav {
       text-transform: uppercase;
       font-size: 1.2 * $m;
-      font-weight: 600;
+      font-weight: $bp-fw-bold;
       padding-left: 1.6 * $m;
       a {
         display: inline-block;

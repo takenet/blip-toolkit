@@ -6,12 +6,16 @@
     margin: 0;
     padding: 0;
     display: flex;
-    overflow: auto;
+    flex-wrap: nowrap;
+    overflow: visible;
     border-bottom: solid thin #ccc;
 
     li {
+      position: relative;
+      bottom: -1px;
       padding: 10px 20px;
       margin: 0 5px;
+      white-space: nowrap;
       &:first-child {
         margin-left: 0;
       }
@@ -27,7 +31,9 @@
       }
 
       &.active {
-        border-bottom: solid 4px $bp-color-bot;
+        border-bottom: solid 4px;
+        border-image: linear-gradient(to right, #51dbe3 0%, #28b4c3 100%);
+        border-image-slice: 1;
         a {
           color: $bp-color-bot;
         }

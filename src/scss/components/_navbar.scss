@@ -1,0 +1,33 @@
+.bp-navbar {
+  box-sizing: border-box;
+  min-height: 8 * $m;
+  padding: 2 * $m 5.5 * $m;
+  /* background: linear-gradient(90deg, $bp-color-suit 0%, #2f3747 100%); */
+  display: flex;
+  justify-content: space-between;
+  .bp-navbar__left {
+    display: flex;
+    align-items: center;
+    .bp-navbar__logo {
+      width: 38px;
+      height: 38px;
+      padding-right: 3 * $m;
+    }
+    nav {
+      text-transform: uppercase;
+      font-size: 1.2 * $m;
+      font-weight: 600;
+      padding-left: 1.6 * $m;
+      a {
+        display: inline-block;
+        color: #dce6ec;
+        text-decoration: none;
+        padding: 0 0.8 * $m;
+      }
+    }
+  }
+  .bp-navbar__right {
+    display: flex;
+    align-items: center;
+  }
+}

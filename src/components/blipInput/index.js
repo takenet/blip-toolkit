@@ -25,6 +25,7 @@ export class BlipInput extends Component {
     required: false,
     minLength: 0,
     maxLength: 0,
+    showPasswordStrength: true,
     requiredErrorMsg: 'This is a required field',
     maxLengthErrorMsg: 'The value is too long',
     minLengthErrorMsg: 'The value is too short',
@@ -47,7 +48,7 @@ export class BlipInput extends Component {
     // Component props
     this.props = {
       value: '',
-      error: '',
+      customError: '',
       label: '',
       pristine: this.configOptions.pristine,
       focused: this.configOptions.focused,
@@ -55,7 +56,7 @@ export class BlipInput extends Component {
   }
 
   get error() {
-    return this.props.error
+    return this.configOptions.error
   }
 
   get valid() {
@@ -75,13 +76,18 @@ export class BlipInput extends Component {
 
     const labelClass = this._getLabelClass()
 
+    if (this.props.customError) {
+      this.props.valid = false
+      this.configOptions.error = this.props.customError
+    }
+
     return html`
         <div>
           <div class="bp-input-wrapper mb2 relative ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
               <label class="bp-label tl ${labelClass}">
                 ${this.props.label} ${this.configOptions.required ? ' *' : ''}
               </label>
-              ${this.configOptions.type === 'password' && !this.props.disabled ? html`<div class="bp-input__password-strength">
+              ${this.configOptions.type === 'password' && this.configOptions.showPasswordStrength && !this.props.disabled ? html`<div class="bp-input__password-strength">
               <span class="column str-lvl lvl-one ${this.props.valid ? this.props.passwordStrength : ''}"></span>
               <span class="column str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
               <span class="column str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>
@@ -104,7 +110,7 @@ export class BlipInput extends Component {
                   />
               </div>
           </div>
-          ${this.props.error && !this.props.pristine ? html`<div class="error bp-fs-7 mb2 ${bpCWarningClass}">${this.props.error}</div>` : ''}
+          ${this.configOptions.error && !this.props.pristine ? html`<div class="error bp-fs-7 mb2 ${bpCWarningClass}">${this.configOptions.error}</div>` : ''}
         </div>
     `
   }
@@ -159,13 +165,13 @@ export class BlipInput extends Component {
       minLengthErrorMsg,
     } = this.configOptions
     if (required && !value) {
-      this.props.error = requiredErrorMsg
+      this.configOptions.error = requiredErrorMsg
       return false
     }
     if (this.configOptions.type === 'email') {
       const emailRegex = /^\w+([\.-/+]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
       if (value && !emailRegex.test(value)) {
-        this.props.error = this.configOptions.emailTypeErrorMsg
+        this.configOptions.error = this.configOptions.emailTypeErrorMsg
         return false
       }
     }
@@ -173,19 +179,19 @@ export class BlipInput extends Component {
       const urlRegex = /^(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i
 
       if (value && !urlRegex.test(value)) {
-        this.props.error = this.configOptions.urlTypeErrorMsg
+        this.configOptions.error = this.configOptions.urlTypeErrorMsg
         return false
       }
     }
     if (value && maxLength !== 0 && value.length > maxLength) {
-      this.props.error = maxLengthErrorMsg
+      this.configOptions.error = maxLengthErrorMsg
       return false
     }
     if (value && minLength !== 0 && value.length < minLength) {
-      this.props.error = minLengthErrorMsg
+      this.configOptions.error = minLengthErrorMsg
       return false
     }
-    this.props.error = ''
+    this.configOptions.error = ''
     return true
   }
 

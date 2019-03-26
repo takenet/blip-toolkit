@@ -1,0 +1,45 @@
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+  ul.tab-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    overflow: auto;
+    border-bottom: solid thin #ccc;
+
+    li {
+      padding: 10px 20px;
+      margin: 0 5px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+      &.active {
+        border-bottom: solid 4px $bp-color-bot;
+        a {
+          color: $bp-color-bot;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    display: none;
+    padding: 45px 10px 10px 10px;
+    &.visible {
+      display: block;
+    }
+  }
+}

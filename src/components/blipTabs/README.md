@@ -18,9 +18,9 @@ Component is a pure JavaScript plugin that transforms determined HTML markup int
         </li>
         </li>
     </ul>
-    <div class="bp-tab-content" data-ref="tab1">Conteúdo da tab 1</div>
-    <div class="bp-tab-content" data-ref="tab2">Outro conteúdo, agora tab 2</div>
-    <div class="bp-tab-content" data-ref="tab3">Mais coisas, pra tab 3</div>
+    <div class="bp-tab-content" data-ref="tab1">Tab 1 content</div>
+    <div class="bp-tab-content" data-ref="tab2">Another content, now tab 2</div>
+    <div class="bp-tab-content" data-ref="tab3">More things to show in tab 3</div>
 </div>
 
 <script type="text/javascript">

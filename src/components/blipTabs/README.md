@@ -25,7 +25,7 @@ Component is a pure JavaScript plugin that transforms determined HTML markup int
 
 <script type="text/javascript">
   import { BlipTabs } from 'blip-toolkit'
-  BlipTabs('my-tabs-container')
+  new BlipTabs('my-tabs-container')
 </script>
 ```
 

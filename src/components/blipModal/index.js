@@ -3,12 +3,12 @@ import { ModalContainer } from './ModalContainer'
 export const MODAL_DEFAULTS = {
   onOpen: () => {},
   onClose: () => {},
-  onOk: () => {},
+  onConfirm: () => {},
   onCancel: () => {},
   closeOnOverlayClick: true,
-  closeOnOk: true,
+  closeOnConfirm: true,
   closeOnCancel: true,
-  okButton: { text: 'Ok', classes: '' },
+  confirmButton: { text: 'Confirm', classes: '' },
   cancelButton: { text: 'Cancel', classes: '' },
 }
 
@@ -37,7 +37,7 @@ export class BlipModal {
 
     this.modalContainerInstance = new ModalContainer({
       onCancel: this._onModalCancel,
-      onOk: this._onModalOk,
+      onConfirm: this._onModalConfirm,
     })
   }
 
@@ -55,12 +55,12 @@ export class BlipModal {
   /**
    * Handle modal ok click
    */
-  _onModalOk = () => {
-    if (this.configOptions.closeOnOk) {
+  _onModalConfirm = () => {
+    if (this.configOptions.closeOnConfirm) {
       this.close()
     }
 
-    this.configOptions.onOk({ modal: this })
+    this.configOptions.onConfirm({ modal: this })
   }
 
   /**
@@ -69,7 +69,7 @@ export class BlipModal {
   open() {
     this.renderedModal = this.modalContainerInstance.render({
       template: this.modalContent.innerHTML,
-      okButton: this.configOptions.okButton,
+      confirmButton: this.configOptions.confirmButton,
       cancelButton: this.configOptions.cancelButton,
     })
 

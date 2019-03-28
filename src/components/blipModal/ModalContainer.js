@@ -18,7 +18,7 @@ export class ModalContainer extends Component {
 
     this.props = {
       template: '',
-      okButton: { text: 'Ok', classes: '' },
+      confirmButton: { text: 'Confirm', classes: '' },
       cancelButton: { text: 'Cancel', classes: '' },
     }
   }
@@ -40,10 +40,10 @@ export class ModalContainer extends Component {
   }
 
   /**
-   * Handle ok button clicks
+   * Handle confirm button clicks
    */
-  _handleOnOk = () => {
-    this.configOptions.onOk()
+  _handleOnConfirm = () => {
+    this.configOptions.onConfirm()
   }
 
   createElement(props) {
@@ -62,13 +62,13 @@ export class ModalContainer extends Component {
             ${renderTemplate()}
           </div>
           <div class="bp-modal__container__footer">
-            <button class="bp-modal__cancel-button bp-btn bp-btn--blip-light bp-btn--flat ${this.props.cancelButton.classes}"
+            <button class="bp-modal__cancel-button bp-btn bp-btn--city bp-btn--text-only ${this.props.cancelButton.classes}"
               onclick="${this._handleOnCancel}">
               ${this.props.cancelButton.text}
             </button>
-            <button class="bp-modal__ok-button bp-btn bp-btn--blip-dark ${this.props.okButton.classes}"
-              onclick="${this._handleOnOk}">
-              ${this.props.okButton.text}
+            <button class="bp-modal__ok-button bp-btn bp-btn--blip-dark ${this.props.confirmButton.classes}"
+              onclick="${this._handleOnConfirm}">
+              ${this.props.confirmButton.text}
             </button>
           </div>
         </div>

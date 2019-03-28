@@ -53,7 +53,7 @@ export class BlipModal {
   }
 
   /**
-   * Handle modal ok click
+   * Handle modal confirm click
    */
   _onModalConfirm = () => {
     if (this.configOptions.closeOnConfirm) {

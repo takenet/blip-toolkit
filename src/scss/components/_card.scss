@@ -1,0 +1,47 @@
+.bp-card {
+  @include bp-shadow(0, 4px, 29px, 6px, rgba(181, 205, 211, 0.29));
+  padding: 4 * $m 6 * $m;
+  position: relative;
+  background-color: #ffffff;
+  margin-top: 1.5 * $m;
+  &.bp-card--left-arrow {
+    &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      margin-left: -0.75 * $m;
+      top: 0;
+      left: 4 * $m;
+      box-sizing: border-box;
+
+      border: 0.75 * $m solid black;
+      border-color: #fff #fff transparent transparent;
+
+      transform-origin: 0 0;
+      transform: rotate(-45deg);
+
+      box-shadow: 3px -3px 3px 0 rgba(181, 205, 211, 0.03);
+    }
+  }
+  &.bp-card--right-arrow {
+    &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      margin-right: -0.75 * $m;
+      top: 0;
+      right: 4 * $m;
+      box-sizing: border-box;
+
+      border: 0.75 * $m solid black;
+      border-color: #fff #fff transparent transparent;
+
+      transform-origin: 0 0;
+      transform: rotate(-45deg);
+
+      box-shadow: 3px -3px 3px 0 rgba(181, 205, 211, 0.03);
+    }
+  }
+}

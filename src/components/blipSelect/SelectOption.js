@@ -34,6 +34,7 @@ export class SelectOption extends OptionItem {
         onclick="${this.onOptionClick.bind(this)}"
         onkeydown="${this.attachOptionKeyboardListeners.bind(this)}"
         class="blip-select__option"
+        data-value="${this.props.value}"
         id="${fillOptionId(this.props.id)}"
         >${labelElement}${descriptionElement}</li>
     `

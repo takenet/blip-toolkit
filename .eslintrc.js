@@ -15,6 +15,10 @@ module.exports = {
     'space-before-function-paren': 0,
     // allow async-await
     'generator-star-spacing': 'off',
+    'prefer-const': ['error', {
+      'destructuring': 'any',
+      'ignoreReadBeforeAssign': false
+    }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-new': 0,
@@ -25,5 +29,6 @@ module.exports = {
       'exports': 'always-multiline',
       'functions': 'ignore',
     }],
+    'no-useless-escape': 0
   }
 }

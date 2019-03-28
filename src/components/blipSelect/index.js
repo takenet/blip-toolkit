@@ -34,16 +34,16 @@ export class BlipSelect extends Component {
     mode: 'select',
     noResultsText: 'No results found',
     clearAfterAdd: true, // Clear input after add new option
-    onBeforeOpenSelect: () => {},
-    onAfterOpenSelect: () => {},
-    onBeforeCloseSelect: () => {},
-    onAfterCloseSelect: () => {},
-    onInputChange: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
-    onInputKeyup: ({ $event }) => {}, // { value: inputValue, event: DOMEvent }
-    onSelectOption: ({ $event }) => {}, // { value: optionValue, label: optionLabel }
-    onFocus: () => {},
-    onBlur: () => {},
-    onAddOption: () => {},
+    onBeforeOpenSelect: () => { },
+    onAfterOpenSelect: () => { },
+    onBeforeCloseSelect: () => { },
+    onAfterCloseSelect: () => { },
+    onInputChange: ({ $event }) => { }, // { value: inputValue, event: DOMEvent }
+    onInputKeyup: ({ $event }) => { }, // { value: inputValue, event: DOMEvent }
+    onSelectOption: ({ $event }) => { }, // { value: optionValue, label: optionLabel }
+    onFocus: () => { },
+    onBlur: () => { },
+    onAddOption: () => { },
     customSearch: undefined, // Function that should return a list of { value, label } pair
     canAddOptions: false,
     optionCreator: SelectOption,
@@ -178,7 +178,7 @@ export class BlipSelect extends Component {
       ...this.props,
       ...props,
     }
-
+    this.renderedOptionsList = this.optionsList.render(this._optionsListConfig())
     const isReadOnly = () => this.configOptions.mode === 'select'
     const hasBulletClass = () =>
       this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
@@ -198,7 +198,7 @@ export class BlipSelect extends Component {
           disabled="${this.isDisabled}"
           readonly="${isReadOnly()}">
         <div class="blip-select__options" id="${this.customSelectId}">
-          ${this.optionsList.render(this._optionsListConfig())}
+          ${this.renderedOptionsList}
         </div>
       </div>
     `
@@ -463,8 +463,10 @@ export class BlipSelect extends Component {
    */
   _setInputValue(optionProps) {
     const { label } = optionProps
-    this.input.value = label
-    this.props.inputValue = this.input.value
+    if (label) {
+      this.input.value = label
+      this.props.inputValue = this.input.value
+    }
     if (typeof this.configOptions.onSelectOption !== 'function') {
       throw new Error('Callback "onSelectOption" is not a function')
     }
@@ -496,9 +498,9 @@ export class BlipSelect extends Component {
   setValue({ label, ...rest }) {
     if (rest.value) {
       const match = this.props.options.find((o) => o.value === rest.value)
-
       if (match) {
-        match.element.classList.add(blipSelectOptionSeletedClass)
+        const element = this.renderedOptionsList.querySelector(`li[data-value="${match.value}"]`)
+        element.classList.add(blipSelectOptionSeletedClass)
 
         this._setInputValue({
           label: match.label,
@@ -508,11 +510,6 @@ export class BlipSelect extends Component {
     } else {
       this._setInputValue({ label, ...rest })
     }
-
-    const event = new CustomEvent('input', {
-      detail: { shouldOpenSelect: false },
-    })
-    this.input.dispatchEvent(event)
   }
 
   /**
@@ -687,7 +684,7 @@ export class BlipSelect extends Component {
 
     if (
       this.optionsList.element.scrollHeight >
-        this.optionsList.element.clientHeight &&
+      this.optionsList.element.clientHeight &&
       ev.propertyName === 'transform'
     ) {
       if (!selectedOption) {

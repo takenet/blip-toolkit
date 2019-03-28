@@ -31,6 +31,7 @@
 									<option value="divider">Divider</option>
 									<option value="dropdown">Dropdown</option>
 									<option value="radio">Radio</option>
+									<option value="table">Table</option>
 							</optgroup>
 							<optgroup label="Style">
 									<option value="color">Color</option>
@@ -1599,6 +1600,303 @@
 &lt;/table&gt;</code></pre>
 	</div>
 </div></div>
+</div>
+
+						<div id="table" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Table</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">components\Table.md</span>
+	</span>
+	<div class="theme-content-element-description"><p>Tables are styled through the base class <strong>bp-table</strong>. They MUST respect the standards of a HTML5 table: have <code>&lt;table&gt;</code> englobing <code>&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;</code> and <code>&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;</code>.</p>
+<p>The text-align property of <code>bp-table</code> is not defined for more flexibility.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="table-base.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="table-base.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table class=&quot;bp-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th class=&quot;tl&quot;&gt;Header 1&lt;/th&gt;
+      &lt;th class=&quot;tc&quot;&gt;Header 2&lt;/th&gt;
+      &lt;th class=&quot;tr&quot;&gt;Header 3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;tl&quot;&gt;Description 1&lt;/td&gt;
+      &lt;td class=&quot;tc&quot;&gt;Description 2&lt;/td&gt;
+      &lt;td class=&quot;tr&quot;&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;tl&quot;&gt;Description 1&lt;/td&gt;
+      &lt;td class=&quot;tc&quot;&gt;Description 2&lt;/td&gt;
+      &lt;td class=&quot;tr&quot;&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table class=&quot;bp-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th class=&quot;tl&quot;&gt;Header 1&lt;/th&gt;
+      &lt;th class=&quot;tc&quot;&gt;Header 2&lt;/th&gt;
+      &lt;th class=&quot;tr&quot;&gt;Header 3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;tl&quot;&gt;Description 1&lt;/td&gt;
+      &lt;td class=&quot;tc&quot;&gt;Description 2&lt;/td&gt;
+      &lt;td class=&quot;tr&quot;&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&quot;tl&quot;&gt;Description 1&lt;/td&gt;
+      &lt;td class=&quot;tc&quot;&gt;Description 2&lt;/td&gt;
+      &lt;td class=&quot;tr&quot;&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><h3>Vertical Scroll</h3>
+
+<p>Tables also can have the <strong>bp-table--scroll-y</strong> variation, which allows its <code>&lt;tbody&gt;</code> to have vertical scroll if overflown. For that to work, you must manually declare the <code>&lt;tbody&gt;</code>&#39;s maximum height.</p>
+<p><em>Important:</em> This variation transforms the table&#39;s display into flex. If you don&#39;t want any unexpected layout breaks, you must set all <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code>&#39;s width accordingly, so they respect one another.</p>
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> css</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="tbody {
+  max-height: 472px;
+}
+
+th, td {
+  width: 33%;
+}">Copy</button>
+		<pre class="mb-0"><code class="lang-">tbody {
+  max-height: 472px;
+}
+
+th, td {
+  width: 33%;
+}</code></pre>
+	</div>
+</div><div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="table-scrolly.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="table-scrolly.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div style=&quot;height: 550px;&quot;&gt;
+&lt;table class=&quot;bp-table bp-table--scroll-y tl&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Header 1&lt;/th&gt;
+      &lt;th&gt;Header 2&lt;/th&gt;
+      &lt;th&gt;Header 3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div style=&quot;height: 550px;&quot;&gt;
+&lt;table class=&quot;bp-table bp-table--scroll-y tl&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Header 1&lt;/th&gt;
+      &lt;th&gt;Header 2&lt;/th&gt;
+      &lt;th&gt;Header 3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Description 1&lt;/td&gt;
+      &lt;td&gt;Description 2&lt;/td&gt;
+      &lt;td&gt;Description 3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;</code></pre>
+	</div>
+</div><h3>Google Charts</h3>
+
+<p>Since Google Charts do not allow the addition of classes in its tables, you can use <strong>bp-table-chart</strong> and <strong>bp-table-chart--scroll-y</strong> on the table&#39;s parent. Also, <strong>bp-table-chart--sort</strong> can be used to add pointer cursor onto headers&#39; sorting arrows and remove their outline.</p>
+</div>
 </div>
 
 				</div>
@@ -3838,7 +4136,7 @@
 			
 						<h5
 							class="pt-4 mb-1 theme-sidebar-category-title"
-							data-filter-value=" Button  Checkbox  Divider  Dropdown  Radio "
+							data-filter-value=" Button  Checkbox  Divider  Dropdown  Radio  Table "
 						>
 							<a href="#category-components" class="i-sidebar-list-item">
 								<b>Components</b>
@@ -3880,6 +4178,13 @@
 									data-filter-value="Radio"
 								>
 									<span>Radio</span>
+								</a>
+								<a
+									href="#table"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Table"
+								>
+									<span>Table</span>
 								</a>
 						</div>
 			

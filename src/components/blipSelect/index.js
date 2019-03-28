@@ -463,8 +463,10 @@ export class BlipSelect extends Component {
    */
   _setInputValue(optionProps) {
     const { label } = optionProps
-    this.input.value = label
-    this.props.inputValue = this.input.value
+    if (label) {
+      this.input.value = label
+      this.props.inputValue = this.input.value
+    }
     if (typeof this.configOptions.onSelectOption !== 'function') {
       throw new Error('Callback "onSelectOption" is not a function')
     }
@@ -505,7 +507,7 @@ export class BlipSelect extends Component {
           ...rest,
         })
       }
-    } else if (label) {
+    } else {
       this._setInputValue({ label, ...rest })
     }
   }

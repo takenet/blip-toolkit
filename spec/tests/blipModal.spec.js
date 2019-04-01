@@ -8,7 +8,7 @@ describe('BlipModal', () => {
     const boilerplate = strToEl(`
       <div>
         <button id="${DEFAULT_MODAL}">Open modal</button>
-        <div rel="${DEFAULT_MODAL}">
+        <div ref="${DEFAULT_MODAL}">
           <h1>Hello! I'm some lost modal!</h1>
         </div>
       </div>

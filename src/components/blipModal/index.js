@@ -1,10 +1,10 @@
 import { ModalContainer } from './ModalContainer'
 
 export const MODAL_DEFAULTS = {
-  onOpen: () => {},
-  onClose: () => {},
-  onConfirm: () => {},
-  onCancel: () => {},
+  onOpen: () => { },
+  onClose: () => { },
+  onConfirm: () => { },
+  onCancel: () => { },
   closeOnOverlayClick: true,
   closeOnConfirm: true,
   closeOnCancel: true,
@@ -39,6 +39,12 @@ export class BlipModal {
       onCancel: this._onModalCancel,
       onConfirm: this._onModalConfirm,
     })
+
+    this.renderedModal = this.modalContainerInstance.render({
+      template: this.modalContent.children,
+      confirmButton: this.configOptions.confirmButton,
+      cancelButton: this.configOptions.cancelButton,
+    })
   }
 
   /**
@@ -67,12 +73,6 @@ export class BlipModal {
    * Opens modal and add ModalContainer component to page
    */
   open() {
-    this.renderedModal = this.modalContainerInstance.render({
-      template: this.modalContent.innerHTML,
-      confirmButton: this.configOptions.confirmButton,
-      cancelButton: this.configOptions.cancelButton,
-    })
-
     document.body.appendChild(this.renderedModal)
     this.configOptions.onOpen()
   }

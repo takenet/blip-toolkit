@@ -12,7 +12,8 @@
     max-width: 30%;
     white-space: pre-wrap;
     border-radius: 10px;
-    padding: 10px 15px;
+    padding: 14px 5px;
+    font-size: 1.4 * $m;
     margin: 5px;
     color: $bp-color-white;
     display: flex;
@@ -37,13 +38,15 @@
     }
 
     svg {
-      width: 50px;
+      width: 24px;
       fill: $bp-color-white;
+      padding: 0.8 * $m 1 * $m;
     }
 
     p {
       flex-grow: 1;
-      padding: 15px;
+      padding: 0 10px;
+      text-align: center;
     }
   }
   .bp-toast__show {

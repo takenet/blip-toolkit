@@ -51,6 +51,18 @@ describe('BlipToasts', () => {
     expect(toast).toHaveClass('bp-toast--warning')
   })
 
+  it('should show refresh toast', () => {
+    const component = new BlipToasts()
+    const renderedElement = component.render()
+    const msg = 'Toast content'
+    document.body.appendChild(renderedElement)
+    component.refresh(msg)
+
+    const toast = renderedElement.querySelector('.bp-toast')
+    expect(toast).not.toEqual(null)
+    expect(toast).toHaveClass('bp-toast--refresh')
+  })
+
   it('should desapear after elapsed time', () => {
     const component = new BlipToasts()
     const renderedElement = component.render()

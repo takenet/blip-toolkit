@@ -9,7 +9,8 @@
   margin: 0 10px 10px 5px;
   .bp-toast {
     position: relative;
-    min-width: 30%;
+    max-width: 30%;
+    white-space: pre-wrap;
     border-radius: 10px;
     padding: 10px 15px;
     margin: 5px;
@@ -34,6 +35,12 @@
     &.bp-toast--refresh {
       background-image: linear-gradient(to right, #03a7ea, #006ffe);
     }
+
+    svg {
+      width: 50px;
+      fill: $bp-color-white;
+    }
+
     p {
       flex-grow: 1;
       padding: 15px;

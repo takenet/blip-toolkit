@@ -82,4 +82,20 @@ export class BlipToasts extends Component {
       )
     }
   }
+
+  refresh(msg, duration = 5000) {
+    const toast = BlipToast({ msg, type: 'refresh' })
+    this.options.element.append(toast)
+    toast.querySelector('.dismiss').addEventListener('click', () => this.element.removeChild(toast))
+    setTimeout(
+      () => toast.classList.add('bp-toast__show'),
+      20,
+    )
+    if (duration !== 0) {
+      setTimeout(
+        () => this.element.removeChild(toast),
+        duration
+      )
+    }
+  }
 }

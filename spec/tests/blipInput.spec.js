@@ -70,88 +70,112 @@ describe('BlipInput', () => {
       expect(component.props.valid).toBeFalsy()
     })
 
-    it('should validate email field', () => {
+    describe('Type email', () => {
       const component = new BlipInput({
         type: 'email',
       })
 
       const renderedElement = component.render()
-
       const input = renderedElement.querySelector('input')
 
-      expect(component.props.valid).toBeTruthy()
+      it('should validate email without @ and domain', () => {
+        input.value = 'teste'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeFalsy()
+      })
 
-      input.value = 'teste'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeFalsy()
+      it('should validate email with @ and incomplete domain', () => {
+        input.value = 'teste@'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeFalsy()
+      })
 
-      input.value = 'teste@'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeFalsy()
+      it('should validate email without domain', () => {
+        input.value = 'teste@teste'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeFalsy()
+      })
 
-      input.value = 'teste@teste'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeFalsy()
+      it('should validate valid email', () => {
+        input.value = 'teste@teste.com'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
 
-      input.value = 'teste@teste.com'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeTruthy()
+      it('should validate valid email with full domain and country domain', () => {
+        input.value = 'teste@teste.com.br'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
 
-      input.value = 'teste@teste.com.br'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeTruthy()
-
-      input.value = 'teste+10@teste.com.br'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeTruthy()
+      it('should validate valid email with label', () => {
+        input.value = 'teste+10@teste.com.br'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
     })
 
-    it('should validate url field', () => {
+    describe('Type url', () => {
       const component = new BlipInput({
         type: 'url',
       })
 
       const renderedElement = component.render()
-
       const input = renderedElement.querySelector('input')
 
-      expect(component.props.valid).toBeTruthy()
+      it('should validate url without protocol and domain', () => {
+        input.value = 'take'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeFalsy()
+      })
 
-      input.value = 'take'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeFalsy()
+      it('should validate url with just protocol', () => {
+        input.value = 'http://take'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeFalsy()
+      })
 
-      input.value = 'http://take'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeFalsy()
+      it('should validate url with name and dot', () => {
+        input.value = 'take.'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeFalsy()
+      })
 
-      input.value = 'take.'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeFalsy()
+      it('should validate url without protocol and with domain', () => {
+        input.value = 'take.net'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
 
-      input.value = 'take.net'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeTruthy()
+      it('should validate url without protocol and with domain and country', () => {
+        input.value = 'take.com.br'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
 
-      input.value = 'take.com.br'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeTruthy()
+      it('should validate url with domain and port', () => {
+        input.value = 'take.com:8080'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
 
-      input.value = 'take.com:8080'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeTruthy()
+      it('should validate url with www and full domain', () => {
+        input.value = 'www.take.com'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
 
-      input.value = 'www.take.com'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeTruthy()
+      it('should validate url with http:// protocol and full domain', () => {
+        input.value = 'http://www.take.com'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
 
-      input.value = 'http://www.take.com'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeTruthy()
-
-      input.value = 'https://www.take.com'
-      input.dispatchEvent(new Event('keyup'))
-      expect(component.props.valid).toBeTruthy()
+      it('should validate url with https:// protocol and full domain', () => {
+        input.value = 'https://www.take.com'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
     })
   })
 })

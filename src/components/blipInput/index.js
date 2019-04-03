@@ -72,8 +72,6 @@ export class BlipInput extends Component {
       ...props,
     }
 
-    this.props.valid = this._inputValidate(this.props.value)
-
     const labelClass = this._getLabelClass()
 
     if (this.props.customError) {
@@ -84,34 +82,34 @@ export class BlipInput extends Component {
     return html`
         <div>
           <div class="bp-input-wrapper mb2 relative ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
-              <label class="bp-label tl ${labelClass}">
-                ${this.props.label} ${this.configOptions.required ? ' *' : ''}
-              </label>
-              ${this.configOptions.type === 'password' && this.configOptions.showPasswordStrength && !this.props.disabled ? html`<div class="bp-input__password-strength">
-              <span class="column str-lvl lvl-one ${this.props.valid ? this.props.passwordStrength : ''}"></span>
-              <span class="column str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
-              <span class="column str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>
-            </div>` : ''}
+            <label class="bp-label tl ${labelClass}">
+              ${this.props.label} ${this.configOptions.required ? ' *' : ''}
+            </label>
+            ${this.configOptions.type === 'password' && this.configOptions.showPasswordStrength && !this.props.disabled ? html`<div class="bp-input__password-strength">
+            <span class="column str-lvl lvl-one ${this.props.valid ? this.props.passwordStrength : ''}"></span>
+            <span class="column str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
+            <span class="column str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>
+          </div>` : ''}
 
-              <div class="w-100 relative flex flex-row justify-between">
-                  <input 
-                    id="${this.configOptions.id}"
-                    name="${this.configOptions.name}"
-                    class="w-100 bp-input bp-c-city" 
-                    type="${this.configOptions.type}" 
-                    value="${this.props.value}" 
-                    placeholder="${this.configOptions.placeholder}"
-                    onfocus="${this._onInputFocus}"
-                    onblur="${this._onInputBlur}"
-                    onchange="${this._onInputChange}"
-                    onkeyup="${this._onInputKeyUp}"
-                    ${this.configOptions.required ? 'required' : ''}
-                    ${this.props.disabled ? 'disabled' : ''}
-                  />
-              </div>
+          <div class="w-100 relative flex flex-row justify-between">
+            <input
+              id="${this.configOptions.id}"
+              name="${this.configOptions.name}"
+              class="w-100 bp-input bp-c-city"
+              type="${this.configOptions.type}"
+              value="${this.props.value}"
+              placeholder="${this.configOptions.placeholder}"
+              onfocus="${this._onInputFocus}"
+              onblur="${this._onInputBlur}"
+              onchange="${this._onInputChange}"
+              onkeyup="${this._onInputKeyUp}"
+              ${this.configOptions.required ? 'required' : ''}
+              ${this.props.disabled ? 'disabled' : ''}
+            />
           </div>
-          ${this.configOptions.error && !this.props.pristine ? html`<div class="error bp-fs-7 mb2 ${bpCWarningClass}">${this.configOptions.error}</div>` : ''}
         </div>
+        ${this.configOptions.error && !this.props.pristine ? html`<div class="error bp-fs-7 mb2 ${bpCWarningClass}">${this.configOptions.error}</div>` : ''}
+      </div>
     `
   }
 
@@ -128,30 +126,26 @@ export class BlipInput extends Component {
   }
 
   _onInputKeyUp = (event) => {
-    this.props.value = event.target.value
-    this.props.pristine = false
-    this.props.valid = this._inputValidate(this.props.value)
-    if (!this.props.valid) {
-      this.configOptions.onInputError(this.error)
-    }
-    if (this.configOptions.type === 'password') {
-      this._checkPasswordStrength()
-    }
-    this.configOptions.onInputChange(this.props.value)
-    this.render(this.props)
+    this._handleInputChanges(event)
   }
 
   _onInputChange = (event) => {
+    this._handleInputChanges(event)
+    this.configOptions.onInputChange(this.props.value)
+  }
+
+  _handleInputChanges = (event) => {
     this.props.value = event.target.value
     this.props.pristine = false
     this.props.valid = this._inputValidate(this.props.value)
+
     if (!this.props.valid) {
       this.configOptions.onInputError(this.error)
     }
     if (this.configOptions.type === 'password') {
       this._checkPasswordStrength()
     }
-    this.configOptions.onInputChange(this.props.value)
+
     this.render(this.props)
   }
 
@@ -164,12 +158,13 @@ export class BlipInput extends Component {
       maxLengthErrorMsg,
       minLengthErrorMsg,
     } = this.configOptions
+
     if (required && !value) {
       this.configOptions.error = requiredErrorMsg
       return false
     }
     if (this.configOptions.type === 'email') {
-      const emailRegex = /^\w+([\.-/+]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+      const emailRegex = /^\w+([.-]\w+)*@\w+([.-]\w+)*\.\w{2,3}$/
       if (value && !emailRegex.test(value)) {
         this.configOptions.error = this.configOptions.emailTypeErrorMsg
         return false

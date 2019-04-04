@@ -20,71 +20,27 @@ export class BlipToasts extends Component {
   }
 
   info(msg, duration = 5000) {
-    const toast = BlipToast({ msg, type: 'info' })
-    this.options.element.append(toast)
-    toast.querySelector('.dismiss').addEventListener('click', () => this.element.removeChild(toast))
-    setTimeout(
-      () => toast.classList.add('bp-toast__show'),
-      20,
-    )
-    if (duration !== 0) {
-      setTimeout(
-        () => this.element.removeChild(toast),
-        duration
-      )
-    }
+    this.toast(msg, duration, 'info')
   }
 
   success(msg, duration = 5000) {
-    const toast = BlipToast({ msg, type: 'success' })
-    toast.querySelector('.dismiss').addEventListener('click', () => this.element.removeChild(toast))
-    this.options.element.append(toast)
-    setTimeout(
-      () => toast.classList.add('bp-toast__show'),
-      20,
-    )
-    if (duration !== 0) {
-      setTimeout(
-        () => this.element.removeChild(toast),
-        duration
-      )
-    }
+    this.toast(msg, duration, 'success')
   }
 
   warning(msg, duration = 5000) {
-    const toast = BlipToast({ msg, type: 'warning' })
-    this.options.element.append(toast)
-    toast.querySelector('.dismiss').addEventListener('click', () => this.element.removeChild(toast))
-    setTimeout(
-      () => toast.classList.add('bp-toast__show'),
-      20,
-    )
-    if (duration !== 0) {
-      setTimeout(
-        () => this.element.removeChild(toast),
-        duration
-      )
-    }
+    this.toast(msg, duration, 'warning')
   }
 
   danger(msg, duration = 5000) {
-    const toast = BlipToast({ msg, type: 'danger' })
-    this.options.element.append(toast)
-    toast.querySelector('.dismiss').addEventListener('click', () => this.element.removeChild(toast))
-    setTimeout(
-      () => toast.classList.add('bp-toast__show'),
-      20,
-    )
-    if (duration !== 0) {
-      setTimeout(
-        () => this.element.removeChild(toast),
-        duration
-      )
-    }
+    this.toast(msg, duration, 'danger')
   }
 
   refresh(msg, duration = 5000) {
-    const toast = BlipToast({ msg, type: 'refresh' })
+    this.toast(msg, duration, 'refresh')
+  }
+
+  toast(msg, duration, type) {
+    const toast = BlipToast({ msg, type })
     this.options.element.append(toast)
     toast.querySelector('.dismiss').addEventListener('click', () => this.element.removeChild(toast))
     setTimeout(

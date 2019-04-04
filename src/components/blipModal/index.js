@@ -45,6 +45,9 @@ export class BlipModal {
       confirmButton: this.configOptions.confirmButton,
       cancelButton: this.configOptions.cancelButton,
     })
+
+    this.renderedModal.style.display = 'none'
+    document.body.appendChild(this.renderedModal)
   }
 
   /**
@@ -73,7 +76,7 @@ export class BlipModal {
    * Opens modal and add ModalContainer component to page
    */
   open() {
-    document.body.appendChild(this.renderedModal)
+    this.renderedModal.style.display = 'block'
     this.configOptions.onOpen()
   }
 
@@ -81,7 +84,7 @@ export class BlipModal {
    * Close modal and remove ModalContainer component from page
    */
   close() {
-    document.body.removeChild(this.renderedModal)
+    this.renderedModal.style.display = 'none'
     this.configOptions.onClose()
   }
 }

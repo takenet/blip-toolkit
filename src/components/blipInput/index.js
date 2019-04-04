@@ -131,7 +131,6 @@ export class BlipInput extends Component {
 
   _onInputChange = (event) => {
     this._handleInputChanges(event)
-    this.configOptions.onInputChange(this.props.value)
   }
 
   _handleInputChanges = (event) => {
@@ -147,6 +146,7 @@ export class BlipInput extends Component {
     }
 
     this.render(this.props)
+    this.configOptions.onInputChange(this.props.value)
   }
 
   _inputValidate = (value) => {

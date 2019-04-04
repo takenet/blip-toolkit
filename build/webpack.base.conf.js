@@ -44,7 +44,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|otf|eot|svg)(\?]?.*)?$/,
+        test: /\.(woff|woff2|ttf|otf|eot)(\?]?.*)?$/,
         use: [
           {
             loader: 'url-loader',
@@ -78,6 +78,14 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'svg-inline-loader',
+          },
+        ],
+      }
     ],
   },
   node: false,

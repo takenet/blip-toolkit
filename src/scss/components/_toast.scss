@@ -1,0 +1,57 @@
+.bp-toasts {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  position: fixed;
+  width: 100%;
+  bottom: 20px;
+  z-index: 100;
+  margin: 0 10px 10px 5px;
+  .bp-toast {
+    position: relative;
+    max-width: 30%;
+    white-space: pre-wrap;
+    border-radius: 10px;
+    padding: 9px 5px;
+    font-size: 1.4 * $m;
+    margin: 5px;
+    color: $bp-color-white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 100px;
+    opacity: 0;
+    &.bp-toast--info {
+      background-image: linear-gradient(to right, #00bafe, #00d0ed);
+    }
+    &.bp-toast--success {
+      background-image: linear-gradient(to right, #00e4e8, #00d3be);
+    }
+    &.bp-toast--warning {
+      background-image: linear-gradient(to right, #ffbd4e, #ffb04f);
+    }
+    &.bp-toast--danger {
+      background-image: linear-gradient(to right, #ff654b, #ff807f);
+    }
+    &.bp-toast--refresh {
+      background-image: linear-gradient(to right, #03a7ea, #006ffe);
+    }
+
+    svg {
+      width: 24px;
+      fill: $bp-color-white;
+      padding: 0.8 * $m 1 * $m;
+    }
+
+    p {
+      flex-grow: 1;
+      padding: 0 10px;
+      text-align: center;
+    }
+  }
+  .bp-toast__show {
+    transform: translateY(-100px);
+    opacity: 1;
+    transition: transform 0.8s, opacity 0.8s;
+  }
+}

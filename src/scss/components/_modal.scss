@@ -21,13 +21,25 @@
     z-index: 2;
     background: #fff;
     margin: 0 auto;
-    max-width: 70%;
-    padding: 2 * $m;
+    padding: 4.5*$m 2*$m;
     top: 50%;
     transform: translateY(-50%);
+    max-width: 90%;
+
+    @media #{$breakpoint-large} {
+      max-width: 70%;
+    }
+    @media #{$breakpoint-extra-large} {
+      max-width: 40%;
+    }
 
     &__footer {
       text-align: right;
+    }
+
+    &__body,
+    &__footer {
+      padding: 0 7*$m;
     }
   }
 

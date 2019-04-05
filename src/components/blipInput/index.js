@@ -18,8 +18,10 @@ export class BlipInput extends Component {
   $defaults = {
     id: '',
     name: '',
+    value: '',
     type: 'text',
     focused: false,
+    readOnly: false,
     pristine: true,
     placeholder: '',
     required: false,
@@ -47,11 +49,13 @@ export class BlipInput extends Component {
 
     // Component props
     this.props = {
-      value: '',
+      value: this.configOptions.value,
       customError: '',
       label: '',
       pristine: this.configOptions.pristine,
+      readOnly: this.configOptions.readOnly,
       focused: this.configOptions.focused,
+      valid: this._inputValidate(this.configOptions.value),
     }
   }
 
@@ -96,7 +100,7 @@ export class BlipInput extends Component {
               id="${this.configOptions.id}"
               name="${this.configOptions.name}"
               class="w-100 bp-input bp-c-city"
-              type="${this.configOptions.type}"
+              type=${this.configOptions.type === 'password' ? 'password' : 'text'}
               value="${this.props.value}"
               placeholder="${this.configOptions.placeholder}"
               onfocus="${this._onInputFocus}"
@@ -105,6 +109,7 @@ export class BlipInput extends Component {
               onkeyup="${this._onInputKeyUp}"
               ${this.configOptions.required ? 'required' : ''}
               ${this.props.disabled ? 'disabled' : ''}
+              ${this.props.readOnly ? 'readonly' : ''}
             />
           </div>
         </div>
@@ -158,6 +163,11 @@ export class BlipInput extends Component {
       maxLengthErrorMsg,
       minLengthErrorMsg,
     } = this.configOptions
+
+    if (value[0] === ' ') {
+      value = value.trim()
+      this.props.value = value
+    }
 
     if (required && !value) {
       this.configOptions.error = requiredErrorMsg
@@ -237,6 +247,10 @@ export class BlipInput extends Component {
     if (props.invalid !== undefined) {
       this.isInvalid = props.invalid
       return false
+    }
+
+    if (props.customError !== undefined) {
+      this.props.valid = this._inputValidate(this.props.value)
     }
 
     return true

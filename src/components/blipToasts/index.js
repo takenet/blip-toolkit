@@ -1,6 +1,6 @@
 import { Component } from '@component'
 import html from 'nanohtml'
-import { BlipToast } from '../BlipToast'
+import { BlipToast } from '../blipToast'
 
 export class BlipToasts extends Component {
   constructor(options) {

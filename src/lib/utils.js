@@ -8,9 +8,8 @@ export const strToEl = (() => {
 
   return function(str) {
     const cleanedInput = str.trim()
-    let r
     tmpEl.innerHTML = cleanedInput
-    r = tmpEl.children[0]
+    const r = tmpEl.children[0]
 
     while (tmpEl.firstChild) {
       tmpEl.removeChild(tmpEl.firstChild)

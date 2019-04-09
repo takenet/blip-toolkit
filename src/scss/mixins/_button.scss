@@ -1,8 +1,3 @@
-@mixin button() {
-  -webkit-appearance: button;
-  -moz-appearance: button;
-}
-
 @mixin bp-btn--custom ($primary-color, $secondary-color) {
   @include bp-btn--regular ($primary-color, $secondary-color);
   @include bp-btn--bordered ($secondary-color, $secondary-color);
@@ -183,6 +178,7 @@
 
   &.bp-btn--flat,
   &.bp-btn--text-only {
+    color: $color;
     &:hover {
       color: bp-darken($color);
     }
@@ -199,15 +195,12 @@
 @mixin bp-btn--bg($bg-color) {
   background-color: $bg-color;
 
-  &:disabled {
-    background-color: $bp-btn-bg-color;
-  }
-
   &:hover {
     background-color: bp-darken($bg-color);
   }
 
   &:disabled {
+    background-color: $bp-btn-bg-color;
     &:hover {
       background-color: $bp-btn-bg-color;
     }

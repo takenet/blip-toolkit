@@ -10,3 +10,8 @@ if (!window._babelPolyfill) {
 export { BlipSelect } from './components/blipSelect'
 export { BlipTags } from './components/blipTags'
 export { BlipTag } from './components/blipTag'
+export { BlipInput } from './components/blipInput'
+export { BlipLoading } from './components/blipLoading'
+export { BlipModal } from './components/blipModal'
+export { BlipTabs } from './components/blipTabs'
+export { BlipToasts } from './components/blipToasts'

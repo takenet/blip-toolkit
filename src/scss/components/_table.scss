@@ -1,0 +1,117 @@
+.bp-table,
+.bp-table-chart table { /* Class for Google Charts' table */
+  display: table;
+  table-layout: fixed;
+
+  font-family: $bp-ff;
+  color: $bp-table-color;
+  background-color: $bp-table-bg-color;
+
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  cursor: default;
+
+  thead {
+    border-bottom: 0.2*$m solid $bp-table_head-border-color;
+
+    tr {
+      background-color: $bp-table_head-bg-color;
+    }
+
+    th {
+      height: 6*$m;
+      padding: $bp-table_th-padding;
+
+      font-size: $bp-table_head-font-size;
+      line-height: $bp-table_head-line-height;
+      font-weight: $bp-table_head-font-weight;
+
+      border: none;
+
+      &:first-of-type {
+        padding-left: $bp-table_edge-padding;
+      }
+
+      &:last-of-type {
+        padding-right: $bp-table_edge-padding;
+      }
+    }
+  }
+
+  tbody {
+    tr:nth-child(odd) {
+      background-color: $bp-color-white;
+    }
+
+    tr:nth-child(even) {
+      background-color: $bp-color-whisper;
+    }
+
+    td {
+      height: 4.7*$m;
+      padding: $bp-table_td-padding;
+
+      font-size: $bp-table_body-font-size;
+      line-height: $bp-table_body-line-height;
+      font-weight: $bp-table_body-font-weight;
+
+      border: none;
+
+      &:first-of-type {
+        padding-left: $bp-table_edge-padding;
+      }
+
+      &:last-of-type {
+        padding-right: $bp-table_edge-padding;
+      }
+    }
+  }
+}
+
+.bp-table.bp-table--scroll-y,
+.bp-table-chart.bp-table-chart--scroll-y table {
+  display: flex;
+  flex-direction: column;
+
+  thead {
+    flex: 0 0 auto;
+    display: block;
+    tr {
+      width: calc(100% - 1.7*#{$m});
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  tbody {
+    flex: 1 1 auto;
+    display: block;
+
+    tr {
+      width: 100%;
+    }
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include scrollbar($bp-color-time);
+  }
+
+  thead tr,
+  tbody tr {
+    display: table;
+    table-layout: fixed;
+  }
+}
+
+.bp-table.bp-table-chart--sort, /* Class for sorting arrows of Google Charts' table */
+.bp-table-chart.bp-table-chart--sort table {
+  th {
+    cursor: pointer;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}

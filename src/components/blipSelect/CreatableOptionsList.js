@@ -75,13 +75,17 @@ export class CreatebleOptionsList extends Component {
    * Render add new option
    */
   _renderAddOption(newOption) {
+    const addOptionHtml = this.options.addOptionText
+      ? html`<small class="blip-prompt-add-option">${this.options.addOptionText}:</small>`
+      : ''
+
     return this._canAddOption(newOption)
       ? html`
           <div tabindex="0"
             onkeydown="${this._handleNewOptionKeydown.bind(this)}"
             onclick="${this.addOption.bind(this, newOption)}"
             class="blip-select__option blip-select__add-option">
-            <small class="blip-prompt-add-option">${this.options.addOptionText}</small>
+            ${addOptionHtml}
             <div class="blip-new-option-text">${newOption}</div>
           </div>
         `

@@ -1,0 +1,53 @@
+.bp-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+
+  &__overlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    margin: 0 auto;
+    padding: 4.5*$m 2*$m;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 90%;
+
+    @media #{$breakpoint-large} {
+      max-width: 70%;
+    }
+    @media #{$breakpoint-extra-large} {
+      max-width: 40%;
+    }
+
+    &__footer {
+      text-align: right;
+    }
+
+    &__body,
+    &__footer {
+      padding: 0 7*$m;
+    }
+  }
+
+  &__cancel-button {
+    margin-right: 1.5 * $m;
+  }
+}
+
+.bp-modal-template {
+  display: none;
+}

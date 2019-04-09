@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: ['./src/app.js'],
@@ -43,7 +44,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|otf|eot|svg)(\?]?.*)?$/,
+        test: /\.(woff|woff2|ttf|otf|eot)(\?]?.*)?$/,
         use: [
           {
             loader: 'url-loader',
@@ -77,6 +78,14 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'svg-inline-loader',
+          },
+        ],
+      }
     ],
   },
   node: false,
@@ -91,5 +100,8 @@ module.exports = {
       filename: 'blip-toolkit.css',
       chunkFilename: '[id].css',
     }),
+    new CopyWebpackPlugin([
+      { from: './src/scss/', to: path.resolve(__dirname, '../dist/scss/'), toType: 'dir' }
+    ])
   ],
 }

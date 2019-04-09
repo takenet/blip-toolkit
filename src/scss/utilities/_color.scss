@@ -43,6 +43,14 @@
   color: bp-darken($bp-color-true);
 }
 
+.bp-c-piano {
+  color: $bp-color-piano;
+}
+
+.bp-c-console {
+  color: $bp-color-console;
+}
+
 .bp-c-obsidian {
   color: $bp-color-obsidian;
 }
@@ -97,6 +105,10 @@
 
 .bp-c-offwhite {
   color: $bp-color-offwhite;
+}
+
+.bp-c-whisper {
+  color: $bp-color-whisper;
 }
 
 .bp-c-white {

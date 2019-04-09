@@ -38,6 +38,14 @@
   background-color: b-darken($bp-color-true);
 }
 
+.bp-bg-piano {
+  background-color: $bp-color-piano;
+}
+
+.bp-bg-console {
+  background-color: $bp-color-console;
+}
+
 .bp-bg-obsidian {
   background-color: $bp-color-obsidian;
 }
@@ -84,6 +92,9 @@
 .bp-bg-offwhite {
   background-color: $bp-color-offwhite;
 }
+.bp-bg-whisper {
+  background-color: $bp-color-whisper;
+}
 
 .bp-bg-white {
   background-color: $bp-color-white;
@@ -120,4 +131,3 @@
 .bp-grad-enterprise {
   background-image: $bp-gradient-enterprise;
 }
-

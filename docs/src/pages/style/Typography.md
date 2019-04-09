@@ -1,6 +1,6 @@
 ---
 name: Typography
-category: Utilities
+category: Style
 ---
 
 BLiP's typography is defined by one particular font family: **Nunito**.

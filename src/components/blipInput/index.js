@@ -71,8 +71,6 @@ export class BlipInput extends Component {
       ...props,
     }
 
-    const labelClass = this._getLabelClass()
-
     if (this.props.customError) {
       this.props.valid = false
       this.configOptions.error = this.props.customError
@@ -81,7 +79,7 @@ export class BlipInput extends Component {
     return html`
         <div class="bp-input-wrapper">
           <div class="bp-input ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
-            <label class="bp-label ${labelClass}">
+            <label class="bp-label">
               ${this.props.label} ${this.configOptions.required ? ' *' : ''}
             </label>
             ${this.configOptions.type === 'password' && this.configOptions.showPasswordStrength && !this.props.disabled ? html`<div class="bp-input__password-strength">

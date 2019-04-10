@@ -77,33 +77,32 @@ export class BlipInput extends Component {
     }
 
     return html`
-        <div class="bp-input-wrapper">
-          <div class="bp-input ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
-            <label class="bp-label">
-              ${this.props.label} ${this.configOptions.required ? ' *' : ''}
-            </label>
-            ${this.configOptions.type === 'password' && this.configOptions.showPasswordStrength && !this.props.disabled ? html`<div class="bp-input__password-strength">
-                <span class="str-lvl lvl-one ${this.props.valid ? this.props.passwordStrength : ''}"></span>
-                <span class="str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
-                <span class="str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>
-              </div>` : ''}
+      <div class="bp-input-wrapper">
+        <div class="bp-input ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
+          <label class="bp-label">
+            ${this.props.label} ${this.configOptions.required ? ' *' : ''}
+          </label>
+          ${this.configOptions.type === 'password' && this.configOptions.showPasswordStrength && !this.props.disabled ? html`<div class="bp-input__password-strength">
+              <span class="str-lvl lvl-one ${this.props.valid ? this.props.passwordStrength : ''}"></span>
+              <span class="str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
+              <span class="str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>
+            </div>` : ''}
 
-            <input
-              class="bp-input-field"
-              id="${this.configOptions.id}"
-              name="${this.configOptions.name}"
-              type=${this.configOptions.type === 'password' ? 'password' : 'text'}
-              value="${this.props.value}"
-              placeholder="${this.configOptions.placeholder}"
-              onfocus="${this._onInputFocus}"
-              onblur="${this._onInputBlur}"
-              onchange="${this._onInputChange}"
-              onkeyup="${this._onInputKeyUp}"
-              ${this.configOptions.required ? 'required' : ''}
-              ${this.props.disabled ? 'disabled' : ''}
-              ${this.props.readOnly ? 'readonly' : ''}
-            />
-          </div>
+          <input
+            class="bp-input-field"
+            id="${this.configOptions.id}"
+            name="${this.configOptions.name}"
+            type=${this.configOptions.type === 'password' ? 'password' : 'text'}
+            value="${this.props.value}"
+            placeholder="${this.configOptions.placeholder}"
+            onfocus="${this._onInputFocus}"
+            onblur="${this._onInputBlur}"
+            onchange="${this._onInputChange}"
+            onkeyup="${this._onInputKeyUp}"
+            ${this.configOptions.required ? 'required' : ''}
+            ${this.props.disabled ? 'disabled' : ''}
+            ${this.props.readOnly ? 'readonly' : ''}
+          />
         </div>
         ${this.configOptions.error && !this.props.pristine ? html`<div class="bp-input-error">${this.configOptions.error}</div>` : ''}
       </div>

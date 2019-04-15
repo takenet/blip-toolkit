@@ -9,8 +9,8 @@
 //Line heights based on the font-size. Plus and double are more ACCESSIBLE
 //According to https://www.w3.org/TR/WCAG20-TECHS/C21.html
 $bp-lh-simple: 100%;
-$bp-lh-plus: 175%;
-$bp-lh-double: 250%;
+$bp-lh-plus: 160%;
+$bp-lh-double: 200%;
 
 //Line-heights based on font-size multiplied by $bp-lh-plus ratio and floored
 $bp-lh-base: 2.4*$m;

@@ -1,7 +1,7 @@
 /**
 * Entire BLiP Input
 */
-.bp-input {
+.bp-input-field {
   height: 4.7 * $m;
   border: 0.1 * $m solid $bp-color-breeze;
   border-radius: 0.4 * $m;
@@ -45,30 +45,30 @@
 /**
 * Input field
 */
-.bp-input-field,
-.bp-input-field[disabled],
-.bp-input-field[readonly],
-.bp-input-field[type="email"],
-.bp-input-field[type="email"][disabled],
-.bp-input-field[type="email"][readonly],
-.bp-input-field[type="number"],
-.bp-input-field[type="number"][disabled],
-.bp-input-field[type="number"][readonly],
-.bp-input-field[type="search"],
-.bp-input-field[type="search"][disabled],
-.bp-input-field[type="search"][readonly],
-.bp-input-field[type="text"],
-.bp-input-field[type="text"][disabled],
-.bp-input-field[type="text"][readonly],
-.bp-input-field[type="tel"],
-.bp-input-field[type="tel"][disabled],
-.bp-input-field[type="tel"][readonly],
-.bp-input-field[type="url"],
-.bp-input-field[type="url"][disabled],
-.bp-input-field[type="url"][readonly],
-.bp-input-field[type="password"],
-.bp-input-field[type="password"][disabled],
-.bp-input-field[type="password"][readonly] {
+.bp-input,
+.bp-input[disabled],
+.bp-input[readonly],
+.bp-input[type="email"],
+.bp-input[type="email"][disabled],
+.bp-input[type="email"][readonly],
+.bp-input[type="number"],
+.bp-input[type="number"][disabled],
+.bp-input[type="number"][readonly],
+.bp-input[type="search"],
+.bp-input[type="search"][disabled],
+.bp-input[type="search"][readonly],
+.bp-input[type="text"],
+.bp-input[type="text"][disabled],
+.bp-input[type="text"][readonly],
+.bp-input[type="tel"],
+.bp-input[type="tel"][disabled],
+.bp-input[type="tel"][readonly],
+.bp-input[type="url"],
+.bp-input[type="url"][disabled],
+.bp-input[type="url"][readonly],
+.bp-input[type="password"],
+.bp-input[type="password"][disabled],
+.bp-input[type="password"][readonly] {
   border: none;
   font-size: $bp-fs-6;
   background: $bp-color-white;
@@ -87,24 +87,24 @@
   }
 }
 
-.bp-input-field[disabled],
-.bp-input-field[type="email"][disabled],
-.bp-input-field[type="number"][disabled],
-.bp-input-field[type="search"][disabled],
-.bp-input-field[type="text"][disabled],
-.bp-input-field[type="tel"][disabled],
-.bp-input-field[type="url"][disabled],
-.bp-input-field[type="password"][disabled] {
+.bp-input[disabled],
+.bp-input[type="email"][disabled],
+.bp-input[type="number"][disabled],
+.bp-input[type="search"][disabled],
+.bp-input[type="text"][disabled],
+.bp-input[type="tel"][disabled],
+.bp-input[type="url"][disabled],
+.bp-input[type="password"][disabled] {
   background-color: $bp-color-offwhite;
 }
 
-.bp-input-field[type="checkbox"],
-.bp-input-field[type="radio"] {
+.bp-input[type="checkbox"],
+.bp-input[type="radio"] {
   display: none;
 }
 
-.bp-input-field[type="checkbox"]:checked ~ .bp-input--checkbox,
-.bp-input-field[type="radio"]:checked ~ .bp-input--radio {
+.bp-input[type="checkbox"]:checked ~ .bp-input--checkbox,
+.bp-input[type="radio"]:checked ~ .bp-input--radio {
   color: $bp-color-white;
   background-color: $bp-color-blip-light;
   border-color: $bp-color-blip-light;
@@ -115,13 +115,13 @@
   }
 }
 
-.bp-input-field[type="checkbox"]:checked:not(:disabled) ~ .bp-input--checkbox,
-.bp-input-field[type="radio"]:checked:not(:disabled) ~ .bp-input--radio {
+.bp-input[type="checkbox"]:checked:not(:disabled) ~ .bp-input--checkbox,
+.bp-input[type="radio"]:checked:not(:disabled) ~ .bp-input--radio {
   animation: checkbox 0.6s ease;
 }
 
-.bp-input-field[type="checkbox"]:disabled ~ .bp-input--checkbox,
-.bp-input-field[type="radio"]:disabled ~ .bp-input--radio {
+.bp-input[type="checkbox"]:disabled ~ .bp-input--checkbox,
+.bp-input[type="radio"]:disabled ~ .bp-input--radio {
   background-color: $bp-color-offwhite;
   border-color: $bp-color-breeze;
 
@@ -131,20 +131,20 @@
   }
 }
 
-.bp-input-field[type="radio"]:disabled:not(:checked) ~ .bp-input--radio {
+.bp-input[type="radio"]:disabled:not(:checked) ~ .bp-input--radio {
   padding: 0;
 }
 
 /**
 * Eliminating arrows from number input
 */
-.bp-input-field[type="number"]::-webkit-outer-spin-button,
-.bp-input-field[type="number"]::-webkit-inner-spin-button {
+.bp-input[type="number"]::-webkit-outer-spin-button,
+.bp-input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.bp-input-field[type="number"] {
+.bp-input[type="number"] {
   -moz-appearance: textfield;
 }
 

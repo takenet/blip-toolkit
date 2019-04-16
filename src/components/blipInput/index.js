@@ -78,7 +78,7 @@ export class BlipInput extends Component {
 
     return html`
       <div class="bp-input-wrapper">
-        <div class="bp-input ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
+        <div class="bp-input-field ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
           <label class="bp-label">
             ${this.props.label} ${this.configOptions.required ? ' *' : ''}
           </label>
@@ -89,7 +89,7 @@ export class BlipInput extends Component {
             </div>` : ''}
 
           <input
-            class="bp-input-field"
+            class="bp-input"
             id="${this.configOptions.id}"
             name="${this.configOptions.name}"
             type=${this.configOptions.type === 'password' ? 'password' : 'text'}

@@ -176,7 +176,7 @@ export class BlipInput extends Component {
       return false
     }
     if (this.configOptions.type === 'email') {
-      const emailRegex = /^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,3}$/
+      const emailRegex = /^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/
       if (value && !emailRegex.test(value)) {
         this.configOptions.error = this.configOptions.emailTypeErrorMsg
         return false

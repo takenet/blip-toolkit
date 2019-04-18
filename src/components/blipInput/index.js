@@ -28,6 +28,7 @@ export class BlipInput extends Component {
     minLength: 0,
     maxLength: 0,
     showPasswordStrength: true,
+    autocomplete: 'on',
     requiredErrorMsg: 'This is a required field',
     maxLengthErrorMsg: 'The value is too long',
     minLengthErrorMsg: 'The value is too short',
@@ -107,6 +108,7 @@ export class BlipInput extends Component {
               onblur="${this._onInputBlur}"
               onchange="${this._onInputChange}"
               onkeyup="${this._onInputKeyUp}"
+              autocomplete="${this.configOptions.autocomplete}"
               ${this.configOptions.required ? 'required' : ''}
               ${this.props.disabled ? 'disabled' : ''}
               ${this.props.readOnly ? 'readonly' : ''}

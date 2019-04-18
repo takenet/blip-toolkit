@@ -128,7 +128,7 @@ These line heights are calculated by multiplying their respective font size by 1
 </table>
 ```
 
-There are also **four** relative line-height classes: **bp-lh-zero** (0%), **bp-lh-simple** (100%), **bp-lh-plus** (150%) and **bp-lh-double** (200%).
+There are also **four** relative line-height classes: **bp-lh-zero** (0%), **bp-lh-simple** (100%), **bp-lh-plus** (160%) and **bp-lh-double** (200%).
 
 ```line-height-relative.html
 <table>
@@ -141,7 +141,7 @@ There are also **four** relative line-height classes: **bp-lh-zero** (0%), **bp-
     </tr>
     <tr>
       <td class="bp-fs-4 bp-lh-plus tc">
-        Line Height </br> Plus / 150%
+        Line Height </br> Plus / 160%
       </td>
       <td class="bp-fs-5 tl">.bp-fs-4 .bp-lh-plus</td>
     </tr>

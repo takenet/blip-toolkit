@@ -828,6 +828,40 @@ Insert classes containing a **root** followed by a **color's name** to apply col
     <span>#eaeeee</span>
   </div>
 </div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-whisper">
+    </div>
+    <span class="db tc bp-c-black">
+      .bp-bg-whisper
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-whisper">
+    </div>
+    <span class="db tc bp-c-black">
+      .bp-bc-whisper
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-whisper bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-black">
+      .bp-c-whisper
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Whisper</span>
+    <span>#f5f8f9</span>
+  </div>
+</div>
 ```
 
 ```neutrals.css hidden

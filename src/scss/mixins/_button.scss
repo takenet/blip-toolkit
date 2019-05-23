@@ -1,10 +1,11 @@
+@import "utils/fill-modifiers";
+
 @mixin bp-btn--custom ($primary-color, $secondary-color) {
   @include bp-btn--regular ($primary-color, $secondary-color);
   @include bp-btn--bordered ($secondary-color, $secondary-color);
   @include bp-btn--regular-arrow($secondary-color);
   @include bp-btn--bordered-arrow($secondary-color);
   @include bp-btn--text-only($secondary-color);
-  @include bp-btn--icon($secondary-color);
 }
 
 @mixin bp-btn--arrow () {
@@ -45,17 +46,21 @@
   }
 }
 
-@mixin bp-btn--icon($color) {
+@mixin bp-btn--icon() {
   &.bp-btn--icon {
     min-width: 0;
     height: auto;
     line-height: 0;
-    padding: 0.4*$m;
+    padding: 0;
     background-color: transparent;
 
     &:hover,
     &:disabled {
       background-color: transparent;
+    }
+
+    &:disabled {
+      @include all-fill-opacity(0.5);
     }
   }
 }

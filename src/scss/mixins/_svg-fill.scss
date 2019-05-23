@@ -1,0 +1,35 @@
+@import "utils/fill-modifiers";
+
+@mixin bp-fill($color) {
+  @include all-fill($color);
+}
+
+@mixin bp-fill--hover($color) {
+  &--hover:hover {
+    @include all-fill($color);
+  }
+}
+
+@mixin bp-fill--active($color) {
+  &--active:active {
+    @include all-fill($color);
+  }
+}
+
+@mixin bp-fill--disabled($color) {
+  &--disabled:disabled {
+    @include all-fill($color);
+
+    &:hover,
+    &:active {
+      @include all-fill($color);
+    }
+  }
+}
+
+@mixin bp-fill--all($color) {
+  @include bp-fill($color);
+  @include bp-fill--hover($color);
+  @include bp-fill--active($color);
+  @include bp-fill--disabled($color);
+}

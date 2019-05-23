@@ -42,6 +42,7 @@
   }
 
   @include bp-btn--arrow();
+  @include bp-btn--icon();
   @include bp-btn--custom($bp-btn-color, $bp-btn-bg-color);
 
   /** Size **/

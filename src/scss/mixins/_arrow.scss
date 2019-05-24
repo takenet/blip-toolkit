@@ -1,0 +1,60 @@
+@mixin bp-arrow--default-color() {
+  border-color: $bp-color-time;
+  @include bp-arrow--selected();
+}
+
+@mixin bp-arrow-horizontal() {
+  border-top-width: 0.350em;
+  border-right-width: 0.325em;
+  border-bottom-width: 0.350em;
+  border-left-width: 0.325em;
+}
+
+@mixin bp-arrow-vertical() {
+  border-top-width: 0.325em;
+  border-right-width: 0.350em;
+  border-bottom-width: 0.325em;
+  border-left-width: 0.350em;
+}
+
+@mixin bp-arrow--up() {
+  &.bp-arrow--up {
+    @include bp-arrow-vertical();
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+  }
+}
+
+@mixin bp-arrow--down() {
+  &.bp-arrow--down {
+    @include bp-arrow-vertical();
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+}
+
+@mixin bp-arrow--left() {
+  &.bp-arrow--left {
+    @include bp-arrow-horizontal();
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+}
+
+@mixin bp-arrow--right() {
+  &.bp-arrow--right {
+    @include bp-arrow-horizontal();
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+}
+
+@mixin bp-arrow--selected() {
+  &.bp-arrow--selected {
+    border-color: $bp-color-rooftop;
+  }
+}

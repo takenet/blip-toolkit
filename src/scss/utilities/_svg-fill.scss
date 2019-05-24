@@ -1,0 +1,128 @@
+/**
+* BLiP Toolkit
+* Text Color Classes
+*/
+
+.bp-fill-bot {
+  @include bp-fill--all($bp-color-bot);
+}
+
+.bp-fill-blip-light {
+  @include bp-fill--all($bp-color-blip-light);
+}
+
+.bp-fill-blip-dark {
+  @include bp-fill--all($bp-color-blip-dark);
+}
+
+.bp-fill-warning {
+  @include bp-fill--all($bp-color-warning);
+}
+
+.bp-fill-warning-light {
+  @include bp-fill--all($bp-color-warning-light);
+}
+
+.bp-fill-warning-yellow {
+  @include bp-fill--all($bp-color-warning-yellow);
+}
+
+.bp-fill-cheetos {
+  @include bp-fill--all($bp-color-cheetos);
+}
+
+.bp-fill-delete {
+  @include bp-fill--all($bp-color-delete);
+}
+
+.bp-fill-delete-dark {
+  @include bp-fill--all(bp-darken($bp-color-delete));
+}
+
+.bp-fill-true {
+  @include bp-fill--all($bp-color-true);
+}
+
+.bp-fill-true-dark {
+  @include bp-fill--all(bp-darken($bp-color-true));
+}
+
+.bp-fill-piano {
+  @include bp-fill--all($bp-color-piano);
+}
+
+.bp-fill-console {
+  @include bp-fill--all($bp-color-console);
+}
+
+.bp-fill-obsidian {
+  @include bp-fill--all($bp-color-obsidian);
+}
+
+.bp-fill-onix {
+  @include bp-fill--all($bp-color-onix);
+}
+
+.bp-fill-suit {
+  @include bp-fill--all($bp-color-suit);
+}
+
+.bp-fill-city {
+  @include bp-fill--all($bp-color-city);
+}
+
+.bp-fill-city-dark {
+  @include bp-fill--all(bp-darken($bp-color-city));
+}
+
+.bp-fill-city-light {
+  @include bp-fill--all(bp-lighten($bp-color-city));
+}
+
+.bp-fill-rooftop {
+  @include bp-fill--all($bp-color-rooftop);
+}
+
+.bp-fill-desk {
+  @include bp-fill--all($bp-color-desk);
+}
+
+.bp-fill-cloud {
+  @include bp-fill--all($bp-color-cloud);
+}
+
+.bp-fill-silver {
+  @include bp-fill--all($bp-color-silver);
+}
+
+.bp-fill-time {
+  @include bp-fill--all($bp-color-time);
+}
+
+.bp-fill-breeze {
+  @include bp-fill--all($bp-color-breeze);
+}
+
+.bp-fill-sky {
+  @include bp-fill--all($bp-color-sky);
+}
+
+.bp-fill-offwhite {
+  @include bp-fill--all($bp-color-offwhite);
+}
+
+.bp-fill-whisper {
+  @include bp-fill--all($bp-color-whisper);
+}
+
+.bp-fill-white {
+  @include bp-fill--all($bp-color-white);
+}
+
+.bp-fill-black {
+  @include bp-fill--all($bp-color-black);
+}
+
+.bp-fill-transparent {
+  @include bp-fill--all(transparent);
+}

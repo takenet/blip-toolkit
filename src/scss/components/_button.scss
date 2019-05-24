@@ -1,4 +1,5 @@
 .bp-btn {
+  box-sizing: border-box;
   display: inline-block;
 
   cursor: pointer;
@@ -42,6 +43,7 @@
   }
 
   @include bp-btn--arrow();
+  @include bp-btn--icon();
   @include bp-btn--custom($bp-btn-color, $bp-btn-bg-color);
 
   /** Size **/
@@ -91,6 +93,10 @@
 
   &.bp-btn--warning-yellow {
     @include bp-btn--custom($bp-color-white, $bp-color-warning-yellow);
+  }
+
+  &.bp-btn--cheetos {
+    @include bp-btn--custom($bp-color-white, $bp-color-cheetos);
   }
 
   &.bp-btn--delete {
@@ -179,6 +185,10 @@
     @include bp-btn--c($bp-color-warning-yellow);
   }
 
+  &.bp-btn--c-cheetos {
+    @include bp-btn--c($bp-color-cheetos);
+  }
+
   &.bp-btn--c-delete {
     @include bp-btn--c($bp-color-delete);
   }
@@ -263,6 +273,10 @@
 
   &.bp-btn--bg-warning-yellow {
     @include bp-btn--bg($bp-color-warning-yellow);
+  }
+
+  &.bp-btn--bg-cheetos {
+    @include bp-btn--bg($bp-color-cheetos);
   }
 
   &.bp-btn--bg-delete {

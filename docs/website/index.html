@@ -26,6 +26,8 @@
 									<option value="welcome">Welcome</option>
 							</optgroup>
 							<optgroup label="Components">
+									<option value="arrow">Arrow</option>
+									<option value="badge">Badge</option>
 									<option value="button">Button</option>
 									<option value="checkbox">Checkbox</option>
 									<option value="divider">Divider</option>
@@ -70,6 +72,250 @@
 
 				</div>
 				<div id="category-components" class="theme-content-category">
+						<div id="arrow" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Arrow</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">components\Arrow.md</span>
+	</span>
+	<div class="theme-content-element-description"><p>Arrows can be represented through SVGs also, but you can use the CSS arrow with <strong>bp-arrow</strong> followed by <strong>bp-arrow--up</strong>, <strong>bp-arrow--down</strong>, <strong>bp-arrow--right</strong> or <strong>bp-arrow--left</strong>. Their size is related to their current font size.</p>
+<p>Since CSS arrows are made from a border hack, you must change border color in order to customize these arrows.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="arrow-example.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="arrow-example.html"
+                            data-initinview="true"
+                            data-title="Loading..." 
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-arrow bp-arrow--up bp-fs-4&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-arrow bp-arrow--up
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-arrow bp-arrow--down bp-bc-time bp-fs-4&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-arrow bp-arrow--down .bp-bc-time
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-arrow bp-arrow--right bp-bc-rooftop bp-fs-4&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-arrow bp-arrow--right .bp-bc-rooftop
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-arrow bp-arrow--left bp-bc-blip-light bp-fs-4&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-arrow bp-arrow--left .bp-bc-blip-light
+      &lt;/td&gt;
+    &lt;tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-arrow bp-arrow--up bp-fs-4&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-arrow bp-arrow--up
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-arrow bp-arrow--down bp-bc-time bp-fs-4&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-arrow bp-arrow--down .bp-bc-time
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-arrow bp-arrow--right bp-bc-rooftop bp-fs-4&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-arrow bp-arrow--right .bp-bc-rooftop
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-arrow bp-arrow--left bp-bc-blip-light bp-fs-4&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-arrow bp-arrow--left .bp-bc-blip-light
+      &lt;/td&gt;
+    &lt;tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><p></table></p>
+</div>
+</div>
+
+						<div id="badge" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Badge</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">components\Badge.md</span>
+	</span>
+	<div class="theme-content-element-description"><p>Badges are interface elements that can contain or not text inside (usually numbers). They use the class <strong>bp-badge</strong> and have their size and padding related to their font-size. They have a minimum size of 1.6em, line-height of 1.6em and horizontal padding of 0.5em. A badge has blip-light as default background color and white as default text color. Also, they have bottom vertical alignment.</p>
+<p>If you wish to use a badge only as a colored circle with no text, you can use the variant <strong>bp-badge--no-text</strong>. They have a smaller size of 1em, with no line-height and padding.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="badge-example.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="badge-example.html"
+                            data-initinview="true"
+                            data-title="Loading..." 
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-fs-7&quot;&gt;2&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-fs-7
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-fs-6&quot;&gt;2323+&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-fs-6
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-fs-8&quot;&gt;33231331 &lt;br&gt; 2&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-fs-8
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-fs-6&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-fs-6
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-badge--no-text bp-fs-6&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-badge--no-text .bp-fs-6
+      &lt;/td&gt;
+    &lt;tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-fs-7&quot;&gt;2&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-fs-7
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-fs-6&quot;&gt;2323+&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-fs-6
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-fs-8&quot;&gt;33231331 &lt;br&gt; 2&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-fs-8
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-fs-6&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-fs-6
+      &lt;/td&gt;
+    &lt;tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class=&quot;bp-badge bp-badge--no-text bp-fs-6&quot;&gt;&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        .bp-badge .bp-badge--no-text .bp-fs-6
+      &lt;/td&gt;
+    &lt;tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+	</div>
+</div><p></table></p>
+</div>
+</div>
+
 						<div id="button" class="i-library theme-content-element">
 	<h1 class="display-4 theme-content-element-title">Button</h1>
 	<span class="theme-content-element-source">
@@ -97,8 +343,7 @@
                             lazyframe
                             data-src="button-base.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -163,8 +408,7 @@
                             lazyframe
                             data-src="button-size.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -243,8 +487,7 @@
                             lazyframe
                             data-src="button-flat.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -309,8 +552,7 @@
                             lazyframe
                             data-src="button-dashed.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -375,8 +617,7 @@
                             lazyframe
                             data-src="button-arrow.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -489,8 +730,7 @@
                             lazyframe
                             data-src="button-text-only.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -556,8 +796,7 @@
                             lazyframe
                             data-src="button-color-base.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -694,8 +933,7 @@
                             lazyframe
                             data-src="button-color-flat.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -832,8 +1070,7 @@
                             lazyframe
                             data-src="button-color-text-only.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -970,8 +1207,7 @@
                             lazyframe
                             data-src="button-text-color.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -1048,8 +1284,7 @@
                             lazyframe
                             data-src="button-background-color.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -1140,8 +1375,7 @@
                             lazyframe
                             data-src="checkbox-base.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -1249,8 +1483,7 @@
                             lazyframe
                             data-src="divider-horizontal.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -1336,8 +1569,7 @@
                             lazyframe
                             data-src="divider-vertical.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -1434,8 +1666,7 @@
                             lazyframe
                             data-src="dropdown-base.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -1526,8 +1757,7 @@
                             lazyframe
                             data-src="radio-base.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -1630,8 +1860,7 @@
                             lazyframe
                             data-src="table-base.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -1726,8 +1955,7 @@ th, td {
                             lazyframe
                             data-src="table-scrolly.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -1906,10 +2134,22 @@ th, td {
 	<div class="theme-content-element-description"><p>BLiP&#39;s color palette consists of three groups of colors: <strong>Corporates</strong>, <strong>Semiotics</strong> and <strong>Neutrals</strong>.</p>
 <p>Insert classes containing a <strong>root</strong> followed by a <strong>color&#39;s name</strong> to apply color on:</p>
 <ul>
-<li>Backgrounds: bp-bg-{color}</li>
-<li>Borders: bp-bc-{color}</li>
+<li>Background: bp-bg-{color}</li>
+<li>Border: bp-bc-{color}</li>
 <li>Text: bp-c-{color}</li>
+<li>Button: bp-btn-{color} - see Button section for more!</li>
+<li>Svg/Use fill: bp-fill-{color} - see below for more!</li>
 </ul>
+<h3> SVG fillings </h3>
+
+<p>SVG icons, if inline or created with a <strong>use</strong> tag, can have their fill colors stylized. For that, you can use fill classes for the base element and for some pseudo classes:</p>
+<ul>
+<li>Base color: bp-fill-{color}</li>
+<li>Hover color: bp-fill-{color}--hover</li>
+<li>Active color: bp-fill-{color}--active</li>
+<li>Disabled color: bp-fill-{color}--disabled</li>
+</ul>
+<p>Those classes apply for all <strong>svg</strong> and <strong>use</strong> tags inside the component, so <strong>be careful</strong>!</p>
 <h3> Corporate Palette </h3>
 
 <p><strong>Corporate</strong> colors are nuances which feature BLiP&#39;s brand and must be used for highlighting and catching users&#39; attention.</p>
@@ -1933,8 +2173,7 @@ th, td {
                             lazyframe
                             data-src="color-corporates.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -2173,8 +2412,7 @@ th, td {
                             lazyframe
                             data-src="color-semiotics.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -2248,6 +2486,40 @@ th, td {
   &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
     &lt;span&gt;Warning Yellow&lt;/span&gt;
     &lt;span&gt;#ffcf33&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-cheetos&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db tc bp-c-cheetos&quot;&gt;
+      .bp-bg-cheetos
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-cheetos&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db tc bp-c-cheetos&quot;&gt;
+      .bp-bc-cheetos
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-cheetos bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db tc bp-c-cheetos&quot;&gt;
+      .bp-c-cheetos
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;span&gt;Cheetos&lt;/span&gt;
+    &lt;span&gt;#F9B42F&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2423,6 +2695,40 @@ th, td {
 
 &lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
   &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container bp-bg-cheetos&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db tc bp-c-cheetos&quot;&gt;
+      .bp-bg-cheetos
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;db card-container ba bw2 bp-bc-cheetos&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db tc bp-c-cheetos&quot;&gt;
+      .bp-bc-cheetos
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;div class=&quot;flex flex-column justify-end card-container&quot;&gt;
+      &lt;span class=&quot;bp-c-cheetos bp-fs-2 bp-fw-bold tc&quot;&gt;
+        Aa
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;db tc bp-c-cheetos&quot;&gt;
+      .bp-c-cheetos
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
+    &lt;span&gt;Cheetos&lt;/span&gt;
+    &lt;span&gt;#F9B42F&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;w-100 mb4 flex flex-row flex-start flex-wrap items-center&quot;&gt;
+  &lt;div class=&quot;example-container flex flex-column justify-start items-center mt2 mb2 mh3&quot;&gt;
     &lt;div class=&quot;db card-container bp-bg-warning-light&quot;&gt;
     &lt;/div&gt;
     &lt;span class=&quot;db tc bp-c-warning-light&quot;&gt;
@@ -2547,8 +2853,7 @@ th, td {
                             lazyframe
                             data-src="color-neutrals.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -3618,8 +3923,7 @@ th, td {
                             lazyframe
                             data-src="color-gradients.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -3741,8 +4045,7 @@ th, td {
                             lazyframe
                             data-src="typography-font-size.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -3880,8 +4183,7 @@ th, td {
                             lazyframe
                             data-src="typography-line-height-custom.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -4016,8 +4318,7 @@ th, td {
                             lazyframe
                             data-src="typography-line-height-relative.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -4094,8 +4395,7 @@ th, td {
                             lazyframe
                             data-src="typography-font-weight.html"
                             data-initinview="true"
-                            data-title="Loading…"
-
+                            data-title="Loading..." 
                         ></div>
                     </div>
                 </div>
@@ -4200,7 +4500,7 @@ th, td {
 			
 						<h5
 							class="pt-4 mb-1 theme-sidebar-category-title"
-							data-filter-value=" Button  Checkbox  Divider  Dropdown  Radio  Table "
+							data-filter-value=" Arrow  Badge  Button  Checkbox  Divider  Dropdown  Radio  Table "
 						>
 							<a href="#category-components" class="i-sidebar-list-item">
 								<b>Components</b>
@@ -4208,6 +4508,20 @@ th, td {
 						</h5>
 			
 						<div>
+								<a
+									href="#arrow"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Arrow"
+								>
+									<span>Arrow</span>
+								</a>
+								<a
+									href="#badge"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Badge"
+								>
+									<span>Badge</span>
+								</a>
 								<a
 									href="#button"
 									class="i-sidebar-list-item theme-sidebar-element"

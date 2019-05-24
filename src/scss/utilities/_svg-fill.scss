@@ -27,6 +27,10 @@
   @include bp-fill--all($bp-color-warning-yellow);
 }
 
+.bp-fill-cheetos {
+  @include bp-fill--all($bp-color-cheetos);
+}
+
 .bp-fill-delete {
   @include bp-fill--all($bp-color-delete);
 }

@@ -12,7 +12,7 @@ If you wish to use a badge only as a colored circle with no text, you can use th
   <tbody>
     <tr>
       <td>
-        <span class="bp-badge bp-fs-7">2</span>
+        <span class="bp-badge bp-fs-7">New</span>
       </td>
       <td>
         .bp-badge .bp-fs-7

@@ -1,0 +1,33 @@
+@mixin svg-fill($color) {
+  svg {
+    fill: $color;
+  }
+}
+
+@mixin svg-fill-opacity($value) {
+  svg {
+    fill-opacity: $value;
+  }
+}
+
+@mixin use-fill($color) {
+  use {
+    fill: $color;
+  }
+}
+
+@mixin use-fill-opacity($value) {
+  use {
+    fill-opacity: $value;
+  }
+}
+
+@mixin all-fill($color) {
+  @include svg-fill($color);
+  @include use-fill($color);
+}
+
+@mixin all-fill-opacity($value) {
+  @include svg-fill-opacity($value);
+  @include use-fill-opacity($value);
+}

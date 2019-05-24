@@ -1,0 +1,24 @@
+.bp-badge {
+  display: inline-block;
+  text-align: center;
+  border-radius: 1em;
+  padding: 0.3em 0.5em;
+  min-width: 1.6em;
+  line-height: $bp-lh-simple;
+
+  &:not([class*="bp-bg-"]) {
+    background-color: $bp-color-blip-light;
+  }
+
+  &:not([class*="bp-c-"]) {
+    color: $bp-color-white;
+  }
+
+  &.bp-badge--empty {
+    min-width: auto;
+    width: 1em;
+    height: 1em;
+    line-height: 0;
+    padding: 0;
+  }
+}

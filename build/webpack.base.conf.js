@@ -35,6 +35,12 @@ module.exports = {
               minimize: {
                 safe: true,
               },
+              publicPath: (resourcePath, context) => {
+                // publicPath is the relative path of the resource to the context
+                // e.g. for ./css/admin/main.css the publicPath will be ../../
+                // while for ./css/main.css the publicPath will be ../
+                return path.relative(path.dirname(resourcePath), context) + '/';
+              },
             },
           },
           {
@@ -47,15 +53,28 @@ module.exports = {
         test: /\.(woff(2)?|ttf|eot|ico)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
-              name: '/[name].[ext]',
+              name: '/[has7].[ext]',
               outputPath: 'fonts/'
             },
           },
         ],
         exclude: /node_modules/,
       },
+      // {
+      //   test: /\.(woff(2)?|ttf|eot|ico)(\?v=\d+\.\d+\.\d+)?$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '/[name].[ext]',
+      //         outputPath: 'fonts/'
+      //       },
+      //     },
+      //   ],
+      //   exclude: /node_modules/,
+      // },
       {
         test: /\.html$/,
         use: [

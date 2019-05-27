@@ -44,24 +44,13 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|otf|eot)(\?]?.*)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 1024,
-              name: 'fonts/[name].[ext]?[hash]',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.ico$/i,
+        test: /\.(woff(2)?|ttf|eot|ico)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '/[name].[ext]',
+              outputPath: 'fonts/'
             },
           },
         ],

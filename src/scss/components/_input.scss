@@ -1,48 +1,4 @@
 /**
-* Entire BLiP Input
-*/
-.bp-input-field {
-  height: 4.7 * $m;
-  border: 0.1 * $m solid $bp-color-breeze;
-  border-radius: 0.4 * $m;
-  padding: 0.5 * $m;
-  position: relative;
-  background-color: $bp-color-white;
-
-  .bp-label {
-    color: $bp-color-rooftop;
-  }
-
-  &--focus {
-    box-shadow: 0 0.2 * $m 1.2 * $m 0 rgba(0, 0, 0, 0.1);
-    border-color: $bp-color-blip-light;
-    transition: box-shadow 0.5s ease-in;
-    .bp-label {
-      color: $bp-color-blip-light;
-    }
-  }
-
-  &--valid {
-    border-color: $bp-color-true;
-    .bp-label {
-      color: $bp-color-true;
-    }
-  }
-
-  &--invalid {
-    border-color: $bp-color-delete;
-    .bp-label {
-      color: $bp-color-delete;
-    }
-  }
-
-  &--disabled {
-    background-color: $bp-color-offwhite;
-    border-color: $bp-color-breeze;
-  }
-}
-
-/**
 * Input field
 */
 .bp-input,
@@ -96,43 +52,6 @@
 .bp-input[type="url"][disabled],
 .bp-input[type="password"][disabled] {
   background-color: $bp-color-offwhite;
-}
-
-.bp-input[type="checkbox"],
-.bp-input[type="radio"] {
-  display: none;
-}
-
-.bp-input[type="checkbox"]:checked ~ .bp-input--checkbox,
-.bp-input[type="radio"]:checked ~ .bp-input--radio {
-  color: $bp-color-white;
-  background-color: $bp-color-blip-light;
-  border-color: $bp-color-blip-light;
-
-  &:hover {
-    background-color: bp-darken($bp-color-blip-light);
-    border-color: bp-darken($bp-color-blip-light);
-  }
-}
-
-.bp-input[type="checkbox"]:checked:not(:disabled) ~ .bp-input--checkbox,
-.bp-input[type="radio"]:checked:not(:disabled) ~ .bp-input--radio {
-  animation: checkbox 0.6s ease;
-}
-
-.bp-input[type="checkbox"]:disabled ~ .bp-input--checkbox,
-.bp-input[type="radio"]:disabled ~ .bp-input--radio {
-  background-color: $bp-color-offwhite;
-  border-color: $bp-color-breeze;
-
-  &:hover {
-    background-color: $bp-color-offwhite;
-    border-color: $bp-color-breeze;
-  }
-}
-
-.bp-input[type="radio"]:disabled:not(:checked) ~ .bp-input--radio {
-  padding: 0;
 }
 
 /**
@@ -191,7 +110,54 @@
 }
 
 /**
-* Input of type checkbox
+* Entire BLiP Input Field (without bp-input-error)
+*/
+.bp-input-field {
+  height: 4.7 * $m;
+  border: 0.1 * $m solid $bp-color-breeze;
+  border-radius: 0.4 * $m;
+  padding: 0.5 * $m;
+  position: relative;
+  background-color: $bp-color-white;
+
+  .bp-label {
+    color: $bp-color-rooftop;
+  }
+}
+
+.bp-input-field--focus {
+  box-shadow: 0 0.2 * $m 1.2 * $m 0 rgba(0, 0, 0, 0.1);
+  border-color: $bp-color-blip-light;
+  transition: box-shadow 0.15s ease-in;
+  .bp-label {
+    color: $bp-color-blip-light;
+  }
+}
+
+.bp-input-field--valid {
+  border-color: $bp-color-true;
+  .bp-label {
+    color: $bp-color-true;
+  }
+}
+
+.bp-input-field--invalid {
+  border-color: $bp-color-delete;
+  .bp-label {
+    color: $bp-color-delete;
+  }
+}
+
+.bp-input-field--disabled {
+  background-color: $bp-color-offwhite;
+  border-color: $bp-color-breeze;
+  .bp-label {
+    color: $bp-color-breeze;
+  }
+}
+
+/**
+* Input of type checkbox and radio
 */
 .bp-input--check--wrapper {
   @include flex-box();
@@ -201,8 +167,6 @@
   font-size: $bp-fs-6;
   line-height: $bp-lh-6;
 }
-
-
 
 .bp-input--checkbox,
 .bp-input--radio {
@@ -238,6 +202,47 @@
   padding: 0.4 * $m;
   background-clip: content-box;
 }
+
+.bp-input[type="checkbox"]:checked ~ .bp-input--checkbox,
+.bp-input[type="radio"]:checked ~ .bp-input--radio {
+  color: $bp-color-white;
+  background-color: $bp-color-blip-light;
+  border-color: $bp-color-blip-light;
+
+  &:hover {
+    background-color: bp-darken($bp-color-blip-light);
+    border-color: bp-darken($bp-color-blip-light);
+  }
+}
+
+.bp-input[type="checkbox"]:checked:not(:disabled) ~ .bp-input--checkbox,
+.bp-input[type="radio"]:checked:not(:disabled) ~ .bp-input--radio {
+  animation: checkbox 0.6s ease;
+}
+
+.bp-input[type="checkbox"]:disabled ~ .bp-input--checkbox,
+.bp-input[type="radio"]:disabled ~ .bp-input--radio {
+  background-color: $bp-color-offwhite;
+  border-color: $bp-color-breeze;
+
+  &:hover {
+    background-color: $bp-color-offwhite;
+    border-color: $bp-color-breeze;
+  }
+}
+
+.bp-input[type="checkbox"],
+.bp-input[type="radio"] {
+  display: none;
+}
+
+.bp-input[type="radio"]:disabled:not(:checked) ~ .bp-input--radio {
+  padding: 0;
+}
+
+/**
+* Keyframes
+*/
 
 @include keyframes(checkbox) {
   0% {
@@ -299,8 +304,7 @@
 * Error
 */
 .bp-input-error {
-  margin-top: 0.5*$m;
-  font-size: $bp-fs-7;
+  font-size: $bp-fs-8;
   line-height: $bp-lh-plus;
   color: $bp-color-warning;
 }

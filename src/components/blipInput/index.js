@@ -1,10 +1,10 @@
 import { Component } from '@component'
 import html from 'nanohtml'
 
-const blipInputFocusClass = 'bp-input--focus'
-const blipInputValidClass = 'bp-input--valid'
-const blipInputInvalidClass = 'bp-input--invalid'
-const blipInputDisabledClass = 'bp-input--disabled'
+const blipInputFieldFocusClass = 'bp-input-field--focus'
+const blipInputFieldValidClass = 'bp-input-field--valid'
+const blipInputFieldInvalidClass = 'bp-input-field--invalid'
+const blipInputFieldDisabledClass = 'bp-input-field--disabled'
 
 export class BlipInput extends Component {
   /**
@@ -23,6 +23,7 @@ export class BlipInput extends Component {
     minLength: 0,
     maxLength: 0,
     showPasswordStrength: true,
+    showInputError: true,
     requiredErrorMsg: 'This is a required field',
     maxLengthErrorMsg: 'The value is too long',
     minLengthErrorMsg: 'The value is too short',
@@ -76,9 +77,13 @@ export class BlipInput extends Component {
       this.configOptions.error = this.props.customError
     }
 
+    const inputErrorElement = this.configOptions.showInputError
+      ? html`<div class="bp-input-error">${this.configOptions.error && !this.props.pristine ? this.configOptions.error : ''}</div>`
+      : ''
+
     return html`
-      <div class="bp-input-wrapper">
-        <div class="bp-input-field ${this.props.disabled ? blipInputDisabledClass : ''}  ${this.props.focused ? blipInputFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputValidClass : blipInputInvalidClass)}">
+      <div class="blip-input">
+        <div class="bp-input-field ${this.props.disabled ? blipInputFieldDisabledClass : ''}  ${this.props.focused ? blipInputFieldFocusClass : ''} ${!this.props.pristine && (this.props.valid ? blipInputFieldValidClass : blipInputFieldInvalidClass)}">
           <label class="bp-label">
             ${this.props.label} ${this.configOptions.required ? ' *' : ''}
           </label>
@@ -104,7 +109,7 @@ export class BlipInput extends Component {
             ${this.props.readOnly ? 'readonly' : ''}
           />
         </div>
-        ${this.configOptions.error && !this.props.pristine ? html`<div class="bp-input-error">${this.configOptions.error}</div>` : ''}
+        ${inputErrorElement}
       </div>
     `
   }

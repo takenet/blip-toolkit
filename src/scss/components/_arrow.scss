@@ -1,0 +1,14 @@
+.bp-arrow {
+  box-sizing: border-box;
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @include bp-arrow--default-color();
+
+  @include bp-arrow--up();
+  @include bp-arrow--down();
+  @include bp-arrow--left();
+  @include bp-arrow--right();
+}

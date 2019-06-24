@@ -125,6 +125,14 @@
   }
 }
 
+.bp-input-box {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .bp-input-field--focus {
   box-shadow: 0 0.2 * $m 1.2 * $m 0 rgba(0, 0, 0, 0.1);
   border-color: $bp-color-blip-light;

@@ -31,5 +31,6 @@ examples:
 
 order:
   - +Getting Started
-  - +Utilities
+  - +Style
+  - +Icons
   - +Components

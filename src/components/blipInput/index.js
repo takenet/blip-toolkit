@@ -24,6 +24,7 @@ export class BlipInput extends Component {
     maxLength: 0,
     showPasswordStrength: true,
     showInputError: true,
+    autocomplete: 'on',
     requiredErrorMsg: 'This is a required field',
     maxLengthErrorMsg: 'The value is too long',
     minLengthErrorMsg: 'The value is too short',
@@ -93,21 +94,23 @@ export class BlipInput extends Component {
               <span class="str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>
             </div>` : ''}
 
-          <input
-            class="bp-input"
-            id="${this.configOptions.id}"
-            name="${this.configOptions.name}"
-            type=${this.configOptions.type === 'password' ? 'password' : 'text'}
-            value="${this.props.value}"
-            placeholder="${this.configOptions.placeholder}"
-            onfocus="${this._onInputFocus}"
-            onblur="${this._onInputBlur}"
-            onchange="${this._onInputChange}"
-            onkeyup="${this._onInputKeyUp}"
-            ${this.configOptions.required ? 'required' : ''}
-            ${this.props.disabled ? 'disabled' : ''}
-            ${this.props.readOnly ? 'readonly' : ''}
-          />
+          <div class="bp-input-box">
+            <input
+              class="bp-input"
+              id="${this.configOptions.id}"
+              name="${this.configOptions.name}"
+              type=${this.configOptions.type === 'password' ? 'password' : 'text'}
+              value="${this.props.value}"
+              placeholder="${this.configOptions.placeholder}"
+              onfocus="${this._onInputFocus}"
+              onblur="${this._onInputBlur}"
+              onchange="${this._onInputChange}"
+              onkeyup="${this._onInputKeyUp}"
+              ${this.configOptions.required ? 'required' : ''}
+              ${this.props.disabled ? 'disabled' : ''}
+              ${this.props.readOnly ? 'readonly' : ''}
+            />
+          </div>
         </div>
         ${inputErrorElement}
       </div>
@@ -170,7 +173,7 @@ export class BlipInput extends Component {
       return false
     }
     if (this.configOptions.type === 'email') {
-      const emailRegex = /^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,3}$/
+      const emailRegex = /^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/
       if (value && !emailRegex.test(value)) {
         this.configOptions.error = this.configOptions.emailTypeErrorMsg
         return false

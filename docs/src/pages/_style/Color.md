@@ -6,10 +6,22 @@ category: Style
 BLiP's color palette consists of three groups of colors: **Corporates**, **Semiotics** and **Neutrals**.
 
 Insert classes containing a **root** followed by a **color's name** to apply color on:
-* Backgrounds: bp-bg-{color}
-* Borders: bp-bc-{color}
+* Background: bp-bg-{color}
+* Border: bp-bc-{color}
 * Text: bp-c-{color}
+* Button: bp-btn-{color} - see Button section for more!
+* Svg/Use fill: bp-fill-{color} - see below for more!
 
+<h3> SVG fillings </h3>
+
+SVG icons, if inline or created with a **use** tag, can have their fill colors stylized. For that, you can use fill classes for the base element and for some pseudo classes:
+
+* Base color: bp-fill-{color}
+* Hover color: bp-fill-{color}--hover
+* Active color: bp-fill-{color}--active
+* Disabled color: bp-fill-{color}--disabled
+
+Those classes apply for all **svg** and **use** tags inside the component, so **be careful**!
 
 <h3> Corporate Palette </h3>
 
@@ -212,6 +224,40 @@ Insert classes containing a **root** followed by a **color's name** to apply col
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
     <span>Warning Yellow</span>
     <span>#ffcf33</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-cheetos">
+    </div>
+    <span class="db tc bp-c-cheetos">
+      .bp-bg-cheetos
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-cheetos">
+    </div>
+    <span class="db tc bp-c-cheetos">
+      .bp-bc-cheetos
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-cheetos bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-cheetos">
+      .bp-c-cheetos
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Cheetos</span>
+    <span>#F9B42F</span>
   </div>
 </div>
 
@@ -826,6 +872,40 @@ Insert classes containing a **root** followed by a **color's name** to apply col
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
     <span>Offwhite</span>
     <span>#eaeeee</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-whisper">
+    </div>
+    <span class="db tc bp-c-black">
+      .bp-bg-whisper
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-whisper">
+    </div>
+    <span class="db tc bp-c-black">
+      .bp-bc-whisper
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-whisper bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-black">
+      .bp-c-whisper
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Whisper</span>
+    <span>#f5f8f9</span>
   </div>
 </div>
 ```

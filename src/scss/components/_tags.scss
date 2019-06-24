@@ -16,8 +16,13 @@
     display: inline-flex;
     flex: 2 0;
 
-    &.bp-select-field--focus {
+    &.blip-select--focus {
       box-shadow: none;
+
+      .bp-select-field {
+        box-shadow: none;
+        transition: none;
+      }
     }
 
     .blip-select__input {
@@ -37,11 +42,6 @@
       margin-top: 0;
       position: initial;
       background-color: transparent;
-    }
-
-    .bp-select-field--focus {
-      box-shadow: none;
-      transition: none;
     }
   }
 

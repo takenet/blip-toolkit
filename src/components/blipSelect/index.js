@@ -16,9 +16,9 @@ const blipSelectOptionSeletedClass = 'blip-select__option--selected'
 const bpInputWithBulletClass = 'bp-input--with-bullet'
 const bpCrooftopClass = 'bp-c-rooftop'
 const bpCblipLightClass = 'bp-c-blip-light'
-const bpSelectFieldFocusClass = 'bp-select-field--focus'
-const bpSelectFieldDisabledClass = 'bp-select-field--disabled'
-const bpSelectFieldInvalidClass = 'bp-select-field--invalid'
+const bpSelectFieldFocusClass = 'blip-select--focus'
+export const bpSelectFieldDisabledClass = 'blip-select--disabled'
+export const bpSelectFieldInvalidClass = 'blip-select--invalid'
 
 export class BlipSelect extends Component {
   /**
@@ -183,8 +183,8 @@ export class BlipSelect extends Component {
     const hasBulletClass = () =>
       this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
     return html`
-      <div class="blip-select">
-        <div class="bp-select-field ${this.props.disabled ? bpSelectFieldDisabledClass : ''} ${hasBulletClass()}">
+      <div class="blip-select ${this.props.disabled ? bpSelectFieldDisabledClass : ''} ${hasBulletClass()}">
+        <div class="bp-select-field">
           <label class="bp-label">${this.props.label}</label>
           <input class="blip-select__input"
             placeholder="${this.configOptions.placeholder}"

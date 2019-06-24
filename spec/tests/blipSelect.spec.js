@@ -1,4 +1,4 @@
-import { BlipSelect } from '../../src/components/blipSelect'
+import { BlipSelect, bpSelectFieldDisabledClass, bpSelectFieldInvalidClass } from '../../src/components/blipSelect'
 const mockOptions = [
   {
     value: 'val1',
@@ -28,7 +28,7 @@ describe('BlipSelect', () => {
         disabled: true,
       })
 
-      expect(renderedElement.classList.contains('bp-select-field--disabled')).toBeTruthy()
+      expect(renderedElement.classList.contains(bpSelectFieldDisabledClass)).toBeTruthy()
     })
 
     it('should disable component', () => {
@@ -112,7 +112,7 @@ describe('BlipSelect', () => {
         disabled: true,
       })
 
-      expect(renderedElement.classList.contains('bp-select-field--disabled')).toBeTruthy()
+      expect(renderedElement.classList.contains(bpSelectFieldDisabledClass)).toBeTruthy()
     })
 
     it('should update invalid property', () => {
@@ -127,7 +127,7 @@ describe('BlipSelect', () => {
         invalid: true,
       })
 
-      expect(renderedElement.classList.contains('bp-select-field--invalid')).toBeTruthy()
+      expect(renderedElement.classList.contains(bpSelectFieldInvalidClass)).toBeTruthy()
     })
   })
 

@@ -28,7 +28,7 @@ describe('BlipSelect', () => {
         disabled: true,
       })
 
-      expect(renderedElement.classList.contains('bp-select-wrapper--disabled')).toBeTruthy()
+      expect(renderedElement.classList.contains('bp-select-field--disabled')).toBeTruthy()
     })
 
     it('should disable component', () => {
@@ -112,7 +112,7 @@ describe('BlipSelect', () => {
         disabled: true,
       })
 
-      expect(renderedElement.classList.contains('bp-select-wrapper--disabled')).toBeTruthy()
+      expect(renderedElement.classList.contains('bp-select-field--disabled')).toBeTruthy()
     })
 
     it('should update invalid property', () => {
@@ -127,7 +127,7 @@ describe('BlipSelect', () => {
         invalid: true,
       })
 
-      expect(renderedElement.classList.contains('bp-select-wrapper--invalid')).toBeTruthy()
+      expect(renderedElement.classList.contains('bp-select-field--invalid')).toBeTruthy()
     })
   })
 

@@ -1,23 +1,52 @@
 .blip-select {
   @include flex-box;
   flex-wrap: wrap;
+  position: relative;
 
-  &.bp-input-wrapper { background-color: $bp-color-white; }
+  .bp-select-field {
+    width: 100%;
+    height: 4.7 * $m;
+    border: 0.1 * $m solid $bp-color-breeze;
+    border-radius: 0.4 * $m;
+    padding: 0.5 * $m;
+    position: relative;
+    background-color: $bp-color-white;
 
-  &.bp-select-wrapper--invalid {
-    border-color: $bp-color-delete;
-    background-color: $bp-color-warning-light;
+    .bp-label {
+      color: $bp-color-rooftop;
+    }
+  }
 
-    &.bp-input-wrapper--focus {
-      label {
+  &.blip-select--focus {
+    .bp-select-field {
+      box-shadow: 0 0.2 * $m 1.2 * $m 0 rgba(0, 0, 0, 0.1);
+      border-color: $bp-color-blip-light;
+      transition: box-shadow 0.15s ease-in;
+
+      .bp-label {
+        color: $bp-color-blip-light;
+      }
+    }
+
+    &.blip-select--invalid {
+      .bp-label {
         color: $bp-color-delete;
       }
     }
   }
 
-  &.bp-select-wrapper--disabled {
-    background-color: $bp-color-offwhite;
-    border-color: $bp-color-breeze;
+  &.blip-select--invalid {
+    .bp-select-field {
+      border-color: $bp-color-delete;
+      background-color: $bp-color-warning-light;
+    }
+  }
+
+  .bp-select--disabled {
+    .bp-select-field {
+      background-color: $bp-color-offwhite;
+      border-color: $bp-color-breeze;
+    }
   }
 }
 
@@ -36,6 +65,7 @@
   align-self: center;
   position: relative;
   z-index: 1;
+  color: $bp-color-rooftop;
 
   &:focus { outline: none; }
 }

@@ -21,6 +21,8 @@ const hideBackgroundOptions = t => ({ ...t, canChangeBackground: false })
 const addIdIfNotExists = t => t.id ? t : ({ ...t, id: `blip-tag-${guid()}` })
 const addBackgroundIfNotExists = t => t.background ? t : ({ ...t, background: defaultTagBackground })
 
+const bpTagsFocusClass = 'blip-tags--focus'
+
 export class BlipTags extends Component {
   $state = {
     promptTextCreator: 'Create tag',
@@ -263,14 +265,14 @@ export class BlipTags extends Component {
    * Handle BlipSelect blur
    */
   _onSelectBlur(event) {
-    this.element.classList.remove('bp-input-wrapper--focus')
+    this.element.classList.remove(bpTagsFocusClass)
   }
 
   /**
    * Handle BlipSelect focus
    */
   _onSelectFocus(event) {
-    this.element.classList.add('bp-input-wrapper--focus')
+    this.element.classList.add(bpTagsFocusClass)
   }
 
   /**

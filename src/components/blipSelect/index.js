@@ -16,9 +16,9 @@ const blipSelectOptionSeletedClass = 'blip-select__option--selected'
 const bpInputWithBulletClass = 'bp-input--with-bullet'
 const bpCrooftopClass = 'bp-c-rooftop'
 const bpCblipLightClass = 'bp-c-blip-light'
-const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
-const bpInputWrapperDisabledClass = 'bp-select-wrapper--disabled'
-const bpInputWrapperInvalidClass = 'bp-select-wrapper--invalid'
+const bpSelectFieldFocusClass = 'blip-select--focus'
+export const bpSelectFieldDisabledClass = 'blip-select--disabled'
+export const bpSelectFieldInvalidClass = 'blip-select--invalid'
 
 export class BlipSelect extends Component {
   /**
@@ -135,15 +135,15 @@ export class BlipSelect extends Component {
 
     switch (value) {
       case true:
-        this.element.classList.add(bpInputWrapperDisabledClass)
+        this.element.classList.add(bpSelectFieldDisabledClass)
         if (this.isInvalid) {
-          this.element.classList.remove(bpInputWrapperInvalidClass)
+          this.element.classList.remove(bpSelectFieldInvalidClass)
         }
         break
       case false:
-        this.element.classList.remove(bpInputWrapperDisabledClass)
+        this.element.classList.remove(bpSelectFieldDisabledClass)
         if (this.isInvalid) {
-          this.element.classList.add(bpInputWrapperInvalidClass)
+          this.element.classList.add(bpSelectFieldInvalidClass)
         }
         break
     }
@@ -161,11 +161,11 @@ export class BlipSelect extends Component {
     switch (value) {
       case true:
         if (!this.isDisabled) {
-          this.element.classList.add(bpInputWrapperInvalidClass)
+          this.element.classList.add(bpSelectFieldInvalidClass)
         }
         break
       case false:
-        this.element.classList.remove(bpInputWrapperInvalidClass)
+        this.element.classList.remove(bpSelectFieldInvalidClass)
         break
     }
   }
@@ -183,20 +183,22 @@ export class BlipSelect extends Component {
     const hasBulletClass = () =>
       this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
     return html`
-      <div class="bp-input-wrapper blip-select ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''} ${hasBulletClass()}">
-        <label class="bp-label bp-c-rooftop">${this.props.label}</label>
-        <input placeholder="${this.configOptions.placeholder}"
-          class="blip-select__input bp-c-rooftop"
-          value="${this.props.inputValue}"
-          onfocus="${this._handleSelectFocus}"
-          onblur="${this._handleSelectBlur}"
-          onkeydown="${this._handleInputKeydown}"
-          onkeyup="${this._handleInputKeyup}"
-          oninput="${this._handleInputChange}"
-          onclick="${this._handleInputClick}"
-          data-target="${this.customSelectId}"
-          disabled="${this.isDisabled}"
-          readonly="${isReadOnly()}">
+      <div class="blip-select ${this.props.disabled ? bpSelectFieldDisabledClass : ''} ${hasBulletClass()}">
+        <div class="bp-select-field">
+          <label class="bp-label">${this.props.label}</label>
+          <input class="blip-select__input"
+            placeholder="${this.configOptions.placeholder}"
+            value="${this.props.inputValue}"
+            onfocus="${this._handleSelectFocus}"
+            onblur="${this._handleSelectBlur}"
+            onkeydown="${this._handleInputKeydown}"
+            onkeyup="${this._handleInputKeyup}"
+            oninput="${this._handleInputChange}"
+            onclick="${this._handleInputClick}"
+            data-target="${this.customSelectId}"
+            disabled="${this.isDisabled}"
+            readonly="${isReadOnly()}">
+        </div>
         <div class="blip-select__options" id="${this.customSelectId}">
           ${this.renderedOptionsList}
         </div>
@@ -668,7 +670,7 @@ export class BlipSelect extends Component {
       selectOptionsContainer.style.opacity = 1
     })
 
-    this.input.parentNode.classList.add(bpInputWrapperFocusClass)
+    this.input.parentNode.classList.add(bpSelectFieldFocusClass)
     this.selectLabel.classList.remove(bpCrooftopClass)
     this.selectLabel.classList.add(bpCblipLightClass)
     this.isSelectOpen = true
@@ -728,7 +730,7 @@ export class BlipSelect extends Component {
       selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
     }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
 
-    this.input.parentNode.classList.remove(bpInputWrapperFocusClass)
+    this.input.parentNode.classList.remove(bpSelectFieldFocusClass)
     this.selectLabel.classList.remove(bpCblipLightClass)
     this.selectLabel.classList.add(bpCrooftopClass)
     this.isSelectOpen = false

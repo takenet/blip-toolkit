@@ -9,9 +9,9 @@
 @include register-base-color('blip-dark', $bp-color-blip-dark);
 
 //Semiotic
-@include register-base-color('wind-blue', $bp-color-wind-blue);
-@include register-base-color('light-blue', $bp-color-light-blue);
-@include register-base-color('sea-blue', $bp-color-sea-blue);
+@include register-base-color('wind', $bp-color-wind);
+@include register-base-color('smurf', $bp-color-smurf);
+@include register-base-color('sea', $bp-color-sea);
 @include register-base-color('blue-jeans', $bp-color-blue-jeans);
 
 @include register-base-color('true', $bp-color-true);
@@ -25,7 +25,7 @@
 @include register-base-color('delete', $bp-color-delete);
 @include register-base-color('delete-dark', bp-darken($bp-color-delete));
 @include register-base-color('warning', $bp-color-warning);
-@include register-base-color('hot-pink', $bp-color-hot-pink);
+@include register-base-color('watermelon', $bp-color-watermelon);
 
 //Neutrals
 @include register-base-color('piano', $bp-color-piano);

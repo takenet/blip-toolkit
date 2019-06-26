@@ -59,271 +59,38 @@
     min-width: 240px;
   }
 
-  /** Custom BLiP Setups **/
-
-  /* Color */
-
-  &.bp-btn--black {
-    @include bp-btn--custom($bp-color-white, $bp-color-black);
-  }
-
-  &.bp-btn--white {
-    @include bp-btn--custom($bp-color-white, $bp-color-white);
-  }
-
-  &.bp-btn--bot {
-    @include bp-btn--custom($bp-color-white, $bp-color-bot);
-  }
-
-  &.bp-btn--blip-light {
-    @include bp-btn--custom($bp-color-white, $bp-color-blip-light);
-  }
-
-  &.bp-btn--blip-dark {
-    @include bp-btn--custom($bp-color-white, $bp-color-blip-dark);
-  }
-
-  &.bp-btn--warning {
-    @include bp-btn--custom($bp-color-white, $bp-color-warning);
-  }
-
-  &.bp-btn--warning-light {
-    @include bp-btn--custom($bp-color-white, $bp-color-warning-light);
-  }
-
-  &.bp-btn--warning-yellow {
-    @include bp-btn--custom($bp-color-white, $bp-color-warning-yellow);
-  }
-
-  &.bp-btn--cheetos {
-    @include bp-btn--custom($bp-color-white, $bp-color-cheetos);
-  }
-
-  &.bp-btn--delete {
-    @include bp-btn--custom($bp-color-white, $bp-color-delete);
-  }
-
-  &.bp-btn--true {
-    @include bp-btn--custom($bp-color-white, $bp-color-true);
-  }
-
-  &.bp-btn--obsidian {
-    @include bp-btn--custom($bp-color-white, $bp-color-obsidian);
-  }
-
-  &.bp-btn--onix {
-    @include bp-btn--custom($bp-color-white, $bp-color-onix);
-  }
-
-  &.bp-btn--city {
-    @include bp-btn--custom($bp-color-white, $bp-color-city);
-  }
-
-  &.bp-btn--rooftop {
-    @include bp-btn--custom($bp-color-white, $bp-color-rooftop);
-  }
-
-  &.bp-btn--desk {
-    @include bp-btn--custom($bp-color-white, $bp-color-desk);
-  }
-
-  &.bp-btn--cloud {
-    @include bp-btn--custom($bp-color-white, $bp-color-cloud);
-  }
-
-  &.bp-btn--silver {
-    @include bp-btn--custom($bp-color-white, $bp-color-silver);
-  }
-
-  &.bp-btn--time {
-    @include bp-btn--custom($bp-color-white, $bp-color-time);
-  }
-
-  &.bp-btn--breeze {
-    @include bp-btn--custom($bp-color-white, $bp-color-breeze);
-  }
-
-  &.bp-btn--sky {
-    @include bp-btn--custom($bp-color-white, $bp-color-sky);
-  }
-
-  &.bp-btn--offwhite {
-    @include bp-btn--custom($bp-color-white, $bp-color-offwhite);
-  }
-
-  /* Color */
-
-  &.bp-btn--c-black {
-    @include bp-btn--c($bp-color-black);
-  }
-
-  &.bp-btn--c-white {
-    @include bp-btn--c($bp-color-white);
-  }
-
-  &.bp-btn--c-bot {
-    @include bp-btn--c($bp-color-bot);
-  }
-
-  &.bp-btn--c-blip-light {
-    @include bp-btn--c($bp-color-blip-light);
-  }
-
-  &.bp-btn--c-blip-dark {
-    @include bp-btn--c($bp-color-blip-dark);
-  }
-
-  &.bp-btn--c-warning {
-    @include bp-btn--c($bp-color-warning);
-  }
-
-  &.bp-btn--c-warning-light {
-    @include bp-btn--c($bp-color-warning-light);
-  }
-
-  &.bp-btn--c-warning-yellow {
-    @include bp-btn--c($bp-color-warning-yellow);
-  }
-
-  &.bp-btn--c-cheetos {
-    @include bp-btn--c($bp-color-cheetos);
-  }
-
-  &.bp-btn--c-delete {
-    @include bp-btn--c($bp-color-delete);
-  }
-
-  &.bp-btn--c-true {
-    @include bp-btn--c($bp-color-true);
-  }
-
-  &.bp-btn--c-obsidian {
-    @include bp-btn--c($bp-color-obsidian);
-  }
-
-  &.bp-btn--c-onix {
-    @include bp-btn--c($bp-color-onix);
-  }
-
-  &.bp-btn--c-city {
-    @include bp-btn--c($bp-color-city);
-  }
-
-  &.bp-btn--c-rooftop {
-    @include bp-btn--c($bp-color-rooftop);
-  }
-
-  &.bp-btn--c-desk {
-    @include bp-btn--c($bp-color-desk);
-  }
-
-  &.bp-btn--c-cloud {
-    @include bp-btn--c($bp-color-cloud);
-  }
-
-  &.bp-btn--c-silver {
-    @include bp-btn--c($bp-color-silver);
-  }
-
-  &.bp-btn--c-time {
-    @include bp-btn--c($bp-color-time);
-  }
-
-  &.bp-btn--c-breeze {
-    @include bp-btn--c($bp-color-breeze);
-  }
-
-  &.bp-btn--c-sky {
-    @include bp-btn--c($bp-color-sky);
-  }
-
-  &.bp-btn--c-offwhite {
-    @include bp-btn--c($bp-color-offwhite);
-  }
-
-  /* Background Color */
-
-  &.bp-btn--bg-black {
-    @include bp-btn--bg($bp-color-black);
-  }
-
-  &.bp-btn--bg-white {
-    @include bp-btn--bg($bp-color-white);
-  }
-
-  &.bp-btn--bg-bot {
-    @include bp-btn--bg($bp-color-bot);
-  }
-
-  &.bp-btn--bg-blip-light {
-    @include bp-btn--bg($bp-color-blip-light);
-  }
-
-  &.bp-btn--bg-blip-dark {
-    @include bp-btn--bg($bp-color-blip-dark);
-  }
-
-  &.bp-btn--bg-warning {
-    @include bp-btn--bg($bp-color-warning);
-  }
-
-  &.bp-btn--bg-warning-light {
-    @include bp-btn--bg($bp-color-warning-light);
-  }
-
-  &.bp-btn--bg-warning-yellow {
-    @include bp-btn--bg($bp-color-warning-yellow);
-  }
-
-  &.bp-btn--bg-cheetos {
-    @include bp-btn--bg($bp-color-cheetos);
-  }
-
-  &.bp-btn--bg-delete {
-    @include bp-btn--bg($bp-color-delete);
-  }
-
-  &.bp-btn--bg-true {
-    @include bp-btn--bg($bp-color-true);
-  }
-
-  &.bp-btn--bg-obsidian {
-    @include bp-btn--bg($bp-color-obsidian);
-  }
-
-  &.bp-btn--bg-onix {
-    @include bp-btn--bg($bp-color-onix);
-  }
-
-  &.bp-btn--bg-city {
-    @include bp-btn--bg($bp-color-city);
-  }
-
-  &.bp-btn--bg-rooftop {
-    @include bp-btn--bg($bp-color-rooftop);
-  }
-
-  &.bp-btn--bg-desk {
-    @include bp-btn--bg($bp-color-desk);
-  }
-
-  &.bp-btn--bg-cloud {
-    @include bp-btn--bg($bp-color-cloud);
-  }
-
-  &.bp-btn--bg-silver {
-    @include bp-btn--bg($bp-color-silver);
-  }
-
-  &.bp-btn--bg-time {
-    @include bp-btn--bg($bp-color-time);
-  }
-
-  &.bp-btn--bg-breeze {
-    @include bp-btn--bg($bp-color-breeze);
-  }
-
-  &.bp-btn--bg-sky {
-    @include bp-btn--bg($bp-color-sky);
-  }
+  /** Custom BLiP Button Colors **/
+  //Corporate
+  @include register-button-color('bot', $bp-color-bot);
+  @include register-button-color('blip-light', $bp-color-blip-light);
+  @include register-button-color('blip-dark', $bp-color-blip-dark);
+
+  //Semiotic
+  @include register-button-color('true', $bp-color-true);
+  @include register-button-color('delete', $bp-color-delete);
+  @include register-button-color('warning', $bp-color-warning);
+
+  //Neutrals
+  @include register-button-color('piano', $bp-color-piano);
+  @include register-button-color('elevator', $bp-color-elevator);
+  @include register-button-color('console', $bp-color-console);
+  @include register-button-color('obsidian', $bp-color-obsidian);
+  @include register-button-color('onix', $bp-color-onix);
+  @include register-button-color('suit', $bp-color-suit);
+  @include register-button-color('city', $bp-color-city);
+  @include register-button-color('city-dark', bp-darken($bp-color-city));
+  @include register-button-color('city-light', bp-lighten($bp-color-city));
+  @include register-button-color('desk', $bp-color-desk);
+  @include register-button-color('rooftop', $bp-color-rooftop);
+  @include register-button-color('cloud', $bp-color-cloud);
+  @include register-button-color('silver', $bp-color-silver);
+  @include register-button-color('time', $bp-color-time);
+  @include register-button-color('breeze', $bp-color-breeze);
+  @include register-button-color('sky', $bp-color-sky);
+  @include register-button-color('offwhite', $bp-color-offwhite);
+  @include register-button-color('whisper', $bp-color-whisper);
+
+  //Generic
+  @include register-button-color('white', $bp-color-white);
+  @include register-button-color('black', $bp-color-black);
 }

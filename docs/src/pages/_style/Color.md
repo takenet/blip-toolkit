@@ -161,35 +161,171 @@ Those classes apply for all **svg** and **use** tags inside the component, so **
 ```semiotics.html
 <div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <div class="db card-container bp-bg-warning">
+    <div class="db card-container bp-bg-wind">
     </div>
-    <span class="db tc bp-c-warning">
-      .bp-bg-warning
+    <span class="db tc bp-c-wind">
+      .bp-bg-wind
     </span>
   </div>
 
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <div class="db card-container ba bw2 bp-bc-warning">
+    <div class="db card-container ba bw2 bp-bc-wind">
     </div>
-    <span class="db tc bp-c-warning">
-      .bp-bc-warning
+    <span class="db tc bp-c-wind">
+      .bp-bc-wind
     </span>
   </div>
 
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
     <div class="flex flex-column justify-end card-container">
-      <span class="bp-c-warning bp-fs-2 bp-fw-bold tc">
+      <span class="bp-c-wind bp-fs-2 bp-fw-bold tc">
         Aa
       </span>
     </div>
-    <span class="db tc bp-c-warning">
-      .bp-c-warning
+    <span class="db tc bp-c-wind">
+      .bp-c-wind
     </span>
   </div>
 
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <span>Warning</span>
-    <span>#f76556</span>
+    <span>Wind</span>
+    <span>#ADE7EE</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-smurf">
+    </div>
+    <span class="db tc bp-c-smurf">
+      .bp-bg-smurf
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-smurf">
+    </div>
+    <span class="db tc bp-c-smurf">
+      .bp-bc-smurf
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-smurf bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-smurf">
+      .bp-c-smurf
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Smurf</span>
+    <span>#55CFFF</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-sea">
+    </div>
+    <span class="db tc bp-c-sea">
+      .bp-bg-sea
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-sea">
+    </div>
+    <span class="db tc bp-c-sea">
+      .bp-bc-sea
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-sea bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-sea">
+      .bp-c-sea
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Sea</span>
+    <span>#517BF2</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-blue-jeans">
+    </div>
+    <span class="db tc bp-c-blue-jeans">
+      .bp-bg-blue-jeans
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-blue-jeans">
+    </div>
+    <span class="db tc bp-c-blue-jeans">
+      .bp-bc-blue-jeans
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-blue-jeans bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-blue-jeans">
+      .bp-c-blue-jeans
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Blue jeans</span>
+    <span>#2C2A46</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-true">
+    </div>
+    <span class="db tc bp-c-true">
+      .bp-bg-true
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-true">
+    </div>
+    <span class="db tc bp-c-true">
+      .bp-bc-true
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-true bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-true">
+      .bp-c-true
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>True</span>
+    <span>#4dcb7b</span>
   </div>
 </div>
 
@@ -222,7 +358,7 @@ Those classes apply for all **svg** and **use** tags inside the component, so **
   </div>
 
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <span>Warning Yellow</span>
+    <span>Warning yellow</span>
     <span>#ffcf33</span>
   </div>
 </div>
@@ -263,6 +399,40 @@ Those classes apply for all **svg** and **use** tags inside the component, so **
 
 <div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-doritos">
+    </div>
+    <span class="db tc bp-c-doritos">
+      .bp-bg-doritos
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-doritos">
+    </div>
+    <span class="db tc bp-c-doritos">
+      .bp-bc-doritos
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-doritos bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-doritos">
+      .bp-c-doritos
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Doritos</span>
+    <span>#F99B45</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
     <div class="db card-container bp-bg-warning-light">
     </div>
     <span class="db tc bp-c-warning-light">
@@ -290,7 +460,7 @@ Those classes apply for all **svg** and **use** tags inside the component, so **
   </div>
 
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <span>Warning Light</span>
+    <span>Warning light</span>
     <span>#fbeaea</span>
   </div>
 </div>
@@ -329,38 +499,71 @@ Those classes apply for all **svg** and **use** tags inside the component, so **
   </div>
 </div>
 
-
 <div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <div class="db card-container bp-bg-true">
+    <div class="db card-container bp-bg-warning">
     </div>
-    <span class="db tc bp-c-true">
-      .bp-bg-true
+    <span class="db tc bp-c-warning">
+      .bp-bg-warning
     </span>
   </div>
 
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <div class="db card-container ba bw2 bp-bc-true">
+    <div class="db card-container ba bw2 bp-bc-warning">
     </div>
-    <span class="db tc bp-c-true">
-      .bp-bc-true
+    <span class="db tc bp-c-warning">
+      .bp-bc-warning
     </span>
   </div>
 
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
     <div class="flex flex-column justify-end card-container">
-      <span class="bp-c-true bp-fs-2 bp-fw-bold tc">
+      <span class="bp-c-warning bp-fs-2 bp-fw-bold tc">
         Aa
       </span>
     </div>
-    <span class="db tc bp-c-true">
-      .bp-c-true
+    <span class="db tc bp-c-warning">
+      .bp-c-warning
     </span>
   </div>
 
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
-    <span>True</span>
-    <span>#4dcb7b</span>
+    <span>Warning</span>
+    <span>#f76556</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-watermelon">
+    </div>
+    <span class="db tc bp-c-watermelon">
+      .bp-bg-watermelon
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-watermelon">
+    </div>
+    <span class="db tc bp-c-watermelon">
+      .bp-bc-watermelon
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-watermelon bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-watermelon">
+      .bp-c-watermelon
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Watermelon</span>
+    <span>#F66689</span>
   </div>
 </div>
 ```
@@ -421,6 +624,40 @@ Those classes apply for all **svg** and **use** tags inside the component, so **
   <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
     <span>Piano</span>
     <span>#191919</span>
+  </div>
+</div>
+
+<div class="w-100 mb4 flex flex-row flex-start flex-wrap items-center">
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container bp-bg-elevator">
+    </div>
+    <span class="db tc bp-c-elevator">
+      .bp-bg-elevator
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="db card-container ba bw2 bp-bc-elevator">
+    </div>
+    <span class="db tc bp-c-elevator">
+      .bp-bc-elevator
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <div class="flex flex-column justify-end card-container">
+      <span class="bp-c-elevator bp-fs-2 bp-fw-bold tc">
+        Aa
+      </span>
+    </div>
+    <span class="db tc bp-c-elevator">
+      .bp-c-elevator
+    </span>
+  </div>
+
+  <div class="example-container flex flex-column justify-start items-center mt2 mb2 mh3">
+    <span>Elevator</span>
+    <span>#333333</span>
   </div>
 </div>
 

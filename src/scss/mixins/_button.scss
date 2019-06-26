@@ -1,4 +1,4 @@
-@import "utils/fill-modifiers";
+@import "svg-fill";
 
 @mixin bp-btn--custom ($primary-color, $secondary-color) {
   @include bp-btn--regular ($primary-color, $secondary-color);

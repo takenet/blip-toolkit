@@ -1,0 +1,34 @@
+@import "svg-fill";
+@import "button";
+
+@mixin register-base-color($name, $value) {
+  .bp-c-#{$name} {
+    color: $value;
+  }
+
+  .bp-bc-#{$name} {
+    border-color: $value;
+  }
+
+  .bp-bg-#{$name} {
+    background-color: $value;
+  }
+
+  .bp-fill-#{$name} {
+    @include bp-fill--all($value);
+  }
+}
+
+@mixin register-button-color($name, $value) {
+  &.bp-btn--#{$name} {
+    @include bp-btn--custom($bp-color-white, $value);
+  }
+
+  &.bp-btn--c-#{$name} {
+    @include bp-btn--c($value);
+  }
+
+  &.bp-btn--bg-#{$name} {
+    @include bp-btn--bg($value);
+  }
+}

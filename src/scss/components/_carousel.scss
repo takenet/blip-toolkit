@@ -1,0 +1,13 @@
+.bp-carousel{
+  display: flex;
+  width: 100%;
+  .bp-carousel-container{
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    .bp-carousel-item{
+      flex-shrink: 0;
+    }
+  }
+}

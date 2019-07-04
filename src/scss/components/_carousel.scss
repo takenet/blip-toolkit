@@ -1,12 +1,26 @@
-.bp-carousel{
+.bp-carousel {
   display: flex;
   width: 100%;
-  .bp-carousel-container{
+  align-items: center;
+  button {
+    all: unset;
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.5;
+    }
+    svg {
+      width: 30px;
+      fill: $bp-color-breeze;
+    }
+  }
+  .bp-carousel-container {
+    padding: 0 5px;
     flex-grow: 1;
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
-    .bp-carousel-item{
+    scroll-behavior: smooth;
+    .bp-carousel-item {
       flex-shrink: 0;
     }
   }

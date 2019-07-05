@@ -11,7 +11,7 @@ export class BlipCarousel {
   }
 
   init() {
-    const previousButton = html`<button disabled>${raw(previousIcon)}</button>`
+    const previousButton = html`<button>${raw(previousIcon)}</button>`
     const nextButton = html`<button>${raw(nextIcon)}</button>`
     const itemsContainer = html`<div class="bp-carousel-container"></div>`
     const items = this.containerDiv.querySelectorAll('.bp-carousel-item')
@@ -42,6 +42,8 @@ export class BlipCarousel {
     this.containerDiv.appendChild(previousButton)
     this.containerDiv.appendChild(itemsContainer)
     this.containerDiv.appendChild(nextButton)
+
+    this.refreshButtons(previousButton, nextButton, itemsContainer, items.length)
   }
 
   _prevItem(itemsContainer) {
@@ -53,16 +55,13 @@ export class BlipCarousel {
   }
 
   refreshButtons(previousButton, nextButton, itemsContainer, itemsLength) {
-    console.log(itemsContainer.scrollLeft)
+    previousButton.disabled = false
+    nextButton.disabled = false
     if (itemsContainer.scrollLeft === 0) {
       previousButton.disabled = true
-      nextButton.disabled = false
-    } else if (itemsContainer.scrollLeft >= (itemsLength) * this.itemWidth - itemsContainer.offsetWidth) {
-      previousButton.disabled = false
+    }
+    if (itemsContainer.scrollLeft >= (itemsLength) * this.itemWidth - itemsContainer.offsetWidth) {
       nextButton.disabled = true
-    } else {
-      previousButton.disabled = false
-      nextButton.disabled = false
     }
   }
 }

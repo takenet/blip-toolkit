@@ -3,11 +3,17 @@
   width: 100%;
   align-items: center;
   button {
-    all: unset;
+    border: none;
     cursor: pointer;
+    overflow: visible;
+    background-color: transparent !important;
     &:disabled {
       opacity: 0.5;
       background-color: transparent !important;
+      cursor: not-allowed;
+    }
+    &:focus{
+      outline: none;
     }
     svg {
       width: 30px;

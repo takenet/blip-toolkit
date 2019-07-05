@@ -32,13 +32,12 @@ export class BlipCarousel {
       )
     })
 
-    items.forEach(item => {
-      item.style.width = `${this.itemWidth}px`
-      itemsContainer.appendChild(item)
-    })
+    for (let i = 0; i < items.length; ++i) {
+      items[i].style.width = `${this.itemWidth}px`
+      itemsContainer.appendChild(items[i])
+    }
 
     this.containerDiv.innerHTML = ''
-
     this.containerDiv.appendChild(previousButton)
     this.containerDiv.appendChild(itemsContainer)
     this.containerDiv.appendChild(nextButton)

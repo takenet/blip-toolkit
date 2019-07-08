@@ -47,10 +47,14 @@ class="bp-carousel">
 </div>
 </div>`
 
-beforeEach(() => document.body.appendChild(carouselElement))
-afterEach(() => document.body.removeChild(carouselElement))
-
 describe('BlipCarousel', () => {
+  beforeEach(() => {
+    document.body.appendChild(carouselElement)
+  })
+  afterEach(() => {
+    document.body.innerHTML = ''
+  })
+
   it('Should render control buttons', () => {
     const carousel = new BlipCarousel('carousel', 300)
     const renderedElement = carousel.render()
@@ -59,5 +63,31 @@ describe('BlipCarousel', () => {
 
     expect(previousButton).toBeTruthy()
     expect(nextButton).toBeTruthy()
+  })
+  it('Should scroll when clicking nextButton', () => {
+    const carousel = new BlipCarousel('carousel', 300)
+    const renderedElement = carousel.render()
+    const nextButton = renderedElement.querySelector('button.next-button')
+    const carouselContainer = renderedElement.querySelector('.bp-carousel-container')
+
+    nextButton.click()
+    expect(carouselContainer.scrollLeft).toBe(300)
+  })
+
+  it('Should scroll when clicking previousButton', () => {
+    const carousel = new BlipCarousel('carousel', 300)
+    const renderedElement = carousel.render()
+    const previousButton = renderedElement.querySelector('button.previous-button')
+    const nextButton = renderedElement.querySelector('button.next-button')
+    const carouselContainer = renderedElement.querySelector('.bp-carousel-container')
+
+    nextButton.click()
+
+    setTimeout(
+      () => {
+        previousButton.click()
+        expect(carouselContainer.scrollLeft).toBe(0)
+      }, 600
+    )
   })
 })

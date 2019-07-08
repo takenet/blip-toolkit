@@ -9,26 +9,26 @@ export class BlipCarousel extends Component {
     super()
     this.itemWidth = itemWidth
     this.containerDiv = document.getElementById(elementId)
+    this.previousButton = html`<button class="previous-button">${raw(previousIcon)}</button>`
+    this.nextButton = html`<button class="next-button">${raw(nextIcon)}</button>`
   }
 
   createElement() {
-    const previousButton = html`<button class="previous-button">${raw(previousIcon)}</button>`
-    const nextButton = html`<button class="next-button">${raw(nextIcon)}</button>`
     const itemsContainer = html`<div class="bp-carousel-container"></div>`
     const items = this.containerDiv.querySelectorAll('.bp-carousel-item')
 
-    previousButton.addEventListener('click', () => {
+    this.previousButton.addEventListener('click', () => {
       this._prevItem(itemsContainer)
       setTimeout(
-        () => this._refreshButtons(previousButton, nextButton, itemsContainer, items.length),
+        () => this._refreshButtons(itemsContainer, items.length),
         500
       )
     })
 
-    nextButton.addEventListener('click', () => {
+    this.nextButton.addEventListener('click', () => {
       this._nextItem(itemsContainer)
       setTimeout(
-        () => this._refreshButtons(previousButton, nextButton, itemsContainer, items.length),
+        () => this._refreshButtons(itemsContainer, items.length),
         500
       )
     })
@@ -39,11 +39,11 @@ export class BlipCarousel extends Component {
     }
 
     this.containerDiv.innerHTML = ''
-    this.containerDiv.appendChild(previousButton)
+    this.containerDiv.appendChild(this.previousButton)
     this.containerDiv.appendChild(itemsContainer)
-    this.containerDiv.appendChild(nextButton)
+    this.containerDiv.appendChild(this.nextButton)
 
-    this._refreshButtons(previousButton, nextButton, itemsContainer, items.length)
+    this._refreshButtons(itemsContainer, items.length)
 
     return this.containerDiv
   }
@@ -56,21 +56,23 @@ export class BlipCarousel extends Component {
     itemsContainer.scrollLeft += this.itemWidth
   }
 
-  _refreshButtons(previousButton, nextButton, itemsContainer, itemsLength) {
-    previousButton.disabled = false
-    nextButton.disabled = false
+  _refreshButtons(itemsContainer, itemsLength) {
+    this.previousButton.disabled = false
+    this.nextButton.disabled = false
     if (itemsContainer.scrollLeft === 0) {
-      previousButton.disabled = true
+      this.previousButton.disabled = true
     }
     if (itemsContainer.scrollLeft >= (itemsLength) * this.itemWidth - itemsContainer.offsetWidth) {
-      nextButton.disabled = true
+      this.nextButton.disabled = true
     }
   }
 
-  _removeEventHandlers() {
+  _removeElements() {
+    this.containerDiv.removeChild(this.nextButton)
+    this.containerDiv.removeChild(this.previousButton)
   }
 
   destroy() {
-    this._removeEventHandlers()
+    this._removeElements()
   }
 }

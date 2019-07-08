@@ -40,10 +40,9 @@ afterEach(() => document.body.removeChild(carouselElement))
 describe('BlipCarousel', () => {
   it('Should render control buttons', () => {
     const carousel = new BlipCarousel('carousel', 300)
-    const renderedElement = carousel.containerDiv
+    const renderedElement = carousel.render()
     const previousButton = renderedElement.querySelector('button.previous-button')
     const nextButton = renderedElement.querySelector('button.next-button')
-    console.log(previousButton)
 
     expect(previousButton).toBeTruthy()
     expect(nextButton).toBeTruthy()

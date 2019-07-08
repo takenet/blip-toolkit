@@ -1,16 +1,17 @@
+import { Component } from '@component'
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
 import previousIcon from '../../img/arrow-ball-left-solid.svg'
 import nextIcon from '../../img/arrow-ball-right-solid.svg'
 
-export class BlipCarousel {
+export class BlipCarousel extends Component {
   constructor(elementId, itemWidth = 100) {
+    super()
     this.itemWidth = itemWidth
     this.containerDiv = document.getElementById(elementId)
-    this.init()
   }
 
-  init() {
+  createElement() {
     const previousButton = html`<button class="previous-button">${raw(previousIcon)}</button>`
     const nextButton = html`<button class="next-button">${raw(nextIcon)}</button>`
     const itemsContainer = html`<div class="bp-carousel-container"></div>`
@@ -19,7 +20,7 @@ export class BlipCarousel {
     previousButton.addEventListener('click', () => {
       this._prevItem(itemsContainer)
       setTimeout(
-        () => this.refreshButtons(previousButton, nextButton, itemsContainer, items.length),
+        () => this._refreshButtons(previousButton, nextButton, itemsContainer, items.length),
         500
       )
     })
@@ -27,7 +28,7 @@ export class BlipCarousel {
     nextButton.addEventListener('click', () => {
       this._nextItem(itemsContainer)
       setTimeout(
-        () => this.refreshButtons(previousButton, nextButton, itemsContainer, items.length),
+        () => this._refreshButtons(previousButton, nextButton, itemsContainer, items.length),
         500
       )
     })
@@ -42,7 +43,9 @@ export class BlipCarousel {
     this.containerDiv.appendChild(itemsContainer)
     this.containerDiv.appendChild(nextButton)
 
-    this.refreshButtons(previousButton, nextButton, itemsContainer, items.length)
+    this._refreshButtons(previousButton, nextButton, itemsContainer, items.length)
+
+    return this.containerDiv
   }
 
   _prevItem(itemsContainer) {
@@ -53,7 +56,7 @@ export class BlipCarousel {
     itemsContainer.scrollLeft += this.itemWidth
   }
 
-  refreshButtons(previousButton, nextButton, itemsContainer, itemsLength) {
+  _refreshButtons(previousButton, nextButton, itemsContainer, itemsLength) {
     previousButton.disabled = false
     nextButton.disabled = false
     if (itemsContainer.scrollLeft === 0) {
@@ -62,5 +65,12 @@ export class BlipCarousel {
     if (itemsContainer.scrollLeft >= (itemsLength) * this.itemWidth - itemsContainer.offsetWidth) {
       nextButton.disabled = true
     }
+  }
+
+  _removeEventHandlers() {
+  }
+
+  destroy() {
+    this._removeEventHandlers()
   }
 }

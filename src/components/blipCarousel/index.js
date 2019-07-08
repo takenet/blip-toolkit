@@ -5,64 +5,62 @@ import previousIcon from '../../img/arrow-ball-left-solid.svg'
 import nextIcon from '../../img/arrow-ball-right-solid.svg'
 
 export class BlipCarousel extends Component {
-  constructor(elementId, itemWidth = 100) {
+  constructor(elementId, stepWidth = 300) {
     super()
-    this.itemWidth = itemWidth
+    this.stepWidth = stepWidth
     this.containerDiv = document.getElementById(elementId)
     this.previousButton = html`<button class="previous-button">${raw(previousIcon)}</button>`
     this.nextButton = html`<button class="next-button">${raw(nextIcon)}</button>`
+    this.itemsContainer = this.containerDiv.querySelector('.bp-carousel-container')
   }
 
   createElement() {
-    const itemsContainer = html`<div class="bp-carousel-container"></div>`
-    const items = this.containerDiv.querySelectorAll('.bp-carousel-item')
+    this.items = this.itemsContainer.querySelectorAll('.bp-carousel-item')
+    this.itemsContainer.addEventListener('DOMNodeInserted', () => {
+      console.log('inserted')
+      this.items = this.itemsContainer.querySelectorAll('.bp-carousel-item')
+      this._refreshButtons()
+    })
 
     this.previousButton.addEventListener('click', () => {
-      this._prevItem(itemsContainer)
+      this._prevItem()
       setTimeout(
-        () => this._refreshButtons(itemsContainer, items.length),
+        () => this._refreshButtons(),
         500
       )
     })
 
     this.nextButton.addEventListener('click', () => {
-      this._nextItem(itemsContainer)
+      this._nextItem()
       setTimeout(
-        () => this._refreshButtons(itemsContainer, items.length),
+        () => this._refreshButtons(),
         500
       )
     })
 
-    for (let i = 0; i < items.length; ++i) {
-      items[i].style.width = `${this.itemWidth}px`
-      itemsContainer.appendChild(items[i])
-    }
-
-    this.containerDiv.innerHTML = ''
-    this.containerDiv.appendChild(this.previousButton)
-    this.containerDiv.appendChild(itemsContainer)
+    this.containerDiv.prepend(this.previousButton)
     this.containerDiv.appendChild(this.nextButton)
 
-    this._refreshButtons(itemsContainer, items.length)
+    this._refreshButtons()
 
     return this.containerDiv
   }
 
-  _prevItem(itemsContainer) {
-    itemsContainer.scrollLeft -= this.itemWidth
+  _prevItem() {
+    this.itemsContainer.scrollLeft -= this.stepWidth
   }
 
-  _nextItem(itemsContainer) {
-    itemsContainer.scrollLeft += this.itemWidth
+  _nextItem() {
+    this.itemsContainer.scrollLeft += this.stepWidth
   }
 
-  _refreshButtons(itemsContainer, itemsLength) {
+  _refreshButtons() {
     this.previousButton.disabled = false
     this.nextButton.disabled = false
-    if (itemsContainer.scrollLeft === 0) {
+    if (this.itemsContainer.scrollLeft === 0) {
       this.previousButton.disabled = true
     }
-    if (itemsContainer.scrollLeft >= (itemsLength) * this.itemWidth - itemsContainer.offsetWidth) {
+    if (this.itemsContainer.scrollLeft >= (this.items.length) * this.stepWidth - this.itemsContainer.offsetWidth) {
       this.nextButton.disabled = true
     }
   }

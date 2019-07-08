@@ -12,15 +12,13 @@ export class BlipCarousel extends Component {
     this.previousButton = html`<button class="previous-button">${raw(previousIcon)}</button>`
     this.nextButton = html`<button class="next-button">${raw(nextIcon)}</button>`
     this.itemsContainer = this.containerDiv.querySelector('.bp-carousel-container')
+    this._handleItemsChanged = this._onItemsChanged.bind(this)
   }
 
   createElement() {
     this.items = this.itemsContainer.querySelectorAll('.bp-carousel-item')
-    this.itemsContainer.addEventListener('DOMNodeInserted', () => {
-      console.log('inserted')
-      this.items = this.itemsContainer.querySelectorAll('.bp-carousel-item')
-      this._refreshButtons()
-    })
+    this.itemsContainer.addEventListener('DOMNodeInserted', this._handleItemsChanged)
+    this.itemsContainer.addEventListener('DOMNodeRemoved', this._handleItemsChanged)
 
     this.previousButton.addEventListener('click', () => {
       this._prevItem()
@@ -54,6 +52,11 @@ export class BlipCarousel extends Component {
     this.itemsContainer.scrollLeft += this.stepWidth
   }
 
+  _onItemsChanged() {
+    this.items = this.itemsContainer.querySelectorAll('.bp-carousel-item')
+    this._refreshButtons()
+  }
+
   _refreshButtons() {
     this.previousButton.disabled = false
     this.nextButton.disabled = false
@@ -70,7 +73,13 @@ export class BlipCarousel extends Component {
     this.containerDiv.removeChild(this.previousButton)
   }
 
+  _removeEnvenListeners() {
+    this.itemsContainer.removeEventListener('DOMNodeInserted', this._handleItemsChanged)
+    this.itemsContainer.removeEventListener('DOMNodeRemoved', this._handleItemsChanged)
+  }
+
   destroy() {
+    this._removeEnvenListeners()
     this._removeElements()
   }
 }

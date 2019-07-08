@@ -1,7 +1,9 @@
 import { BlipCarousel } from '../../src/components/blipCarousel'
 import html from 'nanohtml'
 
-const carouselElement = html`<div id="carousel"
+describe('BlipCarousel', () => {
+  beforeEach(() => {
+    const carouselElement = html`<div id="carousel"
 class="bp-carousel">
 <div class="bp-carousel-container">
 <div class="bp-carousel-item"
@@ -46,9 +48,6 @@ class="bp-carousel">
 </div>
 </div>
 </div>`
-
-describe('BlipCarousel', () => {
-  beforeEach(() => {
     document.body.appendChild(carouselElement)
   })
   afterEach(() => {

@@ -11,8 +11,8 @@ export class BlipCarousel {
   }
 
   init() {
-    const previousButton = html`<button>${raw(previousIcon)}</button>`
-    const nextButton = html`<button>${raw(nextIcon)}</button>`
+    const previousButton = html`<button class="previous-button">${raw(previousIcon)}</button>`
+    const nextButton = html`<button class="next-button">${raw(nextIcon)}</button>`
     const itemsContainer = html`<div class="bp-carousel-container"></div>`
     const items = this.containerDiv.querySelectorAll('.bp-carousel-item')
 

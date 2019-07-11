@@ -25,6 +25,7 @@ export class BlipInput extends Component {
     pristine: true,
     placeholder: '',
     required: false,
+    regex: '',
     minLength: 0,
     maxLength: 0,
     showPasswordStrength: true,
@@ -34,6 +35,7 @@ export class BlipInput extends Component {
     minLengthErrorMsg: 'The value is too short',
     emailTypeErrorMsg: 'This is not a valid email',
     urlTypeErrorMsg: 'This is not a valid website',
+    customTypeErrorMsg: 'This is not a valid value',
     onInputFocus: () => { },
     onInputBlur: () => { },
     onInputChange: (value) => { },
@@ -190,6 +192,15 @@ export class BlipInput extends Component {
         return false
       }
     }
+    if (this.configOptions.type === 'custom' && this.configOptions.regex) {
+      const customRegex = new RegExp(this.configOptions.regex)
+
+      if (value && !customRegex.test(value)) {
+        this.configOptions.error = this.configOptions.customTypeErrorMsg
+        return false
+      }
+    }
+
     if (value && maxLength !== 0 && value.length > maxLength) {
       this.configOptions.error = maxLengthErrorMsg
       return false

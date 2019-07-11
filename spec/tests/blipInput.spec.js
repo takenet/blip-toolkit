@@ -177,5 +177,27 @@ describe('BlipInput', () => {
         expect(component.props.valid).toBeTruthy()
       })
     })
+
+    describe('Type custom', () => {
+      const component = new BlipInput({
+        type: 'custom',
+        regex: '^[0-9]*$',
+      })
+
+      const renderedElement = component.render()
+      const input = renderedElement.querySelector('input')
+
+      it('should validate input with letters', () => {
+        input.value = 'take'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeFalsy()
+      })
+
+      it('should validate input with just numbers', () => {
+        input.value = '123456484'
+        input.dispatchEvent(new Event('keyup'))
+        expect(component.props.valid).toBeTruthy()
+      })
+    })
   })
 })

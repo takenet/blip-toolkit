@@ -100,6 +100,35 @@ The variation **bp-btn--dashed** has a transparent background and a dashed borde
 </table>
 ```
 
+<h3>Rounded</h3>
+
+The variation **bp-btn-rounded** adds a rounding fashion of 8 pixels to the button.
+
+```rounded.html
+<table>
+  <tbody>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--rounded bp-btn--blip-light">Rounded Default</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--rounded</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--rounded bp-btn--blip-light" disabled>Rounded Default</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--rounded [disabled]</td>
+    </tr>
+    <tr>
+      <td class="bp-fs-5 tc">
+        <button class="bp-btn bp-btn--rounded bp-btn--blip-light bp-btn--flat">Rounded Flat</button>
+      </td>
+      <td class="bp-fs-5 tl">.bp-btn <span class="bp-c-blip-light">.bp-btn--blip-light</span> .bp-btn--rounded bp-btn--flat</td>
+    </tr>
+  </tbody>
+</table>
+```
+
 <h3>Arrow</h3>
 
 The variation **bp-btn--arrow** adds a pointy fashion to the button. It works for both base and flat buttons.

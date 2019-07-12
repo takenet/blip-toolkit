@@ -48,9 +48,13 @@ Input name
 
 #### `type` - string
 
-Input type [text(default), password, email, url]
+Input type [text(default), password, email, url, custom (for regex validation)]
 
 ---
+
+#### `regex` - string
+
+The custom validation regex
 
 #### `placeholder` - string
 
@@ -115,6 +119,10 @@ Message error for email input with invalid value (default: 'This is not a valid 
 #### `urlTypeErrorMsg` - string
 
 Message error for url input with invalid value (default: 'This is not a valid website')
+
+#### `customTypeErrorMsg` - string
+
+Message error for custom input with invalid regex (default: 'This is not a valid value')
 
 ---
 

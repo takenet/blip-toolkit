@@ -59,6 +59,10 @@
     min-width: 240px;
   }
 
+  &.bp-btn--rounded {
+    border-radius: $bp-btn-rounded-border-radius;
+  }
+
   /** Custom BLiP Button Colors **/
   //Corporate
   @include register-button-color('bot', $bp-color-bot);

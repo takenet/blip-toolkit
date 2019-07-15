@@ -30,6 +30,7 @@ export class BlipSelect extends Component {
     disabled: false,
     focused: false,
     invalid: false,
+    enableBullet: false,
     placeholder: 'Select...',
     mode: 'select',
     noResultsText: 'No results found',
@@ -181,7 +182,7 @@ export class BlipSelect extends Component {
     this.renderedOptionsList = this.optionsList.render(this._optionsListConfig())
     const isReadOnly = () => this.configOptions.mode === 'select'
     const hasBulletClass = () =>
-      this.configOptions.mode === 'select' ? bpInputWithBulletClass : ''
+      this.configOptions.mode === 'select' || this.configOptions.showBullet ? bpInputWithBulletClass : ''
     return html`
       <div class="bp-input-wrapper blip-select ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''} ${hasBulletClass()}">
         <label class="bp-label bp-c-rooftop">${this.props.label}</label>

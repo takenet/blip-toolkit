@@ -7,7 +7,7 @@ import nextIcon from '../../img/arrow-ball-right-solid.svg'
 export class BlipCarousel extends Component {
   constructor(elementId, stepWidth = 300) {
     super()
-    this.stepWidth = stepWidth
+    this.stepWidth = Number(stepWidth)
     this.containerDiv = document.getElementById(elementId)
     this.previousButton = html`<button class="previous-button">${raw(previousIcon)}</button>`
     this.nextButton = html`<button class="next-button">${raw(nextIcon)}</button>`

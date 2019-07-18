@@ -54,7 +54,7 @@ class="bp-carousel">
     document.body.innerHTML = ''
   })
 
-  it('Should render control buttons', () => {
+  it('Should render the control buttons', () => {
     const carousel = new BlipCarousel('carousel', 300)
     const renderedElement = carousel.render()
     const previousButton = renderedElement.querySelector('button.previous-button')

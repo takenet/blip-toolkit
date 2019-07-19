@@ -1,8 +1,14 @@
 import { BlipToasts } from '../../src/components/blipToasts'
 
-jasmine.clock().install()
-
 describe('BlipToasts', () => {
+  beforeEach(function () {
+    jasmine.clock().install()
+  })
+
+  afterEach(function () {
+    jasmine.clock().uninstall()
+  })
+
   it('should show info toast', () => {
     const component = new BlipToasts()
     const renderedElement = component.render()

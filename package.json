@@ -76,6 +76,9 @@
     "commitizen": {
       "path": "./node_modules/cz-customizable"
     },
+    "cz-customizable": {
+      "config": "./.cz-config.js"
+    },
     "ghooks": {
       "pre-commit": "npm run lint",
       "pre-push": "npm run lint && npm run test && npm run test:show-coverage",

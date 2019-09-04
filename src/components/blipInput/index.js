@@ -35,7 +35,9 @@ export class BlipInput extends Component {
     minLengthErrorMsg: 'The value is too short',
     emailTypeErrorMsg: 'This is not a valid email',
     urlTypeErrorMsg: 'This is not a valid website',
-    customTypeErrorMsg: 'This is not a valid value',
+    regexTypeErrorMsg: 'This is not a valid value',
+    functionTypeErrorMsg: 'This is not a valid value',
+    customValidationFunction: undefined,
     onInputFocus: () => { },
     onInputBlur: () => { },
     onInputChange: (value) => { },
@@ -144,17 +146,7 @@ export class BlipInput extends Component {
 
   _handleInputChanges = (event) => {
     this.props.value = event.target.value
-    this.props.pristine = false
-    this.props.valid = this._inputValidate(this.props.value)
-
-    if (!this.props.valid) {
-      this.configOptions.onInputError(this.error)
-    }
-    if (this.configOptions.type === 'password') {
-      this._checkPasswordStrength()
-    }
-
-    this.render(this.props)
+    this.validate()
     this.configOptions.onInputChange(this.props.value)
   }
 
@@ -192,11 +184,18 @@ export class BlipInput extends Component {
         return false
       }
     }
-    if (this.configOptions.type === 'custom' && this.configOptions.regex) {
+    if (this.configOptions.type === 'regex' && this.configOptions.regex) {
       const customRegex = new RegExp(this.configOptions.regex)
 
       if (value && !customRegex.test(value)) {
-        this.configOptions.error = this.configOptions.customTypeErrorMsg
+        this.configOptions.error = this.configOptions.regexTypeErrorMsg
+        return false
+      }
+    }
+
+    if (this.configOptions.type === 'function' && this.configOptions.customValidationFunction) {
+      if (value && !this.configOptions.customValidationFunction(value)) {
+        this.configOptions.error = this.configOptions.functionTypeErrorMsg
         return false
       }
     }
@@ -246,6 +245,18 @@ export class BlipInput extends Component {
     } else {
       this.props.passwordStrength = 'weak'
     }
+  }
+
+  validate() {
+    this.props.pristine = false
+    this.props.valid = this._inputValidate(this.props.value)
+    if (!this.props.valid) {
+      this.configOptions.onInputError(this.error)
+    }
+    if (this.configOptions.type === 'password') {
+      this._checkPasswordStrength()
+    }
+    this.render(this.props)
   }
 
   /**

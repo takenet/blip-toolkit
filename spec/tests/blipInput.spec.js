@@ -180,7 +180,7 @@ describe('BlipInput', () => {
 
     describe('Type custom', () => {
       const component = new BlipInput({
-        type: 'custom',
+        type: 'regex',
         regex: '^[0-9]*$',
       })
 

@@ -6,10 +6,22 @@
   font-family: $bp-ff;
   color: $bp-table-color;
   background-color: $bp-table-bg-color;
+  border: none;
 
-  border: 0;
-  border-collapse: collapse;
-  border-spacing: 0;
+  &--round {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: $bp-table-border-radius;
+    box-shadow: 0px 2px 12px rgba(96, 123, 153, 0.3);
+
+    thead {
+      border-bottom: none !important;
+    }
+
+    tbody tr.checked > * {
+      background-color: $bp-color-wind;
+    }
+  }
 
   cursor: default;
 
@@ -29,7 +41,7 @@
       font-weight: $bp-table_head-font-weight;
 
       border: none;
-
+      
       &:first-of-type {
         padding-left: $bp-table_edge-padding;
       }
@@ -58,7 +70,7 @@
       font-weight: $bp-table_body-font-weight;
 
       border: none;
-
+      
       &:first-of-type {
         padding-left: $bp-table_edge-padding;
       }

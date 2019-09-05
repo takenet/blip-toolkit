@@ -111,7 +111,7 @@
 * Input of type checkbox
 */
 .bp-input--check--wrapper {
-  @include flex-box();
+  display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-start;
@@ -134,21 +134,17 @@
   flex-shrink: 0;
   font-size: $bp-fs-6;
   line-height: $bp-lh-6;
-  border: 0.1 * $m solid $bp-color-time;
+  border: 0.1 * $m solid $bp-color-wind;
   transition: all 500ms;
-
-  &:hover {
-    border-color: $bp-color-blip-light;
-  }
 }
 
 .bp-input--checkbox {
-  @include flex-box;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0.2 * $m;
-  width: 2.1 * $m;
-  height: 2.1 * $m;
+  border-radius: 0.3 * $m;
+  width: 1.7 * $m;
+  height: 1.7 * $m;
 }
 
 .bp-input--radio {

@@ -1,7 +1,7 @@
-@import "base/module";
-@import "variables/module";
-@import "mixins/module";
+@import 'base/module';
+@import 'variables/module';
+@import 'mixins/module';
 
 //Utilities NEED to come after
-@import "components/module";
-@import "utilities/module";
+@import 'components/module';
+@import 'utilities/module';

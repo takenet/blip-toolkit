@@ -1,16 +1,21 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "targets": {
-          "browsers": ["> 1%", "last 2 versions", "ie >= 11"]
+          "browsers": [
+            "> 1%",
+            "last 2 versions",
+            "ie >= 11"
+          ]
         }
       }
     ]
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-class-properties"
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-jsx"
   ]
 }

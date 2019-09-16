@@ -81,6 +81,11 @@ export class BlipInput extends Component {
       ...props,
     }
 
+    this.configOptions = {
+      ...this.configOptions,
+      ...this.props,
+    }
+
     const labelClass = this._getLabelClass()
 
     if (this.props.customError) {

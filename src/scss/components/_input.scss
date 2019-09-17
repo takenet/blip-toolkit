@@ -145,15 +145,6 @@
   border-radius: 0.4 * $m;
   width: 1.7 * $m;
   height: 1.7 * $m;
-
-  &--indeterminate {
-    background-clip: content-box;
-    padding: 0.3 * $m;
-    color: transparent;
-    background-color: $bp-color-blip-light;
-    border-color: $bp-color-blip-light;
-    transition: background-color 0;
-  }
 }
 
 .bp-input--radio {
@@ -174,6 +165,15 @@
     background-color: bp-darken($bp-color-blip-light);
     border-color: bp-darken($bp-color-blip-light);
   }
+}
+
+.bp-input[type="checkbox"]:indeterminate ~ .bp-input--checkbox {
+  background-clip: content-box;
+  padding: 0.3 * $m;
+  color: transparent;
+  background-color: $bp-color-blip-light;
+  border-color: $bp-color-blip-light;
+  transition: background-color 0;
 }
 
 .bp-input[type="checkbox"]:checked:not(:disabled) ~ .bp-input--checkbox,

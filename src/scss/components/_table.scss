@@ -2,6 +2,7 @@
 .bp-table-chart table { /* Class for Google Charts' table */
   display: table;
   table-layout: fixed;
+  border-spacing: 0;
 
   font-family: $bp-ff;
   color: $bp-table-color;
@@ -9,13 +10,41 @@
   border: none;
 
   &--round {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px 0;
     border-radius: $bp-table-border-radius;
     box-shadow: 0px 2px 12px rgba(96, 123, 153, 0.3);
 
-    thead {
-      border-bottom: none !important;
+    thead tr th {
+      border-bottom: 0.2*$m solid $bp-color-wave;
+      padding: 0;
+      vertical-align: middle;
+
+      .arrows {
+        display: inline-flex;
+        flex-direction: column;
+        height: 1.2*$m;
+        justify-content: space-between;
+
+        .arrow {
+          height: 0.5*$m;
+          border-radius: 1px;
+          border-left: solid 0.3*$m transparent;
+          border-right: solid 0.3*$m transparent;
+          opacity: 0.5;
+
+          &.arrow-up {
+            border-bottom: solid 0.5*$m rgb(200, 50, 30);
+          }
+  
+          &.arrow-down {
+            border-top: solid 0.5*$m rgb(200, 50, 30);
+          }
+
+          &.sorted {
+            opacity: 1;
+          }
+        }
+      }
     }
 
     tbody tr.checked > * {

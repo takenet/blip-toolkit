@@ -35,11 +35,11 @@
           opacity: 0.4;
 
           &.arrow-up {
-            border-bottom: solid 0.7*$m rgb(200, 50, 30);
+            border-bottom: solid 0.7*$m;
           }
   
           &.arrow-down {
-            border-top: solid 0.7*$m rgb(200, 50, 30);
+            border-top: solid 0.7*$m;
           }
 
           &.sorted {

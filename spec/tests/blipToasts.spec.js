@@ -1,7 +1,5 @@
 import { BlipToasts } from '../../src/components/blipToasts'
 
-jasmine.clock().install()
-
 describe('BlipToasts', () => {
   beforeEach(function () {
     jasmine.clock().uninstall()

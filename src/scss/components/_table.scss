@@ -2,14 +2,67 @@
 .bp-table-chart table { /* Class for Google Charts' table */
   display: table;
   table-layout: fixed;
-
+  border-spacing: 0;
   font-family: $bp-ff;
   color: $bp-table-color;
   background-color: $bp-table-bg-color;
+  border: none;
 
-  border: 0;
-  border-collapse: collapse;
-  border-spacing: 0;
+  &--round {
+    box-shadow: $bp-table-box-shadow;
+
+    &.round-up {
+      border-top-left-radius: $bp-table-border-radius;
+      border-top-right-radius: $bp-table-border-radius;
+      padding-top: 5px;
+    }
+
+    &.round-down {
+      border-bottom-left-radius: $bp-table-border-radius;
+      border-bottom-right-radius: $bp-table-border-radius;
+      padding-bottom: 5px;
+    }
+
+    tr th, tr td {
+      padding: 0.4*$m 0;
+    }
+
+    thead tr th {
+      border-bottom: 0.2*$m solid $bp-color-wave;
+      font-weight: 900;
+
+      .arrows {
+        display: inline-flex;
+        flex-direction: column;
+        height: 1.5*$m;
+        justify-content: space-between;
+
+        .arrow {
+          height: 0.7*$m;
+          border-radius: 2px;
+          border-left: solid 0.3*$m transparent;
+          border-right: solid 0.3*$m transparent;
+          opacity: 0.4;
+
+          &.arrow-up {
+            border-bottom: solid 0.7*$m;
+          }
+
+          &.arrow-down {
+            border-top: solid 0.7*$m;
+          }
+
+          &.sorted {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    tbody tr.checked > * {
+      background-color: $bp-color-wind;
+    }
+  }
 
   cursor: default;
 
@@ -23,11 +76,9 @@
     th {
       height: 6*$m;
       padding: $bp-table_th-padding;
-
       font-size: $bp-table_head-font-size;
       line-height: $bp-table_head-line-height;
       font-weight: $bp-table_head-font-weight;
-
       border: none;
 
       &:first-of-type {
@@ -52,11 +103,9 @@
     td {
       height: 4.7*$m;
       padding: $bp-table_td-padding;
-
       font-size: $bp-table_body-font-size;
       line-height: $bp-table_body-line-height;
       font-weight: $bp-table_body-font-weight;
-
       border: none;
 
       &:first-of-type {
@@ -78,6 +127,7 @@
   thead {
     flex: 0 0 auto;
     display: block;
+
     tr {
       width: calc(100% - 1.7*#{$m});
       margin-left: auto;
@@ -88,14 +138,13 @@
   tbody {
     flex: 1 1 auto;
     display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include scrollbar($bp-color-time);
 
     tr {
       width: 100%;
     }
-
-    overflow-y: auto;
-    overflow-x: hidden;
-    @include scrollbar($bp-color-time);
   }
 
   thead tr,
@@ -114,4 +163,12 @@
       outline: 0;
     }
   }
+}
+
+.bp-table-scroll-y-div {
+  overflow-y: scroll;
+  @include scrollbar($bp-color-wave);
+  box-shadow: $bp-table-box-shadow;
+  border-bottom-left-radius: $bp-table-border-radius;
+  border-bottom-right-radius: $bp-table-border-radius;
 }

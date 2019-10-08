@@ -19,6 +19,24 @@
     background-color: $bp-color-offwhite;
     border-color: $bp-color-breeze;
   }
+
+  .blip-select__shell {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+
+    .blip-select__content {
+      width: 100%;
+      text-align: justify;
+    }
+  }
+
+  .bp-select-hide-label {
+    height: 0;
+  }
 }
 
 .blip-select__input {
@@ -38,6 +56,18 @@
   z-index: 1;
 
   &:focus { outline: none; }
+}
+
+.blip-select__arrow-down {
+  visibility: hidden;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+
+  &.blip-select__show-arrow {
+    visibility: visible;
+  }
 }
 
 .blip-select__options {

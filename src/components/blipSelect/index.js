@@ -7,13 +7,17 @@ import html from 'nanohtml'
 import { CreatebleOptionsList } from './CreatableOptionsList'
 import { SelectOption } from './SelectOption'
 
+import raw from 'nanohtml/raw'
+import ArrowDown from '../../img/arrow-down-slim.svg'
+
 const ANIMATION_TIMEOUT = 300
 
 const blipSelectOptionsClass = 'blip-select__options'
 const blipSelectOptionOpenTopClass = 'blip-select__options--open-top'
 export const blipSelectOptionClass = 'blip-select__option'
 const blipSelectOptionSeletedClass = 'blip-select__option--selected'
-const bpInputWithBulletClass = 'bp-input--with-bullet'
+const bpSelectHideLabelClass = 'bp-select-hide-label'
+const bpSelectShowArrowClass = 'blip-select__show-arrow'
 const bpCrooftopClass = 'bp-c-rooftop'
 const bpCblipLightClass = 'bp-c-blip-light'
 const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
@@ -181,23 +185,36 @@ export class BlipSelect extends Component {
     }
     this.renderedOptionsList = this.optionsList.render(this._optionsListConfig())
     const isReadOnly = () => this.configOptions.mode === 'select'
-    const hasBulletClass = () =>
-      this.configOptions.mode === 'select' || this.configOptions.showBullet ? bpInputWithBulletClass : ''
+    const hideLabelClass = () =>
+      this.props.label ? '' : bpSelectHideLabelClass
+    const showArrowClass = () =>
+      this.configOptions.mode === 'select' ||
+      this.configOptions.showBullet ||
+      (this.optionsList.props.options && this.optionsList.props.options.length > 0)
+        ? bpSelectShowArrowClass
+        : ''
     return html`
-      <div class="bp-input-wrapper blip-select ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''} ${hasBulletClass()}">
-        <label class="bp-label bp-c-rooftop">${this.props.label}</label>
-        <input placeholder="${this.configOptions.placeholder}"
-          class="blip-select__input bp-c-rooftop"
-          value="${this.props.inputValue}"
-          onfocus="${this._handleSelectFocus}"
-          onblur="${this._handleSelectBlur}"
-          onkeydown="${this._handleInputKeydown}"
-          onkeyup="${this._handleInputKeyup}"
-          oninput="${this._handleInputChange}"
-          onclick="${this._handleInputClick}"
-          data-target="${this.customSelectId}"
-          disabled="${this.isDisabled}"
-          readonly="${isReadOnly()}">
+      <div class="bp-input-wrapper blip-select ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''}">
+        <div class="blip-select__shell">
+          <div class="blip-select__content">
+            <label class="bp-label bp-c-cloud bp-fw-bold ${hideLabelClass()}">${this.props.label}</label>
+            <input placeholder="${this.configOptions.placeholder}"
+              class="blip-select__input bp-c-rooftop"
+              value="${this.props.inputValue}"
+              onfocus="${this._handleSelectFocus}"
+              onblur="${this._handleSelectBlur}"
+              onkeydown="${this._handleInputKeydown}"
+              onkeyup="${this._handleInputKeyup}"
+              oninput="${this._handleInputChange}"
+              onclick="${this._handleInputClick}"
+              data-target="${this.customSelectId}"
+              disabled="${this.isDisabled}"
+              readonly="${isReadOnly()}">
+          </div>
+          <div class="blip-select__arrow-down ${showArrowClass()}">
+            ${raw(ArrowDown)}
+          </div>
+        </div>
         <div class="blip-select__options" id="${this.customSelectId}">
           ${this.renderedOptionsList}
         </div>
@@ -669,7 +686,7 @@ export class BlipSelect extends Component {
       selectOptionsContainer.style.opacity = 1
     })
 
-    this.input.parentNode.classList.add(bpInputWrapperFocusClass)
+    this.element.classList.add(bpInputWrapperFocusClass)
     this.selectLabel.classList.remove(bpCrooftopClass)
     this.selectLabel.classList.add(bpCblipLightClass)
     this.isSelectOpen = true
@@ -729,7 +746,7 @@ export class BlipSelect extends Component {
       selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
     }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
 
-    this.input.parentNode.classList.remove(bpInputWrapperFocusClass)
+    this.element.classList.remove(bpInputWrapperFocusClass)
     this.selectLabel.classList.remove(bpCblipLightClass)
     this.selectLabel.classList.add(bpCrooftopClass)
     this.isSelectOpen = false

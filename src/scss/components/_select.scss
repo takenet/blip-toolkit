@@ -20,7 +20,7 @@
     border-color: $bp-color-breeze;
   }
 
-  .bp-select-shell {
+  .blip-select__shell {
     display: flex;
     width: 100%;
     height: 100%;
@@ -28,7 +28,7 @@
     align-content: center;
     align-items: center;
 
-    .bp-select-content {
+    .blip-select__content {
       width: 100%;
       text-align: justify;
     }

@@ -22,7 +22,6 @@
 
   .bp-select-shell {
     display: flex;
-    flex-flow: row wrap;
     width: 100%;
     height: 100%;
     padding: 0 6px;
@@ -31,7 +30,8 @@
     align-items: center;
 
     .bp-select-content {
-      width: 95%;
+      width: 100%;
+      text-align: justify;
     }
   }
 
@@ -62,7 +62,9 @@
 .blip-select__arrow-down {
   visibility: hidden;
   width: 20px;
+  min-width: 20px;
   height: 20px;
+  min-height: 20px;
 
   &.blip-select__show-arrow {
     visibility: visible;

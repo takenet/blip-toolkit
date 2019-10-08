@@ -188,12 +188,16 @@ export class BlipSelect extends Component {
     const hideLabelClass = () =>
       this.props.label ? '' : bpSelectHideLabelClass
     const showArrowClass = () =>
-      this.configOptions.mode === 'select' || this.configOptions.showBullet ? bpSelectShowArrowClass : ''
+      this.configOptions.mode === 'select' ||
+      this.configOptions.showBullet ||
+      (this.optionsList.props.options && this.optionsList.props.options.length > 0)
+        ? bpSelectShowArrowClass
+        : ''
     return html`
       <div class="bp-input-wrapper blip-select ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''}">
         <div class="bp-select-shell">
           <div class="bp-select-content">
-            <label class="bp-label bp-c-cloud bp-fw-extra-bold ${hideLabelClass()}">${this.props.label}</label>
+            <label class="bp-label bp-c-cloud bp-fw-bold ${hideLabelClass()}">${this.props.label}</label>
             <input placeholder="${this.configOptions.placeholder}"
               class="blip-select__input bp-c-rooftop"
               value="${this.props.inputValue}"

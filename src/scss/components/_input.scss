@@ -226,8 +226,8 @@
 .bp-input-wrapper {
   height: 4.7 * $m;
   border: 0.1 * $m solid $bp-color-breeze;
-  border-radius: 0.4 * $m;
-  padding: 0.5 * $m;
+  border-radius: 0.8 * $m;
+  padding: 0.5 * $m 1 * $m;
   position: relative;
   background-color: $bp-color-white;
 }

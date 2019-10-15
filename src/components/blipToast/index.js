@@ -1,9 +1,10 @@
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
-import SuccessIcon from '../../img/done.svg'
+import CloseIcon from '../../img/close.svg'
 import InfoIcon from '../../img/info.svg'
 import WarnigIcon from '../../img/warning.svg'
 import RefreshIcon from '../../img/refresh.svg'
+import LikeIcon from '../../img/like-outline.svg'
 
 const infoClass = 'bp-toast--info'
 const successClass = 'bp-toast--success'
@@ -21,7 +22,7 @@ export const BlipToast = (props = {}) => {
       break
     case 'success':
       typeClass = successClass
-      icon = SuccessIcon
+      icon = LikeIcon
       break
     case 'warning':
       typeClass = warningClass
@@ -36,11 +37,35 @@ export const BlipToast = (props = {}) => {
       icon = RefreshIcon
       break
   }
-  return html`
+
+  if (props.title) {
+    return html`
     <div class="bp-toast ${typeClass}">
-        ${raw(icon)}
-        <p>${props.msg}</p>
-        <button class="dismiss bp-btn bp-btn--c-white bp-btn--text-only">x</button>
+        <div class="toast-svg">${raw(icon)}</div>
+        <div class="toast-content">
+          <p class="toast-title">${props.title}</p>
+          <p class="toast-message">${props.msg}</p>
+        </div>
+        <div class="toast-divider">
+          <div class="bp-divider-v bp-divider--medium">
+            <button class="dismiss toast-dismiss">${raw(CloseIcon)}</button>
+          </div>
+        </div>
     </div>
     `
+  } else {
+    return html`
+    <div class="bp-toast ${typeClass}">
+        <div class="toast-svg">${raw(icon)}</div>
+        <div class="toast-content">
+          <p class="toast-message">${props.msg}</p>
+        </div>
+        <div class="toast-divider">
+          <div class="bp-divider-v bp-divider--medium">
+            <button class="dismiss toast-dismiss">${raw(CloseIcon)}</button>
+          </div>
+        </div>
+    </div>
+    `
+  }
 }

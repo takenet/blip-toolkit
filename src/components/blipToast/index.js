@@ -1,10 +1,11 @@
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
 import CloseIcon from '../../img/close.svg'
-import InfoIcon from '../../img/info.svg'
-import WarnigIcon from '../../img/warning.svg'
-import RefreshIcon from '../../img/refresh.svg'
+import DangerIcon from '../../img/close-circle.svg'
+import InfoIcon from '../../img/checkball-outline.svg'
 import LikeIcon from '../../img/like-outline.svg'
+import RefreshIcon from '../../img/refresh.svg'
+import WarningIcon from '../../img/attention-outline.svg'
 
 const infoClass = 'bp-toast--info'
 const successClass = 'bp-toast--success'
@@ -27,11 +28,11 @@ export const BlipToast = (props = {}) => {
       break
     case 'warning':
       typeClass = warningClass
-      icon = WarnigIcon
+      icon = WarningIcon
       break
     case 'danger':
       typeClass = dangerClass
-      icon = WarnigIcon
+      icon = DangerIcon
       break
     case 'refresh':
       typeClass = refreshClass

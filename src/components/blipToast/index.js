@@ -11,6 +11,7 @@ const successClass = 'bp-toast--success'
 const warningClass = 'bp-toast--warning'
 const dangerClass = 'bp-toast--danger'
 const refreshClass = 'bp-toast--refresh'
+const textButtonClass = 'toast-text-button'
 
 export const BlipToast = (props = {}) => {
   let typeClass
@@ -38,6 +39,10 @@ export const BlipToast = (props = {}) => {
       break
   }
 
+  const button = props.button ? props.button : raw(CloseIcon)
+  const addTextButtonClass = () =>
+    props.button ? textButtonClass : ''
+
   if (props.title) {
     return html`
     <div class="bp-toast ${typeClass}">
@@ -47,9 +52,7 @@ export const BlipToast = (props = {}) => {
           <p class="toast-message">${props.msg}</p>
         </div>
         <div class="toast-divider">
-          <div class="bp-divider-v bp-divider--medium">
-            <button class="dismiss toast-dismiss">${raw(CloseIcon)}</button>
-          </div>
+          <button class="dismiss toast-dismiss ${addTextButtonClass()} bp-ff-nunito">${button}</button>
         </div>
     </div>
     `
@@ -61,9 +64,7 @@ export const BlipToast = (props = {}) => {
           <p class="toast-message">${props.msg}</p>
         </div>
         <div class="toast-divider">
-          <div class="bp-divider-v bp-divider--medium">
-            <button class="dismiss toast-dismiss">${raw(CloseIcon)}</button>
-          </div>
+          <button class="dismiss toast-dismiss ${addTextButtonClass()} bp-ff-nunito">${button}</button>
         </div>
     </div>
     `

@@ -14,7 +14,7 @@
     white-space: pre-wrap;
     border-radius: 8px;
     box-shadow: 0px 2px 10px rgba(96, 123, 153, 0.3);
-    padding: 15px 23px;
+    padding: 13px 23px;
     margin: 5px;
     color: $bp-color-white;
     display: flex;
@@ -50,17 +50,17 @@
     }
 
     .toast-content {
-      color: $bp-color-whisper;
       padding: 0px 20px 0 15px;
 
       p {
+        color: $bp-color-whisper;
         flex-grow: 1;
         margin: 0;
       }
       .toast-title {
         font-weight: $bp-fw-extra-bold;
         font-size: $bp-fs-5;
-        padding-bottom: 8px;
+        padding-bottom: 6px;
       }
       .toast-message {
         font-size: $bp-fs-6;
@@ -69,6 +69,12 @@
 
     .toast-divider {
       border-left: 1.5px solid rgba(255, 255, 255, 0.6);
+
+      button {
+        height: unset;
+        min-width: unset;
+        overflow: unset;
+      }
 
       .toast-dismiss {
         margin: 14px 0 14px 20px;
@@ -89,11 +95,9 @@
           max-width: 34px;
           min-height: 34px;
           max-height: 34px;
-          margin-bottom: -4px;
 
           &:hover {
             fill: $bp-color-white;
-            margin-bottom: -4px;
           }
         }
 

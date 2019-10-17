@@ -41,7 +41,7 @@ export class BlipToasts extends Component {
 
   toast({ title, msg, buttonText, callback, duration, type }) {
     const toast = BlipToast({ title, msg, buttonText, callback, type })
-    this.options.element.append(toast)
+    this.options.element.appendChild(toast)
 
     toast.querySelector('.dismiss').addEventListener('click', () => {
       if (callback) {
@@ -55,6 +55,9 @@ export class BlipToasts extends Component {
       20,
     )
 
+    if (duration === undefined) {
+      duration = 5000
+    }
     if (duration !== 0) {
       setTimeout(
         () => this.element.removeChild(toast),

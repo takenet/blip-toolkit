@@ -19,34 +19,42 @@ export class BlipToasts extends Component {
     return this.options.element
   }
 
-  info(msg, duration = 5000, title = '', button = '') {
-    this.toast(title, msg, button, duration, 'info')
+  info({ msg, title, buttonText, callback, duration }) {
+    this.toast({ title, msg, buttonText, callback, duration, type: 'info' })
   }
 
-  success(msg, duration = 5000, title = '', button = '') {
-    this.toast(title, msg, button, duration, 'success')
+  success({ msg, title, buttonText, callback, duration }) {
+    this.toast({ title, msg, buttonText, callback, duration, type: 'success' })
   }
 
-  warning(msg, duration = 5000, title = '', button = '') {
-    this.toast(title, msg, button, duration, 'warning')
+  warning({ msg, title, buttonText, callback, duration }) {
+    this.toast({ title, msg, buttonText, callback, duration, type: 'warning' })
   }
 
-  danger(msg, duration = 5000, title = '', button = '') {
-    this.toast(title, msg, button, duration, 'danger')
+  danger({ msg, title, buttonText, callback, duration }) {
+    this.toast({ title, msg, buttonText, callback, duration, type: 'danger' })
   }
 
-  refresh(msg, duration = 5000, title = '', button = '') {
-    this.toast(title, msg, button, duration, 'refresh')
+  refresh({ msg, title, buttonText, callback, duration }) {
+    this.toast({ title, msg, buttonText, callback, duration, type: 'refresh' })
   }
 
-  toast(title, msg, button, duration, type) {
-    const toast = BlipToast({ title, msg, button, type })
+  toast({ title, msg, buttonText, callback, duration, type }) {
+    const toast = BlipToast({ title, msg, buttonText, callback, type })
     this.options.element.append(toast)
-    toast.querySelector('.dismiss').addEventListener('click', () => this.element.removeChild(toast))
+
+    toast.querySelector('.dismiss').addEventListener('click', () => {
+      if (callback) {
+        callback()
+      }
+      this.element.removeChild(toast)
+    })
+
     setTimeout(
       () => toast.classList.add('bp-toast__show'),
       20,
     )
+
     if (duration !== 0) {
       setTimeout(
         () => this.element.removeChild(toast),

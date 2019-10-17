@@ -40,9 +40,8 @@ export const BlipToast = (props = {}) => {
       break
   }
 
-  const button = props.button ? props.button : raw(CloseIcon)
-  const addTextButtonClass = () =>
-    props.button ? textButtonClass : ''
+  const button = props.buttonText ? props.buttonText : raw(CloseIcon)
+  const addTextButtonClass = () => props.buttonText ? textButtonClass : ''
 
   if (props.title) {
     return html`

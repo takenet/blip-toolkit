@@ -80,6 +80,7 @@
   @include register-button-color('console', $bp-color-console);
   @include register-button-color('obsidian', $bp-color-obsidian);
   @include register-button-color('onix', $bp-color-onix);
+  @include register-button-color('cloud-burst', $bp-color-cloud-burst);
   @include register-button-color('suit', $bp-color-suit);
   @include register-button-color('city', $bp-color-city);
   @include register-button-color('city-dark', bp-darken($bp-color-city));
@@ -93,6 +94,7 @@
   @include register-button-color('wave', $bp-color-wave);
   @include register-button-color('sky', $bp-color-sky);
   @include register-button-color('offwhite', $bp-color-offwhite);
+  @include register-button-color('athens-gray', $bp-color-athens-gray);
   @include register-button-color('whisper', $bp-color-whisper);
 
   //Generic

@@ -33,6 +33,7 @@
 @include register-base-color('console', $bp-color-console);
 @include register-base-color('obsidian', $bp-color-obsidian);
 @include register-base-color('onix', $bp-color-onix);
+@include register-base-color('cloud-burst', $bp-color-cloud-burst);
 @include register-base-color('suit', $bp-color-suit);
 @include register-base-color('city', $bp-color-city);
 @include register-base-color('city-dark', bp-darken($bp-color-city));
@@ -46,6 +47,7 @@
 @include register-base-color('wave', $bp-color-wave);
 @include register-base-color('sky', $bp-color-sky);
 @include register-base-color('offwhite', $bp-color-offwhite);
+@include register-base-color('athens-gray', $bp-color-athens-gray);
 @include register-base-color('whisper', $bp-color-whisper);
 
 //Generic

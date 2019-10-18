@@ -7,13 +7,14 @@
   bottom: 20px;
   z-index: 100;
   margin: 0 10px 10px 5px;
+
   .bp-toast {
     position: relative;
     max-width: 30%;
     white-space: pre-wrap;
-    border-radius: 10px;
-    padding: 9px 5px;
-    font-size: 1.4 * $m;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(96, 123, 153, 0.3);
+    padding: 13px 23px;
     margin: 5px;
     color: $bp-color-white;
     display: flex;
@@ -21,32 +22,99 @@
     align-items: center;
     top: 100px;
     opacity: 0;
+
     &.bp-toast--info {
-      background-image: linear-gradient(to right, #00bafe, #00d0ed);
+      background-image: linear-gradient(189.05deg, #87DDE8 -10.36%, #2CC3D5 45.63%, #2498A8 117.21%);
     }
     &.bp-toast--success {
-      background-image: linear-gradient(to right, #00e4e8, #00d3be);
+      background: linear-gradient(188.9deg, #93D2AA -10.36%, #4DCB7B 45.63%, #4AA86C 117.21%);
     }
     &.bp-toast--warning {
-      background-image: linear-gradient(to right, #ffbd4e, #ffb04f);
+      background-image: linear-gradient(188.9deg, #FFCF33 -10.36%, #F9B42F 45.63%, #F99B45 117.21%);
     }
     &.bp-toast--danger {
-      background-image: linear-gradient(to right, #ff654b, #ff807f);
+      background-image: linear-gradient(188.9deg, #FF5A60 -10.36%, #F04847 45.63%, #B43635 117.21%);
     }
     &.bp-toast--refresh {
-      background-image: linear-gradient(to right, #03a7ea, #006ffe);
+      background-image: linear-gradient(189.05deg, #87DDE8 -10.36%, #2CC3D5 45.63%, #2498A8 117.21%);
     }
 
-    svg {
-      width: 24px;
-      fill: $bp-color-white;
-      padding: 0.8 * $m 1 * $m;
+    .toast-svg {
+      min-width: 40px;
+      max-width: 40px;
+      min-height: 40px;
+      max-height: 40px;
+      svg {
+        fill: $bp-color-white;
+      }
     }
 
-    p {
-      flex-grow: 1;
-      padding: 0 10px;
-      text-align: center;
+    .toast-content {
+      padding: 0px 20px 0 15px;
+
+      p {
+        color: $bp-color-whisper;
+        flex-grow: 1;
+        margin: 0;
+      }
+      .toast-title {
+        font-weight: $bp-fw-extra-bold;
+        font-size: $bp-fs-5;
+        padding-bottom: 6px;
+      }
+      .toast-message {
+        font-size: $bp-fs-6;
+      }
+    }
+
+    .toast-divider {
+      border-left: 1.5px solid rgba(255, 255, 255, 0.6);
+
+      button {
+        height: unset;
+        min-width: unset;
+        overflow: unset;
+      }
+
+      .toast-dismiss {
+        margin: 14px 0 14px 20px;
+        padding: 0;
+        border: none;
+        background: none;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+          border-radius: 8px;
+          cursor: pointer;
+          padding: 0;
+        }
+
+        svg {
+          fill: rgba(255, 255, 255, 0.6);
+          min-width: 34px;
+          max-width: 34px;
+          min-height: 34px;
+          max-height: 34px;
+
+          &:hover {
+            fill: $bp-color-white;
+          }
+        }
+
+        &.toast-text-button {
+          color: rgba(255, 255, 255, 0.6);
+          font-size: $bp-fs-5;
+          font-weight: $bp-fw-bold;
+          line-height: $bp-lh-6;
+          margin: 12px 0 12px 20px;
+          padding: 8px;
+
+          &:hover {
+            padding: 8px;
+            color: $bp-color-white;
+          }
+        }
+      }
     }
   }
   .bp-toast__show {

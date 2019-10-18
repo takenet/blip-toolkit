@@ -56,8 +56,9 @@ export const BlipToast = (props = {}) => {
       </div>
     </div>
     `
-  } else {
-    return html`
+  }
+
+  return html`
     <div class="bp-toast ${typeClass}">
       <div class="toast-svg">${raw(icon)}</div>
       <div class="toast-content">
@@ -68,5 +69,4 @@ export const BlipToast = (props = {}) => {
       </div>
     </div>
     `
-  }
 }

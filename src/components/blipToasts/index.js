@@ -44,7 +44,7 @@ export class BlipToasts extends Component {
     this.options.element.appendChild(toast)
 
     toast.querySelector('.dismiss').addEventListener('click', () => {
-      if (callback) {
+      if (callback && typeof callback === 'function') {
         callback()
       }
       this.element.removeChild(toast)

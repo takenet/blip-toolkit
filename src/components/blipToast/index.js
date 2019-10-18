@@ -46,26 +46,26 @@ export const BlipToast = (props = {}) => {
   if (props.title) {
     return html`
     <div class="bp-toast ${typeClass}">
-        <div class="toast-svg">${raw(icon)}</div>
-        <div class="toast-content">
-          <p class="toast-title">${props.title}</p>
-          <p class="toast-message">${props.msg}</p>
-        </div>
-        <div class="toast-divider">
-          <button class="dismiss toast-dismiss ${addTextButtonClass()} bp-ff-nunito">${button}</button>
-        </div>
+      <div class="toast-svg">${raw(icon)}</div>
+      <div class="toast-content">
+        <p class="toast-title">${props.title}</p>
+        <p class="toast-message">${props.msg}</p>
+      </div>
+      <div class="toast-divider">
+        <button class="dismiss toast-dismiss ${addTextButtonClass()} bp-ff-nunito">${button}</button>
+      </div>
     </div>
     `
   } else {
     return html`
     <div class="bp-toast ${typeClass}">
-        <div class="toast-svg">${raw(icon)}</div>
-        <div class="toast-content">
-          <p class="toast-message">${props.msg}</p>
-        </div>
-        <div class="toast-divider">
-          <button class="dismiss toast-dismiss ${addTextButtonClass()} bp-ff-nunito">${button}</button>
-        </div>
+      <div class="toast-svg">${raw(icon)}</div>
+      <div class="toast-content">
+        <p class="toast-message">${props.msg}</p>
+      </div>
+      <div class="toast-divider">
+        <button class="dismiss toast-dismiss ${addTextButtonClass()} bp-ff-nunito">${button}</button>
+      </div>
     </div>
     `
   }

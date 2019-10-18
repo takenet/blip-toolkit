@@ -13,9 +13,9 @@ export class BlipToasts extends Component {
       ...props,
     }
     this.options.element = html`
-    <div class="bp-toasts">
-    </div>
-  `
+      <div class="bp-toasts">
+      </div>
+    `
     return this.options.element
   }
 
@@ -55,14 +55,28 @@ export class BlipToasts extends Component {
       20,
     )
 
+    let eraseToastTimeout
     if (duration === undefined) {
-      duration = 5000
+      duration = 12000
     }
     if (duration !== 0) {
-      setTimeout(
+      eraseToastTimeout = setTimeout(
         () => this.element.removeChild(toast),
         duration
       )
     }
+
+    toast.addEventListener('mouseenter', () => {
+      clearTimeout(eraseToastTimeout)
+    })
+
+    toast.addEventListener('mouseleave', () => {
+      if (duration !== 0) {
+        eraseToastTimeout = setTimeout(
+          () => this.element.removeChild(toast),
+          duration
+        )
+      }
+    })
   }
 }

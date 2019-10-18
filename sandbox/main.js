@@ -123,7 +123,7 @@ document.getElementById('toasts').appendChild(toastsElement)
 toasts.success({
   msg: 'Never f*ing give up. Menos desculpas e mais action. O inconformismo é o combustível da alta performance.',
   title: 'Uhul conseguimos!',
-  duration: 0,
+  duration: 4000,
 })
 
 const showAlert = () => {

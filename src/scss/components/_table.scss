@@ -71,6 +71,11 @@
 
   cursor: default;
 
+  .action-icon{
+    //sum between left and right paddings and arrow icon size
+    width: 27px;
+  }
+
   thead {
     border-bottom: 0.2*$m solid $bp-table_head-border-color;
 
@@ -105,6 +110,19 @@
       background-color: $bp-color-whisper;
     }
 
+    .hasTableAction:hover{
+      background-color: $bp-table_tr-hover;
+    }
+
+    .td-action-icon{
+      padding: 0px 8px;
+    
+      img[icon-src="ArrowRight"] {
+        vertical-align: middle;
+        height: 11px;
+      }
+    } 
+  
     td {
       height: 4.7*$m;
       padding: $bp-table_td-padding;
@@ -112,14 +130,16 @@
       line-height: $bp-table_body-line-height;
       font-weight: $bp-table_body-font-weight;
       border: none;
-
+      
       &:first-of-type {
         padding-left: $bp-table_edge-padding;
       }
 
-      &:last-of-type {
-        padding-right: $bp-table_edge-padding;
-      }
+      &:not(.td-action-icon){
+        &:last-of-type {
+          padding-right: $bp-table_edge-padding;
+        } 
+      }         
     }
   }
 }
@@ -148,7 +168,7 @@
     @include scrollbar($bp-color-time);
 
     tr {
-      width: 100%;
+      width: 100%;   
     }
   }
 

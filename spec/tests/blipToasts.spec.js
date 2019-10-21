@@ -8,7 +8,9 @@ describe('BlipToasts', () => {
     const renderedElement = component.render()
     const msg = 'Toast content'
     document.body.appendChild(renderedElement)
-    component.info(msg)
+    component.info({
+      msg,
+    })
 
     const toast = renderedElement.querySelector('.bp-toast')
     expect(toast).not.toEqual(null)
@@ -20,7 +22,9 @@ describe('BlipToasts', () => {
     const renderedElement = component.render()
     const msg = 'Toast content'
     document.body.appendChild(renderedElement)
-    component.success(msg)
+    component.success({
+      msg,
+    })
 
     const toast = renderedElement.querySelector('.bp-toast')
     expect(toast).not.toEqual(null)
@@ -32,7 +36,9 @@ describe('BlipToasts', () => {
     const renderedElement = component.render()
     const msg = 'Toast content'
     document.body.appendChild(renderedElement)
-    component.danger(msg)
+    component.danger({
+      msg,
+    })
 
     const toast = renderedElement.querySelector('.bp-toast')
     expect(toast).not.toEqual(null)
@@ -44,7 +50,9 @@ describe('BlipToasts', () => {
     const renderedElement = component.render()
     const msg = 'Toast content'
     document.body.appendChild(renderedElement)
-    component.warning(msg)
+    component.warning({
+      msg,
+    })
 
     const toast = renderedElement.querySelector('.bp-toast')
     expect(toast).not.toEqual(null)
@@ -56,7 +64,9 @@ describe('BlipToasts', () => {
     const renderedElement = component.render()
     const msg = 'Toast content'
     document.body.appendChild(renderedElement)
-    component.refresh(msg)
+    component.refresh({
+      msg,
+    })
 
     const toast = renderedElement.querySelector('.bp-toast')
     expect(toast).not.toEqual(null)
@@ -68,7 +78,10 @@ describe('BlipToasts', () => {
     const renderedElement = component.render()
     const msg = 'Toast content'
     document.body.appendChild(renderedElement)
-    component.warning(msg, 2000)
+    component.warning({
+      msg,
+      duration: 2000,
+    })
 
     let toast = renderedElement.querySelector('.bp-toast')
     expect(toast).not.toEqual(null)
@@ -82,7 +95,10 @@ describe('BlipToasts', () => {
     const renderedElement = component.render()
     const msg = 'Toast content'
     document.body.appendChild(renderedElement)
-    component.warning(msg, 0)
+    component.warning({
+      msg,
+      duration: 0,
+    })
 
     let toast = renderedElement.querySelector('.bp-toast')
     expect(toast).not.toEqual(null)
@@ -99,7 +115,10 @@ describe('BlipToasts', () => {
     const renderedElement = component.render()
     const msg = 'Toast content'
     document.body.appendChild(renderedElement)
-    component.warning(msg, 0)
+    component.warning({
+      msg,
+      duration: 0,
+    })
 
     const dismissButton = renderedElement.querySelector('.dismiss')
 

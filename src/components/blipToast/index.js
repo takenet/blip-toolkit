@@ -1,15 +1,18 @@
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
-import SuccessIcon from '../../img/done.svg'
-import InfoIcon from '../../img/info.svg'
-import WarnigIcon from '../../img/warning.svg'
+import CloseIcon from '../../img/close.svg'
+import DangerIcon from '../../img/close-circle.svg'
+import InfoIcon from '../../img/checkball-outline.svg'
+import LikeIcon from '../../img/like-outline.svg'
 import RefreshIcon from '../../img/refresh.svg'
+import WarningIcon from '../../img/attention-outline.svg'
 
 const infoClass = 'bp-toast--info'
 const successClass = 'bp-toast--success'
 const warningClass = 'bp-toast--warning'
 const dangerClass = 'bp-toast--danger'
 const refreshClass = 'bp-toast--refresh'
+const textButtonClass = 'toast-text-button'
 
 export const BlipToast = (props = {}) => {
   let typeClass
@@ -21,26 +24,49 @@ export const BlipToast = (props = {}) => {
       break
     case 'success':
       typeClass = successClass
-      icon = SuccessIcon
+      icon = LikeIcon
       break
     case 'warning':
       typeClass = warningClass
-      icon = WarnigIcon
+      icon = WarningIcon
       break
     case 'danger':
       typeClass = dangerClass
-      icon = WarnigIcon
+      icon = DangerIcon
       break
     case 'refresh':
       typeClass = refreshClass
       icon = RefreshIcon
       break
   }
+
+  const button = props.buttonText ? props.buttonText : raw(CloseIcon)
+  const addTextButtonClass = () => props.buttonText ? textButtonClass : ''
+
+  if (props.title) {
+    return html`
+    <div class="bp-toast ${typeClass}">
+      <div class="toast-svg">${raw(icon)}</div>
+      <div class="toast-content">
+        <p class="toast-title">${props.title}</p>
+        <p class="toast-message">${props.msg}</p>
+      </div>
+      <div class="toast-divider">
+        <button class="dismiss toast-dismiss ${addTextButtonClass()} bp-ff-nunito">${button}</button>
+      </div>
+    </div>
+    `
+  }
+
   return html`
     <div class="bp-toast ${typeClass}">
-        ${raw(icon)}
-        <p>${props.msg}</p>
-        <button class="dismiss bp-btn bp-btn--c-white bp-btn--text-only">x</button>
+      <div class="toast-svg">${raw(icon)}</div>
+      <div class="toast-content">
+        <p class="toast-message">${props.msg}</p>
+      </div>
+      <div class="toast-divider">
+        <button class="dismiss toast-dismiss ${addTextButtonClass()} bp-ff-nunito">${button}</button>
+      </div>
     </div>
     `
 }

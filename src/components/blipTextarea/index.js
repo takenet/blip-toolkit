@@ -1,4 +1,4 @@
-import { Component } from '@component'
+import Component from 'nanocomponent'
 import { EventEmitter } from '@lib/eventEmitter'
 import html from 'nanohtml'
 

@@ -1,6 +1,6 @@
 import { guid } from '@lib/utils'
 import { EventEmitter } from '@lib/eventEmitter'
-import { Component } from '@component'
+import Component from 'nanocomponent'
 import html from 'nanohtml'
 
 const blipTagLabelClass = 'blip-tag__label'

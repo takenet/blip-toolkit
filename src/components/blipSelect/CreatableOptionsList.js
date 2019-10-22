@@ -1,4 +1,4 @@
-import { Component } from '@component'
+import Component from 'nanocomponent'
 import html from 'nanohtml'
 import { EventEmitter } from '@lib/eventEmitter'
 import { renderEmptyOption } from '../shared'

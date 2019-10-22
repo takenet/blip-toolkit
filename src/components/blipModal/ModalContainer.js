@@ -1,4 +1,4 @@
-import { Component } from '@component'
+import Component from 'nanocomponent'
 import { MODAL_DEFAULTS } from '.'
 import html from 'nanohtml'
 

@@ -2,7 +2,7 @@ import { guid } from '@lib/utils'
 import { OptionsList } from './OptionsList'
 import { EventEmitter } from '@lib/eventEmitter'
 
-import { Component } from '@component'
+import Component from 'nanocomponent'
 import html from 'nanohtml'
 import { CreatebleOptionsList } from './CreatableOptionsList'
 import { SelectOption } from './SelectOption'

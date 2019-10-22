@@ -1,4 +1,4 @@
-import { Component } from '@component'
+import Component from 'nanocomponent'
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
 import previousIcon from '../../img/arrow-ball-left-solid.svg'

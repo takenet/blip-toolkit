@@ -1,5 +1,5 @@
 import { EventEmitter } from '@lib/eventEmitter'
-import { Component } from '@component'
+import Component from 'nanocomponent'
 
 /**
  * This class abstracts any option item of option list.

@@ -1,5 +1,5 @@
 .bp-textarea-wrapper {
-  min-height: 4.7*$m;
+  min-height: 5.6*$m;
   border: 0.1*$m solid $bp-color-breeze;
   border-radius: 0.8*$m;
   padding: 0.8*$m;
@@ -8,7 +8,6 @@
 
   &.bp2-textarea-wrapper {
     border: none;
-    min-height: 5.6*$m;
     max-height: 25*$m;
 
     .bp2-textarea__label {
@@ -32,10 +31,7 @@
 
   &.bp2-textarea-wrapper--show {
     border: 1px solid $bp-color-wave;
-    border-radius: 0.8*$m;
-    min-height: 2*$m;
     height: auto;
-    padding: 0.8*$m;
     display: flex;
     flex-direction: column;
 
@@ -46,8 +42,6 @@
     }
 
     .bp-textarea {
-      color: $bp-color-city;
-      font-size: 14px;
       white-space: normal;
       overflow-y: auto;
       text-overflow: unset;

@@ -35,6 +35,10 @@
     .blip-select__content {
       width: 100%;
       text-align: justify;
+
+      .bp-label {
+        width: calc(100% - 20px);
+      }
     }
   }
 
@@ -50,9 +54,10 @@
   border: 0;
   background-color: transparent;
   outline: none;
-  width: 100%;
+  width: calc(100% - 20px);
   height: 1.9*$m;
   margin-top: 0.2*$m;
+  padding-right: 20px;
   font-family: $bp-ff;
   font-size: $bp-fs-6;
   align-self: center;
@@ -63,6 +68,8 @@
 }
 
 .blip-select__arrow-down {
+  position: absolute;
+  right: 10px;
   visibility: hidden;
   width: 20px;
   min-width: 20px;

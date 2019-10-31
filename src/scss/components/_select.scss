@@ -63,6 +63,7 @@
   align-self: center;
   position: relative;
   z-index: 1;
+  box-sizing: initial;
 
   &:focus { outline: none; }
 }

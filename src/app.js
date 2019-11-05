@@ -7,12 +7,13 @@ if (!window._babelPolyfill) {
 }
 
 //
-export { BlipSelect } from './components/blipSelect'
-export { BlipTags } from './components/blipTags'
-export { BlipTag } from './components/blipTag'
+export { BlipCarousel } from './components/blipCarousel'
+export { BlipDatepicker } from './components/blipDatepicker'
 export { BlipInput } from './components/blipInput'
 export { BlipLoading } from './components/blipLoading'
 export { BlipModal } from './components/blipModal'
+export { BlipSelect } from './components/blipSelect'
 export { BlipTabs } from './components/blipTabs'
+export { BlipTag } from './components/blipTag'
+export { BlipTags } from './components/blipTags'
 export { BlipToasts } from './components/blipToasts'
-export { BlipCarousel } from './components/blipCarousel'

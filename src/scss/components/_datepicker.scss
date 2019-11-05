@@ -1,0 +1,181 @@
+.blip-datepicker {
+  display: inline-block;
+
+  input {
+		border: none;
+		cursor: pointer;
+
+		&::-webkit-clear-button, &::-webkit-inner-spin-button {
+    	display: none;
+    	-webkit-appearance: none;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&:disabled {
+			cursor: default;
+			background-color: transparent;
+		}
+	}
+
+  .month-table {
+    margin: 0 2*$m 0.5*$m;
+    border-collapse: collapse;
+
+    th {
+      border-bottom: $u solid $bp-color-white;
+      height: 2*$m;
+
+      .month-title, .year-input {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: $bp-fs-7;
+        color: $bp-color-bot;
+      }
+
+      .month-title {
+        cursor: pointer;
+      }
+
+      .year-input {
+        max-width: 3*$m;
+        margin-left: $m;
+
+        &:focus {
+          border-bottom: 1px solid $bp-color-bot;
+        }
+      }
+
+      .month-button {
+        border: none;
+        border-radius: 50%;
+        color: $bp-color-white;
+        font-weight: 800;
+        font-size: $bp-fs-8;
+        cursor: pointer;
+        padding: 0.5*$u $u;
+        background-color: $bp-color-breeze;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .month-week, .next-month-week {
+      border-top: .5*$u solid $bp-color-white;
+    }
+
+    .next-month-week {
+      visibility: hidden;
+    }
+
+    .week-day {
+      color: $bp-color-suit;
+    }
+
+    .month-day {
+      color: $bp-color-desk;
+
+      &.last-month, &.next-month {
+        color: $bp-color-time;
+      }
+
+      &.in-range {
+        background-color: $bp-color-sky;
+      }
+
+      &.range-limit div, &.current-month:hover div {
+        color: $bp-color-white;
+        background-color: $bp-color-bot;
+      }
+
+      &:not(.in-range) ~ .range-limit {
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+
+      &.in-range ~ .range-limit {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+
+      div {
+        padding: $u;
+        border-radius: 8px;
+      }
+    }
+
+    .week-day, .month-day {
+      font-size: $bp-fs-8;
+      text-align: center;
+      vertical-align: middle;
+      cursor: default;
+      width: 2*$m;
+      height: $m;
+    }
+  }
+
+  .time-container {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		color: $bp-color-city;
+		font-size: $bp-fs-8;
+    padding: 2*$m 3*$m;
+    border-top: 1px solid $bp-color-wave;
+    background-color: $bp-color-whisper;
+
+		.time-input-container {
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			border-radius: 8px;
+      border: 1px solid $bp-color-wave;
+			height: 3*$m;
+			width: 5*$m;
+      background: url(https://icon-library.net/images/alarm-clock-icon-png/alarm-clock-icon-png-27.jpg) no-repeat $m center;
+      background-color: $bp-color-white;
+			background-size: $m;
+      padding-left: 2*$m;
+      
+      input {
+        font-size: $bp-fs-7;
+      }
+		}
+  }
+  
+  .date-selector {
+		text-transform: uppercase;
+		font-size: $bp-fs-7;
+		color: $bp-color-desk;
+		background-color: $bp-color-white;
+		padding: $m 2*$m 4*$m;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		> div {
+			display: flex;
+			justify-content: space-between;
+
+			label {
+				cursor: pointer;
+				width: 5*$m;
+				text-align: center;
+
+				div {
+					border-radius: 4px;
+					padding: 0.5*$m $m;
+				}
+
+				input[type="radio"]:checked ~ div, div:hover {
+					background-color: $bp-color-bot;
+					color: $bp-color-white;
+				}
+			}
+		}
+	}
+}

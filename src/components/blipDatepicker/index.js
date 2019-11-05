@@ -55,6 +55,8 @@ class DateHelper {
 export class BlipDatepicker extends Component {
   static weekSize = 7
   static monthRows = 6
+  static selectorRows = 4
+  static selectorColumns = 3
   static i18nEN = {
     months: ['January', 'February', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December'],
@@ -442,11 +444,11 @@ export class BlipDatepicker extends Component {
     if (this.pickYear) {
       this._monthTitle.style.display = 'none'
 
-      this._prevButton.removeEventListener('click', this.onMonthButtonClick)
-      this._nextButton.removeEventListener('click', this.onMonthButtonClick)
+      this._prevButton.removeEventListener('click', this._onMonthButtonClick)
+      this._nextButton.removeEventListener('click', this._onMonthButtonClick)
 
-      this._prevButton.addEventListener('click', this.onYearRangeClick)
-      this._nextButton.addEventListener('click', this.onYearRangeClick)
+      this._prevButton.addEventListener('click', this._onYearRangeClick)
+      this._nextButton.addEventListener('click', this._onYearRangeClick)
 
       this.showPrev = true
       this.showNext = true
@@ -454,7 +456,7 @@ export class BlipDatepicker extends Component {
 
     if (selected) this._selectorInputs[selected].checked = true
     else this._selectorInputs.forEach(input => { input.checked = false })
-    this.setElementVisibility(this._dateSelector, true)
+    this._setElementVisibility(this._dateSelector, true)
 
     if (this.onDateSelectorShow) this.onDateSelectorShow()
   }
@@ -465,6 +467,35 @@ export class BlipDatepicker extends Component {
         dayCell.classList.remove(BlipDatepicker.style.rangeLimit)
         dayCell.classList.remove(BlipDatepicker.style.inRange)
       })
+  }
+
+  _clearDateSelector() {
+    if (this.pickMonth) {
+      this.showPrev = true
+      this.showNext = true
+      this._yearInput.style.display = 'initial'
+    }
+
+    if (this.pickYear) {
+      this._monthTitle.style.display = 'initial'
+
+      this._prevButton.removeEventListener('click', this._onYearRangeClick)
+      this._nextButton.removeEventListener('click', this._onYearRangeClick)
+
+      this._prevButton.addEventListener('click', this._onMonthButtonClick)
+      this._nextButton.addEventListener('click', this._onMonthButtonClick)
+    }
+
+    this.pickMonth = false
+    this.pickYear = false
+
+    this._setElementVisibility(this._dateSelector, false)
+    this._selectorOptions.forEach(
+      option => {
+        option.innerText = ''
+      })
+
+    if (this.onDateSelectorHide) this.onDateSelectorHide()
   }
 
   _renderTime() {
@@ -552,7 +583,7 @@ export class BlipDatepicker extends Component {
     var optionsSize = this.i18n.months.length
     var offset = Number(event.target.value) * optionsSize
     var baseYear = Number(this._selectorInputs[0].value)
-    var options = this.renderYearOptions(baseYear + offset)
+    var options = this._renderYearOptions(baseYear + offset)
 
     this._renderDateSelector(options)
   }

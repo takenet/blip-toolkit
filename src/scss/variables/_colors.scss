@@ -65,15 +65,13 @@ $bp-color-white: #ffffff;
 $bp-color-black: #000000;
 
 //Gradients
-$bp-gradient-shine: linear-gradient(180deg, $bp-color-whisper 0%, $bp-color-offwhite 50%, $bp-color-wave 100%);
-$bp-gradient-bot: linear-gradient(90deg, $bp-color-blip-light 0%, $bp-color-bot 50%, $bp-color-blip-dark 100%); //blip-system
+$bp-gradient-shine: linear-gradient(270deg, $bp-color-whisper 0%, $bp-color-offwhite 50%, $bp-color-wave 100%);
+$bp-gradient-bot: linear-gradient(270deg, $bp-color-blip-light 0%, $bp-color-bot 50%, $bp-color-blip-dark 100%); //blip-system
 $bp-gradient-blip: linear-gradient(137.45deg, #9EE3FF 0%, $bp-color-smurf 56.17%, #51B2DD 100%); //smurfette
-$bp-gradient-suit: linear-gradient(90deg, $bp-color-suit 0%, $bp-color-onix 50%, $bp-color-console 100%);
-$bp-gradient-suit-bottom-up: linear-gradient(180deg, $bp-color-suit 0%, $bp-color-onix 50%, $bp-color-console 100%);
-$bp-gradient-suit-top-down: linear-gradient(0deg, $bp-color-suit 0%, $bp-color-onix 50%, $bp-color-console 100%);
-$bp-gradient-business: linear-gradient(90deg, #202f3f 0%, #102834 100%);
-$bp-gradient-enterprise: linear-gradient(90deg, #2e3237 0%, #1f2018 100%);
-$bp-gradient-error: linear-gradient(180deg, $bp-color-delete 0%, $bp-color-warning 50%, #B43635 100%);
-$bp-gradient-attention: linear-gradient(180deg, $bp-color-warning-yellow 0%, $bp-color-cheetos 50%, $bp-color-doritos 100%);
-$bp-gradient-success: linear-gradient(180deg, #93D2AA 0%, $bp-color-true 50%, #4AA86C 100%);
-$bp-gradient-whisper: linear-gradient(180deg, #FAFCFC 0%, $bp-color-whisper 50%, #E8EAEB 100%);
+$bp-gradient-suit: linear-gradient(270deg, $bp-color-suit 0%, $bp-color-onix 50%, $bp-color-console 100%);
+$bp-gradient-business: linear-gradient(270deg, #202f3f 0%, #102834 100%);
+$bp-gradient-enterprise: linear-gradient(270deg, #2e3237 0%, #1f2018 100%);
+$bp-gradient-error: linear-gradient(270deg, $bp-color-delete 0%, $bp-color-warning 50%, #B43635 100%);
+$bp-gradient-attention: linear-gradient(270deg, $bp-color-warning-yellow 0%, $bp-color-cheetos 50%, $bp-color-doritos 100%);
+$bp-gradient-success: linear-gradient(270deg, #93D2AA 0%, $bp-color-true 50%, #4AA86C 100%);
+$bp-gradient-whisper: linear-gradient(270deg, #FAFCFC 0%, $bp-color-whisper 50%, #E8EAEB 100%);

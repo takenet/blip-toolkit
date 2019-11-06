@@ -8,6 +8,7 @@ import { BlipTabs } from '../src/components/blipTabs'
 // import { BlipModal } from '../src/components/blipModal'
 import { BlipToasts } from '../src/components/blipToasts'
 import { BlipCarousel } from '../src/components/blipCarousel'
+import { BlipDatepicker } from '../src/components/blipDatepicker'
 
 const amazingSelect = document.getElementById('select')
 const selectInstance = new BlipSelect({
@@ -165,3 +166,8 @@ setTimeout(() => {
 // const carouselItems = document.querySelectorAll('.bp-carousel-item')
 const carousel = new BlipCarousel('carousel', 300)
 carousel.render()
+
+const picker = new BlipDatepicker(new Date(), {hasTime: true})
+const pickerParent = document.getElementById('datepicker')
+
+pickerParent.appendChild(picker.render())

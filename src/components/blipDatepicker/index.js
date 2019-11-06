@@ -89,10 +89,9 @@ export class BlipDatepicker extends Component {
     dateSelectorOption: 'date-selector-option',
   }
 
-  constructor(monthDate, options) {
+  constructor(options) {
     super()
 
-    this._monthDate = new Date(monthDate)
     this.hasTime = options.hasTime || false
 
     this.i18n = options.i18n || BlipDatepicker.i18nEN
@@ -165,7 +164,8 @@ export class BlipDatepicker extends Component {
     this._setElementVisibility(this._nextButton, visibility)
   }
 
-  createElement() {
+  createElement(monthDate) {
+    this._monthDate = new Date(monthDate)
     this._datepicker = this._createHTMLElement('div', BlipDatepicker.style.datepicker)
 
     this._createMonthTable()

@@ -92,7 +92,7 @@
     .month-day {
       color: $bp-color-desk;
 
-      &.last-month, &.next-month {
+      &.last-month, &.next-month, &.invalid-day {
         color: $bp-color-time;
       }
 
@@ -100,7 +100,7 @@
         background-color: $bp-color-sky;
       }
 
-      &.range-limit div, &.current-month:hover div {
+      &.range-limit div, &.current-month:not(.invalid-day):hover div {
         color: $bp-color-white;
         background-color: $bp-color-bot;
       }

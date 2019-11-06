@@ -79,6 +79,7 @@ export class BlipDatepicker extends Component {
     monthDay: 'month-day',
     lastMonth: 'last-month',
     nextMonth: 'next-month',
+    invalidDay: 'invalid-day',
     currentMonth: 'current-month',
     rangeLimit: 'range-limit',
     inRange: 'in-range',
@@ -98,6 +99,8 @@ export class BlipDatepicker extends Component {
 
     this._selectedDay = options.selectedDay || undefined
     this._selectedPeriod = options.selectedPeriod || undefined
+    this._validPeriod = options.validPeriod || undefined
+
     this._onMonthButtonClick = options.onMonthButtonClick || this._onMonthButtonClick
     this.onDateSelectorShow = options.onDateSelectorShow || undefined
     this.onDateSelectorHide = options.onDateSelectorHide || undefined
@@ -325,7 +328,7 @@ export class BlipDatepicker extends Component {
   }
 
   _isValidDay(day) {
-    return day.classList.contains(BlipDatepicker.style.currentMonth)
+    return day.classList.contains(BlipDatepicker.style.currentMonth) && !day.classList.contains(BlipDatepicker.style.invalidDay)
   }
 
   _renderMonth() {
@@ -363,6 +366,9 @@ export class BlipDatepicker extends Component {
               case 1:
                 day.classList.add(BlipDatepicker.style.nextMonth)
                 break
+            }
+            if (this._validPeriod && !DateHelper.isBetween(this._validPeriod.startDate, this._validPeriod.endDate, dayDate)) {
+              day.classList.add(BlipDatepicker.style.invalidDay)
             }
           }
         )

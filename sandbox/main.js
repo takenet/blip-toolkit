@@ -167,7 +167,10 @@ setTimeout(() => {
 const carousel = new BlipCarousel('carousel', 300)
 carousel.render()
 
-const picker = new BlipDatepicker({hasTime: true})
+const today = new Date()
+const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1)
+const lastYear = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate())
+const picker = new BlipDatepicker({hasTime: true, validPeriod: {startDate: lastYear, endDate: tomorrow}})
 const pickerParent = document.getElementById('datepicker')
 
 pickerParent.appendChild(picker.render(new Date()))

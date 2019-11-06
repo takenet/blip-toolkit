@@ -21,7 +21,6 @@
 	}
 
   .month-table {
-    margin: 0 2*$m 0.5*$m;
     border-collapse: collapse;
 
     th {
@@ -64,12 +63,26 @@
       }
     }
 
+    .weekday-week {
+      border-top: 1.5*$m solid $bp-color-white;
+    }
+
     .month-week, .next-month-week {
-      border-top: .5*$u solid $bp-color-white;
+      border-top: 0.5*$m solid $bp-color-white;
     }
 
     .next-month-week {
       visibility: hidden;
+    }
+
+    .week-day, .month-day {
+      font-size: $bp-fs-8;
+      text-align: center;
+      vertical-align: middle;
+      cursor: default;
+      width: 2*$m;
+      height: $m;
+      padding: 0;
     }
 
     .week-day {
@@ -103,30 +116,27 @@
       }
 
       div {
-        padding: $u;
+        padding: $u 1.2*$u;
         border-radius: 8px;
       }
     }
+  }
 
-    .week-day, .month-day {
-      font-size: $bp-fs-8;
-      text-align: center;
-      vertical-align: middle;
-      cursor: default;
-      width: 2*$m;
-      height: $m;
-    }
+  hr {
+    margin: 0;
+    border: 1px solid $bp-color-wave;
   }
 
   .time-container {
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: center;
 		align-items: center;
 		color: $bp-color-city;
 		font-size: $bp-fs-8;
-    padding: 2*$m 3*$m;
-    border-top: 1px solid $bp-color-wave;
     background-color: $bp-color-whisper;
+    padding: $u 0;
+    margin: 2*$u 0;
+    border-radius: 8px;
 
 		.time-input-container {
 			display: flex;
@@ -135,11 +145,12 @@
 			border-radius: 8px;
       border: 1px solid $bp-color-wave;
 			height: 3*$m;
-			width: 5*$m;
-      background: url(https://icon-library.net/images/alarm-clock-icon-png/alarm-clock-icon-png-27.jpg) no-repeat $m center;
+			width: 6*$m;
+      background: url(https://icon-library.net/images/alarm-clock-icon-png/alarm-clock-icon-png-27.jpg) no-repeat $u center;
       background-color: $bp-color-white;
 			background-size: $m;
-      padding-left: 2*$m;
+      padding-left: 1.5*$m;
+      margin-left: 1.5*$m;
       
       input {
         font-size: $bp-fs-7;
@@ -152,7 +163,7 @@
 		font-size: $bp-fs-7;
 		color: $bp-color-desk;
 		background-color: $bp-color-white;
-		padding: $m 2*$m 4*$m;
+		padding: $m 1.5*$m 3*$m;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;

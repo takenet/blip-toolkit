@@ -295,6 +295,8 @@ export class BlipDatepicker extends Component {
   }
 
   _createTimeStructure() {
+    var separator = this._createHTMLElement('hr')
+
     var timeContainer = this._createHTMLElement('div', BlipDatepicker.style.timeContainer)
     timeContainer.innerText = this.i18n.timeInputText
 
@@ -306,6 +308,7 @@ export class BlipDatepicker extends Component {
     timeInputContainer.appendChild(timeInput)
     timeContainer.appendChild(timeInputContainer)
 
+    this._datepicker.appendChild(separator)
     this._datepicker.appendChild(timeContainer)
 
     this._timeInput = timeInput

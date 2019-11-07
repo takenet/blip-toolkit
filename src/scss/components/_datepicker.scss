@@ -88,7 +88,7 @@ $icon-size: 1.7*$m;
       cursor: default;
       width: 2*$m;
       height: $m;
-      padding: 0;
+      padding: 0 0.3*$m;
     }
 
     .week-day {
@@ -111,12 +111,12 @@ $icon-size: 1.7*$m;
         background-color: $bp-color-bot;
       }
 
-      &:not(.in-range) ~ .range-limit {
+      &:not(.in-range) + .range-limit {
         border-top-left-radius: 50%;
         border-bottom-left-radius: 50%;
       }
 
-      &.in-range ~ .range-limit {
+      &.in-range + .range-limit {
         border-top-right-radius: 50%;
         border-bottom-right-radius: 50%;
       }
@@ -177,7 +177,7 @@ $icon-size: 1.7*$m;
 		font-size: $bp-fs-7;
 		color: $bp-color-desk;
 		background-color: $bp-color-white;
-		padding: $m 1.5*$m 3*$m;
+		padding: $m 0 3*$m;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -190,7 +190,6 @@ $icon-size: 1.7*$m;
 				cursor: pointer;
 				width: 5*$m;
         text-align: center;
-        margin: 0 $u;
 
 				div {
 					border-radius: 4px;

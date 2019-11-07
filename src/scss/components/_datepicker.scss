@@ -1,3 +1,5 @@
+$icon-size: 1.7*$m;
+
 .blip-datepicker {
   display: inline-block;
 
@@ -28,17 +30,18 @@
       height: 2*$m;
 
       .month-title, .year-input {
-        font-weight: 700;
         text-transform: uppercase;
         font-size: $bp-fs-7;
         color: $bp-color-bot;
       }
 
       .month-title {
+        font-weight: 900;
         cursor: pointer;
       }
 
       .year-input {
+        font-weight: 600;
         max-width: 3*$m;
         margin-left: $m;
 
@@ -123,7 +126,7 @@
   }
 
   hr {
-    margin: 0;
+    margin: $m 0;
     border: 1px solid $bp-color-wave;
   }
 
@@ -135,7 +138,6 @@
 		font-size: $bp-fs-8;
     background-color: $bp-color-whisper;
     padding: $u 0;
-    margin: 2*$u 0;
     border-radius: 8px;
 
 		.time-input-container {
@@ -145,12 +147,24 @@
 			border-radius: 8px;
       border: 1px solid $bp-color-wave;
 			height: 3*$m;
-			width: 6*$m;
-      background: url(https://icon-library.net/images/alarm-clock-icon-png/alarm-clock-icon-png-27.jpg) no-repeat $u center;
+			width: 6.6*$m;
       background-color: $bp-color-white;
 			background-size: $m;
-      padding-left: 1.5*$m;
       margin-left: 1.5*$m;
+
+      .clock-icon {
+        min-width: $icon-size;
+        max-width: $icon-size;
+        min-height: $icon-size;
+        max-height: $icon-size;
+        padding: 0.2*$m;
+        background-color: $bp-color-sky;
+        border-radius: 5px;
+
+        svg path {
+          fill: $bp-color-bot;
+        }
+      }
       
       input {
         font-size: $bp-fs-7;
@@ -175,11 +189,12 @@
 			label {
 				cursor: pointer;
 				width: 5*$m;
-				text-align: center;
+        text-align: center;
+        margin: 0 $u;
 
 				div {
 					border-radius: 4px;
-					padding: 0.5*$m $m;
+					padding: 0.5*$m 0;
 				}
 
 				input[type="radio"]:checked ~ div, div:hover {

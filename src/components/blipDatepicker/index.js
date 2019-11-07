@@ -1,4 +1,9 @@
 import Component from 'nanocomponent'
+import html from 'nanohtml'
+import raw from 'nanohtml/raw'
+import DateHelper from './DateHelper'
+
+import Clock from '../../img/clock-outline.svg'
 
 class Period {
   constructor(date1, date2) {
@@ -6,49 +11,6 @@ class Period {
     var bigger = date1 < date2 ? date2 : date1
     this.startDate = new Date(smaller)
     this.endDate = new Date(bigger)
-  }
-}
-
-class DateHelper {
-  static thisMonth(sourceDate) {
-    return new Date(
-      sourceDate.getFullYear(),
-      sourceDate.getMonth()
-    )
-  }
-
-  static moveMonth(sourceDate, offset) {
-    return new Date(
-      sourceDate.getFullYear(),
-      sourceDate.getMonth() + offset,
-      sourceDate.getDate(),
-      sourceDate.getHours(),
-      sourceDate.getMinutes()
-    )
-  }
-
-  static moveDay(sourceDate, offset) {
-    return new Date(
-      sourceDate.getFullYear(),
-      sourceDate.getMonth(),
-      sourceDate.getDate() + offset,
-      sourceDate.getHours(),
-      sourceDate.getMinutes()
-    )
-  }
-
-  static monthDifference(date1, date2) {
-    return date2.getMonth() - date1.getMonth() +
-      (12 * (date2.getFullYear() - date1.getFullYear()))
-  }
-
-  static isEqual(date1, date2) {
-    return date1.getTime() === date2.getTime()
-  }
-
-  static isBetween(dateLimit1, dateLimit2, compareDate) {
-    return (compareDate <= dateLimit1 && compareDate >= dateLimit2) ||
-           (compareDate >= dateLimit1 && compareDate <= dateLimit2)
   }
 }
 
@@ -85,6 +47,7 @@ export class BlipDatepicker extends Component {
     inRange: 'in-range',
     timeContainer: 'time-container',
     timeInputContainer: 'time-input-container',
+    clockIcon: 'clock-icon',
     timeInput: 'time-input',
     dateSelector: 'date-selector',
     dateSelectorOption: 'date-selector-option',
@@ -304,10 +267,14 @@ export class BlipDatepicker extends Component {
     timeContainer.innerText = this.i18n.timeInputText
 
     var timeInputContainer = this._createHTMLElement('div', BlipDatepicker.style.timeInputContainer)
+
+    var timeIcon = html`<div class="${BlipDatepicker.style.clockIcon}">${raw(Clock)}</div>`
+
     var timeInput = this._createHTMLElement('input', BlipDatepicker.style.timeInput)
     timeInput.type = 'time'
     timeInput.required = true
 
+    timeInputContainer.appendChild(timeIcon)
     timeInputContainer.appendChild(timeInput)
     timeContainer.appendChild(timeInputContainer)
 

@@ -3,6 +3,8 @@ import html from 'nanohtml'
 import raw from 'nanohtml/raw'
 import DateHelper from './DateHelper'
 
+import ArrowLeft from '../../img/arrow-ball-left-solid.svg'
+import ArrowRight from '../../img/arrow-ball-right-solid.svg'
 import Clock from '../../img/clock-outline.svg'
 
 class Period {
@@ -107,6 +109,7 @@ export class BlipDatepicker extends Component {
   set monthDate(newDate) {
     this._monthDate = new Date(newDate)
     this._renderMonth()
+    this._renderTime()
   }
 
   set selectedDay(newDate) {
@@ -131,19 +134,17 @@ export class BlipDatepicker extends Component {
   }
 
   createElement(monthDate) {
-    this._monthDate = new Date(monthDate)
     this._datepicker = this._createHTMLElement('div', BlipDatepicker.style.datepicker)
 
     this._createMonthTable()
-    this._renderMonth()
     this._createDateSelector()
-
     if (this.hasTime) {
       this._createTimeStructure()
-      this._renderTime()
     }
 
     this._addEventListeners()
+
+    this.monthDate = new Date(monthDate)
 
     return this._datepicker
   }
@@ -163,15 +164,15 @@ export class BlipDatepicker extends Component {
     var yearInput = this._createHTMLElement('input', BlipDatepicker.style.yearInput)
     yearInput.type = 'number'
 
-    var createButton = (innerText, value, ...classes) => {
-      var button = this._createHTMLElement('button', BlipDatepicker.style.monthButton, ...classes)
-      button.innerText = innerText
+    var createButton = (icon, value, ...classes) => {
+      var button = html`<button class="${BlipDatepicker.style.monthButton}">${raw(icon)}</button>`
+      if (classes) classes.forEach(className => button.classList.add(className))
       button.value = value
       return button
     }
 
-    var prevButton = createButton('<', '-1', BlipDatepicker.style.monthPrev)
-    var nextButton = createButton('>', '1', BlipDatepicker.style.monthNext)
+    var prevButton = createButton(ArrowLeft, '-1', BlipDatepicker.style.monthPrev)
+    var nextButton = createButton(ArrowRight, '1', BlipDatepicker.style.monthNext)
 
     titleCell.colSpan = '5'
     titleCell.appendChild(monthTitle)
@@ -299,11 +300,11 @@ export class BlipDatepicker extends Component {
   }
 
   _renderMonth() {
-    var monthName = this.i18n.months[this._monthDate.getMonth()]
+    var monthName = this.i18n.months[this.monthDate.getMonth()]
     this._monthTitle.innerText = monthName
-    this._yearInput.value = this._monthDate.getFullYear()
+    this._yearInput.value = this.monthDate.getFullYear()
 
-    var firstDay = DateHelper.thisMonth(this._monthDate)
+    var firstDay = DateHelper.thisMonth(this.monthDate)
     var firstDayNextMonth = DateHelper.moveMonth(firstDay, 1)
     var firstDayOfWeek = DateHelper.moveDay(firstDay, -firstDay.getDay())
 
@@ -477,8 +478,8 @@ export class BlipDatepicker extends Component {
   _renderTime() {
     var renderTwoDigit = value => `0${value}`.slice(-2)
 
-    var hours = renderTwoDigit(this._monthDate.getHours())
-    var minutes = renderTwoDigit(this._monthDate.getMinutes())
+    var hours = renderTwoDigit(this.monthDate.getHours())
+    var minutes = renderTwoDigit(this.monthDate.getMinutes())
 
     this._timeInput.value = `${hours}:${minutes}`
   }
@@ -528,9 +529,9 @@ export class BlipDatepicker extends Component {
   }
 
   _onMonthButtonClick = event => {
-    var offset = Number(event.target.value)
-    this._monthDate = DateHelper.moveMonth(this._monthDate, offset)
-    this._renderMonth()
+    var button = event.composedPath().find(el => el.tagName === 'BUTTON')
+    var offset = Number(button.value)
+    this.monthDate = DateHelper.moveMonth(this.monthDate, offset)
   }
 
   _onMonthTitleClick = _ => {
@@ -538,7 +539,7 @@ export class BlipDatepicker extends Component {
     this.pickYear = false
 
     var options = this._renderMonthOptions()
-    this._renderDateSelector(options, this._monthDate.getMonth())
+    this._renderDateSelector(options, this.monthDate.getMonth())
   }
 
   _onYearInputClick = event => {
@@ -547,7 +548,7 @@ export class BlipDatepicker extends Component {
     event.target.select()
 
     var optionsSize = this.i18n.months.length
-    var thisYear = this._monthDate.getFullYear()
+    var thisYear = this.monthDate.getFullYear()
     var yearIndex = thisYear % optionsSize
 
     var options = this._renderYearOptions(thisYear)
@@ -556,8 +557,9 @@ export class BlipDatepicker extends Component {
   }
 
   _onYearRangeClick = event => {
+    var button = event.composedPath().find(el => el.tagName === 'BUTTON')
     var optionsSize = this.i18n.months.length
-    var offset = Number(event.target.value) * optionsSize
+    var offset = Number(button.value) * optionsSize
     var baseYear = Number(this._selectorInputs[0].value)
     var options = this._renderYearOptions(baseYear + offset)
 
@@ -573,11 +575,10 @@ export class BlipDatepicker extends Component {
 
   _onDateSelection = event => {
     var targetValue = Number(event.target.value)
-    if (this.pickMonth) this._monthDate.setMonth(targetValue)
-    if (this.pickYear) this._monthDate.setYear(targetValue)
+    var monthDate = new Date(this.monthDate)
 
+    this.monthDate = this.pickMonth ? monthDate.setMonth(targetValue) : monthDate.setYear(targetValue)
     this._clearDateSelector()
-    this._renderMonth()
   }
 
   _onDayHover = event => {

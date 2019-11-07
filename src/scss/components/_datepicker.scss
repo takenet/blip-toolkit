@@ -53,15 +53,18 @@ $icon-size: 1.7*$m;
       .month-button {
         border: none;
         border-radius: 50%;
-        color: $bp-color-white;
-        font-weight: 800;
-        font-size: $bp-fs-8;
+        background-color: transparent;
         cursor: pointer;
-        padding: 0.5*$u $u;
-        background-color: $bp-color-breeze;
+        padding: 0;
+        vertical-align: middle;
+        @include fixed-size(2.5*$m);
 
         &:focus {
           outline: none;
+        }
+
+        svg path {
+          fill: $bp-color-breeze;
         }
       }
     }
@@ -153,10 +156,7 @@ $icon-size: 1.7*$m;
       margin-left: 1.5*$m;
 
       .clock-icon {
-        min-width: $icon-size;
-        max-width: $icon-size;
-        min-height: $icon-size;
-        max-height: $icon-size;
+        @include fixed-size($icon-size);
         padding: 0.2*$m;
         background-color: $bp-color-sky;
         border-radius: 5px;

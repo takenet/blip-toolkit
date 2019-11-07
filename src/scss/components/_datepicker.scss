@@ -4,23 +4,23 @@ $icon-size: 1.7*$m;
   display: inline-block;
 
   input {
-		border: none;
-		cursor: pointer;
+    border: none;
+    cursor: pointer;
 
-		&::-webkit-clear-button, &::-webkit-inner-spin-button {
-    	display: none;
-    	-webkit-appearance: none;
-		}
+    &::-webkit-clear-button, &::-webkit-inner-spin-button {
+      display: none;
+      -webkit-appearance: none;
+    }
 
-		&:focus {
-			outline: none;
-		}
+    &:focus {
+      outline: none;
+    }
 
-		&:disabled {
-			cursor: default;
-			background-color: transparent;
-		}
-	}
+    &:disabled {
+      cursor: default;
+      background-color: transparent;
+    }
+  }
 
   .month-table {
     border-collapse: collapse;
@@ -134,25 +134,25 @@ $icon-size: 1.7*$m;
   }
 
   .time-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: $bp-color-city;
-		font-size: $bp-fs-8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $bp-color-city;
+    font-size: $bp-fs-8;
     background-color: $bp-color-whisper;
     padding: $u 0;
     border-radius: 8px;
 
-		.time-input-container {
-			display: flex;
-			justify-content: space-evenly;
-			align-items: center;
-			border-radius: 8px;
+    .time-input-container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      border-radius: 8px;
       border: 1px solid $bp-color-wave;
-			height: 3*$m;
-			width: 6.6*$m;
+      height: 3*$m;
+      width: 6.6*$m;
       background-color: $bp-color-white;
-			background-size: $m;
+      background-size: $m;
       margin-left: 1.5*$m;
 
       .clock-icon {
@@ -169,38 +169,38 @@ $icon-size: 1.7*$m;
       input {
         font-size: $bp-fs-7;
       }
-		}
+    }
   }
   
   .date-selector {
-		text-transform: uppercase;
-		font-size: $bp-fs-7;
-		color: $bp-color-desk;
-		background-color: $bp-color-white;
-		padding: $m 0 3*$m;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
+    text-transform: uppercase;
+    font-size: $bp-fs-7;
+    color: $bp-color-desk;
+    background-color: $bp-color-white;
+    padding: $m 0 3*$m;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-		> div {
-			display: flex;
-			justify-content: space-between;
+    > div {
+      display: flex;
+      justify-content: space-between;
 
-			label {
-				cursor: pointer;
-				width: 5*$m;
+      label {
+        cursor: pointer;
+        width: 5*$m;
         text-align: center;
 
-				div {
-					border-radius: 4px;
-					padding: 0.5*$m 0;
-				}
+        div {
+          border-radius: 4px;
+          padding: 0.5*$m 0;
+        }
 
-				input[type="radio"]:checked ~ div, div:hover {
-					background-color: $bp-color-bot;
-					color: $bp-color-white;
-				}
-			}
-		}
-	}
+        input[type="radio"]:checked ~ div, div:hover {
+          background-color: $bp-color-bot;
+          color: $bp-color-white;
+        }
+      }
+    }
+  }
 }

@@ -88,7 +88,7 @@ $icon-size: 1.7*$m;
       cursor: default;
       width: 2*$m;
       height: $m;
-      padding: 0 0.3*$m;
+      padding: 0;
     }
 
     .week-day {
@@ -106,23 +106,24 @@ $icon-size: 1.7*$m;
         background-color: $bp-color-sky;
       }
 
+      &.in-range:first-of-type, &:not(.in-range) + .range-limit {
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+
+      &.in-range:last-of-type, &.in-range + .range-limit {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+
       &.range-limit div, &.current-month:not(.invalid-day):hover div {
         color: $bp-color-white;
         background-color: $bp-color-bot;
       }
 
-      &:not(.in-range) + .range-limit {
-        border-top-left-radius: 50%;
-        border-bottom-left-radius: 50%;
-      }
-
-      &.in-range + .range-limit {
-        border-top-right-radius: 50%;
-        border-bottom-right-radius: 50%;
-      }
-
       div {
         padding: $u 1.2*$u;
+        margin: 0 0.5*$u;
         border-radius: 8px;
       }
     }
@@ -130,7 +131,7 @@ $icon-size: 1.7*$m;
 
   hr {
     margin: $m 0;
-    border: 1px solid $bp-color-wave;
+    border-top: 0.1*$u solid $bp-color-wave;
   }
 
   .time-container {

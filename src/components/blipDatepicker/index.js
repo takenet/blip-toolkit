@@ -62,16 +62,16 @@ export class BlipDatepicker extends Component {
 
     this.i18n = options.i18n || BlipDatepicker.i18nEN
 
-    this._selectedDay = options.selectedDay || undefined
-    this._selectedPeriod = options.selectedPeriod || undefined
-    this._validPeriod = options.validPeriod || undefined
+    this._selectedDay = options.selectedDay
+    this._selectedPeriod = options.selectedPeriod
+    this._validPeriod = options.validPeriod
 
     this._onMonthButtonClick = options.onMonthButtonClick || this._onMonthButtonClick
-    this.onDateSelectorShow = options.onDateSelectorShow || undefined
-    this.onDateSelectorHide = options.onDateSelectorHide || undefined
-    this.onDayHovering = options.onDayHovering || undefined
-    this.onDaySelection = options.onDaySelection || undefined
-    this.onPeriodSelection = options.onPeriodSelection || undefined
+    this.onDateSelectorShow = options.onDateSelectorShow
+    this.onDateSelectorHide = options.onDateSelectorHide
+    this.onDayHovering = options.onDayHovering
+    this.onDaySelection = options.onDaySelection
+    this.onPeriodSelection = options.onPeriodSelection
   }
 
   get isShowingSelector() {

@@ -1,4 +1,4 @@
-export default class DateHelper {
+export class DateHelper {
   static thisMonth(sourceDate) {
     return new Date(
       sourceDate.getFullYear(),

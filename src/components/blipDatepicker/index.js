@@ -1,7 +1,7 @@
 import Component from 'nanocomponent'
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
-import DateHelper from './DateHelper'
+import { DateHelper } from './DateHelper'
 
 import ArrowLeft from '../../img/arrow-ball-left-solid.svg'
 import ArrowRight from '../../img/arrow-ball-right-solid.svg'

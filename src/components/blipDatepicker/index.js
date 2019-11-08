@@ -2,6 +2,7 @@ import Component from 'nanocomponent'
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
 import { DateHelper } from './DateHelper'
+import { createHTMLElement } from './../../lib/utils'
 
 import ArrowLeft from '../../img/arrow-ball-left-solid.svg'
 import ArrowRight from '../../img/arrow-ball-right-solid.svg'
@@ -134,7 +135,7 @@ export class BlipDatepicker extends Component {
   }
 
   createElement(monthDate) {
-    this._datepicker = this._createHTMLElement('div', BlipDatepicker.style.datepicker)
+    this._datepicker = createHTMLElement('div', BlipDatepicker.style.datepicker)
 
     this._createMonthTable()
     this._createDateSelector()
@@ -150,18 +151,18 @@ export class BlipDatepicker extends Component {
   }
 
   _createMonthTable() {
-    var monthTable = this._createHTMLElement('table', BlipDatepicker.style.monthTable)
+    var monthTable = createHTMLElement('table', BlipDatepicker.style.monthTable)
     var tableHead = monthTable.createTHead()
     var tableBody = monthTable.createTBody()
 
     var headerRow = tableHead.insertRow()
 
-    var titleCell = this._createHTMLElement('th')
-    var prevCell = this._createHTMLElement('th')
-    var nextCell = this._createHTMLElement('th')
+    var titleCell = createHTMLElement('th')
+    var prevCell = createHTMLElement('th')
+    var nextCell = createHTMLElement('th')
 
-    var monthTitle = this._createHTMLElement('span', BlipDatepicker.style.monthTitle)
-    var yearInput = this._createHTMLElement('input', BlipDatepicker.style.yearInput)
+    var monthTitle = createHTMLElement('span', BlipDatepicker.style.monthTitle)
+    var yearInput = createHTMLElement('input', BlipDatepicker.style.yearInput)
     yearInput.type = 'number'
 
     var createButton = (icon, value, ...classes) => {
@@ -201,7 +202,7 @@ export class BlipDatepicker extends Component {
         var monthDay = weekRow.insertCell()
         monthDay.classList.add(BlipDatepicker.style.monthDay)
 
-        var dayDiv = this._createHTMLElement('div')
+        var dayDiv = createHTMLElement('div')
         monthDay.appendChild(dayDiv)
 
         monthDays.push(monthDay)
@@ -222,17 +223,17 @@ export class BlipDatepicker extends Component {
   }
 
   _createDateSelector() {
-    var dateSelector = this._createHTMLElement('div', BlipDatepicker.style.dateSelector)
+    var dateSelector = createHTMLElement('div', BlipDatepicker.style.dateSelector)
 
     var selectorOptions = []
     var selectorInputs = []
     for (var row = 0; row < BlipDatepicker.selectorRows; row++) {
-      var rowDiv = this._createHTMLElement('div')
+      var rowDiv = createHTMLElement('div')
       for (var option = 0; option < BlipDatepicker.selectorColumns; option++) {
-        var optionDiv = this._createHTMLElement('label', BlipDatepicker.style.dateSelectorOption)
+        var optionDiv = createHTMLElement('label', BlipDatepicker.style.dateSelectorOption)
 
-        var radioInput = this._createHTMLElement('input')
-        var textSpan = this._createHTMLElement('div')
+        var radioInput = createHTMLElement('input')
+        var textSpan = createHTMLElement('div')
 
         radioInput.type = 'radio'
         radioInput.name = 'dateSelector'
@@ -262,16 +263,16 @@ export class BlipDatepicker extends Component {
   }
 
   _createTimeStructure() {
-    var separator = this._createHTMLElement('hr')
+    var separator = createHTMLElement('hr')
 
-    var timeContainer = this._createHTMLElement('div', BlipDatepicker.style.timeContainer)
+    var timeContainer = createHTMLElement('div', BlipDatepicker.style.timeContainer)
     timeContainer.innerText = this.i18n.timeInputText
 
-    var timeInputContainer = this._createHTMLElement('div', BlipDatepicker.style.timeInputContainer)
+    var timeInputContainer = createHTMLElement('div', BlipDatepicker.style.timeInputContainer)
 
     var timeIcon = html`<div class="${BlipDatepicker.style.clockIcon}">${raw(Clock)}</div>`
 
-    var timeInput = this._createHTMLElement('input', BlipDatepicker.style.timeInput)
+    var timeInput = createHTMLElement('input', BlipDatepicker.style.timeInput)
     timeInput.type = 'time'
     timeInput.required = true
 

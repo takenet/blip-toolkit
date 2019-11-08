@@ -66,3 +66,14 @@ export const differenceByLabel = otherArray => current =>
   otherArray.filter(other => {
     return other.label === current.label
   }).length === 0
+
+/**
+ * Creates a HTML element with given classes
+ * @param {String} elementTag
+ * @param {Array} classes
+ */
+export const createHTMLElement = (elementTag, ...classes) => {
+  var element = document.createElement(elementTag)
+  if (classes) classes.forEach(className => element.classList.add(className))
+  return element
+}

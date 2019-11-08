@@ -286,12 +286,6 @@ export class BlipDatepicker extends Component {
     this._timeInput = timeInput
   }
 
-  _createHTMLElement(elementTag, ...classes) {
-    var element = document.createElement(elementTag)
-    if (classes) classes.forEach(className => element.classList.add(className))
-    return element
-  }
-
   _setElementVisibility(element, visibility) {
     element.style.visibility = visibility ? 'visible' : 'hidden'
   }

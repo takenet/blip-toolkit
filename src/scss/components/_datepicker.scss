@@ -106,7 +106,7 @@ $icon-size: 1.7*$m;
         background-color: $bp-color-sky;
       }
 
-      &.in-range:first-of-type, &:not(.in-range) + .range-limit {
+      &.in-range:first-of-type, &:not(.in-range) + .range-limit, &.last-month + .in-range {
         border-top-left-radius: 50%;
         border-bottom-left-radius: 50%;
       }

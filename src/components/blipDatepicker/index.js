@@ -30,7 +30,7 @@ export class BlipDatepicker extends Component {
     timeInputText: 'Time',
   }
   static style = {
-    datepicker: 'blip-datepicker',
+    datepicker: 'bp-datepicker',
     monthTable: 'month-table',
     monthButton: 'month-button',
     monthPrev: 'month-prev',
@@ -425,8 +425,11 @@ export class BlipDatepicker extends Component {
       this.showNext = true
     }
 
-    if (selected) this._selectorInputs[selected].checked = true
-    else this._selectorInputs.forEach(input => { input.checked = false })
+    if (selected) {
+      this._selectorInputs[selected].checked = true
+    } else {
+      this._selectorInputs.forEach(input => { input.checked = false })
+    }
     this._setElementVisibility(this._dateSelector, true)
 
     if (this.onDateSelectorShow) this.onDateSelectorShow()
@@ -434,7 +437,7 @@ export class BlipDatepicker extends Component {
 
   _clearSelection() {
     this._monthDays.forEach(
-      (dayCell) => {
+      dayCell => {
         dayCell.classList.remove(BlipDatepicker.style.rangeLimit)
         dayCell.classList.remove(BlipDatepicker.style.inRange)
       })
@@ -461,10 +464,7 @@ export class BlipDatepicker extends Component {
     this.pickYear = false
 
     this._setElementVisibility(this._dateSelector, false)
-    this._selectorOptions.forEach(
-      option => {
-        option.innerText = ''
-      })
+    this._selectorOptions.forEach(option => { option.innerText = '' })
 
     if (this.onDateSelectorHide) this.onDateSelectorHide()
   }
@@ -497,7 +497,10 @@ export class BlipDatepicker extends Component {
         day.addEventListener('click', this._onDayClick)
       })
 
-    if (this.hasTime) this._timeInput.addEventListener('change', this._onTimeInputChange)
+    if (this.hasTime) {
+      this._timeInput.addEventListener('change', this._onTimeInputChange)
+      this._timeInput.addEventListener('keyup', this._onTimeInputKeyup)
+    }
   }
 
   _removeEventListeners() {
@@ -519,7 +522,10 @@ export class BlipDatepicker extends Component {
         day.removeEventListener('click', this._onDayClick)
       })
 
-    if (this.hasTime) this._timeInput.removeEventListener('change', this._onTimeInputChange)
+    if (this.hasTime) {
+      this._timeInput.removeEventListener('change', this._onTimeInputChange)
+      this._timeInput.removeEventListener('keyup', this._onTimeInputKeyup)
+    }
   }
 
   _onMonthButtonClick = event => {
@@ -605,5 +611,12 @@ export class BlipDatepicker extends Component {
   _onTimeInputChange = event => {
     const [hour, minute] = event.target.value.split(':')
     this._monthDate.setHours(hour, minute)
+  }
+
+  _onTimeInputKeyup = event => {
+    if (event.key === 'Enter') {
+      this._timeInput.blur()
+      this._onTimeInputChange(event)
+    }
   }
 }

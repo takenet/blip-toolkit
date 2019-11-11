@@ -74,6 +74,8 @@ export const differenceByLabel = otherArray => current =>
  */
 export const createHTMLElement = (elementTag, ...classes) => {
   var element = document.createElement(elementTag)
-  if (classes) classes.forEach(className => element.classList.add(className))
+  if (classes) {
+    classes.forEach(className => element.classList.add(className))
+  }
   return element
 }

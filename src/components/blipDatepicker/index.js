@@ -1,8 +1,8 @@
 import Component from 'nanocomponent'
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
-import { DateHelper } from './DateHelper'
-import { createHTMLElement } from './../../lib/utils'
+import { DateHelper } from './../shared'
+import { createHTMLElement, eventPathFindElementByTag } from './../../lib/utils'
 
 import ArrowLeft from '../../img/arrow-ball-left-solid.svg'
 import ArrowRight from '../../img/arrow-ball-right-solid.svg'
@@ -59,15 +59,18 @@ export class BlipDatepicker extends Component {
   constructor(options) {
     super()
 
+    options = options || {}
+
+    this.name = options.name
     this.hasTime = options.hasTime || false
 
     this.i18n = options.i18n || BlipDatepicker.i18nEN
 
-    this._selectedDay = options.selectedDay
     this._selectedPeriod = options.selectedPeriod
     this._validPeriod = options.validPeriod
 
     this._onMonthButtonClick = options.onMonthButtonClick || this._onMonthButtonClick
+    this.onTimeChange = options.onTimeChange
     this.onDateSelectorShow = options.onDateSelectorShow
     this.onDateSelectorHide = options.onDateSelectorHide
     this.onDayHovering = options.onDayHovering
@@ -110,13 +113,14 @@ export class BlipDatepicker extends Component {
   set monthDate(newDate) {
     this._monthDate = new Date(newDate)
     this._renderMonth()
-    this._renderTime()
+    if (this.hasTime) {
+      this._renderTime()
+    }
   }
 
   set selectedDay(newDate) {
     this._selectedDay = new Date(newDate)
     this._selectedPeriod = undefined
-    this._clearSelection()
     this._renderSelection(newDate)
   }
 
@@ -216,6 +220,7 @@ export class BlipDatepicker extends Component {
     this._yearInput = yearInput
     this._prevButton = prevButton
     this._nextButton = nextButton
+    this._tableHead = tableHead
     this._tableBody = tableBody
     this._daysRows = daysRows
     this._monthDays = monthDays
@@ -344,25 +349,24 @@ export class BlipDatepicker extends Component {
     this._monthDays.forEach(
       dayCell => {
         if (this._isValidDay(dayCell)) {
+          dayCell.classList.remove(BlipDatepicker.style.rangeLimit)
+          dayCell.classList.remove(BlipDatepicker.style.inRange)
+
           const dayDate = new Date(Number(dayCell.getAttribute('time')))
 
           if (this._selectedPeriod) {
-            if (DateHelper.isEqual(this._selectedPeriod.startDate, dayDate) || DateHelper.isEqual(this._selectedPeriod.endDate, dayDate)) {
+            if (DateHelper.isSameDay(this._selectedPeriod.startDate, dayDate) || DateHelper.isSameDay(this._selectedPeriod.endDate, dayDate)) {
               dayCell.classList.add(BlipDatepicker.style.rangeLimit)
             }
             if (DateHelper.isBetween(this._selectedPeriod.startDate, this._selectedPeriod.endDate, dayDate)) {
               dayCell.classList.add(BlipDatepicker.style.inRange)
-            } else {
-              dayCell.classList.remove(BlipDatepicker.style.inRange)
             }
           } else if (this._selectedDay && hoverDate) {
-            if (DateHelper.isEqual(this._selectedDay, dayDate)) {
+            if (DateHelper.isSameDay(this._selectedDay, dayDate)) {
               dayCell.classList.add(BlipDatepicker.style.rangeLimit)
             }
             if (DateHelper.isBetween(this._selectedDay, hoverDate, dayDate)) {
               dayCell.classList.add(BlipDatepicker.style.inRange)
-            } else {
-              dayCell.classList.remove(BlipDatepicker.style.inRange)
             }
           }
         }
@@ -389,10 +393,9 @@ export class BlipDatepicker extends Component {
 
   _renderDateSelector(options, selected = undefined) {
     const addPxToValue = value => `${value}px`
-    const { top, left } = this._tableBody.getBoundingClientRect()
+    const { height: theadHeight } = this._tableHead.getBoundingClientRect()
 
-    this._dateSelector.style.top = addPxToValue(top)
-    this._dateSelector.style.left = addPxToValue(left)
+    this._dateSelector.style.top = addPxToValue(theadHeight)
     this._dateSelector.style.height = addPxToValue(this._tableBody.offsetHeight)
     this._dateSelector.style.width = addPxToValue(this._tableBody.offsetWidth)
 
@@ -433,14 +436,6 @@ export class BlipDatepicker extends Component {
     this._setElementVisibility(this._dateSelector, true)
 
     if (this.onDateSelectorShow) this.onDateSelectorShow()
-  }
-
-  _clearSelection() {
-    this._monthDays.forEach(
-      dayCell => {
-        dayCell.classList.remove(BlipDatepicker.style.rangeLimit)
-        dayCell.classList.remove(BlipDatepicker.style.inRange)
-      })
   }
 
   _clearDateSelector() {
@@ -529,7 +524,7 @@ export class BlipDatepicker extends Component {
   }
 
   _onMonthButtonClick = event => {
-    const button = event.composedPath().find(el => el.tagName === 'BUTTON')
+    const button = eventPathFindElementByTag(event, 'BUTTON')
     const offset = Number(button.value)
     this.monthDate = DateHelper.moveMonth(this.monthDate, offset)
   }
@@ -557,7 +552,7 @@ export class BlipDatepicker extends Component {
   }
 
   _onYearRangeClick = event => {
-    const button = event.composedPath().find(el => el.tagName === 'BUTTON')
+    const button = eventPathFindElementByTag(event, 'BUTTON')
     const optionsSize = this.i18n.months.length
     const offset = Number(button.value) * optionsSize
     const baseYear = Number(this._selectorInputs[0].value)
@@ -582,7 +577,7 @@ export class BlipDatepicker extends Component {
   }
 
   _onDayHover = event => {
-    const currentCell = event.composedPath().find(el => el.tagName === 'TD')
+    const currentCell = eventPathFindElementByTag(event, 'TD')
 
     if (this._selectedDay && this._isValidDay(currentCell)) {
       const cellDate = new Date(Number(currentCell.getAttribute('time')))
@@ -593,7 +588,7 @@ export class BlipDatepicker extends Component {
   }
 
   _onDayClick = event => {
-    const dayCell = event.composedPath().find(el => el.tagName === 'TD')
+    const dayCell = eventPathFindElementByTag(event, 'TD')
 
     if (this._isValidDay(dayCell)) {
       const dayDate = new Date(Number(dayCell.getAttribute('time')))
@@ -611,6 +606,8 @@ export class BlipDatepicker extends Component {
   _onTimeInputChange = event => {
     const [hour, minute] = event.target.value.split(':')
     this._monthDate.setHours(hour, minute)
+
+    if (this.onTimeChange) this.onTimeChange()
   }
 
   _onTimeInputKeyup = event => {

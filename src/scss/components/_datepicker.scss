@@ -1,29 +1,32 @@
 $icon-size: 1.7*$m;
+$side-margin: 0 $u;
 
-.blip-datepicker {
-  display: inline-block;
+.bp-datepicker input, .bp-daterange-picker input {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
 
-  input {
-    border: none;
-    cursor: pointer;
-
-    &::-webkit-clear-button, &::-webkit-inner-spin-button {
-      display: none;
-      -webkit-appearance: none;
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    &:disabled {
-      cursor: default;
-      background-color: transparent;
-    }
+  &::-webkit-clear-button, &::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
   }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.bp-datepicker {
+  display: inline-block;
+  position: relative;
 
   .month-table {
     border-collapse: collapse;
+    margin: $side-margin;
 
     th {
       border-bottom: $u solid $bp-color-white;
@@ -43,6 +46,7 @@ $icon-size: 1.7*$m;
       .year-input {
         font-weight: 600;
         max-width: 3*$m;
+        max-height: 1.2*$m;
         margin-left: $m;
 
         &:focus {
@@ -71,6 +75,7 @@ $icon-size: 1.7*$m;
 
     .weekday-week {
       border-top: 1.5*$m solid $bp-color-white;
+      text-transform: uppercase;
     }
 
     .month-week, .next-month-week {
@@ -102,7 +107,7 @@ $icon-size: 1.7*$m;
         color: $bp-color-time;
       }
 
-      &.in-range {
+      &.in-range, &.range-limit {
         background-color: $bp-color-sky;
       }
 
@@ -143,6 +148,7 @@ $icon-size: 1.7*$m;
     background-color: $bp-color-whisper;
     padding: $u 0;
     border-radius: 8px;
+    margin: $side-margin;
 
     .time-input-container {
       display: flex;
@@ -182,6 +188,7 @@ $icon-size: 1.7*$m;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: $side-margin;
 
     > div {
       display: flex;

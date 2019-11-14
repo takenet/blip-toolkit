@@ -6,9 +6,9 @@ if (!window._babelPolyfill) {
   require('babel-polyfill')
 }
 
-//
 export { BlipCarousel } from './components/blipCarousel'
 export { BlipDatepicker } from './components/blipDatepicker'
+export { BlipDaterangepicker } from './components/blipDaterangepicker'
 export { BlipInput } from './components/blipInput'
 export { BlipLoading } from './components/blipLoading'
 export { BlipModal } from './components/blipModal'

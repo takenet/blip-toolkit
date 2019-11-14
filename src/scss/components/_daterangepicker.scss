@@ -15,9 +15,24 @@
       @include bp-shadow(0, 0, 1px, 1px, $bp-color-bot);
     }
 
+    .bp-daterange-icon {
+      padding: 0;
+      vertical-align: middle;
+      @include fixed-size(2.5*$m);
+      padding: 0.2*$m;
+      background-color: $bp-color-sky;
+      border-radius: 5px;
+      display: inline-block;
+
+      svg path {
+        fill: $bp-color-bot;
+      }
+    }
+
     input {
       width: 14*$m;
       text-align: center;
+      vertical-align: middle;
 
       &::-ms-clear {
         display: none;

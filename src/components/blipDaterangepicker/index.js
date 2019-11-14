@@ -1,9 +1,12 @@
 import Component from 'nanocomponent'
 import html from 'nanohtml'
-// import raw from 'nanohtml/raw'
+import raw from 'nanohtml/raw'
+
 import { BlipDatepicker } from '../blipDatepicker'
 import { DateHelper } from './../shared'
 import { eventPathFindElementByTag } from './../../lib/utils'
+
+import Calendar from '../../img/calendar-outline.svg'
 
 const datepickerContainerClass = 'bp-daterange-datepicker'
 
@@ -20,6 +23,8 @@ export class BlipDaterangepicker extends Component {
     super()
 
     options = options || {}
+
+    this.hasTime = options.hasTime || false
 
     this.months = options.months
     this.weekdays = options.weekdays
@@ -43,6 +48,7 @@ export class BlipDaterangepicker extends Component {
     const daterangepicker = html`
     <div class="bp-daterange-picker">
       <div class="${inputContainerClass}">
+        <div class="bp-daterange-icon">${raw(Calendar)}</div>
         <input type="text" class="${startDateInputClass}" readonly>
         <span>~</span>
         <input type="text" class="${endDateInputClass}" readonly>
@@ -92,7 +98,7 @@ export class BlipDaterangepicker extends Component {
     let staticPicker
 
     return {
-      hasTime: true,
+      hasTime: this.hasTime,
       i18n: {
         months: this.months,
         weekdays: this.weekdays,

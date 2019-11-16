@@ -32,6 +32,9 @@ export class BlipDaterangepicker extends Component {
     this.cancelText = options.cancelText || 'Cancel'
     this.applyText = options.applyText || 'Apply'
 
+    this.startDatePlaceholder = options.startDatePlaceholder || 'Start date' + (this.hasTime ? ' and time' : '')
+    this.endDatePlaceholder = options.endDatePlaceholder || 'End date' + (this.hasTime ? ' and time' : '')
+
     this.startTimeText = options.startTimeText || 'Initial time'
     this.endTimeText = options.endTimeText || 'End time'
 
@@ -49,9 +52,9 @@ export class BlipDaterangepicker extends Component {
     <div class="bp-daterange-picker">
       <div class="${inputContainerClass}">
         <div class="bp-daterange-icon">${raw(Calendar)}</div>
-        <input type="text" class="${startDateInputClass}" readonly>
+        <input type="text" class="${startDateInputClass}" placeholder="${this.startDatePlaceholder}" readonly>
         <span>~</span>
-        <input type="text" class="${endDateInputClass}" readonly>
+        <input type="text" class="${endDateInputClass}" placeholder="${this.endDatePlaceholder}" readonly>
       </div>
       <div class="${dropdownClass}" style="display: none;">
         <div class="${datepickerContainerClass}"></div>

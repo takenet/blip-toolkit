@@ -33,6 +33,7 @@
       width: 14*$m;
       text-align: center;
       vertical-align: middle;
+      @include placeholder($bp-color-cloud);
 
       &::-ms-clear {
         display: none;

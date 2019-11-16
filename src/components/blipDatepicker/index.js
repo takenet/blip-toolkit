@@ -2,7 +2,7 @@ import Component from 'nanocomponent'
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
 import { DateHelper } from './../shared'
-import { createHTMLElement, eventPathFindElementByTag } from './../../lib/utils'
+import { eventPathFindElementByTag } from './../../lib/utils'
 
 import ArrowLeft from '../../img/arrow-ball-left-solid.svg'
 import ArrowRight from '../../img/arrow-ball-right-solid.svg'
@@ -139,7 +139,7 @@ export class BlipDatepicker extends Component {
   }
 
   createElement(monthDate) {
-    this._datepicker = createHTMLElement('div', BlipDatepicker.style.datepicker)
+    this._datepicker = html`<div class="${BlipDatepicker.style.datepicker}"></div>`
 
     this._createMonthTable()
     this._createDateSelector()
@@ -155,139 +155,124 @@ export class BlipDatepicker extends Component {
   }
 
   _createMonthTable() {
-    const monthTable = createHTMLElement('table', BlipDatepicker.style.monthTable)
-    const tableHead = monthTable.createTHead()
-    const tableBody = monthTable.createTBody()
+    const monthTable = html`
+    <table class="${BlipDatepicker.style.monthTable}">
+      <thead>
+        <tr>
+          <th>
+            <button class="${BlipDatepicker.style.monthButton} ${BlipDatepicker.style.monthPrev}"
+            value="-1">${raw(ArrowLeft)}</button>
+          </th>
+          <th colspan="5">
+            <span class="${BlipDatepicker.style.monthTitle}"></span>
+            <input class="${BlipDatepicker.style.yearInput}" type="number">
+          </th>
+          <th>
+            <button class="${BlipDatepicker.style.monthButton} ${BlipDatepicker.style.monthNext}"
+            value="1">${raw(ArrowRight)}</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>`
 
-    const headerRow = tableHead.insertRow()
-
-    const titleCell = createHTMLElement('th')
-    const prevCell = createHTMLElement('th')
-    const nextCell = createHTMLElement('th')
-
-    const monthTitle = createHTMLElement('span', BlipDatepicker.style.monthTitle)
-    const yearInput = createHTMLElement('input', BlipDatepicker.style.yearInput)
-    yearInput.type = 'number'
-
-    const createButton = (icon, value, ...classes) => {
-      const button = html`<button class="${BlipDatepicker.style.monthButton}">${raw(icon)}</button>`
-      if (classes) classes.forEach(className => button.classList.add(className))
-      button.value = value
-      return button
-    }
-
-    const prevButton = createButton(ArrowLeft, '-1', BlipDatepicker.style.monthPrev)
-    const nextButton = createButton(ArrowRight, '1', BlipDatepicker.style.monthNext)
-
-    titleCell.colSpan = '5'
-    titleCell.appendChild(monthTitle)
-    titleCell.appendChild(yearInput)
-    prevCell.appendChild(prevButton)
-    nextCell.appendChild(nextButton)
-
-    headerRow.appendChild(prevCell)
-    headerRow.appendChild(titleCell)
-    headerRow.appendChild(nextCell)
+    const tableBody = monthTable.querySelector('tbody')
 
     const weekdayRow = tableBody.insertRow()
     weekdayRow.classList.add(BlipDatepicker.style.weekdayWeek)
-    for (let day = 0; day < BlipDatepicker.weekSize; day++) {
-      const weekday = weekdayRow.insertCell()
-      weekday.classList.add(BlipDatepicker.style.weekDay)
-      weekday.innerText = this.i18n.weekdays[day][0]
-      weekday.title = this.i18n.weekdays[day]
-    }
+    this.i18n.weekdays.forEach(day => {
+      const weekDay = html`
+      <td class="${BlipDatepicker.style.weekDay}" title="${day}">
+        ${day[0]}
+      </td>`
+      weekdayRow.appendChild(weekDay)
+    })
 
     const daysRows = []
     const monthDays = []
     for (let week = 0; week < BlipDatepicker.monthRows; week++) {
       const weekRow = tableBody.insertRow()
-      for (let day = 0; day < BlipDatepicker.weekSize; day++) {
-        const monthDay = weekRow.insertCell()
-        monthDay.classList.add(BlipDatepicker.style.monthDay)
-        const dayDiv = createHTMLElement('div')
-        monthDay.appendChild(dayDiv)
-
+      this.i18n.weekdays.forEach(_ => {
+        const monthDay = html`
+        <td class="${BlipDatepicker.style.monthDay}">
+          <div></div>
+        </td>`
         monthDays.push(monthDay)
-      }
+        weekRow.appendChild(monthDay)
+      })
       daysRows.push(weekRow)
     }
 
     this._datepicker.appendChild(monthTable)
 
     this._monthTable = monthTable
-    this._monthTitle = monthTitle
-    this._yearInput = yearInput
-    this._prevButton = prevButton
-    this._nextButton = nextButton
-    this._tableHead = tableHead
+
+    this._tableHead = monthTable.querySelector('thead')
+    this._monthTitle = monthTable.querySelector(`.${BlipDatepicker.style.monthTitle}`)
+    this._yearInput = monthTable.querySelector(`.${BlipDatepicker.style.yearInput}`)
+    this._prevButton = monthTable.querySelector(`.${BlipDatepicker.style.monthPrev}`)
+    this._nextButton = monthTable.querySelector(`.${BlipDatepicker.style.monthNext}`)
+
     this._tableBody = tableBody
     this._daysRows = daysRows
     this._monthDays = monthDays
   }
 
   _createDateSelector() {
-    const dateSelector = createHTMLElement('div', BlipDatepicker.style.dateSelector)
+    const dateSelector = html`
+    <div class="${BlipDatepicker.style.dateSelector}" style="position: absolute;"></div>`
 
     const selectorOptions = []
     const selectorInputs = []
     for (let row = 0; row < BlipDatepicker.selectorRows; row++) {
-      const rowDiv = createHTMLElement('div')
+      const rowDiv = html`<div></div>`
       for (let option = 0; option < BlipDatepicker.selectorColumns; option++) {
-        const optionDiv = createHTMLElement('label', BlipDatepicker.style.dateSelectorOption)
+        const optionLabel = html`
+        <label>
+          <input type="radio" name="dateSelector" style="display: none;">
+          <div></div>
+        </label>`
 
-        const radioInput = createHTMLElement('input')
-        const textSpan = createHTMLElement('div')
+        const radioInput = optionLabel.querySelector('input')
+        const textDiv = optionLabel.querySelector('div')
 
-        radioInput.type = 'radio'
-        radioInput.name = 'dateSelector'
-        radioInput.style.display = 'none'
-
-        optionDiv.appendChild(radioInput)
-        optionDiv.appendChild(textSpan)
-        rowDiv.appendChild(optionDiv)
-
-        selectorOptions.push(textSpan)
+        selectorOptions.push(textDiv)
         selectorInputs.push(radioInput)
+
+        rowDiv.appendChild(optionLabel)
       }
       dateSelector.appendChild(rowDiv)
     }
 
+    this.pickMonth = false
+    this.pickYear = false
     this._setElementVisibility(dateSelector, false)
-    dateSelector.style.position = 'absolute'
 
     this._datepicker.appendChild(dateSelector)
 
     this._dateSelector = dateSelector
     this._selectorOptions = selectorOptions
     this._selectorInputs = selectorInputs
-
-    this.pickMonth = false
-    this.pickYear = false
   }
 
   _createTimeStructure() {
-    const separator = createHTMLElement('hr')
+    const timeContainer = html`
+    <div class="${BlipDatepicker.style.timeContainer}">
+      ${this.i18n.timeInputText}
+    </div>`
 
-    const timeContainer = createHTMLElement('div', BlipDatepicker.style.timeContainer)
-    timeContainer.innerText = this.i18n.timeInputText
+    const timeInputContainer = html`
+    <div class="${BlipDatepicker.style.timeInputContainer}">
+      <div class="${BlipDatepicker.style.clockIcon}">${raw(Clock)}</div>
+      <input class="${BlipDatepicker.style.timeInput}" type="time" required>
+    </div>`
 
-    const timeInputContainer = createHTMLElement('div', BlipDatepicker.style.timeInputContainer)
-
-    const timeIcon = html`<div class="${BlipDatepicker.style.clockIcon}">${raw(Clock)}</div>`
-
-    const timeInput = createHTMLElement('input', BlipDatepicker.style.timeInput)
-    timeInput.type = 'time'
-    timeInput.required = true
-
-    timeInputContainer.appendChild(timeIcon)
-    timeInputContainer.appendChild(timeInput)
     timeContainer.appendChild(timeInputContainer)
 
-    this._datepicker.appendChild(separator)
+    this._datepicker.appendChild(html`<hr>`)
     this._datepicker.appendChild(timeContainer)
 
-    this._timeInput = timeInput
+    this._timeInput = timeInputContainer.querySelector('input')
   }
 
   _setElementVisibility(element, visibility) {

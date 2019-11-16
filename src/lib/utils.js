@@ -68,19 +68,6 @@ export const differenceByLabel = otherArray => current =>
   }).length === 0
 
 /**
- * Creates a HTML element with given classes
- * @param {String} elementTag
- * @param {Array} classes
- */
-export const createHTMLElement = (elementTag, ...classes) => {
-  var element = document.createElement(elementTag)
-  if (classes) {
-    classes.forEach(className => element.classList.add(className))
-  }
-  return element
-}
-
-/**
  * Find element with given tag in Event path
  * @param {String} event
  * @param {Array} elementTagName

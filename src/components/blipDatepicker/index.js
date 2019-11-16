@@ -1,21 +1,12 @@
 import Component from 'nanocomponent'
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
-import { DateHelper } from './../shared'
+import { Period, DateHelper } from './../shared'
 import { eventPathFindElementByTag } from './../../lib/utils'
 
 import ArrowLeft from '../../img/arrow-ball-left-solid.svg'
 import ArrowRight from '../../img/arrow-ball-right-solid.svg'
 import Clock from '../../img/clock-outline.svg'
-
-class Period {
-  constructor(date1, date2) {
-    const smaller = date1 < date2 ? date1 : date2
-    const bigger = date1 < date2 ? date2 : date1
-    this.startDate = new Date(smaller)
-    this.endDate = new Date(bigger)
-  }
-}
 
 export class BlipDatepicker extends Component {
   static weekSize = 7

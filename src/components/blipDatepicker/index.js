@@ -129,6 +129,10 @@ export class BlipDatepicker extends Component {
     this._setElementVisibility(this._nextButton, visibility)
   }
 
+  set showSelector(visibility) {
+    this._setElementVisibility(this._dateSelector, visibility)
+  }
+
   createElement(monthDate) {
     this._datepicker = html`<div class="${BlipDatepicker.style.datepicker}"></div>`
 

@@ -82,6 +82,7 @@ export class BlipDaterangepicker extends Component {
     this.applyButton = daterangepicker.querySelector(`.${applyButtonClass}`)
 
     this._addEventListeners()
+    this._setButtonsVisibility()
     this._applyDate()
 
     return daterangepicker
@@ -134,6 +135,7 @@ export class BlipDaterangepicker extends Component {
           this._rightPicker.monthDate = DateHelper.moveMonth(this._leftPicker.monthDate, 1)
         }
         staticPicker.interactive = true
+        this._setButtonsVisibility()
       },
       onDayHovering: (date) => {
         this._leftPicker.hoveringDate = date
@@ -156,12 +158,29 @@ export class BlipDaterangepicker extends Component {
     }
   }
 
+  _setButtonsVisibility() {
+    const difference = DateHelper.monthDifference(this._leftPicker.monthDate, this._rightPicker.monthDate)
+    const display = difference !== 1
+
+    this._leftPicker.showNext = display
+    this._rightPicker.showPrev = display
+  }
+
   _pickerActive = () => {
     this.dropdown.style.display = 'block'
     this.inputContainer.classList.add(`${inputContainerClass}--active`)
   }
 
   _pickerNotActive = () => {
+    if (this.selectedPeriod) {
+      this._leftPicker.monthDate = this.selectedPeriod.startDate
+      this._rightPicker.monthDate = DateHelper.moveMonth(this.selectedPeriod.startDate, 1)
+      this._setButtonsVisibility()
+    }
+
+    this._leftPicker.showSelector = false
+    this._rightPicker.showSelector = false
+
     this.dropdown.style.display = 'none'
     this.inputContainer.classList.remove(`${inputContainerClass}--active`)
   }

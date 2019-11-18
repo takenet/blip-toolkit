@@ -67,8 +67,6 @@ dist/
 !docs/website/*
 !docs/website/dist/*
 !docs/website/node_modules/*
-sandbox/
-
 
 ### VisualStudioCode ###
 .vscode/*

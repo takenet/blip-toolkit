@@ -20,6 +20,7 @@ export class OptionsList extends Component {
     this.props = {
       options: [],
       canAddOptions: false,
+      OptionCreator: SelectOption,
     }
   }
 
@@ -32,10 +33,13 @@ export class OptionsList extends Component {
       ...props,
     }
 
+    const { OptionCreator } = this.props
+
     const renderOption = (option) =>
-      new SelectOption({
+      new OptionCreator({
         onOptionClick: this.options.onOptionClick,
         onTryAccessInput: this.options.onTryAccessInput,
+        descriptionPosition: this.props.descriptionPosition,
       }).render(option)
 
     return html`

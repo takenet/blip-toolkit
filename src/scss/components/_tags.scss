@@ -43,18 +43,6 @@
   }
 }
 
-.blip-select__add-option {
-  background: $bp-color-blip-light;
-  border: 0;
-  color: #fff;
-
-  &:hover,
-  &:focus {
-    background: $bp-color-blip-light;
-    outline: 0;
-  }
-}
-
 .blip-tags--compact-mode {
   border: 0;
 }

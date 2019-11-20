@@ -352,7 +352,7 @@ export class BlipSelect extends Component {
       $event: { newOption },
     } = emitter
 
-    if (newOption.value) {
+    if (newOption.value || newOption.label) {
       const newOptions = this.props.options.concat(newOption)
       this.props.options = newOptions
 

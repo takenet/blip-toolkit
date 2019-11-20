@@ -15,56 +15,63 @@ $darken-amount: 7%;
 }
 
 //Corporate
-$bp-color-bot: #2cc3d5;
-$bp-color-blip-light: #0cc8cc;
-$bp-color-blip-dark: #15afb2;
+$bp-color-bot: #2cc3d5; //main
+$bp-color-blip-light: #87DDE8;
+$bp-color-blip-dark: #2498A8;
 
 //Semiotic
+$bp-color-true: #4DCB7B;
+$bp-color-warning-yellow: #ffcf33; //attention
+$bp-color-delete: #FF5A60;
+$bp-color-warning: #F04847;
+$bp-color-disable-dark: #85C6CE;
+$bp-color-disable-light: #DAF2F4;
+
+
+//Substantials
+$bp-color-sky: #C3EEF4;
 $bp-color-wind: #ADE7EE;
 $bp-color-smurf: #55CFFF;
 $bp-color-sea: #517BF2;
 $bp-color-blue-jeans: #2C2A46;
-
-$bp-color-true: #4dcb7b;
-
-$bp-color-warning-yellow: #ffcf33;
 $bp-color-cheetos: #F9B42F;
 $bp-color-doritos:#F99B45;
-
 $bp-color-warning-light: #fbeaea;
-$bp-color-delete: #fb7a6d;
-$bp-color-warning: #f76556;
 $bp-color-watermelon: #F66689;
+$bp-color-flower: #FF7B80;
 
 //Neutrals
+$bp-color-ghost: #FBFBFB;
+$bp-color-whisper: #f5f8f9;
+$bp-color-offwhite: #DEE8EC;
+$bp-color-breeze: #c9dfe4;
 $bp-color-piano: #191919;
 $bp-color-elevator: #333333;
 $bp-color-console: #1d1d1d;
 $bp-color-obsidian: #1a272f;
 $bp-color-onix: #242b36;
 $bp-color-cloud-burst :#363F4E;
-$bp-color-suit: #3d4554;
+$bp-color-suit: #343C4C;
 $bp-color-city: #52636c;
 $bp-color-desk: #607b99;
 $bp-color-rooftop: #738192;
 $bp-color-cloud: #8ca0b3;
 $bp-color-silver: #94a3ab;
-$bp-color-time: #a8bfc4;
-$bp-color-breeze: #c9dfe4;
+$bp-color-time: #B9CBD3;
 $bp-color-wave: #d2dfe6;
-$bp-color-sky: #daf2f4;
-$bp-color-offwhite: #eaeeee;
 $bp-color-athens-gray: #EDF1F3;
-$bp-color-whisper: #f5f8f9;
 
 $bp-color-white: #ffffff;
 $bp-color-black: #000000;
 
-$bp-gradient-shine: linear-gradient(180deg, #f9fbfc 0%, #ecf1f3 100%);
-$bp-gradient-bot: linear-gradient(90deg, #51dbe3 0%, #28b4c3 100%);
-$bp-gradient-blip: linear-gradient(137.45deg, #1bd6e7 0%, #0fc3f8 56.17%, #0abcff 100%);
-$bp-gradient-suit: linear-gradient(90deg, #3d4554, #2f3747);
-$bp-gradient-suit-bottom-up: linear-gradient(180deg, #3d4554, #2f3747);
-$bp-gradient-suit-top-down: linear-gradient(0deg, #3d4554, #2f3747);
-$bp-gradient-business: linear-gradient(90deg, #202f3f 0%, #102834 100%);
-$bp-gradient-enterprise: linear-gradient(90deg, #2e3237 0%, #1f2018 100%);
+//Gradients
+$bp-gradient-shine: linear-gradient(270deg, $bp-color-whisper 0%, $bp-color-offwhite 50%, $bp-color-wave 100%);
+$bp-gradient-bot: linear-gradient(270deg, $bp-color-blip-light 0%, $bp-color-bot 50%, $bp-color-blip-dark 100%); //blip-system
+$bp-gradient-blip: linear-gradient(137.45deg, #9EE3FF 0%, $bp-color-smurf 56.17%, #51B2DD 100%); //smurfette
+$bp-gradient-suit: linear-gradient(270deg, $bp-color-suit 0%, $bp-color-onix 50%, $bp-color-console 100%);
+$bp-gradient-business: linear-gradient(270deg, #202f3f 0%, #102834 100%);
+$bp-gradient-enterprise: linear-gradient(270deg, #2e3237 0%, #1f2018 100%);
+$bp-gradient-error: linear-gradient(270deg, $bp-color-delete 0%, $bp-color-warning 50%, #B43635 100%);
+$bp-gradient-attention: linear-gradient(270deg, $bp-color-warning-yellow 0%, $bp-color-cheetos 50%, $bp-color-doritos 100%);
+$bp-gradient-success: linear-gradient(270deg, #93D2AA 0%, $bp-color-true 50%, #4AA86C 100%);
+$bp-gradient-whisper: linear-gradient(270deg, #FAFCFC 0%, $bp-color-whisper 50%, #E8EAEB 100%);

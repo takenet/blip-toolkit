@@ -244,7 +244,7 @@ new BlipSelect(element, {
   canAddOptions: {
     text: 'Add option',
   },
-  onAddNewOption: ({ $event : { value, label, element }}) => console.log(value, label, element)
+  onAddOption: ({ $event : { value, label, element }}) => console.log(value, label, element)
 })
 ```
 ---

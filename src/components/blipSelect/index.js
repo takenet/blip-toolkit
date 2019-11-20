@@ -1,20 +1,18 @@
+import Component from 'nanocomponent'
 import { guid } from '@lib/utils'
 import { OptionsList } from './OptionsList'
 import { EventEmitter } from '@lib/eventEmitter'
-
-import Component from 'nanocomponent'
 import html from 'nanohtml'
 import { CreatebleOptionsList } from './CreatableOptionsList'
 import { SelectOption } from './SelectOption'
-
 import raw from 'nanohtml/raw'
 import ArrowDown from '../../img/arrow-down-slim.svg'
 
-const ANIMATION_TIMEOUT = 300
+export const blipSelectOptionClass = 'blip-select__option'
 
+const ANIMATION_TIMEOUT = 300
 const blipSelectOptionsClass = 'blip-select__options'
 const blipSelectOptionOpenTopClass = 'blip-select__options--open-top'
-export const blipSelectOptionClass = 'blip-select__option'
 const blipSelectOptionSeletedClass = 'blip-select__option--selected'
 const bpSelectHideLabelClass = 'bp-select-hide-label'
 const bpSelectShowArrowClass = 'blip-select__show-arrow'
@@ -23,6 +21,7 @@ const bpCblipLightClass = 'bp-c-blip-light'
 const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
 const bpInputWrapperDisabledClass = 'bp-select-wrapper--disabled'
 const bpInputWrapperInvalidClass = 'bp-select-wrapper--invalid'
+const bpPlaceholderIconClass = 'bp-select-placeholder-icon'
 
 export class BlipSelect extends Component {
   /**
@@ -36,6 +35,8 @@ export class BlipSelect extends Component {
     invalid: false,
     enableBullet: false,
     placeholder: 'Select...',
+    placeholderIcon: undefined,
+    descriptionPosition: 'right', // right || bottom
     mode: 'select',
     noResultsText: 'No results found',
     clearAfterAdd: true, // Clear input after add new option
@@ -183,6 +184,7 @@ export class BlipSelect extends Component {
       ...this.props,
       ...props,
     }
+
     this.renderedOptionsList = this.optionsList.render(this._optionsListConfig())
     const isReadOnly = () => this.configOptions.mode === 'select'
     const hideLabelClass = () =>
@@ -193,9 +195,12 @@ export class BlipSelect extends Component {
       (this.optionsList.props.options && this.optionsList.props.options.length > 0)
         ? bpSelectShowArrowClass
         : ''
+
     return html`
       <div class="bp-input-wrapper blip-select ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''}">
         <div class="blip-select__shell">
+          ${this.configOptions.placeholderIcon &&
+            raw(`<div class="${bpPlaceholderIconClass}">${this.configOptions.placeholderIcon}</div>`)}
           <div class="blip-select__content">
             <label class="bp-label bp-c-cloud bp-fw-bold ${hideLabelClass()}">${this.props.label}</label>
             <input placeholder="${this.configOptions.placeholder}"
@@ -290,6 +295,7 @@ export class BlipSelect extends Component {
     const defaults = {
       options: this.props.options,
       OptionCreator: this.configOptions.optionCreator,
+      descriptionPosition: this.configOptions.descriptionPosition,
     }
 
     return this.configOptions.canAddOptions
@@ -322,6 +328,7 @@ export class BlipSelect extends Component {
       onTryAccessInput: () => this.input.focus(),
       onAddOption: this._handleAddOption.bind(this),
       addOptionText: this.configOptions.canAddOptions.text,
+      alwaysEnabled: this.configOptions.canAddOptions.alwaysEnabled,
     })
   }
 
@@ -345,12 +352,14 @@ export class BlipSelect extends Component {
       $event: { newOption },
     } = emitter
 
-    const newOptions = this.props.options.concat(newOption)
-    this.props.options = newOptions
+    if (newOption.value || newOption.label) {
+      const newOptions = this.props.options.concat(newOption)
+      this.props.options = newOptions
 
-    this.optionsList.render({
-      options: newOptions,
-    })
+      this.optionsList.render({
+        options: newOptions,
+      })
+    }
 
     if (this.configOptions.clearAfterAdd) {
       this.input.value = ''
@@ -678,11 +687,11 @@ export class BlipSelect extends Component {
     const selectOptionsContainer = this.element.querySelector(
       `.blip-select__options`,
     )
-    selectOptionsContainer.style.display = 'block'
+    selectOptionsContainer.style.visibility = 'visible'
 
     setTimeout(() => {
       // Needed for animation
-      selectOptionsContainer.style.transform = 'scale(1)'
+      selectOptionsContainer.style.transform = 'scaleY(1)'
       selectOptionsContainer.style.opacity = 1
     })
 
@@ -737,12 +746,12 @@ export class BlipSelect extends Component {
     // Callback invoked before select open
     this.configOptions.onBeforeCloseSelect()
 
-    selectOptionsContainer.style.transform = 'scale(0)'
+    selectOptionsContainer.style.transform = 'scaleY(0)'
     selectOptionsContainer.style.opacity = 0
 
     setTimeout(() => {
       // Needed for animation
-      selectOptionsContainer.style.display = 'none'
+      selectOptionsContainer.style.visibility = 'hidden'
       selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
     }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
 

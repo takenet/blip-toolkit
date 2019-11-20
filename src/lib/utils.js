@@ -66,3 +66,19 @@ export const differenceByLabel = otherArray => current =>
   otherArray.filter(other => {
     return other.label === current.label
   }).length === 0
+
+/**
+ * Find element with given tag in Event path
+ * @param {String} event
+ * @param {Array} elementTagName
+ */
+export const eventPathFindElementByTag = (event, elementTagName) => {
+  let node = event.target
+  while (node.parentNode !== document) {
+    if (node.tagName === elementTagName) {
+      return node
+    } else {
+      node = node.parentNode
+    }
+  }
+}

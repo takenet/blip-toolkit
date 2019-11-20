@@ -1,0 +1,214 @@
+$icon-size: 1.7*$m;
+$side-margin: 0 $u;
+
+.bp-datepicker input, .bp-daterange-picker input {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+
+  &::-webkit-clear-button, &::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.bp-datepicker {
+  display: inline-block;
+  position: relative;
+
+  .month-table {
+    border-collapse: collapse;
+    margin: $side-margin;
+
+    th {
+      border-bottom: $u solid $bp-color-white;
+      height: 2*$m;
+
+      .month-title, .year-input {
+        text-transform: uppercase;
+        font-size: $bp-fs-7;
+        color: $bp-color-bot;
+      }
+
+      .month-title {
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .year-input {
+        font-weight: 600;
+        max-width: 3*$m;
+        max-height: 1.2*$m;
+        margin-left: $m;
+
+        &:focus {
+          border-bottom: 1px solid $bp-color-bot;
+        }
+      }
+
+      .month-button {
+        border: none;
+        border-radius: 50%;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 0;
+        vertical-align: middle;
+        @include fixed-size(2.5*$m);
+
+        &:focus {
+          outline: none;
+        }
+
+        svg path {
+          fill: $bp-color-breeze;
+        }
+      }
+    }
+
+    .weekday-week {
+      border-top: 1.5*$m solid $bp-color-white;
+      text-transform: uppercase;
+    }
+
+    .month-week, .next-month-week {
+      border-top: 0.5*$m solid $bp-color-white;
+    }
+
+    .next-month-week {
+      visibility: hidden;
+    }
+
+    .week-day, .month-day {
+      font-size: $bp-fs-8;
+      text-align: center;
+      vertical-align: middle;
+      cursor: default;
+      width: 2*$m;
+      height: $m;
+      padding: 0;
+    }
+
+    .week-day {
+      color: $bp-color-suit;
+    }
+
+    .month-day {
+      color: $bp-color-desk;
+
+      &.last-month, &.next-month, &.invalid-day {
+        color: $bp-color-time;
+      }
+
+      &.in-range, &.range-limit {
+        background-color: $bp-color-sky;
+      }
+
+      &.in-range:first-of-type, &:not(.in-range) + .range-limit, &.last-month + .in-range {
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+
+      &.in-range:last-of-type, &.in-range + .range-limit {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+
+      &.range-limit div, &.current-month:not(.invalid-day):hover div {
+        color: $bp-color-white;
+        background-color: $bp-color-bot;
+      }
+
+      div {
+        padding: $u 1.2*$u;
+        margin: 0 0.5*$u;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  hr {
+    margin: $m 0;
+    border-top: 0.1*$u solid $bp-color-wave;
+  }
+
+  .time-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $bp-color-city;
+    font-size: $bp-fs-8;
+    background-color: $bp-color-whisper;
+    padding: $u 0;
+    border-radius: 8px;
+    margin: $side-margin;
+
+    .time-input-container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid $bp-color-wave;
+      height: 3*$m;
+      width: 6.6*$m;
+      background-color: $bp-color-white;
+      background-size: $m;
+      margin-left: 1.5*$m;
+
+      .clock-icon {
+        @include fixed-size($icon-size);
+        padding: 0.2*$m;
+        background-color: $bp-color-sky;
+        border-radius: 5px;
+
+        svg path {
+          fill: $bp-color-bot;
+        }
+      }
+      
+      input {
+        font-size: $bp-fs-7;
+      }
+    }
+  }
+  
+  .date-selector {
+    text-transform: uppercase;
+    font-size: $bp-fs-7;
+    color: $bp-color-desk;
+    background-color: $bp-color-white;
+    padding: $m 0 3*$m;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: $side-margin;
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+
+      label {
+        cursor: pointer;
+        width: 5*$m;
+        text-align: center;
+
+        div {
+          border-radius: 4px;
+          padding: 0.5*$m 0;
+        }
+
+        input[type="radio"]:checked ~ div, div:hover {
+          background-color: $bp-color-bot;
+          color: $bp-color-white;
+        }
+      }
+    }
+  }
+}

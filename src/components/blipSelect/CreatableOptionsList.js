@@ -14,6 +14,7 @@ export class CreatebleOptionsList extends Component {
       newOption: '',
       addOptionText: '',
       emptyMessage: '',
+      alwaysEnabled: false,
       blockNewEntries: false,
       OptionCreator: undefined,
     }
@@ -34,6 +35,7 @@ export class CreatebleOptionsList extends Component {
       return new OptionCreator({
         onOptionClick: this.options.onOptionClick,
         onTryAccessInput: this.options.onTryAccessInput,
+        descriptionPosition: this.props.descriptionPosition,
       }).render(optionProps)
     }
 
@@ -57,10 +59,13 @@ export class CreatebleOptionsList extends Component {
    * Check if current state allows to add new option
    */
   _canAddOption(newOption) {
-    return newOption &&
-      newOption.trim() !== '' &&
-      !this.props.blockNewEntries &&
-      !this.props.options.some(o => o.label === newOption)
+    return (
+      this.options.alwaysEnabled ||
+      (newOption &&
+        newOption.trim() !== '' &&
+        !this.props.blockNewEntries &&
+        !this.props.options.some(o => o.label === newOption))
+    )
   }
 
   /**
@@ -76,7 +81,7 @@ export class CreatebleOptionsList extends Component {
    */
   _renderAddOption(newOption) {
     const addOptionHtml = this.options.addOptionText
-      ? html`<small class="blip-prompt-add-option">${this.options.addOptionText}:</small>`
+      ? html`<small class="blip-prompt-add-option">${this.options.addOptionText}</small>`
       : ''
 
     return this._canAddOption(newOption)

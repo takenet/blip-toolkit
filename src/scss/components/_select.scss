@@ -147,7 +147,7 @@
 
   &:hover,
   &:focus {
-    background: $bp-color-offwhite;
+    background: $bp-color-whisper;
     outline: 0;
 
     .blip-select__option__label:not(:only-child) {
@@ -199,7 +199,11 @@
 }
 
 .blip-select__option--selected {
-  background: $bp-color-offwhite;
+  background: $bp-color-whisper;
+
+  .blip-select__option__label:not(:only-child) {
+    color: $bp-color-bot;
+  }
 }
 
 .blip-select__option--description-bottom {

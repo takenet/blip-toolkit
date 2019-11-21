@@ -26,8 +26,8 @@ export class BlipDaterangepicker extends Component {
 
     this.hasTime = options.hasTime || false
 
-    this.months = options.months
-    this.weekdays = options.weekdays
+    this.months = options.months || DateHelper.months
+    this.weekdays = options.weekdays || DateHelper.weekdays
 
     this.cancelText = options.cancelText || 'Cancel'
     this.applyText = options.applyText || 'Apply'
@@ -216,7 +216,7 @@ export class BlipDaterangepicker extends Component {
       this._setDateOnInput(endDate, this.endDateInput)
 
       if (this.onSelection) {
-        this.onSelection(period)
+        this.onSelection(this.selectedPeriod)
       }
     }
 
@@ -224,8 +224,10 @@ export class BlipDaterangepicker extends Component {
   }
 
   _cancelDate = () => {
-    this._leftPicker.selectedPeriod = this.selectedPeriod
-    this._rightPicker.selectedPeriod = this.selectedPeriod
+    if (this.selectedPeriod) {
+      this._leftPicker.selectedPeriod = this.selectedPeriod
+      this._rightPicker.selectedPeriod = this.selectedPeriod
+    }
 
     this._pickerNotActive()
   }

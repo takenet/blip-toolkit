@@ -13,13 +13,8 @@ export class BlipDatepicker extends Component {
   static monthRows = 6
   static selectorRows = 4
   static selectorColumns = 3
-  static i18nEN = {
-    months: ['January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'],
-    weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
-      'Thursday', 'Friday', 'Saturday'],
-    timeInputText: 'Time',
-  }
+  static timeInputText = 'Time'
+
   static style = {
     datepicker: 'bp-datepicker',
     monthTable: 'month-table',
@@ -55,7 +50,11 @@ export class BlipDatepicker extends Component {
     this.name = options.name
     this.hasTime = options.hasTime || false
 
-    this.i18n = options.i18n || BlipDatepicker.i18nEN
+    this.i18n = options.i18n || {
+      months: DateHelper.months,
+      weekdays: DateHelper.weekdays,
+      timeInputText: BlipDatepicker.timeInputText,
+    }
 
     this._selectedPeriod = options.selectedPeriod
     this._validPeriod = options.validPeriod

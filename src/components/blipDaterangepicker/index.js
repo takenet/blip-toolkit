@@ -3,7 +3,7 @@ import html from 'nanohtml'
 import raw from 'nanohtml/raw'
 
 import { BlipDatepicker } from '../blipDatepicker'
-import { DateHelper } from './../shared'
+import { DateHelper, Period } from './../shared'
 import { eventPathFindElementByTag } from './../../lib/utils'
 
 import Calendar from '../../img/calendar-outline.svg'
@@ -38,13 +38,35 @@ export class BlipDaterangepicker extends Component {
     this.startTimeText = options.startTimeText || 'Initial time'
     this.endTimeText = options.endTimeText || 'End time'
 
-    this.selectedPeriod = options.selectedPeriod
+    this._selectedPeriod = options.selectedPeriod
     this.validPeriod = options.validPeriod
 
     this.onSelection = options.onSelection
 
     this._leftPicker = new BlipDatepicker(this._datepickerOptions(this.startTimeText))
     this._rightPicker = new BlipDatepicker(this._datepickerOptions(this.endTimeText))
+  }
+
+  get selectedPeriod() {
+    return this._selectedPeriod
+  }
+
+  set selectedPeriod(newPeriod) {
+    const [startDate, endDate] = [new Date(newPeriod.startDate), new Date(newPeriod.endDate)]
+    const period = new Period(startDate, endDate)
+
+    this._selectedPeriod = period
+    this._leftPicker.selectedPeriod = period
+    this._rightPicker.selectedPeriod = period
+
+    this._setHoursOnDate(this._leftPicker.monthDate, period.startDate)
+    this._setHoursOnDate(this._rightPicker.monthDate, period.endDate)
+
+    this._setDateOnInput(period.startDate, this.startDateInput)
+    this._setDateOnInput(period.endDate, this.endDateInput)
+
+    this._leftPicker.monthDate = period.startDate
+    this._rightPicker.monthDate = DateHelper.moveMonth(period.startDate, 1)
   }
 
   createElement() {
@@ -108,7 +130,7 @@ export class BlipDaterangepicker extends Component {
         weekdays: this.weekdays,
         timeInputText: timeInputText,
       },
-      selectedPeriod: this.selectedPeriod,
+      selectedPeriod: this._selectedPeriod,
       validPeriod: this.validPeriod,
       onMonthButtonClick: (event) => {
         const button = eventPathFindElementByTag(event, 'BUTTON')
@@ -172,9 +194,9 @@ export class BlipDaterangepicker extends Component {
   }
 
   _pickerNotActive = () => {
-    if (this.selectedPeriod) {
-      this._leftPicker.monthDate = this.selectedPeriod.startDate
-      this._rightPicker.monthDate = DateHelper.moveMonth(this.selectedPeriod.startDate, 1)
+    if (this._selectedPeriod) {
+      this._leftPicker.monthDate = this._selectedPeriod.startDate
+      this._rightPicker.monthDate = DateHelper.moveMonth(this._selectedPeriod.startDate, 1)
       this._setButtonsVisibility()
     }
 
@@ -211,12 +233,12 @@ export class BlipDaterangepicker extends Component {
       const startDate = this._setHoursOnDate(this._leftPicker.monthDate, period.startDate)
       const endDate = this._setHoursOnDate(this._rightPicker.monthDate, period.endDate)
 
-      this.selectedPeriod = { startDate, endDate }
+      this._selectedPeriod = { startDate, endDate }
       this._setDateOnInput(startDate, this.startDateInput)
       this._setDateOnInput(endDate, this.endDateInput)
 
       if (this.onSelection) {
-        this.onSelection(this.selectedPeriod)
+        this.onSelection(this._selectedPeriod)
       }
     }
 
@@ -224,9 +246,9 @@ export class BlipDaterangepicker extends Component {
   }
 
   _cancelDate = () => {
-    if (this.selectedPeriod) {
-      this._leftPicker.selectedPeriod = this.selectedPeriod
-      this._rightPicker.selectedPeriod = this.selectedPeriod
+    if (this._selectedPeriod) {
+      this._leftPicker.selectedPeriod = this._selectedPeriod
+      this._rightPicker.selectedPeriod = this._selectedPeriod
     }
 
     this._pickerNotActive()

@@ -39,6 +39,7 @@ export class BlipSelect extends Component {
     descriptionPosition: 'right', // right || bottom
     mode: 'select',
     noResultsText: 'No results found',
+    noResultsFoundText: 'No results found',
     clearAfterAdd: true, // Clear input after add new option
     onBeforeOpenSelect: () => { },
     onAfterOpenSelect: () => { },
@@ -329,6 +330,8 @@ export class BlipSelect extends Component {
       onAddOption: this._handleAddOption.bind(this),
       addOptionText: this.configOptions.canAddOptions.text,
       alwaysEnabled: this.configOptions.canAddOptions.alwaysEnabled,
+      noResultsText: this.configOptions.noResultsText,
+      noResultsFoundText: this.configOptions.noResultsFoundText,
     })
   }
 

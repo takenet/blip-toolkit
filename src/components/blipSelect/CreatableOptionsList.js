@@ -4,16 +4,23 @@ import { EventEmitter } from '@lib/eventEmitter'
 import { renderEmptyOption } from '../shared'
 
 export class CreatebleOptionsList extends Component {
+  $defaults = {
+    noResultsText: '',
+    noResultsFoundText: '',
+  }
+
   constructor(options) {
     super()
 
-    this.options = options
+    this.options = {
+      ...this.$defaults,
+      ...options,
+    }
 
     this.props = {
       options: [],
       newOption: '',
       addOptionText: '',
-      emptyMessage: '',
       alwaysEnabled: false,
       blockNewEntries: false,
       OptionCreator: undefined,
@@ -29,6 +36,16 @@ export class CreatebleOptionsList extends Component {
       ...props,
     }
 
+    const chooseEmptyOptionsMessage = () => {
+      if (this.props.options.length === 0 && (this.props.newOption === '' || this.props.newOption === undefined)) {
+        return this.options.noResultsText
+      } else if (this.props.options.length === 0 && this.newOption !== '') {
+        return this.options.noResultsFoundText
+      }
+
+      return ''
+    }
+
     const renderOption = optionProps => {
       const { OptionCreator } = this.props
 
@@ -42,7 +59,8 @@ export class CreatebleOptionsList extends Component {
     return html`
       <ul>
         ${this.props.options.map(renderOption)}
-        ${this.shouldRenderEmptyOption() ? renderEmptyOption(this.props.emptyMessage) : this._renderAddOption(this.props.newOption)}
+        ${this.shouldRenderEmptyOption() ? renderEmptyOption(chooseEmptyOptionsMessage()) : ''}
+        ${this._renderAddOption(this.props.newOption)}
       </ul>
     `
   }
@@ -72,8 +90,7 @@ export class CreatebleOptionsList extends Component {
    * Check if component should render empty option
    */
   shouldRenderEmptyOption() {
-    return this.props.options.length === 0 &&
-      this.props.blockNewEntries
+    return this.props.options.length === 0
   }
 
   /**
@@ -81,7 +98,7 @@ export class CreatebleOptionsList extends Component {
    */
   _renderAddOption(newOption) {
     const addOptionHtml = this.options.addOptionText
-      ? html`<small class="blip-prompt-add-option">${this.options.addOptionText}</small>`
+      ? html`<span class="blip-prompt-add-option">${this.options.addOptionText}</span>`
       : ''
 
     return this._canAddOption(newOption)

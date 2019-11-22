@@ -3,14 +3,18 @@ const amazingSelect = document.getElementById('select')
 const selectInstance = new BlipSelect({
   onSelectOption: ($event) => console.log($event),
   placeholderIcon: '<img src="https://png.pngtree.com/svg/20170418/work_155602.png" />',
+  mode: 'autocomplete',
   descriptionPosition: 'bottom',
   canAddOptions: {
     text: 'Criar organização',
     alwaysEnabled: true,
   },
   clearAfterAdd: false,
+  noResultsText: 'Nothing here',
+  noResultsFoundText: 'No results found',
   onAddOption: ({ $event: { value, label, element } }) => console.log(value, label, element),
 })
+
 const select = selectInstance.render({
   options: [
     {

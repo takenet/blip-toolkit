@@ -11,7 +11,10 @@
     transition: none;
   }
 
-  &.bp-input-wrapper { background-color: $bp-color-white; }
+  &.bp-input-wrapper {
+    background-color: $bp-color-white;
+    height: 100%;
+  }
 
   &.bp-select-wrapper--invalid {
     border-color: $bp-color-warning;
@@ -57,9 +60,13 @@
 
   .bp-select-placeholder-icon {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-right: 8px;
+    height: 36px;
+    width: 100%;
     max-width: 36px;
+    border-radius: 100%;
 
     img, svg {
       height: auto;
@@ -85,6 +92,8 @@
   position: relative;
   z-index: 1;
   box-sizing: initial;
+  padding-top: 15px;
+  padding-bottom: 15px;
 
   &:focus { outline: none; }
 }
@@ -182,6 +191,8 @@
   color: #fff;
   padding: 15px 0;
   justify-content: center;
+  position: sticky;
+  bottom: 0;
 
   &:hover,
   &:focus {

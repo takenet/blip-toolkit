@@ -24,7 +24,7 @@ const select = selectInstance.render({
       value: 'opt1',
     },
     {
-      label: 'Option 12',
+      label: 'Option 2',
       description: 'My description here',
       icon: '<img src="https://png.pngtree.com/svg/20170418/work_155602.png" />',
       value: 'opt2',
@@ -46,6 +46,42 @@ const select = selectInstance.render({
       description: 'My description here',
       icon: '<img src="https://png.pngtree.com/svg/20170418/work_155602.png" />',
       value: 'opt5',
+    },
+    {
+      label: 'Option 6',
+      description: 'My description here',
+      icon: '<img src="https://png.pngtree.com/svg/20170418/work_155602.png" />',
+      value: 'opt6',
+    },
+    {
+      label: 'Option 7',
+      description: 'My description here',
+      icon: '<img src="https://png.pngtree.com/svg/20170418/work_155602.png" />',
+      value: 'opt7',
+    },
+    {
+      label: 'Option 8',
+      description: 'My description here',
+      icon: '<img src="https://png.pngtree.com/svg/20170418/work_155602.png" />',
+      value: 'opt8',
+    },
+    {
+      label: 'Option 9',
+      description: 'My description here',
+      icon: '<img src="https://png.pngtree.com/svg/20170418/work_155602.png" />',
+      value: 'opt9',
+    },
+    {
+      label: 'Option 10',
+      description: 'My description here',
+      icon: '<img src="https://png.pngtree.com/svg/20170418/work_155602.png" />',
+      value: 'opt10',
+    },
+    {
+      label: 'Option 11',
+      description: 'My description here',
+      icon: '<img src="https://png.pngtree.com/svg/20170418/work_155602.png" />',
+      value: 'opt11',
     },
   ],
 })

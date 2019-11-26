@@ -106,6 +106,10 @@
       background-color: transparent;
       border-color: bp-darken($border-color);
       color: bp-darken($color);
+
+      path {
+        fill: $bp-color-blip-dark;
+      }
     }
 
     &:disabled {

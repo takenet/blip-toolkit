@@ -7,6 +7,7 @@ export class CreatebleOptionsList extends Component {
   $defaults = {
     noResultsText: '',
     noResultsFoundText: '',
+    appendText: true,
   }
 
   constructor(options) {
@@ -57,11 +58,13 @@ export class CreatebleOptionsList extends Component {
     }
 
     return html`
-      <ul>
-        ${this.props.options.map(renderOption)}
-        ${this.shouldRenderEmptyOption() ? renderEmptyOption(chooseEmptyOptionsMessage()) : ''}
+      <div>
+        <ul>
+          ${this.props.options.map(renderOption)}
+          ${this.shouldRenderEmptyOption() ? renderEmptyOption(chooseEmptyOptionsMessage()) : ''}
+        </ul>
         ${this._renderAddOption(this.props.newOption)}
-      </ul>
+      </div>
     `
   }
 
@@ -97,9 +100,10 @@ export class CreatebleOptionsList extends Component {
    * Render add new option
    */
   _renderAddOption(newOption) {
-    const addOptionHtml = this.options.addOptionText
-      ? html`<span class="blip-prompt-add-option">${this.options.addOptionText}</span>`
-      : ''
+    const addOptionHtml = this.options.addOptionText ? html`
+      <span class="blip-prompt-add-option">
+        ${this.options.addOptionText}
+      </span>` : ''
 
     return this._canAddOption(newOption)
       ? html`
@@ -108,7 +112,7 @@ export class CreatebleOptionsList extends Component {
             onclick="${this.addOption.bind(this, newOption)}"
             class="blip-select__option blip-select__add-option">
             ${addOptionHtml}
-            <div class="blip-new-option-text">${newOption}</div>
+            <div class="blip-new-option-text">${this.options.appendText ? `: ${newOption}` : ''}</div>
           </div>
         `
       : ''

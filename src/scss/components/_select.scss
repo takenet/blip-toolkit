@@ -63,15 +63,22 @@
     justify-content: center;
     align-items: center;
     margin-right: 8px;
+    margin-left: 6px;
     height: 36px;
-    width: 100%;
-    max-width: 36px;
+    min-width: 36px;
+    width: 36px;
     border-radius: 100%;
 
-    img, svg {
-      height: auto;
-      max-width: 100%;
+    img,
+    svg {
+      height: 100%;
+      width: 100%;
+      border-radius: 100%;
     }
+  }
+
+  .hide {
+    display: none;
   }
 }
 
@@ -83,8 +90,8 @@
   background-color: transparent;
   outline: none;
   width: calc(100% - 20px);
-  height: 1.9*$m;
-  margin-top: 0.2*$m;
+  height: 1.9 * $m;
+  margin-top: 0.2 * $m;
   padding-right: 20px;
   font-family: $bp-ff;
   font-size: $bp-fs-6;
@@ -92,9 +99,14 @@
   position: relative;
   z-index: 1;
   box-sizing: initial;
-  padding: 15px 0;
 
-  &:focus { outline: none; }
+  &:focus {
+    outline: none;
+  }
+
+  &.large {
+    padding: 15px 0;
+  }
 }
 
 .blip-select__arrow-down {
@@ -114,25 +126,27 @@
 .blip-select__options {
   background: #fff;
   position: absolute;
-  top: 108%; left: 0;
-  width: 100%; max-height: 500px;
-  border: 0.1*$m solid $bp-color-breeze;
-  border-radius: 0.8*$m;
-  box-shadow: 0 0.2*$m 1.2*$m 0 rgba(0, 0, 0, 0.1);
+  top: 108%;
+  left: 0;
+  width: 100%;
+  border: 0.1 * $m solid $bp-color-breeze;
+  border-radius: 0.8 * $m;
+  box-shadow: 0 0.2 * $m 1.2 * $m 0 rgba(0, 0, 0, 0.1);
   transform-origin: top left;
   transform: scaleY(0);
   visibility: hidden;
   opacity: 0;
-  transition: transform .25s,opacity .75s,visibility .75s;
-  overflow-y: auto;
+  transition: transform 0.25s, opacity 0.75s, visibility 0.75s;
   z-index: 2;
-
-  @include scrollbar($bp-color-time);
 
   ul {
     padding: 0;
     margin: 0;
     list-style: none;
+    max-height: 52px * 6;
+    overflow-y: auto;
+
+    @include scrollbar($bp-color-time);
   }
 }
 
@@ -141,8 +155,21 @@
   bottom: 100%;
 }
 
+.blip-select__content-option {
+  display: flex;
+  flex-direction: column;
+
+  &.large {
+    padding: 6px 0;
+  }
+
+  .blip-select__content-option-label {
+    font-weight: bold;
+  }
+}
+
 .blip-select__option {
-  padding: 0.8*$m 1.7*$m;
+  padding: 0.8 * $m 1.7 * $m;
   color: $bp-color-city;
   margin-bottom: 0;
   cursor: pointer;
@@ -166,6 +193,8 @@
 
   &.blip-select__empty-option {
     cursor: default;
+    justify-content: center;
+    padding: 25px 0;
   }
 
   .blip-select__option__label:not(:only-child) {
@@ -173,6 +202,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: bold;
   }
 
   .blip-select__option__description {
@@ -188,24 +218,25 @@
   background: $bp-color-bot;
   border: 0;
   color: #fff;
-  padding: 15px 0;
+  padding: 10px 0;
   justify-content: center;
   position: sticky;
   bottom: 0;
+  border-radius: 0 0 0.8 * $m 0.8 * $m;
 
   &:hover,
   &:focus {
-    background: $bp-color-bot;
+    background: $bp-color-blip-dark;
     outline: 0;
   }
 
   small {
-    margin-right: 0.5*$m;
+    margin-right: 0.5 * $m;
     color: #fff;
   }
 
   div.blip-new-option-text {
-    margin-top: -0.3*$m;
+    margin-top: -0.3 * $m;
   }
 }
 
@@ -231,12 +262,16 @@
   align-items: center;
 
   .blip-select__option__icon {
-    max-width: 36px;
     line-height: 0;
+    height: 36px;
+    width: 36px;
+    border-radius: 100%;
 
-    img, svg {
-      max-width: 100%;
-      height: auto;
+    img,
+    svg {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
     }
   }
 

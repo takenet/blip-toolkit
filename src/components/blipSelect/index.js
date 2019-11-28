@@ -22,6 +22,7 @@ const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
 const bpInputWrapperDisabledClass = 'bp-select-wrapper--disabled'
 const bpInputWrapperInvalidClass = 'bp-select-wrapper--invalid'
 const bpPlaceholderIconClass = 'bp-select-placeholder-icon'
+const bpContentActionClass = 'blip-select__content-option'
 
 export class BlipSelect extends Component {
   /**
@@ -38,8 +39,10 @@ export class BlipSelect extends Component {
     placeholderIcon: undefined,
     descriptionPosition: 'right', // right || bottom
     mode: 'select',
+    size: 'small',
     noResultsText: 'No results found',
     noResultsFoundText: 'No results found',
+    appendText: true,
     clearAfterAdd: true, // Clear input after add new option
     onBeforeOpenSelect: () => { },
     onAfterOpenSelect: () => { },
@@ -69,6 +72,7 @@ export class BlipSelect extends Component {
     this._handleSelectBlur = this._onSelectBlur.bind(this)
     this._handleInputChange = this._onInputChange.bind(this)
     this._handleInputClick = this._onInputClick.bind(this)
+    this._onSelectedOptionClick = this._onSelectedOptionClick.bind(this)
     this._handleCenterOption = this._centerSelectedOption.bind(this)
     this._handleInputKeydown = this._attachInputKeyboardListener.bind(this)
     this._handleInputKeyup = this._onInputKeyup.bind(this)
@@ -95,6 +99,26 @@ export class BlipSelect extends Component {
   get input() {
     if (!this.element) return
     return this.element.querySelector('input')
+  }
+
+  /**
+   * Selected option element
+   */
+  get selectedOptionEl() {
+    if (!this.element) return
+    return this.element.querySelector(`.${bpContentActionClass}`)
+  }
+
+  /**
+   * Selected option properties
+   */
+  get selectedOption() {
+    const el = this.selectedOptionEl
+    return {
+      icon: this.selectIconHtml.innerHTML,
+      label: el.querySelector(`.${bpContentActionClass}-label`).textContent,
+      description: el.querySelector(`.${bpContentActionClass}-description`).textContent,
+    }
   }
 
   /**
@@ -125,6 +149,20 @@ export class BlipSelect extends Component {
 
   set isFocused(value) {
     this.configOptions.focused = value
+  }
+
+  /**
+   * Select icon
+   */
+  get selectIconHtml() {
+    return document.getElementsByClassName(bpPlaceholderIconClass)[0]
+  }
+
+  set selectIconHtml(value) {
+    const placeholderIconEl = this.selectIconHtml
+    if (placeholderIconEl) {
+      placeholderIconEl.innerHTML = value
+    }
   }
 
   /**
@@ -203,19 +241,27 @@ export class BlipSelect extends Component {
           ${this.configOptions.placeholderIcon &&
             raw(`<div class="${bpPlaceholderIconClass}">${this.configOptions.placeholderIcon}</div>`)}
           <div class="blip-select__content">
-            <label class="bp-label bp-c-cloud bp-fw-bold ${hideLabelClass()}">${this.props.label}</label>
-            <input placeholder="${this.configOptions.placeholder}"
-              class="blip-select__input bp-c-rooftop"
-              value="${this.props.inputValue}"
-              onfocus="${this._handleSelectFocus}"
-              onblur="${this._handleSelectBlur}"
-              onkeydown="${this._handleInputKeydown}"
-              onkeyup="${this._handleInputKeyup}"
-              oninput="${this._handleInputChange}"
-              onclick="${this._handleInputClick}"
-              data-target="${this.customSelectId}"
-              disabled="${this.isDisabled}"
-              readonly="${isReadOnly()}">
+            <div class="blip-select__option__content">
+              <div class="${bpContentActionClass} ${this.configOptions.size} hide" onclick=${this._onSelectedOptionClick}>
+                <span class="${bpContentActionClass}-label bp-fs-6"></span>
+                <span class="${bpContentActionClass}-description bp-fs-8 bp-c-cloud"></span>
+              </div>
+              <div class="blip-select__content-input">
+                <label class="bp-label bp-c-cloud bp-fw-bold ${hideLabelClass()}">${this.props.label}</label>
+                <input placeholder="${this.configOptions.placeholder}"
+                  class="blip-select__input bp-c-rooftop ${this.configOptions.size}"
+                  value="${this.props.inputValue}"
+                  onfocus="${this._handleSelectFocus}"
+                  onblur="${this._handleSelectBlur}"
+                  onkeydown="${this._handleInputKeydown}"
+                  onkeyup="${this._handleInputKeyup}"
+                  oninput="${this._handleInputChange}"
+                  onclick="${this._handleInputClick}"
+                  data-target="${this.customSelectId}"
+                  disabled="${this.isDisabled}"
+                  readonly="${isReadOnly()}">
+              </div>
+            </div>
           </div>
           <div class="blip-select__arrow-down ${showArrowClass()}">
             ${raw(ArrowDown)}
@@ -332,6 +378,7 @@ export class BlipSelect extends Component {
       alwaysEnabled: this.configOptions.canAddOptions.alwaysEnabled,
       noResultsText: this.configOptions.noResultsText,
       noResultsFoundText: this.configOptions.noResultsFoundText,
+      appendText: this.configOptions.appendText,
     })
   }
 
@@ -416,6 +463,10 @@ export class BlipSelect extends Component {
       case 27: // esc
         if (this.isSelectOpen) {
           this._closeSelect()
+          if (this.input.value && this.selectedOption.label) {
+            this._toggleHide()
+            this.input.value = this._setInputValue(this.selectedOption)
+          }
         }
     }
   }
@@ -458,6 +509,13 @@ export class BlipSelect extends Component {
     }
 
     const inputValue = this.input.value
+    if (!inputValue) {
+      this._setSelectedOption({
+        icon: this.configOptions.placeholderIcon,
+        label: '',
+      })
+    }
+
     Promise
       .resolve(this._getSearchResults(inputValue))
       .then((searchResults) => {
@@ -488,6 +546,25 @@ export class BlipSelect extends Component {
   }
 
   /**
+   * Handle selected option click
+   */
+  _onSelectedOptionClick(event) {
+    this._openSelect()
+    this._toggleHide()
+    this.input.focus()
+  }
+
+  /**
+   * Toggle hide
+   */
+  _toggleHide() {
+    if (this.configOptions.descriptionPosition === 'bottom') {
+      this.input.classList.toggle('hide')
+      this.selectedOptionEl.classList.toggle('hide')
+    }
+  }
+
+  /**
    * Set value to input
    * @param {Object} object - value/label pair
    */
@@ -501,12 +578,10 @@ export class BlipSelect extends Component {
       throw new Error('Callback "onSelectOption" is not a function')
     }
 
-    if (label) {
-      this.configOptions.onSelectOption.call(
-        this,
-        EventEmitter({ optionProps }),
-      )
-    }
+    this.configOptions.onSelectOption.call(
+      this,
+      EventEmitter({ optionProps }),
+    )
   }
 
   /**
@@ -575,10 +650,10 @@ export class BlipSelect extends Component {
     const { event, optionProps } = $event
 
     if (this.isSelectOpen) {
-      this._setInputValue(optionProps)
       this._resetSelectedOptions()
       event.target.classList.add(blipSelectOptionSeletedClass)
-
+      this._setSelectedOption(optionProps)
+      this._toggleHide()
       this._closeSelect()
     }
 
@@ -600,6 +675,22 @@ export class BlipSelect extends Component {
           ? o.classList.remove(blipSelectOptionSeletedClass)
           : '',
     )
+  }
+
+  _setSelectedOption(optionProps) {
+    this.selectIconHtml = optionProps.icon
+
+    const labelEl = this.selectedOptionEl.querySelector(`.${bpContentActionClass}-label`)
+    if (labelEl) {
+      labelEl.textContent = optionProps.label
+    }
+
+    const descriptionEl = this.selectedOptionEl.querySelector(`.${bpContentActionClass}-description`)
+    if (descriptionEl) {
+      descriptionEl.textContent = optionProps.description
+    }
+
+    this._setInputValue(optionProps)
   }
 
   /**
@@ -676,6 +767,10 @@ export class BlipSelect extends Component {
     }
 
     this.configOptions.onBlur(event)
+    if (this.input.value && this.selectedOption.label) {
+      this._toggleHide()
+      this._setInputValue(this.selectedOption)
+    }
 
     setTimeout(() => {
       // Needed for get option value on "li" click

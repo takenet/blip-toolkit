@@ -465,7 +465,7 @@ export class BlipSelect extends Component {
           this._closeSelect()
           if (this.input.value) {
             this._toggleHide()
-            this.input.value = this.selectedOption.label
+            this.input.value = this._setInputValue(this.selectedOption)
           }
         }
     }
@@ -512,6 +512,7 @@ export class BlipSelect extends Component {
     if (!inputValue) {
       this._setSelectedOption({
         icon: this.configOptions.placeholderIcon,
+        label: '',
       })
     }
 
@@ -577,12 +578,10 @@ export class BlipSelect extends Component {
       throw new Error('Callback "onSelectOption" is not a function')
     }
 
-    if (label) {
-      this.configOptions.onSelectOption.call(
-        this,
-        EventEmitter({ optionProps }),
-      )
-    }
+    this.configOptions.onSelectOption.call(
+      this,
+      EventEmitter({ optionProps }),
+    )
   }
 
   /**
@@ -651,7 +650,6 @@ export class BlipSelect extends Component {
     const { event, optionProps } = $event
 
     if (this.isSelectOpen) {
-      this._setInputValue(optionProps)
       this._resetSelectedOptions()
       event.target.classList.add(blipSelectOptionSeletedClass)
       this._setSelectedOption(optionProps)
@@ -691,6 +689,8 @@ export class BlipSelect extends Component {
     if (descriptionEl) {
       descriptionEl.textContent = optionProps.description
     }
+
+    this._setInputValue(optionProps)
   }
 
   /**
@@ -769,7 +769,7 @@ export class BlipSelect extends Component {
     this.configOptions.onBlur(event)
     if (this.input.value) {
       this._toggleHide()
-      this.input.value = this.selectedOption.label
+      this._setInputValue(this.selectedOption)
     }
 
     setTimeout(() => {

@@ -243,8 +243,8 @@ export class BlipSelect extends Component {
           <div class="blip-select__content">
             <div class="blip-select__option__content">
               <div class="${bpContentActionClass} ${this.configOptions.size} hide" onclick=${this._onSelectedOptionClick}>
-                <span class="${bpContentActionClass}-label bp-fs-6">Option</span>
-                <span class="${bpContentActionClass}-description bp-fs-8 bp-c-cloud">Description</span>
+                <span class="${bpContentActionClass}-label bp-fs-6"></span>
+                <span class="${bpContentActionClass}-description bp-fs-8 bp-c-cloud"></span>
               </div>
               <div class="blip-select__content-input">
                 <label class="bp-label bp-c-cloud bp-fw-bold ${hideLabelClass()}">${this.props.label}</label>
@@ -463,7 +463,7 @@ export class BlipSelect extends Component {
       case 27: // esc
         if (this.isSelectOpen) {
           this._closeSelect()
-          if (this.input.value) {
+          if (this.input.value && this.selectedOption.label) {
             this._toggleHide()
             this.input.value = this._setInputValue(this.selectedOption)
           }
@@ -767,7 +767,7 @@ export class BlipSelect extends Component {
     }
 
     this.configOptions.onBlur(event)
-    if (this.input.value) {
+    if (this.input.value && this.selectedOption.label) {
       this._toggleHide()
       this._setInputValue(this.selectedOption)
     }

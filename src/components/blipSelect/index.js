@@ -39,7 +39,7 @@ export class BlipSelect extends Component {
     placeholderIcon: undefined,
     descriptionPosition: 'right', // right || bottom
     mode: 'select',
-    size: 'small',
+    size: 'small', // small || large
     noResultsText: 'No results found',
     noResultsFoundText: 'No results found',
     appendText: true,

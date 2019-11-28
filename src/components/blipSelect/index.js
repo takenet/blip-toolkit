@@ -465,7 +465,7 @@ export class BlipSelect extends Component {
           this._closeSelect()
           if (this.input.value) {
             this._toggleHide()
-            this.input.value = this.selectedOption.label
+            this.input.value = this._setInputValue(this.selectedOption)
           }
         }
     }
@@ -769,7 +769,7 @@ export class BlipSelect extends Component {
     this.configOptions.onBlur(event)
     if (this.input.value) {
       this._toggleHide()
-      this.input.value = this.selectedOption.label
+      this._setInputValue(this.selectedOption)
     }
 
     setTimeout(() => {

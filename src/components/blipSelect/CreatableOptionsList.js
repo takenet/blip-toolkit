@@ -23,7 +23,6 @@ export class CreatebleOptionsList extends Component {
       newOption: '',
       addOptionText: '',
       alwaysEnabled: false,
-      appendText: true,
       blockNewEntries: false,
       OptionCreator: undefined,
     }

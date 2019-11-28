@@ -2,7 +2,7 @@ import { BlipSelect } from '../src/components/blipSelect'
 const amazingSelect = document.getElementById('select')
 const selectInstance = new BlipSelect({
   onSelectOption: ($event) => console.log($event),
-  placeholderIcon: '<img src="https://s3-eu-central-1.amazonaws.com/centaur-wp/designweek/prod/content/uploads/2019/06/27172619/3_adidas_originals.jpg" />',
+  placeholderIcon: '<img src="http://cdn.onlinewebfonts.com/svg/img_415067.png" />',
   mode: 'autocomplete',
   descriptionPosition: 'bottom',
   canAddOptions: {
@@ -33,7 +33,7 @@ const select = selectInstance.render({
     {
       label: 'Option 3',
       description: 'My description here',
-      icon: '<img src="https://miro.medium.com/max/1161/1*cJUVJJSWPj9WFIJlvf7dKg.jpeg" />',
+      icon: '<img src="https://cdn4.iconfinder.com/data/icons/finance-196/100/Big_Business-512.png" />',
       value: 'opt3',
     },
     {

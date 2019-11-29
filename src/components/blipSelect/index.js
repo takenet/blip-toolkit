@@ -38,7 +38,7 @@ export class BlipSelect extends Component {
     placeholder: 'Select...',
     placeholderIcon: undefined,
     descriptionPosition: 'right', // right || bottom
-    mode: 'select',
+    mode: 'select', // select || autocomplete
     size: 'small', // small || large
     noResultsText: 'No results found',
     noResultsFoundText: 'No results found',

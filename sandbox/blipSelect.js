@@ -1,4 +1,5 @@
 import { BlipSelect } from '../src/components/blipSelect'
+
 const amazingSelect = document.getElementById('select')
 const selectInstance = new BlipSelect({
   onSelectOption: ($event) => console.log($event),
@@ -88,6 +89,7 @@ const select = selectInstance.render({
 })
 
 amazingSelect.appendChild(select)
+// Uncomment if you want to test setValue
 // selectInstance.setValue({ value: 'opt3' })
 
 window.setValue = function (val) {

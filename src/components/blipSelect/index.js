@@ -115,7 +115,7 @@ export class BlipSelect extends Component {
   get selectedOption() {
     const el = this.selectedOptionEl
     return {
-      icon: this.selectIconHtml.innerHTML,
+      icon: this.selectIconHtml && this.selectIconHtml.innerHTML,
       label: el.querySelector(`.${bpContentActionClass}-label`).textContent,
       description: el.querySelector(`.${bpContentActionClass}-description`).textContent,
     }
@@ -155,7 +155,7 @@ export class BlipSelect extends Component {
    * Select icon
    */
   get selectIconHtml() {
-    return document.getElementsByClassName(bpPlaceholderIconClass)[0]
+    return this.element.getElementsByClassName(bpPlaceholderIconClass)[0]
   }
 
   set selectIconHtml(value) {
@@ -442,7 +442,7 @@ export class BlipSelect extends Component {
         }
 
         if (currentElement === event.target) {
-          const firstElement = this.optionsList.element.firstElementChild
+          const firstElement = this.optionsList.element.querySelector('li')
           if (firstElement) {
             firstElement.focus()
           }
@@ -510,10 +510,7 @@ export class BlipSelect extends Component {
 
     const inputValue = this.input.value
     if (!inputValue) {
-      this._setSelectedOption({
-        icon: this.configOptions.placeholderIcon,
-        label: '',
-      })
+      this.clearInput()
     }
 
     Promise
@@ -570,10 +567,10 @@ export class BlipSelect extends Component {
    */
   _setInputValue(optionProps) {
     const { label } = optionProps
-    if (label) {
-      this.input.value = label
-      this.props.inputValue = this.input.value
-    }
+
+    this.input.value = label
+    this.props.inputValue = this.input.value
+
     if (typeof this.configOptions.onSelectOption !== 'function') {
       throw new Error('Callback "onSelectOption" is not a function')
     }
@@ -588,7 +585,10 @@ export class BlipSelect extends Component {
    * Clear input value
    */
   clearInput() {
-    this._setInputValue({ label: '' })
+    this._setSelectedOption({
+      icon: this.configOptions.placeholderIcon,
+      label: '',
+    })
 
     const event = new CustomEvent('keyup', {
       detail: { shouldOpenSelect: false },
@@ -678,6 +678,7 @@ export class BlipSelect extends Component {
   }
 
   _setSelectedOption(optionProps) {
+    this._setInputValue(optionProps)
     this.selectIconHtml = optionProps.icon
 
     const labelEl = this.selectedOptionEl.querySelector(`.${bpContentActionClass}-label`)
@@ -689,8 +690,6 @@ export class BlipSelect extends Component {
     if (descriptionEl) {
       descriptionEl.textContent = optionProps.description
     }
-
-    this._setInputValue(optionProps)
   }
 
   /**

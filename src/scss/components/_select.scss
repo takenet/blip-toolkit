@@ -13,6 +13,7 @@
 
   &.bp-input-wrapper {
     background-color: $bp-color-white;
+    height: auto;
   }
 
   &.bp-select-wrapper--invalid {
@@ -219,7 +220,6 @@
   color: #fff;
   padding: 10px 0;
   justify-content: center;
-  position: sticky;
   bottom: 0;
   border-radius: 0 0 0.8 * $m 0.8 * $m;
 

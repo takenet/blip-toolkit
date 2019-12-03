@@ -279,6 +279,10 @@ export class BlipTags extends Component {
    */
   _onSelectOption({ $event }) {
     const { optionProps } = $event
+    if (!optionProps.label) {
+      return
+    }
+
     this.blipSelectInstance.clearInput()
 
     if (this.props.tags.some(t => t.label === optionProps.label)) {

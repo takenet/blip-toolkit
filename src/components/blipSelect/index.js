@@ -508,7 +508,7 @@ export class BlipSelect extends Component {
       case 27: // esc
         if (this.isSelectOpen) {
           this._closeSelect()
-          if (this._isSomethingSelected()) {
+          if (this._isAnySelected()) {
             this._toggleHide()
             if (this.configOptions.multiple) {
               this.isFocused = false
@@ -872,7 +872,7 @@ export class BlipSelect extends Component {
   /**
    * Verifies if there is something selected
    */
-  _isSomethingSelected = () =>
+  _isAnySelected = () =>
     (this.input.value && this.selectedOption.label) || this.props.selectedOptions.length
 
   /**
@@ -892,7 +892,7 @@ export class BlipSelect extends Component {
 
     this.configOptions.onBlur(event)
     // Prevents close container before user can select any option
-    if (this._isSomethingSelected()) {
+    if (this._isAnySelected()) {
       this._toggleHide()
       if (!this.configOptions.multiple) {
         this._setInputValue(this.selectedOption)

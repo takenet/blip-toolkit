@@ -8,6 +8,7 @@ export class OptionsList extends Component {
     onOptionClick: undefined,
     onTryAccessInput: undefined,
     noResultsText: 'No results found',
+    multiple: false,
   }
 
   constructor(options) {
@@ -40,8 +41,8 @@ export class OptionsList extends Component {
         onOptionClick: this.options.onOptionClick,
         onTryAccessInput: this.options.onTryAccessInput,
         descriptionPosition: this.props.descriptionPosition,
+        checkable: this.options.multiple,
       }).render(option)
-
     return html`
       <ul>
         ${this.props.options.length > 0 ? this.props.options.map(renderOption) : renderEmptyOption(this.options.noResultsText)}

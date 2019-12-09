@@ -7,6 +7,7 @@ import { CreatebleOptionsList } from './CreatableOptionsList'
 import { SelectOption } from './SelectOption'
 import raw from 'nanohtml/raw'
 import ArrowDown from '../../img/arrow-down-slim.svg'
+import { BlipTag } from '../blipTag'
 
 export const blipSelectOptionClass = 'blip-select__option'
 
@@ -57,6 +58,7 @@ export class BlipSelect extends Component {
     customSearch: undefined, // Function that should return a list of { value, label } pair
     canAddOptions: false,
     optionCreator: SelectOption,
+    multiple: false,
   }
 
   constructor(options) {
@@ -90,6 +92,7 @@ export class BlipSelect extends Component {
       emptyMessage: '',
       disabled: this.configOptions.disabled,
       isParentHighlighted: false,
+      selectedOptions: [],
     }
   }
 
@@ -234,6 +237,10 @@ export class BlipSelect extends Component {
       (this.optionsList.props.options && this.optionsList.props.options.length > 0)
         ? bpSelectShowArrowClass
         : ''
+    const shouldHideEl = isInput => (isInput && this.props.selectedOptions.length) ||
+      (!isInput && !this.props.selectedOptions.length)
+      ? 'hide'
+      : ''
 
     return html`
       <div class="bp-input-wrapper blip-select ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''}">
@@ -241,15 +248,11 @@ export class BlipSelect extends Component {
           ${this.configOptions.placeholderIcon &&
             raw(`<div class="${bpPlaceholderIconClass}">${this.configOptions.placeholderIcon}</div>`)}
           <div class="blip-select__content">
-            <div class="blip-select__option__content">
-              <div class="${bpContentActionClass} ${this.configOptions.size} hide" onclick=${this._onSelectedOptionClick}>
-                <span class="${bpContentActionClass}-label bp-fs-6"></span>
-                <span class="${bpContentActionClass}-description bp-fs-8 bp-c-cloud"></span>
-              </div>
+            <div class="blip-select__option__content">              
               <div class="blip-select__content-input">
                 <label class="bp-label bp-c-cloud bp-fw-bold ${hideLabelClass()}">${this.props.label}</label>
                 <input placeholder="${this.configOptions.placeholder}"
-                  class="blip-select__input bp-c-rooftop ${this.configOptions.size}"
+                  class="blip-select__input bp-c-rooftop ${this.configOptions.size}  ${shouldHideEl(true)}"
                   value="${this.props.inputValue}"
                   onfocus="${this._handleSelectFocus}"
                   onblur="${this._handleSelectBlur}"
@@ -260,6 +263,11 @@ export class BlipSelect extends Component {
                   data-target="${this.customSelectId}"
                   disabled="${this.isDisabled}"
                   readonly="${isReadOnly()}">
+              </div>
+              <div class="${bpContentActionClass} ${this.configOptions.size} ${shouldHideEl(false)}" onclick=${this._onSelectedOptionClick}>
+                <div class="${bpContentActionClass}-tags">${this._createInitialTags()}</div>
+                <span class="${bpContentActionClass}-label bp-fs-6"></span>
+                <span class="${bpContentActionClass}-description bp-fs-8 bp-c-cloud"></span>
               </div>
             </div>
           </div>
@@ -272,6 +280,25 @@ export class BlipSelect extends Component {
         </div>
       </div>
     `
+  }
+  /**
+   * Creates the initials tags based on selected options
+   */
+  _createInitialTags() {
+    const tags = []
+    if (this.props.selectedOptions.length) {
+      this.props.options = this.props.options.map(option => {
+        if (option.checked) {
+          const newTag = new BlipTag().render({
+            label: option.label,
+          })
+          option.tag = newTag
+          tags.push(newTag)
+        }
+        return option
+      })
+    }
+    return html`${tags}`
   }
 
   /**
@@ -336,9 +363,25 @@ export class BlipSelect extends Component {
   }
 
   /**
+   * Add checked attribute to options according to selected options
+   */
+  _addCheckedAttribute() {
+    this.props.options = this.props.options.map(option => {
+      return {
+        ...option,
+        checked: this.props.selectedOptions.some(selectedOption => selectedOption.value === option.value),
+      }
+    })
+  }
+
+  /**
    * Returns a object based on config options
    */
   _optionsListConfig() {
+    if (this.configOptions.multiple) {
+      this._addCheckedAttribute()
+    }
+
     const defaults = {
       options: this.props.options,
       OptionCreator: this.configOptions.optionCreator,
@@ -379,6 +422,7 @@ export class BlipSelect extends Component {
       noResultsText: this.configOptions.noResultsText,
       noResultsFoundText: this.configOptions.noResultsFoundText,
       appendText: this.configOptions.appendText,
+      multiple: this.configOptions.multiple,
     })
   }
 
@@ -390,6 +434,7 @@ export class BlipSelect extends Component {
       onOptionClick: this._onOptionClick.bind(this),
       onTryAccessInput: () => this.input.focus(),
       noResultsText: this.configOptions.noResultsText,
+      multiple: this.configOptions.multiple,
     })
   }
 
@@ -463,9 +508,13 @@ export class BlipSelect extends Component {
       case 27: // esc
         if (this.isSelectOpen) {
           this._closeSelect()
-          if (this.input.value && this.selectedOption.label) {
+          if (this._isAnySelected()) {
             this._toggleHide()
-            this.input.value = this._setInputValue(this.selectedOption)
+            if (this.configOptions.multiple) {
+              this.isFocused = false
+            } else {
+              this.input.value = this._setInputValue(this.selectedOption)
+            }
           }
         }
     }
@@ -555,10 +604,25 @@ export class BlipSelect extends Component {
    * Toggle hide
    */
   _toggleHide() {
-    if (this.configOptions.descriptionPosition === 'bottom') {
+    if (this.configOptions.descriptionPosition === 'bottom' ||
+      this.configOptions.multiple) {
       this.input.classList.toggle('hide')
       this.selectedOptionEl.classList.toggle('hide')
     }
+  }
+
+  /**
+   * Execute onSelectOption callback
+   */
+  _executeOnSelectedOptions(optionProps) {
+    if (typeof this.configOptions.onSelectOption !== 'function') {
+      throw new Error('Callback "onSelectOption" is not a function')
+    }
+
+    this.configOptions.onSelectOption.call(
+      this,
+      EventEmitter({ optionProps }),
+    )
   }
 
   /**
@@ -571,14 +635,7 @@ export class BlipSelect extends Component {
     this.input.value = label
     this.props.inputValue = this.input.value
 
-    if (typeof this.configOptions.onSelectOption !== 'function') {
-      throw new Error('Callback "onSelectOption" is not a function')
-    }
-
-    this.configOptions.onSelectOption.call(
-      this,
-      EventEmitter({ optionProps }),
-    )
+    this._executeOnSelectedOptions(optionProps)
   }
 
   /**
@@ -651,10 +708,15 @@ export class BlipSelect extends Component {
 
     if (this.isSelectOpen) {
       this._resetSelectedOptions()
-      event.target.classList.add(blipSelectOptionSeletedClass)
-      this._setSelectedOption(optionProps)
-      this._toggleHide()
-      this._closeSelect()
+      if (this.configOptions.multiple) {
+        this.input.focus()
+        this._changeSelectedOptions(event, optionProps)
+      } else {
+        event.target.classList.add(blipSelectOptionSeletedClass)
+        this._setSelectedOption(optionProps)
+        this._toggleHide()
+        this._closeSelect()
+      }
     }
 
     event.stopPropagation()
@@ -677,6 +739,64 @@ export class BlipSelect extends Component {
     )
   }
 
+  /**
+   * Create a new tag and append it on main input
+   * @param {string} label - tag label
+   */
+  _createNewTag(label) {
+    const newTag = new BlipTag().render({
+      label: label,
+    })
+    this.element.querySelector(`.${bpContentActionClass}-tags`).appendChild(newTag)
+    return newTag
+  }
+
+  /**
+   * Find the option index of a option in a option list
+   * @param {Object} optionToSearch
+   * @param {Object[]} optionList
+   */
+  _findOptionIndexInOptionList(optionToSearch, optionList) {
+    let foundOptionIndex = -1
+    optionList.some((option, optionIndex) => {
+      if (option.value === optionToSearch.value) {
+        foundOptionIndex = optionIndex
+        return true
+      }
+      return false
+    })
+    return foundOptionIndex
+  }
+
+  /**
+   * Updates options according to checkboxes changes
+   * @param {DOMEvent} event
+   * @param {Object} clickedOption
+   */
+  _changeSelectedOptions(event, clickedOption) {
+    const checkboxEl = event.currentTarget.querySelector('.blip-select__option__checkbox')
+    const selectedOptionIndex = this._findOptionIndexInOptionList(clickedOption, this.props.options)
+    const selectedOption = this.props.options[selectedOptionIndex]
+
+    if (checkboxEl.checked && !selectedOption.checked) {
+      selectedOption.tag = this._createNewTag(selectedOption.label)
+      this.props.selectedOptions.push(selectedOption)
+      selectedOption.checked = true
+      this._executeOnSelectedOptions(this.props.selectedOptions)
+    } else if (!checkboxEl.checked && selectedOption.checked) {
+      selectedOption.tag.remove()
+      this.props.selectedOptions = this.props.selectedOptions.filter(option =>
+        option.value !== selectedOption.value
+      )
+      selectedOption.checked = false
+      this._executeOnSelectedOptions(this.props.selectedOptions)
+    }
+  }
+
+  /**
+   * Set selected values on elements
+   * @param {Object} optionProps
+   */
   _setSelectedOption(optionProps) {
     this._setInputValue(optionProps)
     this.selectIconHtml = optionProps.icon
@@ -750,6 +870,12 @@ export class BlipSelect extends Component {
   }
 
   /**
+   * Verifies if there is something selected
+   */
+  _isAnySelected = () =>
+    (this.input.value && this.selectedOption.label) || this.props.selectedOptions.length
+
+  /**
    * On select blur
    */
   _onSelectBlur(event) {
@@ -760,15 +886,17 @@ export class BlipSelect extends Component {
 
     this.isFocused = false
 
-    // Prevents close container before user can select any option
     if (this._isPartOfComponent(event)) {
       return
     }
 
     this.configOptions.onBlur(event)
-    if (this.input.value && this.selectedOption.label) {
+    // Prevents close container before user can select any option
+    if (this._isAnySelected()) {
       this._toggleHide()
-      this._setInputValue(this.selectedOption)
+      if (!this.configOptions.multiple) {
+        this._setInputValue(this.selectedOption)
+      }
     }
 
     setTimeout(() => {

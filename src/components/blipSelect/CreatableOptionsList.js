@@ -8,6 +8,7 @@ export class CreatebleOptionsList extends Component {
     noResultsText: '',
     noResultsFoundText: '',
     appendText: true,
+    multiple: false,
   }
 
   constructor(options) {
@@ -54,6 +55,7 @@ export class CreatebleOptionsList extends Component {
         onOptionClick: this.options.onOptionClick,
         onTryAccessInput: this.options.onTryAccessInput,
         descriptionPosition: this.props.descriptionPosition,
+        checkable: this.options.multiple,
       }).render(optionProps)
     }
 

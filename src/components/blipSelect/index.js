@@ -19,6 +19,7 @@ const bpSelectHideLabelClass = 'bp-select-hide-label'
 const bpSelectShowArrowClass = 'blip-select__show-arrow'
 const bpCrooftopClass = 'bp-c-rooftop'
 const bpCblipLightClass = 'bp-c-blip-light'
+const bpOpenClass = 'open'
 const bpInputWrapperFocusClass = 'bp-input-wrapper--focus'
 const bpInputWrapperDisabledClass = 'bp-select-wrapper--disabled'
 const bpInputWrapperInvalidClass = 'bp-select-wrapper--invalid'
@@ -248,7 +249,7 @@ export class BlipSelect extends Component {
           ${this.configOptions.placeholderIcon &&
             raw(`<div class="${bpPlaceholderIconClass}">${this.configOptions.placeholderIcon}</div>`)}
           <div class="blip-select__content">
-            <div class="blip-select__option__content">              
+            <div class="blip-select__option__content">
               <div class="blip-select__content-input">
                 <label class="bp-label bp-c-cloud bp-fw-bold ${hideLabelClass()}">${this.props.label}</label>
                 <input placeholder="${this.configOptions.placeholder}"
@@ -920,6 +921,7 @@ export class BlipSelect extends Component {
       selectOptionsContainer.style.opacity = 1
     })
 
+    this.element.classList.add(bpOpenClass)
     this.element.classList.add(bpInputWrapperFocusClass)
     this.selectLabel.classList.remove(bpCrooftopClass)
     this.selectLabel.classList.add(bpCblipLightClass)
@@ -980,6 +982,7 @@ export class BlipSelect extends Component {
       selectOptionsContainer.classList.remove(blipSelectOptionOpenTopClass)
     }, ANIMATION_TIMEOUT) // Milliseconds should be greater than value setted on transition css property
 
+    this.element.classList.remove(bpOpenClass)
     this.element.classList.remove(bpInputWrapperFocusClass)
     this.selectLabel.classList.remove(bpCblipLightClass)
     this.selectLabel.classList.add(bpCrooftopClass)

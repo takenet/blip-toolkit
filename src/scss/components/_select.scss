@@ -80,6 +80,12 @@
   .hide {
     display: none;
   }
+
+  &.open {
+    .blip-select__arrow-down {
+      transform: rotate(180deg);
+    }
+  }
 }
 
 .blip-select__input {

@@ -158,8 +158,8 @@
 .bp-input[type="checkbox"]:checked ~ .bp-input--checkbox,
 .bp-input[type="radio"]:checked ~ .bp-input--radio {
   color: $bp-color-white;
-  background-color: $bp-color-blip-light;
-  border-color: $bp-color-blip-light;
+  background-color: $bp-color-bot;
+  border-color: $bp-color-bot;
 
   &:hover {
     background-color: bp-darken($bp-color-blip-light);
@@ -171,8 +171,8 @@
   background-clip: content-box;
   padding: 0.3 * $m;
   color: transparent;
-  background-color: $bp-color-blip-light;
-  border-color: $bp-color-blip-light;
+  background-color: $bp-color-bot;
+  border-color: $bp-color-bot;
   transition: background-color 0;
 }
 

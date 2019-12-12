@@ -13,7 +13,11 @@
 
   &.bp-input-wrapper {
     background-color: $bp-color-white;
-    height: auto;
+    cursor: pointer;
+
+    &.large {
+      height: 68px;
+    }
   }
 
   &.bp-select-wrapper--invalid {
@@ -109,10 +113,6 @@
   &:focus {
     outline: none;
   }
-
-  &.large {
-    padding: 15px 0;
-  }
 }
 
 .blip-select__arrow-down {
@@ -164,10 +164,6 @@
 .blip-select__content-option {
   display: flex;
   flex-direction: column;
-
-  &.large {
-    padding: 6px 0;
-  }
 
   .blip-select__content-option-label {
     font-weight: bold;

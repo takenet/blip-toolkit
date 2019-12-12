@@ -75,6 +75,7 @@ export class BlipSelect extends Component {
     this._handleSelectBlur = this._onSelectBlur.bind(this)
     this._handleInputChange = this._onInputChange.bind(this)
     this._handleInputClick = this._onInputClick.bind(this)
+    this._handleInputWrapperClick = this._onInputWrapperClick.bind(this)
     this._onSelectedOptionClick = this._onSelectedOptionClick.bind(this)
     this._handleCenterOption = this._centerSelectedOption.bind(this)
     this._handleInputKeydown = this._attachInputKeyboardListener.bind(this)
@@ -244,7 +245,9 @@ export class BlipSelect extends Component {
       : ''
 
     return html`
-      <div class="bp-input-wrapper blip-select ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''}">
+      <div
+        class="bp-input-wrapper blip-select ${this.configOptions.size} ${this.props.disabled ? 'bp-select-wrapper--disabled' : ''}"
+        onclick=${this._handleInputWrapperClick}>
         <div class="blip-select__shell">
           ${this.configOptions.placeholderIcon &&
             raw(`<div class="${bpPlaceholderIconClass}">${this.configOptions.placeholderIcon}</div>`)}
@@ -253,7 +256,7 @@ export class BlipSelect extends Component {
               <div class="blip-select__content-input">
                 <label class="bp-label bp-c-cloud bp-fw-bold ${hideLabelClass()}">${this.props.label}</label>
                 <input placeholder="${this.configOptions.placeholder}"
-                  class="blip-select__input bp-c-rooftop ${this.configOptions.size}  ${shouldHideEl(true)}"
+                  class="blip-select__input bp-c-rooftop ${shouldHideEl(true)}"
                   value="${this.props.inputValue}"
                   onfocus="${this._handleSelectFocus}"
                   onblur="${this._handleSelectBlur}"
@@ -579,6 +582,13 @@ export class BlipSelect extends Component {
           newOption: inputValue,
         })
       })
+  }
+
+  /**
+   * Handle input wrapper click
+   */
+  _onInputWrapperClick(event) {
+    this.input.focus()
   }
 
   /**

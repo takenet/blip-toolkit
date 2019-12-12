@@ -12,6 +12,7 @@ import { BlipTag } from '../blipTag'
 export const blipSelectOptionClass = 'blip-select__option'
 
 const ANIMATION_TIMEOUT = 300
+
 const blipSelectOptionsClass = 'blip-select__options'
 const blipSelectOptionOpenTopClass = 'blip-select__options--open-top'
 const blipSelectOptionSeletedClass = 'blip-select__option--selected'

@@ -757,7 +757,7 @@ export class BlipSelect extends Component {
    * @param {Object} optionToSearch
    * @param {Object[]} optionList
    */
-  _findOptionIndexInOptionList(optionToSearch, optionList) {
+  _findIndex(optionToSearch, optionList) {
     let foundOptionIndex = -1
     optionList.some((option, optionIndex) => {
       if (option.value === optionToSearch.value) {
@@ -776,7 +776,7 @@ export class BlipSelect extends Component {
    */
   _changeSelectedOptions(event, clickedOption) {
     const checkboxEl = event.currentTarget.querySelector('.blip-select__option__checkbox')
-    const selectedOptionIndex = this._findOptionIndexInOptionList(clickedOption, this.props.options)
+    const selectedOptionIndex = this._findIndex(clickedOption, this.props.options)
     const selectedOption = this.props.options[selectedOptionIndex]
 
     if (checkboxEl.checked && !selectedOption.checked) {

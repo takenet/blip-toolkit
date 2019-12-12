@@ -123,6 +123,7 @@
   min-width: 20px;
   height: 20px;
   min-height: 20px;
+  transition: transform .3s;
 
   &.blip-select__show-arrow {
     visibility: visible;

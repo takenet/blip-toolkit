@@ -1,7 +1,7 @@
 import html from 'nanohtml'
 
-export const BlipLoading = (props = {}) => {
-  return html`
+const loadings = {
+  'dotted': html`
     <div class="bp-loading__content">
         <div class="bp-loading1 bp-loading__circle"></div>
         <div class="bp-loading2 bp-loading__circle"></div>
@@ -16,5 +16,8 @@ export const BlipLoading = (props = {}) => {
         <div class="bp-loading11 bp-loading__circle"></div>
         <div class="bp-loading12 bp-loading__circle"></div>
     </div>
-    `
+    `,
+  'solid': html`<div class="bp-loading__solid "></div>`,
 }
+
+export const BlipLoading = (props = {type: 'dotted'}) => loadings[props.type]

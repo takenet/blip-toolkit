@@ -1,4 +1,7 @@
 import { BlipLoading } from '../src/components/blipLoading'
 
-const blipLoadingComponent = BlipLoading()
-document.getElementById('loading').appendChild(blipLoadingComponent)
+const blipLoadingComponentDotted = BlipLoading()
+document.getElementById('dotted-loading').appendChild(blipLoadingComponentDotted)
+
+const blipLoadingComponentSolid = BlipLoading({type: 'solid'})
+document.getElementById('solid-loading').appendChild(blipLoadingComponentSolid)

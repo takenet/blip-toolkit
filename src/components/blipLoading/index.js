@@ -2,7 +2,7 @@ import html from 'nanohtml'
 
 const loadings = {
   'dotted': html`
-    <div class="bp-loading__content">
+    <div class="bp-loading bp-loading__content">
         <div class="bp-loading1 bp-loading__circle"></div>
         <div class="bp-loading2 bp-loading__circle"></div>
         <div class="bp-loading3 bp-loading__circle"></div>

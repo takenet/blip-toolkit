@@ -134,8 +134,14 @@
   flex-shrink: 0;
   font-size: $bp-fs-6;
   line-height: $bp-lh-6;
-  border: 0.1 * $m solid $bp-color-wind;
+  border: 0.1 * $m solid $bp-color-bot;
   transition: all 500ms;
+  svg, svg path {
+    width: 100%;
+    height: 100%;
+    padding: 20%;
+    fill: transparent;
+  }
 }
 
 .bp-input--checkbox {
@@ -165,6 +171,9 @@
     background-color: bp-darken($bp-color-blip-light);
     border-color: bp-darken($bp-color-blip-light);
   }
+  svg, svg path {
+    fill: $bp-color-white;
+  }
 }
 
 .bp-input[type="checkbox"]:indeterminate ~ .bp-input--checkbox {
@@ -174,45 +183,30 @@
   background-color: $bp-color-bot;
   border-color: $bp-color-bot;
   transition: background-color 0;
-}
 
-.bp-input[type="checkbox"]:checked:not(:disabled) ~ .bp-input--checkbox,
-.bp-input[type="radio"]:checked:not(:disabled) ~ .bp-input--radio {
-  animation: checkbox 0.6s ease;
-}
-
-@include keyframes(checkbox) {
-  0% {
-    transform: scale(1, 1);
-  }
-  30% {
-    transform: scale(1.25, 0.75);
-  }
-  40% {
-    transform: scale(0.75, 1.25);
-  }
-  50% {
-    transform: scale(1.15, 0.85);
-  }
-  65% {
-    transform: scale(0.95, 1.05);
-  }
-  75% {
-    transform: scale(1.05, 0.95);
-  }
-  100% {
-    transform: scale(1, 1);
+  svg, svg path {
+    fill: transparent;
   }
 }
 
 .bp-input[type="checkbox"]:disabled ~ .bp-input--checkbox,
 .bp-input[type="radio"]:disabled ~ .bp-input--radio {
-  background-color: $bp-color-offwhite;
-  border-color: $bp-color-breeze;
-
+  background-color: $bp-color-whisper;
+  color: $bp-color-time;
+  border-color: $bp-color-offwhite;
   &:hover {
-    background-color: $bp-color-offwhite;
     border-color: $bp-color-breeze;
+    background-color: transparent;
+  }
+  svg, svg path {
+    fill: $bp-color-time;
+  }
+}
+
+.bp-input[type="checkbox"]:disabled:not(:checked) ~ .bp-input--checkbox {
+  color: transparent;
+  svg, svg path {
+    fill: transparent;
   }
 }
 

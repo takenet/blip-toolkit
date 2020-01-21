@@ -2,6 +2,7 @@ import { guid } from '@lib/utils'
 import html from 'nanohtml'
 import raw from 'nanohtml/raw'
 import { OptionItem } from '../shared'
+import TrueIcon from '../../img/true.svg'
 
 export class SelectOption extends OptionItem {
   constructor(options) {
@@ -36,7 +37,7 @@ export class SelectOption extends OptionItem {
     const checkboxElement = html`
     <label class="bp-input--check--wrapper"> 
       <input class="bp-input blip-select__option__checkbox" type="checkbox" checked="${this.props.checked || 'false'}">
-      <div class="bp-input--checkbox">${raw('&check;')}</div>
+      <div class="bp-input--checkbox">${raw(TrueIcon)}</div>
     </label>`
 
     const itemContent = () => html`<div class="blip-select__option__content">${labelElement}${descriptionElement}</div>`

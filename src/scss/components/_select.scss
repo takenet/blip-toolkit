@@ -259,6 +259,25 @@
   }
 }
 
+  .select__option-invalid {
+    color: red !important;
+    .blip-select__option__content {
+      color: $bp-color-city;
+      .blip-select__option__description {
+        color: $bp-color-cloud;
+      }
+    }
+  }
+
+.blip-select__option__icon__overlay {
+    content: '';
+    width: 36px;
+    height: 36px;
+    background: yellow;
+    opacity: 0.9;
+
+  // position: absolute;
+}
 .blip-select__option--with-icon {
   display: flex;
   align-items: center;

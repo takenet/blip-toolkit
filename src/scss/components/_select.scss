@@ -184,7 +184,7 @@
   flex-wrap: nowrap;
   -webkit-flex-wrap: nowrap;
 
-  &:not(.blip-select__option-disabled) {
+  &:not(.blip-select__option--disabled) {
     &:hover,
     &:focus {
       background: $bp-color-whisper;
@@ -261,7 +261,7 @@
   }
 }
 
-  .blip-select__option-disabled {
+  .blip-select__option--disabled {
     outline-color: $bp-color-bot;
     cursor: no-drop;
 

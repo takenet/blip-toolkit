@@ -55,7 +55,7 @@ export class SelectOption extends OptionItem {
       <li tabindex="0"
         onclick="${this.onOptionClick.bind(this)}"
         onkeydown="${this.attachOptionKeyboardListeners.bind(this)}"
-        class="blip-select__option ${descriptionPositionClass} ${this.props.disabled && 'blip-select__option-disabled'}"
+        class="blip-select__option ${descriptionPositionClass} ${this.props.disabled && 'blip-select__option--disabled'}"
         data-value="${this.props.value}"
         id="${fillOptionId(this.props.id)}"
         >${(this.options.checkable) ? checkboxElement : ''} 

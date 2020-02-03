@@ -718,7 +718,7 @@ export class BlipSelect extends Component {
   _onOptionClick({ $event }) {
     const { event, optionProps } = $event
 
-    if (this.isSelectOpen) {
+    if (this.isSelectOpen && !optionProps.disabled) {
       this._resetSelectedOptions()
       if (this.configOptions.multiple) {
         this.input.focus()

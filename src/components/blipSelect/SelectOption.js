@@ -15,7 +15,7 @@ export class SelectOption extends OptionItem {
       label: undefined,
       description: undefined,
       id: `blip-select__option-${guid()}`,
-      disabled: true,
+      disabled: false,
     }
   }
 
@@ -46,7 +46,7 @@ export class SelectOption extends OptionItem {
     const itemContentWithIcon = () => html`
       <div class="blip-select__option--with-icon">
         <div class="blip-select__option__icon">
-        ${this.props.disbled && `<div class="blip-select__option__icon__overlay">${raw(this.props.icon)}</div>`} 
+          ${raw(this.props.icon)}
         </div>
         ${itemContent()}
       </div>
@@ -55,7 +55,7 @@ export class SelectOption extends OptionItem {
       <li tabindex="0"
         onclick="${this.onOptionClick.bind(this)}"
         onkeydown="${this.attachOptionKeyboardListeners.bind(this)}"
-        class="blip-select__option ${descriptionPositionClass} ${this.props.disabled && 'select__option-invalid'}"
+        class="blip-select__option ${descriptionPositionClass} ${this.props.disabled && 'blip-select__option-disabled'}"
         data-value="${this.props.value}"
         id="${fillOptionId(this.props.id)}"
         >${(this.options.checkable) ? checkboxElement : ''} 

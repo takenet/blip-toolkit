@@ -192,14 +192,16 @@
     width: 100%;
   }
 
-  &:not(.blip-select__option--disabled) {
-    &:hover,
-    &:focus {
-      background: $bp-color-whisper;
-      outline: 0;
+   &:not(.blip-select__option--disabled) {
+    &:not(.blip-select__add-option) {
+      &:hover,
+      &:focus {
+        background: $bp-color-whisper;
+        outline: 0;
 
-      .blip-select__option__label:not(:only-child) {
-        color: $bp-color-bot;
+        .blip-select__option__label:not(:only-child) {
+          color: $bp-color-bot;
+        }
       }
     }
   }

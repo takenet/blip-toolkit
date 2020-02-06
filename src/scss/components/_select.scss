@@ -192,7 +192,7 @@
       flex-flow: row wrap;
       width: 100%;
     }
-    
+
     .blip-select__option__label:not(:only-child) {
       width: 60%;
       display: flex;
@@ -201,7 +201,8 @@
 
     .blip-select__option__description {
       width: 40%;
-      display: flex;
+      display: block;
+      text-align: right;
     }
   }
 
@@ -314,6 +315,7 @@
 .blip-select__option--with-icon {
   display: flex;
   align-items: center;
+  width: 100%;
 
   .blip-select__option__icon {
     line-height: 0;
@@ -331,6 +333,7 @@
 
   .blip-select__option__content {
     margin-left: 10px;
+    width: 100%;
 
     span {
       display: block;

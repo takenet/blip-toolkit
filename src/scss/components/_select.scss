@@ -184,12 +184,25 @@
   flex-wrap: nowrap;
   -webkit-flex-wrap: nowrap;
 
-  &__content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-flow: row wrap;
-    width: 100%;
+  &.blip-select__option--description-right {
+    .blip-select__option__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-flow: row wrap;
+      width: 100%;
+    }
+    
+    .blip-select__option__label:not(:only-child) {
+      width: 60%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .blip-select__option__description {
+      width: 40%;
+      display: flex;
+    }
   }
 
    &:not(.blip-select__option--disabled) {
@@ -213,9 +226,7 @@
   }
 
   .blip-select__option__label:not(:only-child) {
-    width: 60%;
-    display: flex;
-    justify-content: flex-start;
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -223,9 +234,6 @@
   }
 
   .blip-select__option__description {
-    width: 40%;
-    display: flex;
-    justify-content: flex-end;
     margin-left: auto;
     flex-shrink: 0;
     font-size: $bp-fs-7;

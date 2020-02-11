@@ -54,6 +54,7 @@ export class BlipSelect extends Component {
     onInputChange: ({ $event }) => { }, // { value: inputValue, event: DOMEvent }
     onInputKeyup: ({ $event }) => { }, // { value: inputValue, event: DOMEvent }
     onSelectOption: ({ $event }) => { }, // { value: optionValue, label: optionLabel }
+    onDisabledOptionClick: ({ $event }) => { }, // { value: optionValue, label: optionLabel }
     onFocus: () => { },
     onBlur: () => { },
     onAddOption: () => { },
@@ -638,6 +639,18 @@ export class BlipSelect extends Component {
   }
 
   /**
+   * Execute onDisabledOptionClick callback
+   */
+  _executeOnDisabledOptionClick(optionProps) {
+    if (typeof this.configOptions.onDisabledOptionClick === 'function') {
+      this.configOptions.onDisabledOptionClick.call(
+        this,
+        EventEmitter({ optionProps }),
+      )
+    }
+  }
+
+  /**
    * Set value to input
    * @param {Object} object - value/label pair
    */
@@ -729,8 +742,9 @@ export class BlipSelect extends Component {
         this._toggleHide()
         this._closeSelect()
       }
+    } else if (optionProps.disabled) {
+      this._executeOnDisabledOptionClick(optionProps)
     }
-
     event.stopPropagation()
   }
 

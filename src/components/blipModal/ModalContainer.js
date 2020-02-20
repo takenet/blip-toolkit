@@ -62,7 +62,7 @@ export class ModalContainer extends Component {
             onclick="${this._handleOnCancel}">
             ${this.props.cancelButton.text}
           </button>
-          <button class="bp-modal__confirm-button bp-btn bp-btn--blip-dark ${this.props.confirmButton.classes}"
+          <button class="bp-modal__confirm-button bp-btn bp-btn--bot bp-btn--rounded bp-bg-bot ${this.props.confirmButton.classes}"
             onclick="${this._handleOnConfirm}">
             ${this.props.confirmButton.text}
           </button>

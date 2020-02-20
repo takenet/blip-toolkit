@@ -6,6 +6,6 @@ const baseWebpackConfig = require('./webpack.base.conf');
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
-  optimization: { minimize: false },
+  optimization: { minimize: true },
   plugins: []
 });

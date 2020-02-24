@@ -6,12 +6,16 @@ import InfoIcon from '../../img/checkball-outline.svg'
 import LikeIcon from '../../img/like-outline.svg'
 import RefreshIcon from '../../img/refresh.svg'
 import WarningIcon from '../../img/attention-outline.svg'
+import RedoIcon from '../../img/redo.svg'
+import UndoIcon from '../../img/undo.svg'
 
 const infoClass = 'bp-toast--info'
 const successClass = 'bp-toast--success'
 const warningClass = 'bp-toast--warning'
 const dangerClass = 'bp-toast--danger'
 const refreshClass = 'bp-toast--refresh'
+const undoClass = 'bp-toast--undo'
+const redoClass = 'bp-toast--redo'
 const textButtonClass = 'toast-text-button'
 
 export const BlipToast = (props = {}) => {
@@ -37,6 +41,14 @@ export const BlipToast = (props = {}) => {
     case 'refresh':
       typeClass = refreshClass
       icon = RefreshIcon
+      break
+    case 'undo':
+      typeClass = undoClass
+      icon = UndoIcon
+      break
+    case 'redo':
+      typeClass = redoClass
+      icon = RedoIcon
       break
   }
 

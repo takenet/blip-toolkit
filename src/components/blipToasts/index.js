@@ -39,6 +39,14 @@ export class BlipToasts extends Component {
     this.toast({ title, msg, buttonText, callback, duration, type: 'refresh' })
   }
 
+  undo({ msg, title, buttonText, callback, duration }) {
+    this.toast({ title, msg, buttonText, callback, duration, type: 'undo' })
+  }
+
+  redo({ msg, title, buttonText, callback, duration }) {
+    this.toast({ title, msg, buttonText, callback, duration, type: 'redo' })
+  }
+
   toast({ title, msg, buttonText, callback, duration, type }) {
     const toast = BlipToast({ title, msg, buttonText, callback, type })
     this.options.element.appendChild(toast)

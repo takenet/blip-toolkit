@@ -38,6 +38,12 @@
     &.bp-toast--refresh {
       background-image: linear-gradient(189.05deg, #87DDE8 -10.36%, #2CC3D5 45.63%, #2498A8 117.21%);
     }
+    &.bp-toast--undo {
+      background-image: linear-gradient(189.95deg, #87DDE8 -10.36%, #2CC3D5 45.63%, #2498A8 117.21%);
+    }
+    &.bp-toast--redo {
+      background-image: linear-gradient(189.95deg, #788CA3 -10.36%, #607B99 45.63%, #485C73 117.21%);
+    }
 
     .toast-svg {
       @include fixed-size(40px);

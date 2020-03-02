@@ -8,9 +8,9 @@ notifications:
   slack:
     secure: kXl62SBVYkkFvHycR6eUWjoFCqFQige/BToh8WFZG3GAZ09JypXyZRgQIBxGW+UfX7CY3ktjU3Ew+f9LUFbFB6Q1e7TyXDRRv3Gm8IYjny+1xg64y4gNbQ8thzPqg6yaFInOoBL4pyUjn/USXXk8sxMbC6OGNQmTNXVbvaTRH0YI/sJvtO2s50JCzmEg8UqcmWBt/sovzAh8SjzjY6pgMx/BR09DqHqRn1v+tBleZeCrV0+2FKVqrre6D0UlI0O+yhex/9/8p0XjotOg3LyGzw0muKn2Pz2y1PBSayZHuhV4woHvdehTTfpaKTspYJjRCJX1Xyu+TrarH4wPErkW5uEhuqR7rt1pxAzgQ0EgnpnGchspA7g31n8GM+pxrdURa+Ndd7vywtoeDPHJdF2cGum9avV6TvYhdiGKwK7eNQzCv3wEuhNa1wQEwZ0ofsXnBzV5xkOYnczwVrMS5h6Lz5trhPbP7qKOSejuwxF+PldJfL22yrEsnC9+kXWyjvFNEoxRUcgx+3e5Klfe+ejjpwzuilnbmDMsBFK1eIMXcQWfB8FaEIumacSHjzaG6YpSN4jg0g8iFL3EOJSvTHl/EgUWyhLGfC2E5KiKJcR/neQICdBB7vTjlkTtXTTUHDUNeN49VmotxKTkMzylReKU6bUUmX79wC2l6Jvfmr5wZkY=
 node_js:
-- '8'
+- '10.16.0'
 before_install:
-- npm i -g npm@^5.0.0
+- npm i -g npm@^6.0.0
 before_script:
 - npm prune && npm install -g codecov
 script:

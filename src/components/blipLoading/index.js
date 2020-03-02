@@ -1,7 +1,17 @@
 import html from 'nanohtml'
 
+export const LoadingTypes = {
+  Dotted: 'dotted',
+  Solid: 'solid',
+}
+
+export const LoadingSizes = {
+  Normal: 'normal',
+  Small: 'small',
+}
+
 const loadings = {
-  'dotted': html`
+  [LoadingTypes.Dotted]: html`
     <div class="bp-loading bp-loading__content">
         <div class="bp-loading1 bp-loading__circle"></div>
         <div class="bp-loading2 bp-loading__circle"></div>
@@ -15,9 +25,25 @@ const loadings = {
         <div class="bp-loading10 bp-loading__circle"></div>
         <div class="bp-loading11 bp-loading__circle"></div>
         <div class="bp-loading12 bp-loading__circle"></div>
-    </div>
-    `,
-  'solid': html`<div class="bp-loading__solid "></div>`,
+    </div>`,
+  [LoadingTypes.Solid]: html`<div class="bp-loading__solid "></div>`,
 }
 
-export const BlipLoading = (props = {type: 'dotted'}) => loadings[props.type]
+const $defaults = {
+  type: LoadingTypes.Dotted,
+  size: LoadingSizes.Normal,
+}
+
+export const BlipLoading = (props) => {
+  props = {
+    ...$defaults,
+    ...props,
+  }
+  const loadingEl = loadings[props.type]
+
+  if (props.size === LoadingSizes.Small) {
+    loadingEl.classList.add('bp-loading--small')
+  }
+
+  return loadingEl
+}

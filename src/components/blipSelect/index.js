@@ -324,7 +324,7 @@ export class BlipSelect extends Component {
 
       return false
     }
-    
+
     if (props.selectedOptions) {
       this.props.selectedOptions = props.selectedOptions
       this.optionsList.render({
@@ -333,7 +333,7 @@ export class BlipSelect extends Component {
 
       return false
     }
-    
+
     if (props.blockNewEntries !== undefined) {
       this.props.blockNewEntries = props.blockNewEntries
       this.optionsList.render({

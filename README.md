@@ -17,4 +17,6 @@ ___
 
 ## Want to contribute?
 
+If you want to do a commit, all you need to do is run `npm run commit` and you will get the prompts needed to start a commit!
+
 Follow contributing guidelines as [described here](CONTRIBUTING.md)

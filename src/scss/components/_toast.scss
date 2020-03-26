@@ -3,14 +3,14 @@
   flex-flow: column;
   align-items: flex-start;
   position: fixed;
-  width: 100%;
+  width: 30%;
   bottom: 20px;
   z-index: 1000;
   margin: 0 10px 10px 5px;
 
   .bp-toast {
     position: relative;
-    max-width: 30%;
+    width: 100%;
     white-space: pre-wrap;
     border-radius: 8px;
     box-shadow: 0px 2px 10px rgba(96, 123, 153, 0.3);

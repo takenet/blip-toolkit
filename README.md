@@ -9,7 +9,7 @@
 
 ## Usage
 
-Install package running `npm i -S blip-toolkit`.
+Install package running `npm i blip-toolkit`.
 
 Use `import 'blip-toolkit/dist/blip-toolkit.css` to load styles.
 

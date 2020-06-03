@@ -162,15 +162,6 @@ $side-margin: 0 $u;
       padding-left: 0.5*$m;
       padding-right: 0.5*$m;
       margin-left: 1*$m;
-
-      .arrow-down-icon {
-        @include fixed-size($icon-size);
-        padding: 0.2*$m;
-        border-radius: 5px;
-        margin-right: 1*$m;
-        margin-left: -1.5*$m;
-        cursor: pointer;
-      }
       
       input {
         font-size: $bp-fs-7;

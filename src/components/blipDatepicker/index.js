@@ -34,7 +34,6 @@ export class BlipDatepicker extends Component {
     inRange: 'in-range',
     timeContainer: 'time-container',
     timeInputContainer: 'time-input-container',
-    arrowDownIcon: 'arrow-down-icon',
     timeInput: 'time-input',
     dateSelector: 'date-selector',
     dateSelectorOption: 'date-selector-option',

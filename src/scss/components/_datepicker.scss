@@ -157,20 +157,31 @@ $side-margin: 0 $u;
       border-radius: 8px;
       border: 1px solid $bp-color-wave;
       height: 3*$m;
-      width: 6.6*$m;
       background-color: $bp-color-white;
       background-size: $m;
-      margin-left: 1.5*$m;
+      padding-left: 0.5*$m;
+      padding-right: 0.5*$m;
+      margin-left: 1*$m;
 
       .clock-icon {
         @include fixed-size($icon-size);
         padding: 0.2*$m;
         background-color: $bp-color-sky;
         border-radius: 5px;
+        margin-left: 1*$m;
 
         svg path {
           fill: $bp-color-bot;
         }
+      }
+
+      .arrow-down-icon {
+        @include fixed-size($icon-size);
+        padding: 0.2*$m;
+        border-radius: 5px;
+        margin-right: 1*$m;
+        margin-left: -1.5*$m;
+        cursor: pointer;
       }
       
       input {

@@ -6,8 +6,6 @@ import { eventPathFindElementByTag } from './../../lib/utils'
 
 import ArrowLeft from '../../img/arrow-ball-left-solid.svg'
 import ArrowRight from '../../img/arrow-ball-right-solid.svg'
-import Clock from '../../img/clock-outline.svg'
-
 export class BlipDatepicker extends Component {
   static weekSize = 7
   static monthRows = 6
@@ -36,7 +34,7 @@ export class BlipDatepicker extends Component {
     inRange: 'in-range',
     timeContainer: 'time-container',
     timeInputContainer: 'time-input-container',
-    clockIcon: 'clock-icon',
+    arrowDownIcon: 'arrow-down-icon',
     timeInput: 'time-input',
     dateSelector: 'date-selector',
     dateSelectorOption: 'date-selector-option',
@@ -157,7 +155,7 @@ export class BlipDatepicker extends Component {
             <button class="${BlipDatepicker.style.monthButton} ${BlipDatepicker.style.monthPrev}"
             value="-1">${raw(ArrowLeft)}</button>
           </th>
-          <th colspan="5">
+          <th colspan="6">
             <span class="${BlipDatepicker.style.monthTitle}"></span>
             <input class="${BlipDatepicker.style.yearInput}" type="number">
           </th>
@@ -257,8 +255,7 @@ export class BlipDatepicker extends Component {
 
     const timeInputContainer = html`
     <div class="${BlipDatepicker.style.timeInputContainer}">
-      <div class="${BlipDatepicker.style.clockIcon}">${raw(Clock)}</div>
-      <input class="${BlipDatepicker.style.timeInput}" type="time" required>
+      <input class="${BlipDatepicker.style.timeInput}" type="time" required />
     </div>`
 
     timeContainer.appendChild(timeInputContainer)

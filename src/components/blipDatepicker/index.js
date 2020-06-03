@@ -255,7 +255,7 @@ export class BlipDatepicker extends Component {
 
     const timeInputContainer = html`
     <div class="${BlipDatepicker.style.timeInputContainer}">
-      <input class="${BlipDatepicker.style.timeInput}" type="date" required />
+      <input class="${BlipDatepicker.style.timeInput}" type="time" required />
     </div>`
 
     timeContainer.appendChild(timeInputContainer)

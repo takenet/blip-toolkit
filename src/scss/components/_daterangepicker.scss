@@ -2,6 +2,10 @@
   position: relative;
   display: inline-block;
 
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
   .bp-daterange-inputs {
     display: inline-block;
     border: 1px solid $bp-color-wave;

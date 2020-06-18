@@ -215,7 +215,7 @@ export class BlipDaterangepicker extends Component {
     const year = date.getFullYear()
     const time = `${renderTwoDigit(date.getHours())}:${renderTwoDigit(date.getMinutes())}`
 
-    input.value = `${day} ${month}, ${year} - ${time}`
+    input.value = `${day} ${month}, ${year}${this.hasTime ? ` - ${time}` : ''}`
   }
 
   _setHoursOnDate = (dateHours, dateToSet) => {

@@ -66,7 +66,7 @@ export class BlipDaterangepicker extends Component {
     this._setDateOnInput(period.endDate, this.endDateInput)
 
     this._leftPicker.monthDate = period.startDate
-    this._rightPicker.monthDate = DateHelper.moveMonth(period.startDate, 1)
+    this._rightPicker.monthDate = DateHelper.moveMonth(period.endDate, 1)
   }
 
   createElement() {

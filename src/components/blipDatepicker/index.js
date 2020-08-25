@@ -580,7 +580,9 @@ export class BlipDatepicker extends Component {
 
   _onTimeInputChange = event => {
     const [hour, minute] = event.target.value.split(':')
-    this._monthDate.setHours(hour, minute)
+    if (hour && minute) {
+      this._monthDate.setHours(hour, minute)
+    }
 
     if (this.onTimeChange) this.onTimeChange()
   }

@@ -11,13 +11,13 @@ export class DateHelper {
     )
   }
 
-  static moveMonth(sourceDate, offset) {
+  static moveMonth(sourceDate, offset, sourceTime = sourceDate) {
     return new Date(
       sourceDate.getFullYear(),
       sourceDate.getMonth() + offset,
       sourceDate.getDate(),
-      sourceDate.getHours(),
-      sourceDate.getMinutes()
+      sourceTime.getHours(),
+      sourceTime.getMinutes()
     )
   }
 

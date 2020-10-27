@@ -87,12 +87,12 @@ export class BlipDaterangepicker extends Component {
       </div>
     </div>`
 
-    const today = new Date()
-    const lastMonth = DateHelper.moveMonth(today, -1)
+    const startDate = (this._selectedPeriod && this._selectedPeriod.startDate) || DateHelper.moveMonth(new Date(), -1)
+    const endDate = (this._selectedPeriod && this._selectedPeriod.endDate) || new Date()
 
     const datepickerContainer = daterangepicker.querySelector(`.${datepickerContainerClass}`)
-    datepickerContainer.appendChild(this._leftPicker.render(lastMonth))
-    datepickerContainer.appendChild(this._rightPicker.render(today))
+    datepickerContainer.appendChild(this._leftPicker.render(startDate))
+    datepickerContainer.appendChild(this._rightPicker.render(endDate))
 
     this._daterangepicker = daterangepicker
     this.inputContainer = daterangepicker.querySelector(`.${inputContainerClass}`)

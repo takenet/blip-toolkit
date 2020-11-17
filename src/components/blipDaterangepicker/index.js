@@ -40,6 +40,7 @@ export class BlipDaterangepicker extends Component {
 
     this._selectedPeriod = options.selectedPeriod
     this.validPeriod = options.validPeriod
+    this.maxRangeInDays = options.maxRangeInDays
 
     this.onSelection = options.onSelection
 
@@ -118,6 +119,34 @@ export class BlipDaterangepicker extends Component {
     this.applyButton.addEventListener('click', this._applyDate)
   }
 
+  _setupValidPeriodWithRangeLimitation(selectedDay) {
+    let allowedStart = new Date(selectedDay)
+    allowedStart.setDate(selectedDay.getDate() - this.maxRangeInDays)
+
+    let allowedEnd = new Date(selectedDay)
+    allowedEnd.setDate(selectedDay.getDate() + this.maxRangeInDays)
+
+    if (this.validPeriod) {
+      const startBeforeValidPeriod = allowedStart < this.validPeriod.startDate
+      const endAfterValidPeriod = allowedEnd > this.validPeriod.endDate
+
+      allowedStart = startBeforeValidPeriod ? this.validPeriod.startDate : allowedStart
+      allowedEnd = endAfterValidPeriod ? this.validPeriod.endDate : allowedEnd
+    }
+
+    const allowedPeriod = {
+      startDate: allowedStart,
+      endDate: allowedEnd,
+    }
+
+    this._updateValidPeriod(allowedPeriod)
+  }
+
+  _updateValidPeriod(allowedPeriod) {
+    this._leftPicker.validPeriod = allowedPeriod
+    this._rightPicker.validPeriod = allowedPeriod
+  }
+
   _datepickerOptions(timeInputText) {
     let leftOriginalDate
     let rightOriginalDate
@@ -166,11 +195,14 @@ export class BlipDaterangepicker extends Component {
       onDaySelection: () => {
         if (this._leftPicker.selectedDay) {
           this._rightPicker.selectedDay = this._leftPicker.selectedDay
+          this.maxRangeInDays && this._setupValidPeriodWithRangeLimitation(this._leftPicker.selectedDay)
         } else if (this._rightPicker.selectedDay) {
           this._leftPicker.selectedDay = this._rightPicker.selectedDay
+          this.maxRangeInDays && this._setupValidPeriodWithRangeLimitation(this._leftPicker.selectedDay)
         }
       },
       onPeriodSelection: () => {
+        this._updateValidPeriod(this.validPeriod)
         if (this._leftPicker.selectedPeriod) {
           this._rightPicker.selectedPeriod = this._leftPicker.selectedPeriod
         } else if (this._rightPicker.selectedPeriod) {

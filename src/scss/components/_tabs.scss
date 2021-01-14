@@ -32,7 +32,7 @@
 
       &.bp-tab-active {
         border-bottom: solid 4px;
-        border-image: linear-gradient(to right, $bp-color-bot 0%, $bp-color-blip-dark 100%);
+        border-image: linear-gradient(to right, $bp-color-bot 0%, $bp-color-bot 100%);
         border-image-slice: 1;
         a {
           color: $bp-color-bot;

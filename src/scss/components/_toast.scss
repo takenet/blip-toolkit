@@ -24,7 +24,7 @@
     opacity: 0;
 
     &.bp-toast--info {
-      background-image: linear-gradient(189.05deg, #87DDE8 -10.36%, #2CC3D5 45.63%, #2498A8 117.21%);
+      background-image: linear-gradient(189.05deg, #{$bp-color-blip-light} -10.36%, #{$bp-color-bot} 45.63%, #{$bp-color-blip-dark} 117.21%);
     }
     &.bp-toast--success {
       background: linear-gradient(188.9deg, #93D2AA -10.36%, #4DCB7B 45.63%, #4AA86C 117.21%);
@@ -36,10 +36,10 @@
       background-image: linear-gradient(188.9deg, #FF5A60 -10.36%, #F04847 45.63%, #B43635 117.21%);
     }
     &.bp-toast--refresh {
-      background-image: linear-gradient(189.05deg, #87DDE8 -10.36%, #2CC3D5 45.63%, #2498A8 117.21%);
+      background-image: linear-gradient(189.05deg, #{$bp-color-blip-light} -10.36%, #{$bp-color-bot} 45.63%, #{$bp-color-blip-dark} 117.21%);
     }
     &.bp-toast--undo {
-      background-image: linear-gradient(189.95deg, #87DDE8 -10.36%, #2CC3D5 45.63%, #2498A8 117.21%);
+      background-image: linear-gradient(189.95deg, #{$bp-color-blip-light} -10.36%, #{$bp-color-bot} 45.63%, #{$bp-color-blip-dark} 117.21%);
     }
     &.bp-toast--redo {
       background-image: linear-gradient(189.95deg, #788CA3 -10.36%, #607B99 45.63%, #485C73 117.21%);

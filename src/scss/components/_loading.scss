@@ -5,12 +5,12 @@
   width: 11em;
   height: 11em;
   border-radius: 50%;
-  background: #0dc5c1;
-  background: -moz-linear-gradient(119.36deg, #2CC3D5 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #2CC3D5 30.23%, rgba(44, 195, 213, 0) 72.23%);
-  background: -webkit-linear-gradient(119.36deg, #2CC3D5 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #2CC3D5 30.23%, rgba(44, 195, 213, 0) 72.23%);
-  background: -o-linear-gradient(119.36deg, #2CC3D5 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #2CC3D5 30.23%, rgba(44, 195, 213, 0) 72.23%);
-  background: -ms-linear-gradient(119.36deg, #2CC3D5 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #2CC3D5 30.23%, rgba(44, 195, 213, 0) 72.23%);
-  background: linear-gradient(119.36deg, #2CC3D5 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #2CC3D5 30.23%, rgba(44, 195, 213, 0) 72.23%);
+  background: $bp-color-bot;
+  background: -moz-linear-gradient(119.36deg, #{$bp-color-bot} 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #{$bp-color-bot} 30.23%, rgba(44, 195, 213, 0) 72.23%);
+  background: -webkit-linear-gradient(119.36deg, #{$bp-color-bot} 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #{$bp-color-bot} 30.23%, rgba(44, 195, 213, 0) 72.23%);
+  background: -o-linear-gradient(119.36deg, #{$bp-color-bot} 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #{$bp-color-bot} 30.23%, rgba(44, 195, 213, 0) 72.23%);
+  background: -ms-linear-gradient(119.36deg, #{$bp-color-bot} 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #{$bp-color-bot} 30.23%, rgba(44, 195, 213, 0) 72.23%);
+  background: linear-gradient(119.36deg, #{$bp-color-bot} 51.35%, rgba(44, 195, 213, 0) 66.67%), linear-gradient(69.27deg, #{$bp-color-bot} 30.23%, rgba(44, 195, 213, 0) 72.23%);
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
@@ -21,7 +21,7 @@
   &:before {
     width: 50%;
     height: 50%;
-    background: #0dc5c1;
+    background: $bp-color-bot;
     border-radius: 100% 0 0 0;
     position: absolute;
     top: 0;

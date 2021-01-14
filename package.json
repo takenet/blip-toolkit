@@ -60,7 +60,7 @@
     "jsdom": "^11.11.0",
     "mini-css-extract-plugin": "^0.4.0",
     "module-alias": "^2.0.6",
-    "node-sass": "4.13.0",
+    "node-sass": "^4.14.1",
     "require-hacker": "^3.0.1",
     "sass-loader": "^7.0.1",
     "semantic-release": "^15.2.0",
@@ -105,9 +105,9 @@
   ],
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "stylemark": "^3.0.1",
-    "tachyons": "^4.10.0",
     "nanocomponent": "^6.5.2",
-    "nanohtml": "^1.2.4"
+    "nanohtml": "^1.2.4",
+    "stylemark": "^3.0.1",
+    "tachyons": "^4.10.0"
   }
 }

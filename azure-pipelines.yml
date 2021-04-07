@@ -1,0 +1,22 @@
+trigger:
+- none
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Operações/template-take-blip
+      ref: refs/tags/v2.0
+
+variables:
+  group: 'blip-toolkit-config'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+extends:  
+  template: template-pipeline.yml@templates 
+  parameters:    
+    packagename: blip-toolkit
+    type: javascript-npm         
+    nodeVersion: '10.x'

@@ -6,7 +6,7 @@ resources:
     - repository: templates
       type: git
       name: Operações/template-take-blip
-      ref: refs/tags/v2.0
+      ref: refs/heads/feature/javascript-npm-stack
 
 variables:
   group: 'blip-toolkit-config'

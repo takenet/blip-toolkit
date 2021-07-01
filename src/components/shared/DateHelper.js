@@ -12,10 +12,18 @@ export class DateHelper {
   }
 
   static moveMonth(sourceDate, offset, sourceTime = sourceDate) {
+    let day = sourceDate.getDate()
+    const month = sourceDate.getMonth() + offset
+    const year = sourceDate.getFullYear()
+
+    if (!this.isPresumedDay(year, month, day)) {
+      day = this.amountOfDaysInMonth(year, month)
+    }
+
     return new Date(
-      sourceDate.getFullYear(),
-      sourceDate.getMonth() + offset,
-      sourceDate.getDate(),
+      year,
+      month,
+      day,
       sourceTime.getHours(),
       sourceTime.getMinutes()
     )
@@ -49,5 +57,14 @@ export class DateHelper {
   static isBetween(dateLimit1, dateLimit2, compareDate) {
     return (compareDate <= dateLimit1 && compareDate >= dateLimit2) ||
             (compareDate >= dateLimit1 && compareDate <= dateLimit2)
+  }
+
+  static amountOfDaysInMonth(year, month) {
+    return new Date(year, month + 1, 0).getDate()
+  }
+
+  static isPresumedDay(year, month, day) {
+    const date = new Date(year, month, day)
+    return date.getDate() === day
   }
 }

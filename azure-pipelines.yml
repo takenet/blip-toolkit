@@ -28,7 +28,5 @@ extends:
     npmCmds:
     - npm install
     - npm prune && npm install -g codecov
-    - npm run test:show-coverage
-    - npm run test:upload-coverage
     - codecov
     - npm run build

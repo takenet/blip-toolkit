@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-- group: npmjs-variables
+- group: npmjs-sample-variables
 
 resources:
   repositories:   

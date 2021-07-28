@@ -12,7 +12,38 @@ export const blipTagCompactClass = 'blip-tag--compact'
 export const defaultTagBackground = '#2cc3d5'
 
 // Color options
-const colors = ['#0CC7CB', '#FF4A1E', '#FF6F1E', '#FF961E', '#1EDEFF', '#1EA1FF', '#61D36F', '#37C5AB', '#7762E3', '#EA4D9C', '#FC91AE', '#FF1E90']
+const colors = [
+  '#0CC7CB',
+  '#FF4A1E',
+  '#FF6F1E',
+  '#FF961E',
+  '#1EDEFF',
+  '#1EA1FF',
+  '#61D36F',
+  '#37C5AB',
+  '#7762E3',
+  '#EA4D9C',
+  '#FC91AE',
+  '#FF1E90',
+  '#80E3EB',
+  '#167491',
+  '#B3D4FF',
+  '#0747A6',
+  '#000000',
+  '#DFEA95',
+  '#0A6045',
+  '#90E6BC',
+  '#21CC79',
+  '#AA398D',
+  '#3A4A65',
+  '#6E7B91',
+  '#B9CBD3',
+  '#4F0E87',
+  '#CC99FF',
+  '#B2B229',
+  '#757010',
+  '#FFEC03',
+]
 
 export class BlipTag extends Component {
   $state = {
@@ -82,7 +113,11 @@ export class BlipTag extends Component {
 
     const renderRemoveButton = () =>
       this.tagOptions.onRemove && this.tagOptions.canRemoveTag
-        ? html`<span onclick="${this._handleRemoveTag}" class="${blipTagRemoveClass}">x</span>`
+        ? html`<span
+            onclick="${this._handleRemoveTag}"
+            class="${blipTagRemoveClass}"
+            >x</span
+          >`
         : ''
 
     const renderTagClasses = () => {
@@ -100,24 +135,38 @@ export class BlipTag extends Component {
     }
 
     return html`
-      <div class="blip-tag-wrapper ${this.tagOptions.classes} ${renderTagClasses()}">
-        <div tabindex="0"
+      <div
+        class="blip-tag-wrapper ${this.tagOptions.classes} ${renderTagClasses()}"
+      >
+        <div
+          tabindex="0"
           id="${this.props.id || this.tagOptions.id}"
           onclick="${this._handleTagClick}"
           onmousedown="${this._stopPropagation}"
           onmouseup="${this._stopPropagation}"
           onkeydown="${this._handleTagKeydown}"
           class="blip-tag"
-          style="${this.props.background ? `background: ${this.props.background}` : ''}">
+          style="${this.props.background
+    ? `background: ${this.props.background}`
+    : ''}"
+        >
           <span class="${blipTagLabelClass}">${this.props.label}</span>
           ${renderRemoveButton()}
         </div>
-        ${this.props.canChangeBackground && !this.props.collapsed ? html`
-        <ul class="${blipTagSelectColorClass}" tabindex="0">
-          ${colors.map(c => html`
-            <li onclick="${this._selectColor.bind(this)}" class="${blipTagColorOptionClass}" style="background: ${c}" data-color="${c}"></li>
-          `)}
-        </ul>` : ''}
+        ${this.props.canChangeBackground && !this.props.collapsed
+    ? html` <ul class="${blipTagSelectColorClass}" tabindex="0">
+              ${colors.map(
+    (c) => html`
+                  <li
+                    onclick="${this._selectColor.bind(this)}"
+                    class="${blipTagColorOptionClass}"
+                    style="background: ${c}"
+                    data-color="${c}"
+                  ></li>
+                `,
+  )}
+            </ul>`
+    : ''}
       </div>
     `
   }
@@ -126,7 +175,10 @@ export class BlipTag extends Component {
    * Update component callback
    */
   update(props) {
-    if (props.collapsed !== undefined && props.collapsed !== this.props.collapsed) {
+    if (
+      props.collapsed !== undefined &&
+      props.collapsed !== this.props.collapsed
+    ) {
       this.toggleCollapse()
       this.props.collapsed = props.collapsed
       return false
@@ -170,10 +222,13 @@ export class BlipTag extends Component {
     }
 
     if (this.tagOptions.onRemove && this.tagOptions.canRemoveTag) {
-      this.tagOptions.onRemove.call(this, EventEmitter({
-        tag: this,
-        event,
-      }))
+      this.tagOptions.onRemove.call(
+        this,
+        EventEmitter({
+          tag: this,
+          event,
+        }),
+      )
     }
   }
 

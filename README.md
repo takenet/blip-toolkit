@@ -1,4 +1,4 @@
-# BLiP Toolkit
+# (DEPRECATED) BLiP Toolkit
 
 [![Build Status](https://travis-ci.org/takenet/blip-toolkit.png)](https://travis-ci.org/takenet/blip-toolkit)
 [![npm](https://img.shields.io/npm/v/blip-toolkit.svg)](https://www.npmjs.com/package/blip-toolkit)

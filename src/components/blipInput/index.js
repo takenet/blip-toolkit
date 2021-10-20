@@ -80,7 +80,7 @@ export class BlipInput extends Component {
     this.props = {
       ...this.props,
       ...props,
-      customError: props.customError,
+      customError: props && props.customError,
     }
 
     const labelClass = this._getLabelClass()

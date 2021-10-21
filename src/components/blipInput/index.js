@@ -23,12 +23,13 @@ export class BlipInput extends Component {
     focused: false,
     readOnly: false,
     pristine: true,
-    placeholder: '',
+    showPasswordStrength: true,
     required: false,
+    shouldValidateByPasswordStrength: false,
+    placeholder: '',
     regex: '',
     minLength: 0,
     maxLength: 0,
-    showPasswordStrength: true,
     autocomplete: 'on',
     requiredErrorMsg: 'This is a required field',
     maxLengthErrorMsg: 'The value is too long',
@@ -79,6 +80,7 @@ export class BlipInput extends Component {
     this.props = {
       ...this.props,
       ...props,
+      customError: props && props.customError,
     }
 
     const labelClass = this._getLabelClass()
@@ -95,9 +97,9 @@ export class BlipInput extends Component {
               ${this.props.label} ${this.configOptions.required ? ' *' : ''}
             </label>
             ${this.configOptions.type === 'password' && this.configOptions.showPasswordStrength && !this.props.disabled ? html`<div class="bp-input__password-strength">
-            <span class="str-lvl lvl-one ${this.props.valid ? this.props.passwordStrength : ''}"></span>
-            <span class="str-lvl lvl-two ${this.props.valid ? this.props.passwordStrength : ''}"></span>
-            <span class="str-lvl lvl-three ${this.props.valid ? this.props.passwordStrength : ''}"></span>
+            <span class="str-lvl lvl-one ${this._shouldDisplayPasswordStrength()}"></span>
+            <span class="str-lvl lvl-two ${this._shouldDisplayPasswordStrength()}"></span>
+            <span class="str-lvl lvl-three ${this._shouldDisplayPasswordStrength()}"></span>
           </div>` : ''}
 
           <div class="w-100 relative flex flex-row justify-between">
@@ -122,6 +124,14 @@ export class BlipInput extends Component {
         ${this.configOptions.error && !this.props.pristine ? html`<div class="error bp-fs-7 mb2 ${bpCWarningClass}">${this.configOptions.error}</div>` : ''}
       </div>
     `
+  }
+
+  _shouldDisplayPasswordStrength() {
+    if (this.configOptions.shouldValidateByPasswordStrength || this.props.valid) {
+      return this.props.passwordStrength
+    }
+
+    return ''
   }
 
   _onInputFocus = () => {
@@ -245,6 +255,22 @@ export class BlipInput extends Component {
     } else {
       this.props.passwordStrength = 'weak'
     }
+
+    if (this.configOptions.shouldValidateByPasswordStrength) {
+      switch (this.props.passwordStrength) {
+        case 'medium':
+        case 'weak':
+          this.props.valid = false
+          this.configOptions.error = this.configOptions.passwordStrengthErrorMessage || 'The password must contain at least 8 items: an uppercase, a lowercase, a number and a special character.'
+          break
+        case 'strong':
+          this.props.valid = true
+          this.configOptions.error = ''
+          break
+        default:
+          break
+      }
+    }
   }
 
   validate() {
@@ -256,6 +282,7 @@ export class BlipInput extends Component {
     if (this.configOptions.type === 'password') {
       this._checkPasswordStrength()
     }
+
     this.render(this.props)
   }
 
